@@ -1,12 +1,13 @@
 import React from 'react'
+import FooterElement from '../styles/FooterElement'
 
 interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
   return (
-    <footer style={{ textAlign: 'center' }}>
+    <FooterElement>
       <p>&copy; {new Date().getFullYear()}</p>
-    </footer>
+    </FooterElement>
   )
 }
 

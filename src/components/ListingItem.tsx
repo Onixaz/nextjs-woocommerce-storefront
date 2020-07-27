@@ -1,6 +1,7 @@
 import React from 'react'
 import PostPreview from '../types/PostPreview'
 import AppLink from './AppLink'
+import ListingElement from '../styles/ListingElement'
 
 interface ListingItemProps {
   post: PostPreview
@@ -8,10 +9,10 @@ interface ListingItemProps {
 
 const ListingItem: React.FC<ListingItemProps> = ({ post }) => {
   return (
-    <div>
+    <ListingElement>
       <AppLink href={`/blog/${post.slug}`} label={post.title} />
       {post.excerpt && <p>{post.excerpt}</p>}
-    </div>
+    </ListingElement>
   )
 }
 
