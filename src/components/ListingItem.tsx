@@ -10,7 +10,7 @@ interface ListingItemProps {
 const ListingItem: React.FC<ListingItemProps> = ({ post }) => {
   return (
     <ListingElement>
-      <AppLink href={`/blog/${post.slug}`} label={post.title} />
+      <AppLink href="/blog/[slug]" as={`/blog/${post.slug}`} label={post.title} />
       {post.excerpt && <p>{post.excerpt}</p>}
     </ListingElement>
   )
