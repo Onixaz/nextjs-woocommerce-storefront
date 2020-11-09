@@ -1,12 +1,13 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import { withLayout } from '@moxy/next-layout'
 import { Container } from '../styles/Containers'
 
-interface aboutProps {}
+interface AboutProps {}
 
-const about: React.FC<aboutProps> = () => {
+const About: React.FC<AboutProps> = () => {
   return (
-    <Layout pageTitle="About">
+    <>
       <Container>
         <h1>About Us</h1>
         <p>
@@ -15,8 +16,8 @@ const about: React.FC<aboutProps> = () => {
           beatae non facere veniam magni placeat autem!
         </p>
       </Container>
-    </Layout>
+    </>
   )
 }
 
-export default about
+export default withLayout(<Layout pageTitle="Index" />)(About)

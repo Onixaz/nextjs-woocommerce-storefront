@@ -25,6 +25,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@moxy/next-layout": "^2.2.2",
     "gray-matter": "^4.0.2",
     "next": "^9.4.4",
     "react": "^16.13.1",

@@ -8,10 +8,11 @@ const HeaderElement = styled.header`
     height: 65px;
   }
   a {
+    text-decoration: none;
     padding: 0 0.5em;
+    font-weight: 600;
   }
   a:hover {
-    text-decoration: underline;
   }
 `
 

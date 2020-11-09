@@ -12,14 +12,14 @@ const GlobalStyle = createGlobalStyle<Props>`
     outline: none
   }
   body {
-    font-size: calc(14px + .5vw);
+    font-size: calc(14px + .2vw);
     font-family: 'Fira Sans', 'Lato', sans-serif;
     line-height: 1.7;
     background: ${({ theme }) => theme.white};
     color: ${({ theme }) => theme.medium};
   }
   a {
-    text-decoration: none;
+    
     color: ${({ theme }) => theme.dark}
   }
   ul {

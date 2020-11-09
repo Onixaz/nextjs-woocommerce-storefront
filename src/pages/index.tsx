@@ -3,6 +3,7 @@ import PostPreview from '../types/PostPreview'
 import { NextPage, GetStaticProps } from 'next'
 import fs from 'fs'
 import matter from 'gray-matter'
+import { withLayout } from '@moxy/next-layout'
 import PostListing from '../components/PostListing'
 import Hero from '../components/Hero'
 import MainSection from '../components/MainSection'
@@ -13,10 +14,10 @@ interface BlogProps {
 
 const Blog: NextPage<BlogProps> = ({ posts }) => {
   return (
-    <Layout pageTitle="Blog">
+    <>
       <Hero />
       <MainSection posts={posts} />
-    </Layout>
+    </>
   )
 }
 
@@ -38,4 +39,4 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
   }
 }
 
-export default Blog
+export default withLayout(<Layout pageTitle="Index" />)(Blog)

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const FooterElement = styled.footer`
-  height: 130px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
