@@ -15,10 +15,10 @@ const VideoBg = styled.video`
 export const VideoThumb = styled.img`
   height: 100%;
   width: 100%;
-  transition: opacity 400ms ease 0ms;
+  transition: opacity 1000ms ease 0ms;
   filter: blur(5px);
   //transform: scale(1.1);
-  transition: visibility 0ms ease 400ms;
+  transition: visibility 0ms ease 1000ms;
 `
 
 const DynamicBgVideo = () => {
