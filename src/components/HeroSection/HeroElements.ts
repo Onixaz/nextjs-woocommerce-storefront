@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const HeroContainer = styled.div`
-  background: #0c0c0c;
+  background: ${({ theme }) => theme.primaryBlack};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@ export const HeroContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%),
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 1) 100%),
       linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
     z-index: 2;
   }
@@ -34,26 +34,25 @@ export const HeroBg = styled.div`
   overflow: hidden;
 `
 
-export const VideoBg = styled.video`
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  background: #232a34;
-`
+// export const VideoBg = styled.video`
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   -o-object-fit: cover;
+//   object-fit: cover;
+//   background: #232a34;
+// `
 
-export const VideoThumb = styled.img<{ isVideoLoaded: boolean }>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  transition: opacity 400ms ease 0ms;
-  filter: blur(20px);
-  transform: scale(1.1);
-  transition: visibility 0ms ease 400ms;
-  opacity: ${({ isVideoLoaded }) => (isVideoLoaded ? 1 : 0)};
-`
+// export const VideoThumb = styled.img`
+//   height: 100%;
+//   width: 100%;
+//   transition: opacity 400ms ease 0ms;
+//   filter: blur(20px);
+//   transform: scale(1.1);
+//   transition: visibility 0ms ease 400ms;
+// `
 
 export const HeroContent = styled.div`
   z-index: 3;

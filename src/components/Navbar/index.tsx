@@ -19,7 +19,6 @@ const Navbar: React.FC<NavbarProps> = () => {
   const [scrollNav, setScrollNav] = useState(false)
 
   const changeNav = () => {
-    console.log(window)
     if (window.scrollY >= 80) {
       setScrollNav(true)
     } else {

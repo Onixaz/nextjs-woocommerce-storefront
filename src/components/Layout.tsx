@@ -3,11 +3,11 @@ import Head from 'next/head'
 import Footer from './Footer'
 import LayoutElement from '../styles/LayoutElement'
 
-//import Navbar from './Navbar'
+import Navbar from './Navbar'
 
 import dynamic from 'next/dynamic'
 
-const Navbar = dynamic(() => import('./Navbar'), { ssr: false, loading: () => <p>...</p> })
+// const Navbar = dynamic(() => import('./Navbar'), { ssr: false, loading: () => <p>...</p> })
 
 interface LayoutProps {
   pageTitle: string

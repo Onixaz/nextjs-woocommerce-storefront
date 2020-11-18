@@ -23,7 +23,7 @@ interface BlogProps {
 const Blog: NextPage<BlogProps> = ({ posts }) => {
   return (
     <>
-      <HeroSection isVideoLoaded />
+      <HeroSection />
 
       <PageContainer>
         <InfoSection {...homeObjOne} />

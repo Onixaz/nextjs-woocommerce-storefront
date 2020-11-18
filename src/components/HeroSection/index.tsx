@@ -1,33 +1,27 @@
+import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
 import MainButton from '../MainButton'
 import { RedSpan } from '../Utilities/TextElements'
-import {
-  HeroContainer,
-  HeroBg,
-  VideoBg,
-  HeroContent,
-  HeroH1,
-  HeroP,
-  HeroBtnWrapper,
-  VideoThumb,
-} from './HeroElements'
+import { HeroContainer, HeroBg, HeroContent, HeroH1, HeroP, HeroBtnWrapper } from './HeroElements'
 
-interface HeroProps {
-  isVideoLoaded: boolean
-}
+const DynamicBgVideo = dynamic(() => import('../Utilities/DynamicVideo'), { ssr: false })
+
+interface HeroProps {}
 
 const HeroSection: React.FC<HeroProps> = () => {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
-
-  const onLoadedData = () => {
-    setIsVideoLoaded(true)
-  }
-
   return (
     <HeroContainer id="home">
       <HeroBg>
-        <VideoBg autoPlay loop muted onLoadedData={onLoadedData} src="/video2_Trim.mp4" />
-        <VideoThumb alt="thumbnail" isVideoLoaded={isVideoLoaded} src="./video2_Trim_Moment.jpg" />
+        <DynamicBgVideo />
+
+        {/* <VideoBg
+          autoPlay
+          loop
+          muted
+          onLoadedData={onLoadedData}
+          style={{ opacity: isVideoLoaded ? 1 : 0 }}
+          src="/video2_Trim.mp4"
+        /> */}
       </HeroBg>
       <HeroContent>
         <HeroH1 hero>
