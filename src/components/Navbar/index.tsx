@@ -12,11 +12,6 @@ import {
 } from './NavbarElements'
 import { FaBars } from 'react-icons/fa'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
-
-const DynamicNavbarElements = dynamic(() => import('../Utilities/DynamicNavbarElements'), {
-  ssr: false,
-})
 
 interface NavbarProps {}
 
@@ -37,7 +32,46 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   return (
     <Nav scrollNav={scrollNav}>
-      <DynamicNavbarElements />
+      <NavbarContainer>
+        <NavLogoWrapper>
+          <Link href="/">
+            <LogoText>Romanas</LogoText>
+          </Link>
+        </NavLogoWrapper>
+        <MobileIcon>
+          <FaBars />
+        </MobileIcon>
+        <NavMenu>
+          <NavItem>
+            <NavLinksWrapper>
+              <Link href="#about">
+                <LinkText>Apie mane</LinkText>
+              </Link>
+            </NavLinksWrapper>
+          </NavItem>
+          <NavItem>
+            <NavLinksWrapper>
+              <Link href="#services">
+                <LinkText>Paslaugos</LinkText>
+              </Link>
+            </NavLinksWrapper>
+          </NavItem>
+          <NavItem>
+            <NavLinksWrapper>
+              <Link href="#gallery">
+                <LinkText>Galerija</LinkText>
+              </Link>
+            </NavLinksWrapper>
+          </NavItem>
+          <NavItem>
+            <NavLinksWrapper>
+              <Link href="/about">
+                <LinkText>Susisiek</LinkText>
+              </Link>
+            </NavLinksWrapper>
+          </NavItem>
+        </NavMenu>
+      </NavbarContainer>
     </Nav>
   )
 }
