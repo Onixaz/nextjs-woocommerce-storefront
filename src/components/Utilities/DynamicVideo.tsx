@@ -13,8 +13,13 @@ const VideoBg = styled.video`
 `
 
 export const VideoThumb = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
   transition: opacity 500ms ease-out;
   filter: blur(5px);
   //transform: scale(0.9);
