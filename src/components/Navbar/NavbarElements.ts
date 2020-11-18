@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Nav = styled.nav<{ scrollNav: boolean }>`
-  background: ${({ scrollNav }) => (scrollNav ? '#000' : 'transparent')};
+  background: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryBlack : 'transparent')};
   height: 80px;
   //margin-top: -80px;
   display: flex;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Footer from './Footer'
 import LayoutElement from '../styles/LayoutElement'
@@ -6,6 +6,7 @@ import LayoutElement from '../styles/LayoutElement'
 //import Navbar from './Navbar'
 
 import dynamic from 'next/dynamic'
+import Sidebar from './Sidebar'
 
 const Navbar = dynamic(() => import('./Navbar'), { ssr: false, loading: () => <p>...</p> })
 
@@ -15,6 +16,11 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ pageTitle, description = 'Next.js Blog', children }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggle = () => {
+    setIsOpen(!isOpen)
+  }
   return (
     <>
       <Head>
@@ -26,7 +32,8 @@ const Layout: React.FC<LayoutProps> = ({ pageTitle, description = 'Next.js Blog'
         <title>Next.js | {pageTitle}</title>
       </Head>
       <LayoutElement>
-        <Navbar />
+        <Sidebar isOpen={isOpen} toggle={toggle} />
+        <Navbar toggle={toggle} />
         <main>{children}</main>
         <Footer />
       </LayoutElement>

@@ -12,7 +12,7 @@ const defaultTheme = {
   lightMediumBg: '#f7f7f7',
   lightWhiteBg: '#fff',
   //text button colors
-  primaryBlack: '#1a1d21',
+  primaryBlack: '#0d0d0d',
   primaryWhite: '#fff',
   primaryRed: '#ff2458',
 }

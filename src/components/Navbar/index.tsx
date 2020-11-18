@@ -13,9 +13,11 @@ import {
 import { FaBars } from 'react-icons/fa'
 import Link from 'next/link'
 
-interface NavbarProps {}
+interface NavbarProps {
+  toggle: any
+}
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false)
 
   const changeNav = () => {
@@ -38,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <LogoText>Romanas</LogoText>
           </Link>
         </NavLogoWrapper>
-        <MobileIcon>
+        <MobileIcon onClick={toggle}>
           <FaBars />
         </MobileIcon>
         <NavMenu>
