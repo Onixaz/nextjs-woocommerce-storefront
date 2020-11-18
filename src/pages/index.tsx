@@ -6,7 +6,7 @@ import matter from 'gray-matter'
 import { withLayout } from '@moxy/next-layout'
 import HeroSection from '../components/HeroSection'
 import InfoSection from '../components/InfoSection'
-import { homeObjOne, homeObjTwo } from '../components/InfoSection/customizations'
+import { homeObjOne } from '../components/InfoSection/customizations'
 import { PageContainer } from '../components/Container/ContainerElements'
 import Services from '../components/ServicesSection'
 
@@ -23,7 +23,7 @@ interface BlogProps {
 const Blog: NextPage<BlogProps> = ({ posts }) => {
   return (
     <>
-      <HeroSection />
+      <HeroSection isVideoLoaded />
 
       <PageContainer>
         <InfoSection {...homeObjOne} />
