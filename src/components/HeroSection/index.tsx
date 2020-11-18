@@ -13,15 +13,6 @@ const HeroSection: React.FC<HeroProps> = () => {
     <HeroContainer id="home">
       <HeroBg>
         <DynamicBgVideo />
-
-        {/* <VideoBg
-          autoPlay
-          loop
-          muted
-          onLoadedData={onLoadedData}
-          style={{ opacity: isVideoLoaded ? 1 : 0 }}
-          src="/video2_Trim.mp4"
-        /> */}
       </HeroBg>
       <HeroContent>
         <HeroH1 hero>
