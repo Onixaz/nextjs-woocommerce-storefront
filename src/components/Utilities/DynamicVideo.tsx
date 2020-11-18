@@ -16,8 +16,8 @@ export const VideoThumb = styled.img`
   height: 100%;
   width: 100%;
   transition: opacity 500ms ease-out;
-  //filter: blur(5px);
-  transform: scale(0.9);
+  filter: blur(5px);
+  //transform: scale(0.9);
   transition: visibility 0ms ease 500ms;
 `
 
