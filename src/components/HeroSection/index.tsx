@@ -17,7 +17,7 @@ const HeroSection: React.FC<HeroProps> = () => {
   return (
     <HeroContainer id="home">
       <HeroBg>
-        <VideoBg autoPlay loop muted src="/video2.mp4" />
+        <VideoBg autoPlay loop muted src="/video3.mp4" />
       </HeroBg>
       <HeroContent>
         <HeroH1 hero>
