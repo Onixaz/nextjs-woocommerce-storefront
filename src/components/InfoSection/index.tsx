@@ -18,25 +18,10 @@ import {
 
 interface InfoProps {
   imgStart: boolean
-  img: string[]
-  legend: string[]
-  topLine: string
   description: string
-  headLine: string
-  visible: boolean
-  carousel: boolean
 }
 
-const InfoSection: React.FC<InfoProps> = ({
-  imgStart,
-  img,
-  topLine,
-  description,
-  headLine,
-  carousel,
-  legend,
-  visible,
-}) => {
+const InfoSection: React.FC<InfoProps> = ({ imgStart, description }) => {
   return (
     <InfoContainer id="about">
       <InfoWrapper>

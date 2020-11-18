@@ -9,15 +9,25 @@ import {
   HeroH1,
   HeroP,
   HeroBtnWrapper,
+  VideoThumb,
 } from './HeroElements'
 
-interface HeroProps {}
+interface HeroProps {
+  isVideoLoaded: boolean
+}
 
 const HeroSection: React.FC<HeroProps> = () => {
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+
+  const onLoadedData = () => {
+    setIsVideoLoaded(true)
+  }
+
   return (
     <HeroContainer id="home">
       <HeroBg>
-        <VideoBg autoPlay loop muted src="/video3.mp4" />
+        <VideoBg autoPlay loop muted onLoadedData={onLoadedData} src="/video2_Trim.mp4" />
+        <VideoThumb alt="thumbnail" isVideoLoaded={isVideoLoaded} src="./video2_Trim_Moment.jpg" />
       </HeroBg>
       <HeroContent>
         <HeroH1 hero>
