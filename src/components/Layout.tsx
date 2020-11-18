@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Head from 'next/head'
-import Header from './Header'
 import Footer from './Footer'
 import LayoutElement from '../styles/LayoutElement'
+
+//import Navbar from './Navbar'
+
+import dynamic from 'next/dynamic'
+
+const Navbar = dynamic(() => import('./Navbar'), { ssr: false, loading: () => <p>...</p> })
 
 interface LayoutProps {
   pageTitle: string
@@ -18,13 +23,10 @@ const Layout: React.FC<LayoutProps> = ({ pageTitle, description = 'Next.js Blog'
         <meta property="og:title" content={pageTitle} key="ogtitle" />
         <meta property="og:description" content={description} key="ogdesc" />
 
-        <meta name="twitter:card" content="summary" key="twcard" />
-        <meta name="twitter:creator" content="@argentinux" key="twhandle" />
-
         <title>Next.js | {pageTitle}</title>
       </Head>
       <LayoutElement>
-        <Header />
+        <Navbar />
         <main>{children}</main>
         <Footer />
       </LayoutElement>
