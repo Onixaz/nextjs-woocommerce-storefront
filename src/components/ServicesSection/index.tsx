@@ -5,16 +5,16 @@ import { IconContext } from 'react-icons'
 
 import {
   ServicesContainer,
-  ServicesH1,
   ServicesCard,
-  ServicesH2,
   ServicesP,
   ServicesWrapper,
   BtnWrapper,
-  ServicesSubtitle,
+  CardHeader,
 } from './ServicesElements'
 
 import { BlackH1, MainP, RedSpan } from '../Utilities/TextElements'
+import { DivBreaker } from '../../styles/utility'
+import { RedLine } from '../InfoSection/InfoElements'
 
 interface ServicesProps {}
 
@@ -22,50 +22,53 @@ const Services: React.FC<ServicesProps> = () => {
   return (
     <ServicesContainer id="services">
       <BlackH1>
-        Ką aš galiu Jums <RedSpan>pasiūlyti</RedSpan> ?
+        Ką aš galiu Jums <RedSpan>pasiūlyti?</RedSpan>
       </BlackH1>
       <MainP>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolor impedit est cumque!
-        Numquam excepturi sapiente voluptatum nobis ad quam totam itaque optio enim mollitia quaerat
-        commodi, voluptates deleniti pariatur?
+        Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non
+        mi integer non faucibus.
       </MainP>
-      <IconContext.Provider value={{ size: '3em', style: { margin: '20px' } }}>
+      <IconContext.Provider value={{ size: '6em', color: '#ff2458' }}>
         <ServicesWrapper>
           <ServicesCard>
             <FaHandHoldingHeart />
 
-            <ServicesH2>Masažai</ServicesH2>
+            <CardHeader>Masažai</CardHeader>
             <ServicesP>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis optio commodi
-              fugit adipisci? Officia voluptatem reiciendis eius sint nobis impedit ducimus debitis
-              quod. Accusamus facere ex sint? Dolor, animi ipsum!
+              Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor
+              sem non mi integer non faucibus.
             </ServicesP>
           </ServicesCard>
           <ServicesCard>
             <FaCommentMedical />
-
-            <ServicesH2>Konsultacijos</ServicesH2>
+            <CardHeader>Kosultacijos</CardHeader>
             <ServicesP>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis optio commodi
-              fugit adipisci? Officia voluptatem reiciendis eius sint nobis impedit ducimus debitis
-              quod. Accusamus facere ex sint? Dolor, animi ipsum!
+              Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor
+              sem non mi integer non faucibus.
             </ServicesP>
           </ServicesCard>
+          {/* <ServicesCard>
+            <FaCommentMedical />
+            <CardHeader>Gal dar kažkas</CardHeader>
+            <ServicesP>
+              Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor
+              sem non mi integer non faucibus.
+            </ServicesP>
+          </ServicesCard> */}
           <ServicesCard>
             <FaGift />
-
-            <ServicesH2>Dovanų kuponai</ServicesH2>
+            <CardHeader>Dovanų kuponai</CardHeader>
             <ServicesP>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis optio commodi
-              fugit adipisci? Officia voluptatem reiciendis eius sint nobis impedit ducimus debitis
-              quod. Accusamus facere ex sint? Dolor, animi ipsum!
+              Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor
+              sem non mi integer non faucibus.
             </ServicesP>
           </ServicesCard>
         </ServicesWrapper>
+        <RedLine />
       </IconContext.Provider>
-      <BtnWrapper>
+      {/* <BtnWrapper>
         <MainButton href="about" label="Plačiau" />
-      </BtnWrapper>
+      </BtnWrapper> */}
     </ServicesContainer>
   )
 }

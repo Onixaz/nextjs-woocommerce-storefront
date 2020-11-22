@@ -31,7 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({ toggle, isOpen }) => {
             </Link>
           </SidebarLinkWrapper>
           <SidebarLinkWrapper>
-            <Link href="#about">
+            <Link href="#services">
               <SidebarLinkText>Paslaugos</SidebarLinkText>
             </Link>
           </SidebarLinkWrapper>

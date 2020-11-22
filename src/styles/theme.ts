@@ -10,11 +10,13 @@ const defaultTheme = {
   light: '#8d99ae',
   //bg
   lightMediumBg: '#f7f7f7',
+  lightDarkerBg: '#cfcfcf',
   lightWhiteBg: '#fff',
   //text button colors
   primaryBlack: '#0d0d0d',
   primaryWhite: '#fff',
   primaryRed: '#ff2458',
+  secondaryRed: '#ce1b28',
 }
 
 export type ThemeType = typeof defaultTheme

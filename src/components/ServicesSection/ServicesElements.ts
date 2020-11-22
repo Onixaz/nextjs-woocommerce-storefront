@@ -1,34 +1,26 @@
 import styled from 'styled-components'
 
 export const ServicesContainer = styled.div`
-  min-height: 100vh;
+  padding-top: 10rem;
+  /* padding-bottom: 12rem; */
   display: flex;
-  padding-top: 150px;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background: ${({ theme }) => theme.lightMediumBg};
-  //background: rgb(131, 58, 180);
-  //background: rgb(63, 94, 251);
+  justify-content: center;
+  margin: 0 auto;
 
-  //background: radial-gradient(circle, rgba(63, 94, 251, 0) 5%, rgba(252, 70, 107, 0.2) 100%);
+  @media screen and (max-width: 992px) {
+    padding-top: 3rem;
+  }
 `
 
 export const ServicesWrapper = styled.div`
-  //max-width: 1000px;
-  margin: 0 auto;
-  display: grid;
-
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  grid-gap: 16px;
-
-  @media screen and (max-width: 1300px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media screen and (max-width: 992px) {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  min-height: 50vh;
+  max-width: calc(100% - 6rem);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
 `
 
 export const ServicesCard = styled.div`
@@ -37,59 +29,64 @@ export const ServicesCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px;
-  border-radius: 20px;
-  width: 340px;
-  height: 400px;
-  padding: 30px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  margin: 1.75rem;
+  width: calc(25% + 1rem);
+  border-radius: 15px;
+  padding: 1.25rem 0.75rem 1.25rem 0.75rem;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease-in-out;
   &:hover {
     transform: scale(1.02);
     transition: all 0.2s ease-in-out;
     cursor: pointer;
   }
-`
 
-export const ServicesH1 = styled.h1`
-  font-size: 48px;
-  color: ${({ theme }) => theme.primaryBlack};
-  margin-bottom: 44px;
-  margin-top: 64px;
-  text-align: center;
-`
-
-export const ServicesH2 = styled.h2`
-  color: ${({ theme }) => theme.primaryRed};
-  font-size: 18px;
-  line-height: 16px;
-  margin: 10px auto;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  text-align: center;
-`
-
-export const ServicesSubtitle = styled.p`
-  max-width: 640px;
-  margin-bottom: 35px;
-  margin-left: 20px;
-  margin-right: 20px;
-  font-size: 18px;
-  line-height: 24px;
-  text-align: center;
+  @media screen and (max-width: 992px) {
+    margin: 1rem;
+    width: calc(80% + 2rem);
+  }
 `
 
 export const ServicesP = styled.p`
   max-width: 440px;
-  margin-bottom: 35px;
-  font-size: 14px;
+  padding: 10px;
+  font-size: calc(15px + 0.1vw);
   line-height: 24px;
   text-align: center;
-  color: ${({ theme }) => theme.primaryBlack};
+  color: #555555;
+`
+
+export const CardHeader = styled.p`
+  color: #555555;
+  font-size: clamp(1.25rem, 5vw + 1rem, 1.5rem);
+  font-weight: 500;
+  padding-top: 2rem;
+  text-align: center;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 `
 
 export const BtnWrapper = styled.div`
-  padding-bottom: 50px;
-  padding-top: 50px;
+  padding: 50px;
+`
+export const RedLine = styled.div`
+  height: 5px;
+  width: 100%;
+  &::after {
+    content: '';
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(255, 36, 88, 0.9) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    display: block;
+    margin-top: 5rem;
+  }
+
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
 `

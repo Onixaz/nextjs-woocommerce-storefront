@@ -3,8 +3,10 @@ import React, { useState } from 'react'
 import MainButton from '../MainButton'
 import { RedSpan } from '../Utilities/TextElements'
 import { HeroContainer, HeroBg, HeroContent, HeroH1, HeroP, HeroBtnWrapper } from './HeroElements'
+import { WhiteH1 } from '../Utilities/TextElements'
 
 const DynamicBgVideo = dynamic(() => import('../Utilities/DynamicVideo'), { ssr: false })
+//import DynamicBgVideo from '../Utilities/DynamicVideo'
 
 interface HeroProps {}
 
@@ -15,9 +17,9 @@ const HeroSection: React.FC<HeroProps> = () => {
         <DynamicBgVideo />
       </HeroBg>
       <HeroContent>
-        <HeroH1 hero>
+        <WhiteH1>
           Jūsų sveikata mano <RedSpan>rankose</RedSpan> !
-        </HeroH1>
+        </WhiteH1>
 
         <HeroP>Masažai pagal invidualius Jūsų poreikius.</HeroP>
         <HeroBtnWrapper>

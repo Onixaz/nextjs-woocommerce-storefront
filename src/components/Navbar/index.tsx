@@ -46,6 +46,13 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
         <NavMenu>
           <NavItem>
             <NavLinksWrapper>
+              <Link href="">
+                <LinkText>Pradžia</LinkText>
+              </Link>
+            </NavLinksWrapper>
+          </NavItem>
+          <NavItem>
+            <NavLinksWrapper>
               <Link href="#about">
                 <LinkText>Apie mane</LinkText>
               </Link>
@@ -55,13 +62,6 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
             <NavLinksWrapper>
               <Link href="#services">
                 <LinkText>Paslaugos</LinkText>
-              </Link>
-            </NavLinksWrapper>
-          </NavItem>
-          <NavItem>
-            <NavLinksWrapper>
-              <Link href="#gallery">
-                <LinkText>Galerija</LinkText>
               </Link>
             </NavLinksWrapper>
           </NavItem>

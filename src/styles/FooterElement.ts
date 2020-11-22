@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 const FooterElement = styled.footer`
-  height: 100px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000;
+  background: ${({ theme }) => theme.primaryBlack};
   color: ${({ theme }) => theme.primaryWhite};
   font-weight: bold;
   font-size: 1.3em;

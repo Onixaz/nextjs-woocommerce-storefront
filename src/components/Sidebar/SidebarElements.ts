@@ -95,9 +95,11 @@ export const SidebarLinkWrapper = styled.button`
   justify-content: center;
 `
 export const SidebarLinkText = styled.a`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  letter-spacing: 1.1px;
   text-decoration: none;
   list-style: none;
+  text-transform: uppercase;
   transition: 0.2s ease-in-out;
   color: #fff;
   cursor: pointer;

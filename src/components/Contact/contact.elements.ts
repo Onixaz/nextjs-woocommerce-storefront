@@ -1,46 +1,20 @@
 import styled from 'styled-components'
 
-export const InfoContainer = styled.div`
+export const ContactContainer = styled.div`
   //background: ${({ theme }) => theme.lightMediumBg};
-  padding-top: 10rem;
-
-  @media screen and (max-width: 992px) {
-    padding-top: 6rem;
-  }
+  padding-top: 15rem;
 
   /* background-image: radial-gradient(rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0.3) 100%),
     url('./para_bg_2.jpg'); */
 `
 
-export const RedLine = styled.div`
-  height: 5px;
-  width: 100%;
-  &::after {
-    content: '';
-    height: 1px;
-    width: 100%;
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(255, 36, 88, 0.9) 50%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    display: block;
-    margin-top: 5rem;
-  }
-
-  @media screen and (max-width: 992px) {
-    display: none;
-  }
-`
-
-export const InfoWrapper = styled.div`
+export const ContactWrapper = styled.div`
   display: grid;
   position: relative;
   align-items: center;
   z-index: 1;
   width: 100%;
-  min-height: 50vh;
+  min-height: 70vh;
   max-width: 75em;
   margin-right: auto;
   margin-left: auto;
@@ -56,17 +30,16 @@ export const InfoWrapper = styled.div`
   }
 `
 
-export const InfoRow = styled.div<{ imgStart: boolean }>`
+export const ContactRow = styled.div`
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);
 
   align-items: center;
   grid-gap: 30px;
-  grid-template-areas: ${({ imgStart }) => (imgStart ? `'col2 col1'` : `'col1 col2'`)};
+  grid-template-areas: 'col2 col1';
   @media screen and (max-width: 992px) {
     grid-gap: 5px;
-    grid-template-areas: ${({ imgStart }) =>
-      imgStart ? `'col1' 'col2'` : `'col1 col1' 'col2 col2'`};
+    grid-template-areas: 'col1 col1' 'col2 col2';
   }
 `
 
@@ -79,6 +52,8 @@ export const Column1 = styled.div`
   padding-right: 3rem;
   padding-left: 3rem;
   grid-area: col1;
+  border: 2px solid #000;
+  border-left-color: #fff;
 
   @media screen and (max-width: 992px) {
     padding-top: 1rem;
@@ -95,6 +70,7 @@ export const Column2 = styled.div`
   padding-right: 2rem;
   padding-left: 2rem;
   grid-area: col2;
+  border: 2px solid #000;
 
   @media screen and (max-width: 992px) {
     padding-bottom: 1rem;
@@ -120,7 +96,7 @@ export const TopLine = styled.p`
 
 export const Heading = styled.h1`
   margin-bottom: 24px;
-  font-size: clamp(1.5rem, 5vw + 1rem, 3.5rem);
+  font-size: clamp(2rem, 5vw + 1rem, 3.5rem);
   letter-spacing: 1px;
   line-height: 1.1;
   font-weight: 600;

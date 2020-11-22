@@ -14,16 +14,31 @@ const GlobalStyle = createGlobalStyle<Props>`
   }
 
 
-
-
-  
-
-  /* body {
-    font-size: calc(14px + .2vw);
+  body {
+    
     font-family: 'Fira Sans', 'Lato', sans-serif;
     line-height: 1.7;
-    background: ${({ theme }) => theme.white};
-    color: ${({ theme }) => theme.medium};
+    background: ${({ theme }) => theme.lightMediumBg};
+    
+    //color: ${({ theme }) => theme.medium};
+    &::after{
+      content: ' ';
+      background-image: url('/cover_full.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: block;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.025;
+
+    }
   }
   a {
     
@@ -31,7 +46,7 @@ const GlobalStyle = createGlobalStyle<Props>`
   }
   ul {
     list-style: none
-  } */
+  }
 `
 
 export default GlobalStyle

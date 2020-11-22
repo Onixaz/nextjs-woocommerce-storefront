@@ -10,20 +10,7 @@ const VideoBg = styled.video`
   -o-object-fit: cover;
   object-fit: cover;
   background: #232a34;
-`
-
-export const VideoThumb = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  transition: opacity 500ms ease-out;
-  filter: blur(5px);
-  //transform: scale(0.9);
-  transition: visibility 0ms ease 500ms;
+  transition: opacity 3000ms ease-in-out;
 `
 
 const DynamicBgVideo = () => {
@@ -34,18 +21,14 @@ const DynamicBgVideo = () => {
   }
   return (
     <>
-      <VideoThumb
-        style={{ opacity: isVideoLoaded ? 0 : 1 }}
-        alt="thumbnail"
-        src="./video2_Trim_Moment.jpg"
-      />
       <VideoBg
         autoPlay
         loop
         muted
+        playsInline
         onLoadedData={onLoadedData}
-        style={{ opacity: isVideoLoaded ? 1 : 0 }}
-        src="/video2_Trim.mp4"
+        style={{ opacity: isVideoLoaded ? 0.85 : 0 }}
+        src="./video2_Trim.mp4"
       />
     </>
   )

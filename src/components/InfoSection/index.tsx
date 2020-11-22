@@ -1,5 +1,7 @@
 import React from 'react'
+import { DivBreaker } from '../../styles/utility'
 import MainButton from '../MainButton'
+import { RedSpan } from '../Utilities/TextElements'
 
 import {
   InfoContainer,
@@ -14,6 +16,7 @@ import {
   Column2,
   Img,
   ImgWrap,
+  RedLine,
 } from './InfoElements'
 
 interface InfoProps {
@@ -29,7 +32,9 @@ const InfoSection: React.FC<InfoProps> = ({ imgStart, description }) => {
           <Column1>
             <TextWrapper>
               {/* <TopLine>{topLine}</TopLine> */}
-              <Heading>Masažuotojas Romanas</Heading>
+              <Heading>
+                Masažuotojas <RedSpan>Romanas</RedSpan>
+              </Heading>
               <Subtitle>{description}</Subtitle>
               <BtnWrap>
                 <MainButton label="Plačiau" href="/about" />
@@ -42,6 +47,7 @@ const InfoSection: React.FC<InfoProps> = ({ imgStart, description }) => {
             </ImgWrap>
           </Column2>
         </InfoRow>
+        <RedLine />
       </InfoWrapper>
     </InfoContainer>
   )

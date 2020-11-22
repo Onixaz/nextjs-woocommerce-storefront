@@ -1,24 +1,25 @@
 import styled from 'styled-components'
 
 export const HeroContainer = styled.div`
-  background: ${({ theme }) => theme.primaryBlack};
+  //background: ${({ theme }) => theme.primaryBlack};
+  background: linear-gradient(15deg, #ce1b28 0%, #111111 70%);
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: -80px;
   padding: 0 30px;
   height: 100vh;
-  margin-bottom: 100px;
   position: relative;
   z-index: 1;
-  :before {
+  :after {
     content: '';
     position: absolute;
+    opacity: 1;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%),
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 1) 100%),
       linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
     z-index: 2;
   }
@@ -34,26 +35,6 @@ export const HeroBg = styled.div`
   height: 100%;
   overflow: hidden;
 `
-
-// export const VideoBg = styled.video`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   -o-object-fit: cover;
-//   object-fit: cover;
-//   background: #232a34;
-// `
-
-// export const VideoThumb = styled.img`
-//   height: 100%;
-//   width: 100%;
-//   transition: opacity 400ms ease 0ms;
-//   filter: blur(20px);
-//   transform: scale(1.1);
-//   transition: visibility 0ms ease 400ms;
-// `
 
 export const HeroContent = styled.div`
   z-index: 3;
@@ -81,15 +62,9 @@ export const HeroH1 = styled.h1<{ hero?: boolean }>`
 export const HeroP = styled.p`
   margin-top: 24px;
   color: #fff;
-  font-size: 24px;
+  font-size: clamp(0.5rem, 2vw + 0.5rem, 1.5rem);
   text-align: center;
   max-width: 600px;
-  @media screen and (max-width: 768px) {
-    font-size: 20px;
-    @media screen and (max-width: 480px) {
-      font-size: 16px;
-    }
-  }
 `
 
 export const HeroBtnWrapper = styled.div`

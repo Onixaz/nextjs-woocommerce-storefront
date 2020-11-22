@@ -1,58 +1,74 @@
 import styled from 'styled-components'
 
 export const GalleryContainer = styled.div`
-  background: ${({ theme }) => theme.lightWhiteBg};
-  min-height: 100vh;
-  display: flex;
-  padding: 150px 5px 30px 5px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding-top: 10rem;
+  padding-bottom: 8.5rem;
+  min-height: 20vh;
+  max-width: calc(50% + 30rem);
   margin: 0 auto;
-  max-width: 1000px;
 
   @media screen and (max-width: 992px) {
-    padding-top: 100px;
+    padding-top: 3rem;
   }
 `
 
-export const GalleryWrapper = styled.div`
-  background: ${({ theme }) => theme.lightMediumBg};
-  margin: 20px 20px 20px 20px;
-
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-`
-
-export const PhotoWrapper = styled.div`
-  background: ${({ theme }) => theme.primaryMediumBg};
-  padding: 8px;
-`
-
-export const GalleryH1 = styled.h1`
-  font-size: 48px;
-  letter-spacing: 1.4px;
-  color: ${({ theme }) => theme.primaryBlack};
-  margin-bottom: 44px;
-  margin-top: 34px;
-  text-align: center;
-`
-
-export const GalleryH2 = styled.h2`
-  color: ${({ theme }) => theme.primaryRed};
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  text-align: center;
+export const TextWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `
 
 export const GalleryP = styled.p`
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  line-height: 24px;
-  text-align: center;
+  margin-top: 24px;
   color: ${({ theme }) => theme.primaryBlack};
+  font-size: clamp(0.5rem, 2vw + 0.5rem, 1.5rem);
+  text-align: center;
+  max-width: 600px;
+`
+
+export const CardContainer = styled.div`
+  //background-color: ${({ theme }) => theme.primaryBlack};
+  display: flex;
+  margin: 0 auto;
+  padding: 0 1.5rem 0 1.5rem;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  @media screen and (max-width: 992px) {
+    justify-content: space-evenly;
+    display: grid;
+    padding: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 480px) {
+    justify-content: space-evenly;
+    display: grid;
+    padding: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
+`
+
+export const PhotoCard = styled.div`
+  flex: 1;
+  height: 100%;
+  //transition: all 1s ease-in-out;
+  position: relative;
+  margin: 2vmin;
+  padding: 2rem;
+`
+
+export const Photo = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: filter 1s ease-in-out;
+  box-shadow: 0 0 3px #ff2458;
+  filter: grayscale(100%);
+
+  &:hover {
+    filter: grayscale(0);
+  }
 `
