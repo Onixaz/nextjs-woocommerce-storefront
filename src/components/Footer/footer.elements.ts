@@ -9,7 +9,7 @@ export const FooterContainer = styled.footer`
 
 export const FooterWrapper = styled.div`
   margin: 0 auto;
-  max-width: calc(50% + 30rem);
+  max-width: 1400px;
 `
 
 export const ContentWrapper = styled.div`
@@ -17,7 +17,7 @@ export const ContentWrapper = styled.div`
 
   grid-template-columns: repeat(4, 1fr);
   grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: 'ls cs cs ss';
+  grid-template-areas: 'ls cs ss ss';
 
   @media screen and (max-width: 992px) {
     grid-template-areas:
@@ -35,13 +35,12 @@ export const ContentWrapper = styled.div`
 export const LogoSection = styled.div`
   grid-area: ls;
   margin: 1rem;
-  padding: 1.5rem 0;
+  min-height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   max-width: 320px;
-  margin: 0 auto;
 `
 
 export const ContactInfoSection = styled.div`
@@ -49,35 +48,31 @@ export const ContactInfoSection = styled.div`
   padding: 2rem;
 
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+`
 
+export const ContactWrapperExtra = styled.div`
+  display: block;
+  max-width: 240px;
+  margin: 0 auto;
+  padding: 1rem;
   border-right: 1px solid #fff;
   @media screen and (max-width: 992px) {
     border: none;
   }
 `
-
-export const ContactWrapperExtra = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 340px;
-  margin: 0 auto;
-`
 export const SocialSection = styled.div`
   grid-area: ss;
-
+  margin: 0 8rem;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  max-width: 440px;
-  margin: 0 auto;
-
   @media screen and (max-width: 992px) {
+    margin: 0 2rem;
     max-width: 100%;
   }
 `
@@ -120,6 +115,7 @@ export const SocialFooterH1 = styled.h1`
 
 export const CopyrightElement = styled.div`
   text-align: center;
+  color: #fff;
   border-top: 1px solid #fff;
   font-size: 0.8rem;
   padding: 2rem 0;
