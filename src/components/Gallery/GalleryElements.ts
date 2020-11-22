@@ -30,8 +30,7 @@ export const GalleryP = styled.p`
 export const CardContainer = styled.div`
   //background-color: ${({ theme }) => theme.primaryBlack};
   display: flex;
-  margin: 0 auto;
-  padding: 0 1.5rem 0 1.5rem;
+  padding: 2rem 5rem;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -39,13 +38,14 @@ export const CardContainer = styled.div`
   @media screen and (max-width: 992px) {
     justify-content: space-evenly;
     display: grid;
-    padding: 1rem;
+    padding: 3rem;
+
     grid-template-columns: repeat(2, 1fr);
   }
   @media screen and (max-width: 480px) {
     justify-content: space-evenly;
     display: grid;
-    padding: 1rem;
+    padding: 3rem;
     grid-template-columns: repeat(1, 1fr);
   }
 `
@@ -55,8 +55,8 @@ export const PhotoCard = styled.div`
   height: 100%;
   //transition: all 1s ease-in-out;
   position: relative;
-  margin: 2vmin;
-  padding: 2rem;
+  margin: 1vmin;
+  padding: 1rem;
 `
 
 export const Photo = styled.img`

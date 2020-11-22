@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle<Props>`
   *, *:after, *:before {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
     outline: none;
     font-family: 'Fira Sans', 'Lato', sans-serif;
   }

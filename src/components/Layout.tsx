@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
-import Footer from './Footer'
+import Footer from '../components/Footer'
 import LayoutElement from '../styles/LayoutElement'
 
 //import Navbar from './Navbar'
