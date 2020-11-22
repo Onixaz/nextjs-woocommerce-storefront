@@ -4,6 +4,7 @@ export const ServicesContainer = styled.div`
   padding-top: 10rem;
   /* padding-bottom: 12rem; */
   display: flex;
+  max-width: 1400px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -17,7 +18,7 @@ export const ServicesContainer = styled.div`
 export const ServicesWrapper = styled.div`
   display: flex;
   min-height: 50vh;
-  max-width: calc(85% - 6rem);
+  max-width: calc(100% - 6rem);
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
@@ -29,10 +30,10 @@ export const ServicesCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 1.75rem;
+  margin: 1.5rem;
   width: calc(25% + 1rem);
   border-radius: 15px;
-  padding: 1rem 0.75rem 1rem 0.75rem;
+  padding: 2rem 1rem 1rem 1rem;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease-in-out;
   &:hover {

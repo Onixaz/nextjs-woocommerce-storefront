@@ -13,6 +13,7 @@ export const Button = styled.button<{ hero?: boolean }>`
   border: none;
   cursor: pointer;
   display: flex;
+  //flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;

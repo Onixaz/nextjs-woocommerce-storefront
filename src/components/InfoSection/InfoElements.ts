@@ -35,6 +35,7 @@ export const RedLine = styled.div`
 `
 
 export const InfoWrapper = styled.div`
+  margin-top: 5rem;
   display: grid;
   position: relative;
   align-items: center;

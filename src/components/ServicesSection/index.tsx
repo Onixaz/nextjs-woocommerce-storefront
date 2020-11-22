@@ -28,7 +28,7 @@ const Services: React.FC<ServicesProps> = () => {
         Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non
         mi integer non faucibus.
       </MainP>
-      <IconContext.Provider value={{ size: '6em', color: '#ff2458' }}>
+      <IconContext.Provider value={{ size: '5em', color: '#ff2458' }}>
         <ServicesWrapper>
           <ServicesCard>
             <FaHandHoldingHeart />
