@@ -38,7 +38,7 @@ const Footer: React.FC<FooterProps> = () => {
             <SocialFooterH1>Ieškok manęs socialiniuose tinkluose!</SocialFooterH1>
             <SocialLinkstWrapper>
               <IconContext.Provider
-                value={{ size: '2em', color: '#ff2458', style: { margin: '0 .8em' } }}
+                value={{ size: '2em', color: '#ff2458', style: { margin: '0 .7em' } }}
               >
                 <FaAccessibleIcon />
                 <FaAddressBook />

@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 export const InfoContainer = styled.div`
   //background: ${({ theme }) => theme.lightMediumBg};
-  padding-top: 10rem;
+  padding: 12rem 2rem 8rem 2rem;
 
   @media screen and (max-width: 992px) {
-    padding-top: 6rem;
+    padding: 6rem 2rem;
   }
 
   /* background-image: radial-gradient(rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0.3) 100%),
@@ -42,7 +42,7 @@ export const InfoWrapper = styled.div`
   z-index: 1;
   width: 100%;
   min-height: 50vh;
-  max-width: 75em;
+  max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
 
@@ -130,6 +130,7 @@ export const Heading = styled.h1`
 
 export const Subtitle = styled.p`
   max-width: 440px;
+  letter-spacing: 1px;
   margin-bottom: 15px;
   font-size: 18px;
   line-height: 1.7;

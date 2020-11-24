@@ -10,7 +10,7 @@ const VideoBg = styled.video`
   -o-object-fit: cover;
   object-fit: cover;
   background: #232a34;
-  transition: opacity 3000ms ease-in-out;
+  transition: opacity 2500ms ease-in-out;
 `
 
 const DynamicBgVideo = () => {

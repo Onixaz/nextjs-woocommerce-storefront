@@ -4,7 +4,7 @@ export const GalleryContainer = styled.div`
   padding-top: 10rem;
   padding-bottom: 8.5rem;
   min-height: 20vh;
-  max-width: calc(50% + 30rem);
+  max-width: 1400px;
   margin: 0 auto;
 
   @media screen and (max-width: 992px) {
@@ -62,13 +62,7 @@ export const PhotoCard = styled.div`
 export const Photo = styled.img`
   width: 100%;
   height: 100%;
-  border-radius: 15px;
+  border-radius: 10px;
   object-fit: cover;
   transition: filter 1s ease-in-out;
-  box-shadow: 0 0 3px #ff2458;
-  filter: grayscale(100%);
-
-  &:hover {
-    filter: grayscale(0);
-  }
 `

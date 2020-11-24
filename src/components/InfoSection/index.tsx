@@ -47,7 +47,7 @@ const InfoSection: React.FC<InfoProps> = ({ imgStart, description }) => {
             </ImgWrap>
           </Column2>
         </InfoRow>
-        <RedLine />
+        {/* <RedLine /> */}
       </InfoWrapper>
     </InfoContainer>
   )

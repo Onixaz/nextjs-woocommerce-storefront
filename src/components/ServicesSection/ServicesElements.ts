@@ -1,51 +1,28 @@
 import styled from 'styled-components'
 
 export const ServicesContainer = styled.div`
-  padding-top: 10rem;
+  background: ${({ theme }) => theme.primaryBlack};
+  padding: 12rem 2rem 8rem 2rem;
   /* padding-bottom: 12rem; */
   display: flex;
-  max-width: 1400px;
+  min-height: 50vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
 
   @media screen and (max-width: 992px) {
-    padding-top: 3rem;
+    padding: 8rem 2rem 4rem 2rem;
   }
 `
 
 export const ServicesWrapper = styled.div`
   display: flex;
-  min-height: 50vh;
-  max-width: calc(100% - 6rem);
+
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-`
-
-export const ServicesCard = styled.div`
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1.5rem;
-  width: calc(25% + 1rem);
-  border-radius: 15px;
-  padding: 2rem 1rem 1rem 1rem;
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    transform: scale(1.02);
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-  }
-
-  @media screen and (max-width: 992px) {
-    margin: 1rem;
-    width: calc(80% + 2rem);
-  }
+  max-width: 1400px;
+  margin: 0 auto;
 `
 
 export const ServicesP = styled.p`
@@ -54,17 +31,52 @@ export const ServicesP = styled.p`
   font-size: calc(15px + 0.1vw);
   line-height: 24px;
   text-align: center;
-  color: #555555;
+  color: #fff;
 `
 
 export const CardHeader = styled.p`
-  color: #555555;
+  color: #fff;
   font-size: clamp(1.25rem, 5vw + 1rem, 1.5rem);
-  font-weight: 500;
+  font-weight: 600;
   padding-top: 2rem;
   text-align: center;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+`
+
+export const ServicesCard = styled.div`
+  //background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem;
+  border: none;
+  width: calc(25% + 1rem);
+  border-radius: 5px;
+  padding: 2rem 1rem 1rem 1rem;
+  //box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    /* background: ${({ theme }) => theme.lightMediumBg}; 
+    
+    
+    
+    ${ServicesP} {
+      color: ${({ theme }) => theme.primaryBlack};
+    }
+    ${CardHeader} {
+      color: ${({ theme }) => theme.primaryBlack};
+    } */
+  }
+
+  @media screen and (max-width: 992px) {
+    margin: 1rem;
+    width: calc(80% + 2rem);
+  }
 `
 
 export const BtnWrapper = styled.div`

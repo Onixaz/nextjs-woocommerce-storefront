@@ -101,7 +101,7 @@ export const ContactFooterP = styled.p`
 `
 
 export const SocialLinkstWrapper = styled.div`
-  display: inline-block;
+  display: inline-flex;
   padding: 1.5rem;
 `
 

@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle<Props>`
     background: ${({ theme }) => theme.lightMediumBg};
     
     //color: ${({ theme }) => theme.medium};
-    &::after{
+    /* &::after{
       content: ' ';
       background-image: url('/cover_full.png');
       background-size: cover;
@@ -39,8 +39,8 @@ const GlobalStyle = createGlobalStyle<Props>`
       z-index: -1;
       opacity: 0.025;
 
-    }
-  }
+    } */
+  } 
   a {
     
     color: ${({ theme }) => theme.dark}

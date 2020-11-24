@@ -12,7 +12,7 @@ import {
   CardHeader,
 } from './ServicesElements'
 
-import { BlackH1, MainP, RedSpan } from '../Utilities/TextElements'
+import { BlackH1, WhiteH1, MainP, RedSpan } from '../Utilities/TextElements'
 import { RedLine } from '../InfoSection/InfoElements'
 
 interface ServicesProps {}
@@ -20,9 +20,9 @@ interface ServicesProps {}
 const Services: React.FC<ServicesProps> = () => {
   return (
     <ServicesContainer id="services">
-      <BlackH1>
+      <WhiteH1>
         Ką aš galiu Jums <RedSpan>pasiūlyti?</RedSpan>
-      </BlackH1>
+      </WhiteH1>
       <MainP>
         Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non
         mi integer non faucibus.
@@ -63,7 +63,7 @@ const Services: React.FC<ServicesProps> = () => {
             </ServicesP>
           </ServicesCard>
         </ServicesWrapper>
-        <RedLine />
+        {/* <RedLine /> */}
       </IconContext.Provider>
       {/* <BtnWrapper>
         <MainButton href="about" label="Plačiau" />
