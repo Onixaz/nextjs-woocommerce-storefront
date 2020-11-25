@@ -58,7 +58,7 @@ export const ServicesCard = styled.div`
   //box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease-in-out;
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     //border: 1px solid ${({ theme }) => theme.primaryRed};

@@ -126,6 +126,10 @@ export const Heading = styled.h1`
   line-height: 1.1;
   font-weight: 600;
   color: ${({ theme }) => theme.primaryBlack};
+
+  @media screen and (max-width: 992px) {
+    text-align: center;
+  }
 `
 
 export const Subtitle = styled.p`
@@ -136,12 +140,19 @@ export const Subtitle = styled.p`
   line-height: 1.7;
   line-height: 24px;
   color: ${({ theme }) => theme.primaryBlack};
+  @media screen and (max-width: 992px) {
+    text-align: center;
+    line-height: 1.8;
+  }
 `
 
 export const BtnWrap = styled.div`
-  margin-top: 30px;
+  margin-top: 2rem;
   display: flex;
   justify-content: flex-start;
+  @media screen and (max-width: 992px) {
+    justify-content: center;
+  }
 `
 
 export const ImgWrap = styled.div`

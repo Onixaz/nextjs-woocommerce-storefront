@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Nav = styled.nav<{ scrollNav: boolean }>`
-  background: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryBlack : 'transparent')};
+  background: ${({ scrollNav, theme }) => (scrollNav ? 'transparent' : theme.primaryBlack)};
   height: 80px;
   //margin-top: -80px;
   display: flex;
@@ -62,10 +62,10 @@ export const MobileIcon = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    top: 1rem;
+    right: 1.5rem;
+    //transform: translate(-100%, 60%);
+    font-size: 2rem;
     cursor: pointer;
     color: #fff;
   }

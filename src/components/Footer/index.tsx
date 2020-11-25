@@ -1,6 +1,5 @@
 import React from 'react'
-import { FaAccessibleIcon, FaAddressBook, FaFacebook } from 'react-icons/fa'
-import { IconContext } from 'react-icons/lib'
+import { FaFacebook } from 'react-icons/fa'
 import {
   FooterContainer,
   FooterWrapper,
@@ -15,6 +14,9 @@ import {
   SocialFooterH1,
   SocialSection,
   ContactWrapperExtra,
+  StyledFaFacebook,
+  StyledFaInstagram,
+  StyledFaYoutube,
 } from './footer.elements'
 interface FooterProps {}
 
@@ -37,13 +39,9 @@ const Footer: React.FC<FooterProps> = () => {
           <SocialSection>
             <SocialFooterH1>Ieškok manęs socialiniuose tinkluose!</SocialFooterH1>
             <SocialLinkstWrapper>
-              <IconContext.Provider
-                value={{ size: '2em', color: '#ff2458', style: { margin: '0 .7em' } }}
-              >
-                <FaAccessibleIcon />
-                <FaAddressBook />
-                <FaFacebook />
-              </IconContext.Provider>
+              <StyledFaFacebook />
+              <StyledFaInstagram />
+              <StyledFaYoutube />
             </SocialLinkstWrapper>
           </SocialSection>
         </ContentWrapper>

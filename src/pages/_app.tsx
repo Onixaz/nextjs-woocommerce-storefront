@@ -9,7 +9,7 @@ interface CustomAppProps extends AppProps {}
 const CustomApp: React.FC<CustomAppProps> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
-      <LayoutTree Component={Component} pageProps={pageProps} />
+      <Component {...pageProps} />
       <GlobalStyle />
     </ThemeProvider>
   )

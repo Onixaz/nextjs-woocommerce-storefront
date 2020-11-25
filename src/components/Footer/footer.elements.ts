@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 export const FooterContainer = styled.footer`
   min-height: 40vh;
@@ -111,6 +112,36 @@ export const SocialFooterH1 = styled.h1`
   margin: 3rem 1rem 1rem 1rem;
   color: ${({ theme }) => theme.primaryWhite};
   font-size: calc(1rem + 0.2vw);
+`
+
+export const StyledFaFacebook = styled(FaFacebook)`
+  font-size: 2.5rem;
+  color: #fff;
+  margin: 1rem;
+  &:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.primaryRed};
+  }
+`
+
+export const StyledFaInstagram = styled(FaInstagram)`
+  font-size: 2.5rem;
+  color: #fff;
+  margin: 1rem;
+  &:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.primaryRed};
+  }
+`
+
+export const StyledFaYoutube = styled(FaYoutube)`
+  font-size: 2.5rem;
+  color: #fff;
+  margin: 1rem;
+  &:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.primaryRed};
+  }
 `
 
 export const CopyrightElement = styled.div`

@@ -11,6 +11,7 @@ import {
   LogoText,
 } from './NavbarElements'
 import { FaBars } from 'react-icons/fa'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 interface NavbarProps {
@@ -18,27 +19,29 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
+  const router = useRouter()
   const [scrollNav, setScrollNav] = useState(false)
-
   const changeNav = () => {
-    if (window.scrollY >= 80 || window === undefined) {
-      setScrollNav(true)
-    } else {
-      setScrollNav(false)
+    if (window != undefined) {
+      if (router.pathname === '/' && window.scrollY < 80) {
+        setScrollNav(true)
+      } else {
+        setScrollNav(false)
+      }
     }
   }
 
   useEffect(() => {
     changeNav()
     window.addEventListener('scroll', changeNav)
-  })
+  }, [])
 
   return (
     <Nav scrollNav={scrollNav}>
       <NavbarContainer>
         <NavLogoWrapper>
           <Link href="/">
-            <LogoText>Romanas</LogoText>
+            <LogoText>Romanas.Lt</LogoText>
           </Link>
         </NavLogoWrapper>
         <MobileIcon onClick={toggle}>
@@ -47,29 +50,22 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
         <NavMenu>
           <NavItem>
             <NavLinksWrapper>
-              <Link href="">
+              <Link href="/">
                 <LinkText>Pradžia</LinkText>
               </Link>
             </NavLinksWrapper>
           </NavItem>
           <NavItem>
             <NavLinksWrapper>
-              <Link href="#about">
+              <Link href="/about">
                 <LinkText>Apie mane</LinkText>
               </Link>
             </NavLinksWrapper>
           </NavItem>
           <NavItem>
             <NavLinksWrapper>
-              <Link href="#services">
+              <Link href="/services">
                 <LinkText>Paslaugos</LinkText>
-              </Link>
-            </NavLinksWrapper>
-          </NavItem>
-          <NavItem>
-            <NavLinksWrapper>
-              <Link href="/about">
-                <LinkText>Susisiek</LinkText>
               </Link>
             </NavLinksWrapper>
           </NavItem>
