@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false)
 
   const changeNav = () => {
-    if (window.scrollY >= 80) {
+    if (window.scrollY >= 80 || window === undefined) {
       setScrollNav(true)
     } else {
       setScrollNav(false)
@@ -29,8 +29,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   }
 
   useEffect(() => {
+    changeNav()
     window.addEventListener('scroll', changeNav)
-  }, [])
+  })
 
   return (
     <Nav scrollNav={scrollNav}>

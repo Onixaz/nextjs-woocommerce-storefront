@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import Image from 'next/image'
 export const GalleryContainer = styled.div`
   padding-top: 10rem;
   padding-bottom: 8.5rem;

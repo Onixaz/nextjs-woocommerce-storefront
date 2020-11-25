@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { RedSpan, BlackH1, MainP } from '../Utilities/TextElements'
 import {
   GalleryContainer,
@@ -24,7 +25,7 @@ const GallerySection = () => {
 
       <CardContainer>
         <PhotoCard>
-          <Photo src="./gal_3.jpg" />
+          <Photo src="/gal_3.jpg" />
         </PhotoCard>
         <PhotoCard>
           <Photo src="./gal_4.jpg" />

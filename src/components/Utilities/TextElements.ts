@@ -8,6 +8,7 @@ export const WhiteH1 = styled.h1`
   color: ${({ theme }) => theme.primaryWhite};
   font-size: clamp(2.5rem, 5vw + 1rem, 3rem);
   text-align: center;
+
   /* @media screen and (max-width: 768px) {
     font-size: 40px;
     @media screen and (max-width: 480px) {
@@ -24,8 +25,6 @@ export const BlackH1 = styled.h1`
   text-align: center;
   font-size: clamp(1.5rem, 5vw + 1rem, 3rem);
   letter-spacing: 1px;
-  line-height: 1.1;
-  font-weight: 600;
 `
 
 export const MainP = styled.p`
@@ -34,5 +33,4 @@ export const MainP = styled.p`
   color: ${({ theme }) => theme.primaryBlack};
   font-size: clamp(0.5rem, 5vw + 1rem, 1.2rem);
   text-align: center;
-  max-width: 1000px;
 `

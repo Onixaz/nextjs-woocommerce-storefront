@@ -10,6 +10,8 @@ const defaultTheme = {
   light: '#8d99ae',
   //bg
   lightMediumBg: '#f7f7f7',
+  //lightMediumBg: '#dbdbdb',
+
   lightDarkerBg: '#cfcfcf',
   lightWhiteBg: '#fff',
   //text button colors
