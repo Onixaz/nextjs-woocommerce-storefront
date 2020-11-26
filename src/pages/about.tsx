@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import { withLayout } from '@moxy/next-layout'
 import { PageContainer } from '../components/Container/ContainerElements'
 
 interface AboutProps {}
