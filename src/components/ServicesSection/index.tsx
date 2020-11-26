@@ -13,7 +13,6 @@ import {
 } from './servicesSection.elements'
 
 import { BlackH1, WhiteH1, MainP, RedSpan } from '../Utilities/TextElements'
-import { RedLine } from '../InfoSection/InfoElements'
 
 interface ServicesProps {}
 

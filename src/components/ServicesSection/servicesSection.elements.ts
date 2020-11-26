@@ -15,6 +15,24 @@ export const ServicesContainer = styled.div`
   }
 `
 
+export const ServicesCard = styled.div`
+  //background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem;
+  border: none;
+  width: calc(25% + 1rem);
+  border-radius: 5px;
+  padding: 2rem 1rem 1rem 1rem;
+
+  @media screen and (max-width: 992px) {
+    margin: 1rem;
+    width: calc(80% + 2rem);
+  }
+`
+
 export const ServicesWrapper = styled.div`
   display: flex;
 
@@ -23,6 +41,14 @@ export const ServicesWrapper = styled.div`
   align-items: stretch;
   max-width: 1400px;
   margin: 0 auto;
+
+  ${ServicesCard} {
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+      transition: all 0.2s ease-in-out;
+    }
+  }
 `
 
 export const ServicesP = styled.p`
@@ -42,42 +68,6 @@ export const CardHeader = styled.p`
   text-align: center;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-`
-
-export const ServicesCard = styled.div`
-  //background: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1.5rem;
-  border: none;
-  width: calc(25% + 1rem);
-  border-radius: 5px;
-  padding: 2rem 1rem 1rem 1rem;
-  //box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    //border: 1px solid ${({ theme }) => theme.primaryRed};
-    /* background: ${({ theme }) => theme.lightMediumBg}; 
-    
-    
-    
-    ${ServicesP} {
-      color: ${({ theme }) => theme.primaryBlack};
-    }
-    ${CardHeader} {
-      color: ${({ theme }) => theme.primaryBlack};
-    } */
-  }
-
-  @media screen and (max-width: 992px) {
-    margin: 1rem;
-    width: calc(80% + 2rem);
-  }
 `
 
 export const BtnWrapper = styled.div`

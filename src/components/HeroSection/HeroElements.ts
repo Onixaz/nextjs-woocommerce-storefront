@@ -75,7 +75,7 @@ export const ScrollDownIconWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 20rem;
+  top: calc(17rem + 3vw);
 `
 
 export const IconDown = styled(FaAngleDoubleDown)`
@@ -85,6 +85,29 @@ export const IconDown = styled(FaAngleDoubleDown)`
 
 export const IconHolder = styled.span`
   font-size: 3rem;
+  margin-top: 1rem;
   color: #fff;
   display: inline-block;
+  /* animation: bounce 2s ease-in-out infinite;
+
+  @keyframes bounce {
+    0%,
+    25%,
+    55%,
+    75%,
+    100% {
+      transform: translateY(0);
+    }
+
+    45% {
+      transform: translateY(-20px);
+    }
+
+    65% {
+      transform: translateY(-10px);
+    }
+    85% {
+      transform: translateY(-5px);
+    }
+  } */
 `

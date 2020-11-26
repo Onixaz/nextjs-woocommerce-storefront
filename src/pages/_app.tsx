@@ -9,7 +9,7 @@ import 'aos/dist/aos.css'
 interface CustomAppProps extends AppProps {}
 
 const CustomApp: React.FC<CustomAppProps> = ({ Component, pageProps }) => {
-  const animateConfig = { easing: 'ease-out-cubic', once: true, offset: 50, duration: 1000 }
+  const animateConfig = { easing: 'ease-out-cubic', once: true, offset: 50, duration: 1500 }
 
   useEffect(() => {
     AOS.init(animateConfig)

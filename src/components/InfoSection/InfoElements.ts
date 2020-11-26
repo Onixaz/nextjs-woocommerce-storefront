@@ -2,35 +2,10 @@ import styled from 'styled-components'
 
 export const InfoContainer = styled.div`
   //background: ${({ theme }) => theme.lightMediumBg};
-  padding: 12rem 2rem 8rem 2rem;
+  padding: 15rem 2rem 7rem 2rem;
 
   @media screen and (max-width: 992px) {
-    padding: 6rem 2rem;
-  }
-
-  /* background-image: radial-gradient(rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0.3) 100%),
-    url('./para_bg_2.jpg'); */
-`
-
-export const RedLine = styled.div`
-  height: 5px;
-  width: 100%;
-  &::after {
-    content: '';
-    height: 1px;
-    width: 100%;
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(255, 36, 88, 0.9) 50%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    display: block;
-    margin-top: 5rem;
-  }
-
-  @media screen and (max-width: 992px) {
-    display: none;
+    padding: 9rem 2rem;
   }
 `
 
@@ -156,15 +131,45 @@ export const BtnWrap = styled.div`
 `
 
 export const ImgWrap = styled.div`
+  position: relative;
   max-width: 555px;
   height: 100%;
+  margin-bottom: 3rem;
+
+  &::before {
+    opacity: 0.9;
+    position: absolute;
+    left: -31px;
+    top: -30px;
+    width: 90%;
+    height: 92%;
+    border-radius: 15px;
+    z-index: -1;
+    content: '';
+    background-color: ${({ theme }) => theme.primaryRed};
+    transition: 0.5s;
+  }
+
+  &::after {
+    opacity: 0.9;
+    position: absolute;
+    right: -31px;
+    bottom: -30px;
+    width: 90%;
+    height: 92%;
+    border-radius: 15px;
+    z-index: -1;
+    content: '';
+    background-color: ${({ theme }) => theme.primaryRed};
+    transition: 0.5s;
+  }
 `
 
 export const Img = styled.img`
+  position: relative;
   width: 100%;
   border-radius: 15px;
   max-height: 600px;
-  margin: 0 0 10px 0;
   padding-right: 0;
   //border-radius: 15px;
   box-shadow: 0 0 5px #000;
