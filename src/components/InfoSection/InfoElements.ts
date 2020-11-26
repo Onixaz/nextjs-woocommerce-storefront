@@ -173,8 +173,9 @@ export const Img = styled.img`
   border-radius: 15px;
   max-height: 600px;
   padding-right: 0;
+  border: 5px solid #fff;
   //border-radius: 15px;
-  box-shadow: 0 0 5px #000;
+  //box-shadow: 0 0 3px ${({ theme }) => theme.primaryBlack};
 
   //border: 0.5px solid ${({ theme }) => theme.primaryRed}
 `
