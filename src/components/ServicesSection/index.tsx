@@ -22,10 +22,10 @@ const Services: React.FC<ServicesProps> = () => {
       <WhiteH1>
         Ką aš galiu Jums <RedSpan>pasiūlyti?</RedSpan>
       </WhiteH1>
-      <MainP>
+      {/* <MainP>
         Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non
         mi integer non faucibus.
-      </MainP>
+      </MainP> */}
       <IconContext.Provider value={{ size: '5em', color: '#ff2458' }}>
         <ServicesWrapper>
           <ServicesCard data-aos="fade-up">

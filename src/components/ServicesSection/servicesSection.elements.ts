@@ -11,7 +11,7 @@ export const ServicesContainer = styled.div`
   justify-content: center;
 
   @media screen and (max-width: 992px) {
-    padding: 8rem 2rem 4rem 2rem;
+    padding: 4rem 2rem;
   }
 `
 
@@ -35,7 +35,7 @@ export const ServicesCard = styled.div`
 
 export const ServicesWrapper = styled.div`
   display: flex;
-
+  padding: 4rem 1rem;
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
