@@ -17,9 +17,7 @@ import {
   ImgWrap,
 } from './InfoElements'
 
-interface InfoProps {
-  imgStart: boolean
-}
+interface InfoProps {}
 
 const InfoSection: React.FC<InfoProps> = () => {
   const imgStart = false
