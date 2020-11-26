@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FaAngleDoubleDown } from 'react-icons/fa'
 
 export const HeroContainer = styled.div`
   //background: ${({ theme }) => theme.primaryBlack};
@@ -49,14 +50,8 @@ export const HeroContent = styled.div`
 export const HeroH1 = styled.h1<{ hero?: boolean }>`
   display: inline-block;
   color: ${({ theme, hero }) => (hero ? theme.primaryWhite : theme.primaryBlack)};
-  font-size: 48px;
+  font-size: clamp(0.5rem, 2vw + 2vh + 0.5rem, 1.5rem);
   text-align: center;
-  @media screen and (max-width: 768px) {
-    font-size: 40px;
-    @media screen and (max-width: 480px) {
-      font-size: 32px;
-    }
-  }
 `
 
 export const HeroP = styled.p`
@@ -72,4 +67,24 @@ export const HeroBtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+export const ScrollDownIconWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 20rem;
+`
+
+export const IconDown = styled(FaAngleDoubleDown)`
+  color: ${({ theme }) => theme.primaryRed};
+  cursor: pointer;
+`
+
+export const IconHolder = styled.span`
+  font-size: 3rem;
+  color: #fff;
+  display: inline-block;
 `

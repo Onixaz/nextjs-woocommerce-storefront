@@ -16,6 +16,7 @@ const defaultTheme = {
   lightWhiteBg: '#fff',
   //text button colors
   primaryBlack: '#0d0d0d',
+  secondaryBlack: '#242424',
   primaryWhite: '#fff',
   primaryRed: '#ff2458',
   secondaryRed: '#ce1b28',

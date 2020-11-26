@@ -10,7 +10,7 @@ import {
   ServicesWrapper,
   BtnWrapper,
   CardHeader,
-} from './ServicesElements'
+} from './servicesSection.elements'
 
 import { BlackH1, WhiteH1, MainP, RedSpan } from '../Utilities/TextElements'
 import { RedLine } from '../InfoSection/InfoElements'
@@ -29,7 +29,7 @@ const Services: React.FC<ServicesProps> = () => {
       </MainP>
       <IconContext.Provider value={{ size: '5em', color: '#ff2458' }}>
         <ServicesWrapper>
-          <ServicesCard>
+          <ServicesCard data-aos="fade-up">
             <FaHandHoldingHeart />
 
             <CardHeader>Masažai</CardHeader>
@@ -38,7 +38,7 @@ const Services: React.FC<ServicesProps> = () => {
               sem non mi integer non faucibus.
             </ServicesP>
           </ServicesCard>
-          <ServicesCard>
+          <ServicesCard data-aos="fade-up">
             <FaCommentMedical />
             <CardHeader>Kosultacijos</CardHeader>
             <ServicesP>
@@ -54,7 +54,7 @@ const Services: React.FC<ServicesProps> = () => {
               sem non mi integer non faucibus.
             </ServicesP>
           </ServicesCard> */}
-          <ServicesCard>
+          <ServicesCard data-aos="fade-up">
             <FaGift />
             <CardHeader>Dovanų kuponai</CardHeader>
             <ServicesP>

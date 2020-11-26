@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const ContactContainer = styled.div`
   //background: ${({ theme }) => theme.lightMediumBg};
-  padding-top: 15rem;
 
   /* background-image: radial-gradient(rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0.3) 100%),
     url('./para_bg_2.jpg'); */
@@ -14,8 +13,8 @@ export const ContactWrapper = styled.div`
   align-items: center;
   z-index: 1;
   width: 100%;
-  min-height: 70vh;
-  max-width: 75em;
+  min-height: 10vh;
+  max-width: 1300px;
   margin-right: auto;
   margin-left: auto;
 
@@ -33,12 +32,9 @@ export const ContactWrapper = styled.div`
 export const ContactRow = styled.div`
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);
-
   align-items: center;
-  grid-gap: 30px;
   grid-template-areas: 'col2 col1';
   @media screen and (max-width: 992px) {
-    grid-gap: 5px;
     grid-template-areas: 'col1 col1' 'col2 col2';
   }
 `
@@ -46,8 +42,8 @@ export const ContactRow = styled.div`
 export const Column1 = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  max-width: 600px;
   margin-bottom: 15px;
   padding-right: 3rem;
   padding-left: 3rem;
@@ -64,73 +60,107 @@ export const Column1 = styled.div`
 export const Column2 = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  max-width: 600px;
   margin-bottom: 15px;
   padding-right: 2rem;
   padding-left: 2rem;
   grid-area: col2;
-  border: 2px solid #000;
 
   @media screen and (max-width: 992px) {
     padding-bottom: 1rem;
     padding-top: 1rem;
   }
 `
-
-export const TextWrapper = styled.div`
-  max-width: 540px;
-  padding-top: 0;
-  padding-bottom: 40px;
-`
-
-export const TopLine = styled.p`
-  color: ${({ theme }) => theme.primaryRed};
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-`
-
-export const Heading = styled.h1`
-  margin-bottom: 24px;
-  font-size: clamp(2rem, 5vw + 1rem, 3.5rem);
-  letter-spacing: 1px;
-  line-height: 1.1;
-  font-weight: 600;
-  color: ${({ theme }) => theme.primaryBlack};
-`
-
-export const Subtitle = styled.p`
-  max-width: 440px;
-  margin-bottom: 15px;
-  font-size: 18px;
-  line-height: 1.7;
-  line-height: 24px;
-  color: ${({ theme }) => theme.primaryBlack};
-`
-
-export const BtnWrap = styled.div`
-  margin-top: 30px;
+export const ContactForm = styled.form`
   display: flex;
-  justify-content: flex-start;
-`
-
-export const ImgWrap = styled.div`
-  max-width: 555px;
-  height: 100%;
-`
-
-export const Img = styled.img`
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
-  border-radius: 15px;
-  max-height: 600px;
-  margin: 0 0 10px 0;
-  padding-right: 0;
-  //border-radius: 15px;
-  box-shadow: 0 0 5px #000;
+  min-height: 50vh;
+  @media screen and (max-width: 992px) {
+    width: calc(10rem + 30vw);
+  }
+`
+export const ContactH1 = styled.h1`
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+`
+export const ContactInput = styled.input`
+  padding: 1rem;
+  border-radius: 3px;
+  /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.137); */
+  margin-bottom: 1rem;
+  border: 1px solid lightgray;
+  /* border: none; */
+  background: #fff;
+  font-size: 1rem;
+  color: rgb(0, 0, 32);
+  outline: none;
 
-  //border: 0.5px solid ${({ theme }) => theme.primaryRed}
+  &:focus {
+    border: 1px solid #ff2458;
+  }
+`
+
+export const ContactTextArea = styled.textarea`
+  padding: 1rem;
+  border-radius: 3px;
+  /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.137); */
+  margin-bottom: 1rem;
+  border: 1px solid lightgray;
+  /* border: none; */
+  background: #fff;
+  font-size: 1rem;
+  color: rgb(0, 0, 32);
+  outline: none;
+  //min-width: 150px;
+  min-height: 150px;
+
+  &:focus {
+    border: 1px solid #ff2458;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+`
+export const ContactLabel = styled.label`
+  padding: 0.25rem;
+  color: rgb(0, 0, 32);
+  font-weight: bold;
+`
+
+export const ContactBtnWrapper = styled.div`
+  margin: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const SubmitBtn = styled.button`
+  min-width: 1rem;
+  max-width: 3rem;
+  border-radius: 30px;
+  background: ${({ theme }) => theme.primaryRed};
+  white-space: nowrap;
+  padding: 14px 70px;
+  color: ${({ theme }) => theme.primaryBlack};
+  font-size: 20px;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  //flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: ${({ theme }) => theme.primaryBlack};
+    color: ${({ theme }) => theme.primaryWhite};
+  }
 `

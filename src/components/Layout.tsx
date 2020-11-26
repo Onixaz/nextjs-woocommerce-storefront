@@ -5,7 +5,6 @@ import LayoutElement from '../styles/LayoutElement'
 
 import Navbar from './Navbar'
 
-import dynamic from 'next/dynamic'
 import Sidebar from './Sidebar'
 
 // const Navbar = dynamic(() => import('./Navbar'), { ssr: true, loading: () => <p>...</p> })

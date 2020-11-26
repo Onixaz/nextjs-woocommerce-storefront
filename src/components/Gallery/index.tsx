@@ -23,7 +23,7 @@ const GallerySection = () => {
         </MainP>
       </TextWrapper>
 
-      <CardContainer>
+      <CardContainer data-aos="fade-up">
         <PhotoCard>
           <Photo src="/gal_3.jpg" />
         </PhotoCard>

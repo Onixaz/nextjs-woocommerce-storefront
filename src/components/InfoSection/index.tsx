@@ -28,7 +28,7 @@ const InfoSection: React.FC<InfoProps> = ({ imgStart, description }) => {
   return (
     <InfoContainer id="about">
       <InfoWrapper>
-        <InfoRow imgStart={imgStart}>
+        <InfoRow imgStart={imgStart} data-aos="fade-up">
           <Column1>
             <TextWrapper>
               {/* <TopLine>{topLine}</TopLine> */}

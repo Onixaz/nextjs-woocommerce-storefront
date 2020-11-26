@@ -8,6 +8,7 @@ import { PageContainer } from '../components/Container/ContainerElements'
 import Services from '../components/ServicesSection'
 
 import dynamic from 'next/dynamic'
+//import ContactSection from '../components/Contact'
 const GallerySection = dynamic(() => import('../components/Gallery'), { ssr: false })
 
 interface BlogProps {
@@ -24,6 +25,7 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
           <InfoSection {...homeObjOne} />
           <Services />
           <GallerySection />
+          {/* <ContactSection /> */}
         </PageContainer>
       </Layout>
     </>

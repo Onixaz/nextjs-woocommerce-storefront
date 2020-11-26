@@ -1,8 +1,16 @@
 import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
-import MainButton from '../MainButton'
 import { RedSpan } from '../Utilities/TextElements'
-import { HeroContainer, HeroBg, HeroContent, HeroH1, HeroP, HeroBtnWrapper } from './HeroElements'
+import { Link as LinkS } from 'react-scroll'
+import {
+  HeroContainer,
+  HeroBg,
+  HeroContent,
+  HeroP,
+  ScrollDownIconWrapper,
+  IconHolder,
+  IconDown,
+} from './HeroElements'
 import { WhiteH1 } from '../Utilities/TextElements'
 
 const DynamicBgVideo = dynamic(() => import('../Utilities/DynamicVideo'), { ssr: false })
@@ -22,9 +30,17 @@ const HeroSection: React.FC<HeroProps> = () => {
         </WhiteH1>
 
         <HeroP>Masažai pagal invidualius Jūsų poreikius.</HeroP>
-        <HeroBtnWrapper>
+        {/* <HeroBtnWrapper>
           <MainButton hero label="Registruotis vizitui" href="/about" />
-        </HeroBtnWrapper>
+        </HeroBtnWrapper> */}
+        <ScrollDownIconWrapper>
+          <HeroP>Skaityk toliau!</HeroP>
+          <LinkS to="about" smooth={true} duration={500} exact="true" offset={-80}>
+            <IconHolder>
+              <IconDown />
+            </IconHolder>
+          </LinkS>
+        </ScrollDownIconWrapper>
       </HeroContent>
     </HeroContainer>
   )

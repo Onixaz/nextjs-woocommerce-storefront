@@ -9,7 +9,7 @@ import {
   NavLinksWrapper,
   LinkText,
   LogoText,
-} from './NavbarElements'
+} from './navbar.elements'
 import { FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import Link from 'next/link'

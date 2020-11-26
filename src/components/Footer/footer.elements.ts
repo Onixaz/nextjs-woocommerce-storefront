@@ -15,8 +15,8 @@ export const FooterWrapper = styled.div`
 
 export const ContentWrapper = styled.div`
   display: grid;
+  margin-top: 2rem;
 
-  grid-template-columns: repeat(4, 1fr);
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 'ls cs ss ss';
 
@@ -36,12 +36,12 @@ export const ContentWrapper = styled.div`
 export const LogoSection = styled.div`
   grid-area: ls;
   margin: 1rem;
-  min-height: 320px;
+  min-height: 30vh;
+  max-height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 320px;
 `
 
 export const ContactInfoSection = styled.div`
@@ -55,6 +55,7 @@ export const ContactInfoSection = styled.div`
 
 export const ContactWrapperExtra = styled.div`
   display: block;
+  max-height: 240px;
   max-width: 240px;
   margin: 0 auto;
   padding: 1rem;
