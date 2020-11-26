@@ -28,6 +28,7 @@ export const InfoWrapper = styled.div`
   padding: 0 24px;
   @media screen and (max-width: 992px) {
     display: flex;
+    align-items: center;
     justify-content: center;
   }
 `
@@ -109,6 +110,7 @@ export const Heading = styled.h1`
 
 export const Subtitle = styled.p`
   max-width: 440px;
+  margin: 0 auto;
   letter-spacing: 1px;
   margin-bottom: 15px;
   font-size: 18px;
