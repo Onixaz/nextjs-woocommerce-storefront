@@ -21,17 +21,18 @@ interface InfoProps {}
 
 const InfoSection: React.FC<InfoProps> = () => {
   const imgStart = false
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(true)
 
   const changeAnims = () => {
-    if (window.innerWidth < 992) {
-      setIsMobile(true)
-    } else {
+    if (window.innerWidth > 992) {
       setIsMobile(false)
+    } else {
+      setIsMobile(true)
     }
   }
 
   useEffect(() => {
+    //window.addEventListener('scroll', changeAnims)
     changeAnims()
   }, [])
 
@@ -39,8 +40,8 @@ const InfoSection: React.FC<InfoProps> = () => {
     <InfoContainer id="about">
       <InfoWrapper>
         <InfoRow imgStart={imgStart}>
-          <Column1 data-aos={isMobile ? 'fade-up' : 'fade-right'}>
-            <TextWrapper>
+          <Column1>
+            <TextWrapper data-aos={isMobile ? 'fade-up' : 'fade-right'}>
               {/* <TopLine>{topLine}</TopLine> */}
               <Heading>
                 Masažuotojas <RedSpan>Romanas</RedSpan>
@@ -55,8 +56,8 @@ const InfoSection: React.FC<InfoProps> = () => {
               </BtnWrap>
             </TextWrapper>
           </Column1>
-          <Column2 data-aos={isMobile ? 'fade-up' : 'fade-left'}>
-            <ImgWrap>
+          <Column2>
+            <ImgWrap data-aos={isMobile ? 'fade-up' : 'fade-left'}>
               <Img src="./romanas_2.jpg" />
             </ImgWrap>
           </Column2>
