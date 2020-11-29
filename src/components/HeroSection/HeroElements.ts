@@ -75,7 +75,7 @@ export const ScrollDownIconWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: calc(17rem + 3vw);
+  top: calc(20rem + 3vw);
 `
 
 export const IconDown = styled(FaAngleDoubleDown)`

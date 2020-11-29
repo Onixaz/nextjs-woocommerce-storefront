@@ -9,6 +9,7 @@ import {
   NavLinksWrapper,
   LinkText,
   LogoText,
+  NavbarLogo,
 } from './navbar.elements'
 import { FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/router'
@@ -41,7 +42,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
       <NavbarContainer>
         <NavLogoWrapper>
           <Link href="/">
-            <LogoText>Romanas.Lt</LogoText>
+            <LinkText>
+              <NavbarLogo src="./masazuotojas_romanas_logo.png" />
+            </LinkText>
           </Link>
         </NavLogoWrapper>
         <MobileIcon onClick={toggle}>
@@ -57,14 +60,14 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
           </NavItem>
           <NavItem>
             <NavLinksWrapper>
-              <Link href="/about">
+              <Link href="/apiemane">
                 <LinkText>Apie mane</LinkText>
               </Link>
             </NavLinksWrapper>
           </NavItem>
           <NavItem>
             <NavLinksWrapper>
-              <Link href="/services">
+              <Link href="/paslaugos">
                 <LinkText>Paslaugos</LinkText>
               </Link>
             </NavLinksWrapper>

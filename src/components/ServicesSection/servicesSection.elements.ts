@@ -5,7 +5,7 @@ export const ServicesContainer = styled.div`
   padding: 12rem 2rem 8rem 2rem;
   /* padding-bottom: 12rem; */
   display: flex;
-  min-height: 50vh;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -72,25 +72,4 @@ export const CardHeader = styled.p`
 
 export const BtnWrapper = styled.div`
   padding: 50px;
-`
-export const RedLine = styled.div`
-  height: 5px;
-  width: 100%;
-  &::after {
-    content: '';
-    height: 1px;
-    width: 100%;
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(255, 36, 88, 0.9) 50%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    display: block;
-    margin-top: 5rem;
-  }
-
-  @media screen and (max-width: 992px) {
-    display: none;
-  }
 `

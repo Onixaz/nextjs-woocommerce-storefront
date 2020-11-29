@@ -14,12 +14,10 @@ import {
   ContactBtnWrapper,
 } from './contact.elements'
 
-import fire from '../../configs/fire-config'
-
 interface ContactProps {}
 
 const ContactSection: React.FC<ContactProps> = () => {
-  const db = fire.firestore()
+  //const db = fire.firestore()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -29,22 +27,6 @@ const ContactSection: React.FC<ContactProps> = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setLoading(true)
-
-    db.collection('contact')
-      .add({
-        datetime: new Date(),
-        name,
-        email,
-        message,
-      })
-      .then(() => {
-        setNotification('Žinutė išsiųsta!'), setLoading(false)
-      })
-      .catch((error) => {
-        setNotification(error.message)
-        setLoading(false)
-      })
   }
 
   return (

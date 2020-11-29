@@ -56,7 +56,7 @@ export const ContactInfoSection = styled.div`
 export const ContactWrapperExtra = styled.div`
   display: block;
   max-height: 240px;
-  max-width: 240px;
+  max-width: 340px;
   margin: 0 auto;
   padding: 1rem;
   border-right: 1px solid #fff;

@@ -1,8 +1,8 @@
 import React from 'react'
-import { PageContainer } from './ContainerElements'
+import { PageContainerDiv } from './ContainerElements'
 
-const index = () => {
-  return <PageContainer></PageContainer>
+const PageContainer = () => {
+  return <PageContainerDiv></PageContainerDiv>
 }
 
-export default index
+export default PageContainer

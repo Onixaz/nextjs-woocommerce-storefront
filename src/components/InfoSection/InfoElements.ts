@@ -1,7 +1,11 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 
 export const InfoContainer = styled.div`
-  //background: ${({ theme }) => theme.lightMediumBg};
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 15rem 2rem 7rem 2rem;
 
   @media screen and (max-width: 992px) {
@@ -146,6 +150,7 @@ export const ImgWrap = styled.div`
     width: 90%;
     height: 92%;
     border-radius: 15px;
+    box-shadow: 0 0 5px #000;
     z-index: -1;
     content: '';
     background-color: ${({ theme }) => theme.primaryRed};
@@ -160,6 +165,7 @@ export const ImgWrap = styled.div`
     width: 90%;
     height: 92%;
     border-radius: 15px;
+    box-shadow: 0 0 5px #000;
     z-index: -1;
     content: '';
     background-color: ${({ theme }) => theme.primaryRed};
@@ -178,4 +184,10 @@ export const Img = styled.img`
   //box-shadow: 0 0 3px ${({ theme }) => theme.primaryBlack};
 
   //border: 0.5px solid ${({ theme }) => theme.primaryRed}
+`
+
+export const NextCustomImage = styled(Image)`
+  border-radius: 15px;
+  border: 1px solid ${({ theme }) => theme.primaryBlack} !important;
+  box-shadow: 0 0 1px #000 !important;
 `

@@ -30,7 +30,17 @@ export const NavLogoWrapper = styled.div`
   justify-self: flex-start;
   display: flex;
   align-items: center;
-  margin-left: 24px;
+  padding-top: 1rem;
+  opacity: 0.9;
+  //margin-left: -24px;
+`
+
+export const NavbarLogo = styled.img`
+  height: 80px;
+  width: 160px;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: filter 1s ease-in-out;
 `
 
 export const LogoText = styled.a`
@@ -46,7 +56,7 @@ export const LogoText = styled.a`
 export const LinkText = styled.a`
   color: ${({ theme }) => theme.primaryWhite};
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1rem;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 600;

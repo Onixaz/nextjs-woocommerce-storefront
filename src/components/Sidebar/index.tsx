@@ -26,29 +26,29 @@ const Sidebar: React.FC<SidebarProps> = ({ toggle, isOpen }) => {
       <SidebarWrapper>
         <SidebarMenu>
           <SidebarLinkWrapper onClick={toggle}>
-            <Link href="#about">
-              <SidebarLinkText>Apie mane</SidebarLinkText>
+            <Link href="/">
+              <SidebarLinkText>Pradžia</SidebarLinkText>
             </Link>
           </SidebarLinkWrapper>
           <SidebarLinkWrapper>
-            <Link href="#services">
+            <Link href="/apiemane">
+              <SidebarLinkText>Apie Mane</SidebarLinkText>
+            </Link>
+          </SidebarLinkWrapper>
+          <SidebarLinkWrapper>
+            <Link href="/paslaugos">
               <SidebarLinkText>Paslaugos</SidebarLinkText>
             </Link>
           </SidebarLinkWrapper>
           <SidebarLinkWrapper>
-            <Link href="#about">
-              <SidebarLinkText>Galerija</SidebarLinkText>
-            </Link>
-          </SidebarLinkWrapper>
-          <SidebarLinkWrapper>
-            <Link href="#about">
+            <Link href="/susisiek">
               <SidebarLinkText>Susisiek</SidebarLinkText>
             </Link>
           </SidebarLinkWrapper>
         </SidebarMenu>
-        <SideBtnWrap>
+        {/* <SideBtnWrap>
           <SidebarRoute>Mygtukas</SidebarRoute>
-        </SideBtnWrap>
+        </SideBtnWrap> */}
       </SidebarWrapper>
     </SidebarContainer>
   )

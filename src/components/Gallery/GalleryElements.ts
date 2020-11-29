@@ -17,6 +17,8 @@ export const TextWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  max-width: 800px;
+  margin: 1rem auto;
 `
 
 export const GalleryP = styled.p`
@@ -29,11 +31,15 @@ export const GalleryP = styled.p`
 
 export const CardContainer = styled.div`
   //background-color: ${({ theme }) => theme.primaryBlack};
-  display: flex;
-  padding: 2rem 5rem;
+  display: grid;
+  position: relative;
+  border-radius: 15px;
+  padding: 3rem;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 
   @media screen and (max-width: 992px) {
     justify-content: space-evenly;
@@ -53,6 +59,7 @@ export const CardContainer = styled.div`
 export const PhotoCard = styled.div`
   flex: 1;
   height: 100%;
+
   //transition: all 1s ease-in-out;
   position: relative;
   margin: 1vmin;
@@ -65,4 +72,38 @@ export const Photo = styled.img`
   border-radius: 10px;
   object-fit: cover;
   transition: filter 1s ease-in-out;
+  //border: 3px solid #fff;
+  box-shadow: 0 0 10px #000;
+`
+
+export const TestimonialsContainer = styled.div`
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  min-height: 200px;
+`
+export const RedLine = styled.div`
+  height: 5px;
+  width: 100%;
+  &::after {
+    content: '';
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(255, 36, 88, 0.9) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    display: block;
+    margin-top: 1rem;
+  }
+
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
 `
