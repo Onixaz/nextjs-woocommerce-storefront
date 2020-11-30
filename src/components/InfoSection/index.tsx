@@ -13,7 +13,6 @@ import {
   BtnWrap,
   Column2,
   ImgWrap,
-  NextCustomImage,
   Img,
 } from './InfoElements'
 
