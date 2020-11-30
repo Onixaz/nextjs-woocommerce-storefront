@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import styled from 'styled-components'
 
 export const InfoContainer = styled.div<{ noPadding: boolean }>`
@@ -172,8 +171,8 @@ export const Img = styled.img`
   padding-right: 0;
 `
 
-export const NextCustomImage = styled(Image)`
-  border-radius: 15px;
-  border: 5px solid #fff !important;
-  //box-shadow: 0 0 1px #000 !important;
-`
+// export const NextCustomImage = styled(Image)`
+//   border-radius: 15px;
+//   border: 5px solid #fff !important;
+//   //box-shadow: 0 0 1px #000 !important;
+// `
