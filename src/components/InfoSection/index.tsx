@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
 import MainButton from '../MainButton'
 import { RedSpan } from '../Utilities/TextElements'
 
@@ -15,6 +14,7 @@ import {
   Column2,
   ImgWrap,
   NextCustomImage,
+  Img,
 } from './InfoElements'
 
 interface InfoProps {
@@ -78,7 +78,9 @@ const InfoSection: React.FC<InfoProps> = ({
           </Column1>
           <Column2>
             <ImgWrap data-aos={isMobile ? 'fade-up' : 'fade-left'}>
-              <NextCustomImage src={img} alt="Masažuotojas Romanas" width={555} height={555} />
+              {/*Disabled for Netlfy for now */}
+              {/* <NextCustomImage src={img} alt="Masažuotojas Romanas" width={555} height={555} /> */}
+              <Img src={img} alt="Masažuotojas Romanas" />
             </ImgWrap>
           </Column2>
         </InfoRow>

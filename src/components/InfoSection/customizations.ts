@@ -1,6 +1,6 @@
 export const homeObjOne = {
   imgStart: false,
-  img: '/masazuotojas_romanas.jpg',
+  img: './masazuotojas_romanas.jpg',
   noPadding: false,
   headingPresent: true,
   buttonPresent: true,
@@ -15,7 +15,7 @@ export const homeObjOne = {
 
 export const aboutObj = {
   imgStart: true,
-  img: '/masazuotojas_romanas_about.jpg',
+  img: './masazuotojas_romanas_about.jpg',
   noPadding: true,
   headingPresent: true,
   buttonPresent: false,
