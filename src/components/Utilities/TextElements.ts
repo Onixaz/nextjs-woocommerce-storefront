@@ -28,9 +28,10 @@ export const BlackH1 = styled.h1`
 `
 
 export const MainP = styled.p`
-  margin: 0.5rem 3.5rem;
-
+  margin: 0 auto;
+  padding: 1rem 0.5rem;
+  letter-spacing: 1px;
   color: ${({ theme }) => theme.primaryBlack};
-  font-size: clamp(0.5rem, 5vw + 1rem, 1.2rem);
+  font-size: calc(1rem + 0.1vw);
   text-align: center;
 `

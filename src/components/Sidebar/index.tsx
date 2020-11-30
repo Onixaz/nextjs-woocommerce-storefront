@@ -31,7 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({ toggle, isOpen }) => {
             </Link>
           </SidebarLinkWrapper>
           <SidebarLinkWrapper>
-            <Link href="/apiemane">
+            <Link href="/apie">
               <SidebarLinkText>Apie Mane</SidebarLinkText>
             </Link>
           </SidebarLinkWrapper>

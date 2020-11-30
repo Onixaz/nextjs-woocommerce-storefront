@@ -1,16 +1,31 @@
-import { start } from 'repl'
-
 export const homeObjOne = {
-  id: 'about',
+  imgStart: false,
+  img: '/masazuotojas_romanas.jpg',
+  noPadding: false,
+  headingPresent: true,
+  buttonPresent: true,
+  headingScale: 2,
+  headingRegular: `Masažuotojas`,
+  headingEmp: `Romanas`,
 
-  topLine: 'Apie mane',
-  headLine: 'Masažuotojas Romanas',
-  description: `Esu kvalifikuotas ir Lietuvos Respublikos Sveikatos apsaugos ministerijos akredituotas masažuotojas.
-    Įgyta klasikinio gydomojo masažo profesija ir nuolatiniai kvalifikacijos kėlimo kursai pas geriausius Lietuvos bei užsienio specialistus leidžia man garantuoti savo paslaugų kokybę `,
-  buttonLabel: 'Plačiau',
+  infoText: `Sveiki 😊 Mano vardas Romanas ir esu visada pasirengęs padėti žmonėms, kurie
+  kasdieniame gyvenime patiria daug streso, įtampos, jaučia fizinį skausmą ir nežino,
+  kaip su tuo kovoti ar tiesiog nori atitrūkti nuo darbų ir skirti laiko sau.`,
+}
 
-  img: ['./romanas_1.jpg', './romanas_2.jpg'],
-  legend: ['As', 'Vel as', 'Nu ir vel as'],
-  carousel: false,
-  visible: false,
+export const aboutObj = {
+  imgStart: true,
+  img: '/masazuotojas_romanas_about.jpg',
+  noPadding: true,
+  headingPresent: true,
+  buttonPresent: false,
+  headingScale: 1.3,
+  headingRegular: `Kodel verta rinktis mane?`,
+  headingEmp: null,
+  infoText: `Mano tikslas - tvarkyti raumenų disbalansus, fizinį bei stresinį jų nuovargį. Nemeluosiu, mano masažai - tai ne poilsio ar relax'o procesas. 
+  Mano masažai - tai procedūra, kurioje gali tekti šiek tiek pasikankinti vardan to, kad visa likusį laiką - skraidytumėte kaip ant sparnų. 
+  Neprireiks ir Red Bull. Man svarbus ir malonus mano darbas, todėl esu visada pilnai atsidavęs klientui. 
+  Todėl neabejotinai darbus atlieku kokybiškai. Ir visa tai vien todėl - kad padėčiau Jums. 
+  Neslėpsiu - geram masažuotojui pirmiau svarbu klientas, o tik poto – atlygis. 
+  Kodel? Nes Jūsų geras atsiliepimas savo draugams ir artimisiems, man yra didžiausia padėka, kuri generuoja klientus ir augimą savo srityje.`,
 }

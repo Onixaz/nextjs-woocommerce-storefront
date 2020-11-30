@@ -1,15 +1,15 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
-export const InfoContainer = styled.div`
+export const InfoContainer = styled.div<{ noPadding: boolean }>`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15rem 2rem 7rem 2rem;
+  padding: ${({ noPadding }) => (noPadding ? 0 : `15rem 2rem 7rem 2rem`)};
 
   @media screen and (max-width: 992px) {
-    padding: 9rem 2rem;
+    padding: ${({ noPadding }) => (noPadding ? 0 : `9rem 2rem`)};
   }
 `
 
@@ -47,7 +47,7 @@ export const InfoRow = styled.div<{ imgStart: boolean }>`
   @media screen and (max-width: 992px) {
     grid-gap: 5px;
     grid-template-areas: ${({ imgStart }) =>
-      imgStart ? `'col1' 'col2'` : `'col1 col1' 'col2 col2'`};
+      imgStart ? `'col2' 'col1'` : `'col1 col1' 'col2 col2'`};
   }
 `
 
@@ -57,13 +57,11 @@ export const Column1 = styled.div`
   align-items: center;
   max-width: 600px;
   margin-bottom: 15px;
-  padding-right: 3rem;
-  padding-left: 3rem;
+  padding: 0.5rem 3rem;
   grid-area: col1;
 
   @media screen and (max-width: 992px) {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 1rem 0.5rem;
   }
 `
 
@@ -72,15 +70,9 @@ export const Column2 = styled.div`
   flex-direction: column;
   align-items: center;
   max-width: 600px;
-  margin-bottom: 15px;
-  padding-right: 2rem;
-  padding-left: 2rem;
+  margin-top: 2rem;
+  padding: 3rem;
   grid-area: col2;
-
-  @media screen and (max-width: 992px) {
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-  }
 `
 
 export const TextWrapper = styled.div`
@@ -99,9 +91,9 @@ export const TopLine = styled.p`
   margin-bottom: 16px;
 `
 
-export const Heading = styled.h1`
+export const Heading = styled.h1<{ headingScale: number }>`
   margin-bottom: 24px;
-  font-size: clamp(1.5rem, 5vw + 1rem, 3.5rem);
+  font-size: ${({ headingScale }) => `calc(${headingScale}rem + 0.5vw)`};
   letter-spacing: 1px;
   line-height: 1.1;
   font-weight: 600;
@@ -113,22 +105,21 @@ export const Heading = styled.h1`
 `
 
 export const Subtitle = styled.p`
-  max-width: 440px;
-  margin: 0 auto;
+  //max-width: 440px;
+  margin: 0;
   letter-spacing: 1px;
   margin-bottom: 15px;
-  font-size: 18px;
-  line-height: 1.7;
-  line-height: 24px;
+  font-size: calc(1rem + 0.1vw);
+  //line-height: calc(1rem + 0.5vw);
   color: ${({ theme }) => theme.primaryBlack};
   @media screen and (max-width: 992px) {
+    margin: 0 auto;
     text-align: center;
-    line-height: 1.8;
   }
 `
 
 export const BtnWrap = styled.div`
-  margin-top: 2rem;
+  padding-top: 3rem;
   display: flex;
   justify-content: flex-start;
   @media screen and (max-width: 992px) {
@@ -179,15 +170,10 @@ export const Img = styled.img`
   border-radius: 15px;
   max-height: 600px;
   padding-right: 0;
-  border: 5px solid #fff;
-  //border-radius: 15px;
-  //box-shadow: 0 0 3px ${({ theme }) => theme.primaryBlack};
-
-  //border: 0.5px solid ${({ theme }) => theme.primaryRed}
 `
 
 export const NextCustomImage = styled(Image)`
   border-radius: 15px;
-  border: 1px solid ${({ theme }) => theme.primaryBlack} !important;
-  box-shadow: 0 0 1px #000 !important;
+  border: 5px solid #fff !important;
+  //box-shadow: 0 0 1px #000 !important;
 `

@@ -33,8 +33,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   }
 
   useEffect(() => {
-    changeNav()
+    //changeNav()
     window.addEventListener('scroll', changeNav)
+    return () => window.removeEventListener('scroll', changeNav)
   }, [])
 
   return (
@@ -60,7 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
           </NavItem>
           <NavItem>
             <NavLinksWrapper>
-              <Link href="/apiemane">
+              <Link href="/apie">
                 <LinkText>Apie mane</LinkText>
               </Link>
             </NavLinksWrapper>

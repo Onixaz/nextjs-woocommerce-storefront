@@ -9,20 +9,38 @@ import {
   InfoRow,
   Column1,
   TextWrapper,
-  TopLine,
   Heading,
   Subtitle,
   BtnWrap,
   Column2,
-  Img,
   ImgWrap,
   NextCustomImage,
 } from './InfoElements'
 
-interface InfoProps {}
+interface InfoProps {
+  imgStart: boolean
+  headingPresent: boolean
+  buttonPresent: boolean
+  infoText: string
+  img: string
+  noPadding: boolean
+  headingScale?: number
+  headingRegular?: string
+  headingEmp?: string | null
+}
 
-const InfoSection: React.FC<InfoProps> = () => {
-  const imgStart = false
+const InfoSection: React.FC<InfoProps> = ({
+  imgStart,
+  headingPresent,
+  buttonPresent,
+  infoText,
+  img,
+  noPadding,
+  headingScale,
+  headingRegular,
+  headingEmp,
+}) => {
+  //const imgStart = false
   const [isMobile, setIsMobile] = useState(true)
 
   const changeAnims = () => {
@@ -39,33 +57,28 @@ const InfoSection: React.FC<InfoProps> = () => {
   }, [])
 
   return (
-    <InfoContainer id="about">
+    <InfoContainer noPadding={noPadding} id="about">
       <InfoWrapper>
         <InfoRow imgStart={imgStart}>
           <Column1>
             <TextWrapper data-aos={isMobile ? 'fade-up' : 'fade-right'}>
               {/* <TopLine>{topLine}</TopLine> */}
-              <Heading>
-                Masažuotojas <RedSpan>Romanas</RedSpan>
-              </Heading>
-              <Subtitle>
-                Sveiki 😊 Mano vardas Romanas ir esu visada pasirengęs padėti žmonėms, kurie
-                kasdieniame gyvenime patiria daug streso, įtampos, jaučia fizinį skausmą ir nežino,
-                kaip su tuo kovoti ar tiesiog nori atitrūkti nuo darbų ir skirti laiko sau.
-              </Subtitle>
-              <BtnWrap>
-                <MainButton label="Plačiau" href="/about" />
-              </BtnWrap>
+              {headingPresent ? (
+                <Heading headingScale={headingScale}>
+                  {headingRegular} <RedSpan>{headingEmp}</RedSpan>
+                </Heading>
+              ) : null}
+              <Subtitle>{infoText}</Subtitle>
+              {buttonPresent ? (
+                <BtnWrap>
+                  <MainButton label="Plačiau" href="/about" />
+                </BtnWrap>
+              ) : null}
             </TextWrapper>
           </Column1>
           <Column2>
             <ImgWrap data-aos={isMobile ? 'fade-up' : 'fade-left'}>
-              <NextCustomImage
-                src="/masazuotojas_romanas.jpg"
-                alt="Masažuotojas Romanas"
-                width={555}
-                height={555}
-              />
+              <NextCustomImage src={img} alt="Masažuotojas Romanas" width={555} height={555} />
             </ImgWrap>
           </Column2>
         </InfoRow>

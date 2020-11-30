@@ -44,6 +44,7 @@ export const AuthorContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 0.5rem 1.5rem;
+  margin-left: -15px;
   //border: 1px solid #000;
   align-items: center;
 `
