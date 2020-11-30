@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   }
 
   useEffect(() => {
-    //changeNav()
+    changeNav()
     window.addEventListener('scroll', changeNav)
     return () => window.removeEventListener('scroll', changeNav)
   }, [])

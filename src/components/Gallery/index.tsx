@@ -52,7 +52,7 @@ const GallerySection = () => {
           <Photo src="./gal_5.jpg" />
         </PhotoCard>
       </CardContainer>
-      <RedLine data-aos="fade-up" />
+      <RedLine />
     </GalleryContainer>
   )
 }
