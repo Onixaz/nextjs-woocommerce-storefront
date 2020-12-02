@@ -7,4 +7,7 @@ const LayoutElement = styled.div`
   grid-template-rows: auto 1fr auto;
 `
 
+export const NavbarHolder = styled.div`
+  height: 80px;
+`
 export default LayoutElement

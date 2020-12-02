@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
+
 import Head from 'next/head'
 import Footer from '../Footer'
-import LayoutElement from './layout.elements'
+import LayoutElement, { NavbarHolder } from './layout.elements'
 
-import Navbar from '../Navbar'
+//import Navbar from '../Navbar'
 
 import Sidebar from '../Sidebar'
-
-// const Navbar = dynamic(() => import('./Navbar'), { ssr: true, loading: () => <p>...</p> })
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import('../Navbar'), { ssr: false, loading: () => <NavbarHolder /> })
 
 interface LayoutProps {
   pageTitle: string

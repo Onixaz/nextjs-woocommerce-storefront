@@ -13,7 +13,7 @@ export const Nav = styled.nav<{ scrollNav: boolean }>`
   z-index: 10;
   //border-bottom: 1px solid #000;
   @media screen and (max-width: 960px) {
-    transition: 0.3s all ease;
+    //transition: 0.3s all ease;
   }
 `
 

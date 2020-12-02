@@ -23,12 +23,10 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   const router = useRouter()
   const [scrollNav, setScrollNav] = useState(false)
   const changeNav = () => {
-    if (window != undefined) {
-      if (router.pathname === '/' && window.scrollY < 80) {
-        setScrollNav(true)
-      } else {
-        setScrollNav(false)
-      }
+    if (router.pathname === '/' && window.scrollY < 80) {
+      setScrollNav(true)
+    } else {
+      setScrollNav(false)
     }
   }
 

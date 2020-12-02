@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import MainButton from '../MainButton'
 import { RedSpan } from '../Utilities/TextElements'
 
@@ -40,13 +41,14 @@ const InfoSection: React.FC<InfoProps> = ({
   headingEmp,
 }) => {
   //const imgStart = false
-  const [isMobile, setIsMobile] = useState(true)
+  const [isIndex, setIsIndex] = useState(false)
+  const router = useRouter()
 
   const changeAnims = () => {
-    if (window.innerWidth > 992) {
-      setIsMobile(false)
+    if (router.pathname != '/') {
+      setIsIndex(false)
     } else {
-      setIsMobile(true)
+      setIsIndex(true)
     }
   }
 
@@ -60,7 +62,7 @@ const InfoSection: React.FC<InfoProps> = ({
       <InfoWrapper>
         <InfoRow imgStart={imgStart}>
           <Column1>
-            <TextWrapper data-aos={isMobile ? 'fade-up' : 'fade-right'}>
+            <TextWrapper data-aos={isIndex ? 'fade-up' : ''}>
               {/* <TopLine>{topLine}</TopLine> */}
               {headingPresent ? (
                 <Heading headingScale={headingScale}>
@@ -76,7 +78,7 @@ const InfoSection: React.FC<InfoProps> = ({
             </TextWrapper>
           </Column1>
           <Column2>
-            <ImgWrap data-aos={isMobile ? 'fade-up' : 'fade-left'}>
+            <ImgWrap data-aos={isIndex ? 'fade-up' : ''}>
               {/*Disabled for Netlfy for now */}
               {/* <NextCustomImage src={img} alt="Masažuotojas Romanas" width={555} height={555} /> */}
               <Img src={img} alt="Masažuotojas Romanas" />

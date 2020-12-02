@@ -4,7 +4,7 @@ export const homeObjOne = {
   noPadding: false,
   headingPresent: true,
   buttonPresent: true,
-  headingScale: 2,
+  headingScale: 3,
   headingRegular: `Masažuotojas`,
   headingEmp: `Romanas`,
 

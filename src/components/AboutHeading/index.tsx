@@ -4,7 +4,7 @@ import { MainP, BlackH1, RedSpan } from '../Utilities/TextElements'
 
 const AboutHeading = () => {
   return (
-    <HeadingWrapper data-aos="fade-up">
+    <HeadingWrapper>
       <BlackH1>
         Sveiki, <RedSpan>draugai!</RedSpan>
       </BlackH1>
