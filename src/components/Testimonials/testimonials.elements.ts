@@ -36,7 +36,7 @@ export const Comment = styled.p`
   font-style: italic;
   font-size: calc(0.75rem + 0.5vw);
   padding: 0.5rem 1.5rem;
-  max-width: 850px;
+  max-width: 950px;
   margin: 0 auto;
 `
 

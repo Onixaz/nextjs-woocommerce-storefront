@@ -23,6 +23,7 @@ interface InfoProps {
   buttonPresent: boolean
   infoText: string
   img: string
+  imgSize: number
   noPadding: boolean
   headingScale?: number
   headingRegular?: string
@@ -35,6 +36,7 @@ const InfoSection: React.FC<InfoProps> = ({
   buttonPresent,
   infoText,
   img,
+  imgSize,
   noPadding,
   headingScale,
   headingRegular,
@@ -78,7 +80,7 @@ const InfoSection: React.FC<InfoProps> = ({
             </TextWrapper>
           </Column1>
           <Column2>
-            <ImgWrap data-aos={isIndex ? 'fade-up' : ''}>
+            <ImgWrap imgSize={imgSize} data-aos={isIndex ? 'fade-up' : ''}>
               {/*Disabled for Netlfy for now */}
               {/* <NextCustomImage src={img} alt="Masažuotojas Romanas" width={555} height={555} /> */}
               <Img src={img} alt="Masažuotojas Romanas" />

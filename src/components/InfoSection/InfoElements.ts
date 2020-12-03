@@ -5,10 +5,10 @@ export const InfoContainer = styled.div<{ noPadding: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${({ noPadding }) => (noPadding ? 0 : `15rem 2rem 7rem 2rem`)};
+  padding: ${({ noPadding }) => (noPadding ? 0 : `12rem 2rem 5rem 2rem`)};
 
   @media screen and (max-width: 992px) {
-    padding: ${({ noPadding }) => (noPadding ? 0 : `9rem 2rem`)};
+    padding: ${({ noPadding }) => (noPadding ? 0 : ` 7rem 2rem 1rem 2rem`)};
   }
 `
 
@@ -41,10 +41,8 @@ export const InfoRow = styled.div<{ imgStart: boolean }>`
   grid-auto-columns: minmax(auto, 1fr);
 
   align-items: center;
-  grid-gap: 30px;
   grid-template-areas: ${({ imgStart }) => (imgStart ? `'col2 col1'` : `'col1 col2'`)};
   @media screen and (max-width: 992px) {
-    grid-gap: 5px;
     grid-template-areas: ${({ imgStart }) =>
       imgStart ? `'col2' 'col1'` : `'col1 col1' 'col2 col2'`};
   }
@@ -106,7 +104,7 @@ export const Heading = styled.h1<{ headingScale: number }>`
 export const Subtitle = styled.p`
   //max-width: 440px;
   margin: 0;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin-bottom: 15px;
   font-size: calc(1rem + 0.1vw);
   //line-height: calc(1rem + 0.5vw);
@@ -126,9 +124,9 @@ export const BtnWrap = styled.div`
   }
 `
 
-export const ImgWrap = styled.div`
+export const ImgWrap = styled.div<{ imgSize: number }>`
   position: relative;
-  max-width: 555px;
+  max-width: ${({ imgSize }) => `${imgSize}px`};
   height: 100%;
   margin-bottom: 3rem;
 
@@ -166,6 +164,7 @@ export const ImgWrap = styled.div`
 export const Img = styled.img`
   position: relative;
   width: 100%;
+  border: 3px solid #fff;
   border-radius: 15px;
   max-height: 600px;
   padding-right: 0;

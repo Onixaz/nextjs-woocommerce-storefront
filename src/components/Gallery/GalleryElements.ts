@@ -80,7 +80,7 @@ export const TestimonialsContainer = styled.div`
   //display: flex;
   //justify-content: center;
   //align-items: center;
-  max-width: 1200px;
+  max-width: 1300px;
   width: 100%;
   margin: 0 auto;
   padding: 1rem 2rem;

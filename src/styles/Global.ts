@@ -21,10 +21,10 @@ const GlobalStyle = createGlobalStyle<Props>`
     line-height: 1.7;
     background: ${({ theme }) => theme.lightMediumBg};
     
-    //color: ${({ theme }) => theme.medium};
-    /* &::after{
+     //color: ${({ theme }) => theme.medium};
+     /* &::after{
       content: ' ';
-      background-image: url('/cover_full.png');
+      background-image: url('/full_back.jpg');
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
@@ -37,7 +37,7 @@ const GlobalStyle = createGlobalStyle<Props>`
       width: 100%;
       height: 100%;
       z-index: -1;
-      opacity: 0.025;
+      opacity: 0.25;
 
     } */
   } 

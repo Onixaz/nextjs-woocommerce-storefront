@@ -81,6 +81,11 @@ export const ScrollDownIconWrapper = styled.div`
 export const IconDown = styled(FaAngleDoubleDown)`
   color: ${({ theme }) => theme.primaryRed};
   cursor: pointer;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+  }
 `
 
 export const IconHolder = styled.span`
@@ -88,6 +93,7 @@ export const IconHolder = styled.span`
   margin-top: 1rem;
   color: #fff;
   display: inline-block;
+
   /* animation: bounce 2s ease-in-out infinite;
 
   @keyframes bounce {
