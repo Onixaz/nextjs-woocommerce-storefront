@@ -32,6 +32,7 @@
     "react-dom": "^16.13.1",
     "react-elastic-carousel": "^0.9.5",
     "react-icons": "^3.11.0",
+    "react-lazyload": "^3.1.0",
     "react-markdown": "^4.3.1",
     "react-scroll": "^1.8.1",
     "styled-components": "^5.1.1"

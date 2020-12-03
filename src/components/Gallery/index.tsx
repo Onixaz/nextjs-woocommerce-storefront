@@ -1,5 +1,6 @@
 import React from 'react'
 import Testimonals from '../Testimonials'
+import LazyLoad from 'react-lazyload'
 
 import { RedSpan, BlackH1, MainP } from '../Utilities/TextElements'
 import {
@@ -15,7 +16,27 @@ import {
 const baseUrl =
   'https://aygdknricp.cloudimg.io/v7/https://masazuotojasromanas.000webhostapp.com/wp-content/uploads/2020/12/'
 
+const imgUrls = [
+  'gal_1.jpg',
+  'gal_2.jpg',
+  'gal_3.jpg',
+  'gal_4.jpg',
+  'gal_5.jpg',
+  'gal_6.jpg',
+  'gal_7.jpg',
+  'gal_8.jpg',
+]
+
 const GallerySection = () => {
+  const listImages = imgUrls.map((img) => {
+    return (
+      <PhotoCard key={img.toString()}>
+        <LazyLoad>
+          <Photo src={baseUrl + img} />
+        </LazyLoad>
+      </PhotoCard>
+    )
+  })
   return (
     <GalleryContainer>
       <TextWrapper>
@@ -30,8 +51,12 @@ const GallerySection = () => {
       <RedLine data-aos="fade-up" />
 
       <CardContainer data-aos="fade-up">
+        {listImages}
+        {/* 
         <PhotoCard>
-          <Photo src={baseUrl + 'gal_1.jpg'} />
+          <LazyLoad>
+            <Photo src={baseUrl + 'gal_1.jpg'} />
+          </LazyLoad>
         </PhotoCard>
         <PhotoCard>
           <Photo src={baseUrl + 'gal_2.jpg'} />
@@ -53,7 +78,7 @@ const GallerySection = () => {
         </PhotoCard>
         <PhotoCard>
           <Photo src={baseUrl + 'gal_8.jpg'} />
-        </PhotoCard>
+        </PhotoCard> */}
       </CardContainer>
       {/* <RedLine /> */}
     </GalleryContainer>

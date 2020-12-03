@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
         <NavLogoWrapper>
           <Link href="/">
             <LinkText>
-              <NavbarLogo src="./masazuotojas_romanas_logo.png" />
+              <NavbarLogo src="https://aygdknricp.cloudimg.io/v7/https://masazuotojasromanas.000webhostapp.com/wp-content/uploads/2020/12/masazuotojas_romanas_logo.png" />
             </LinkText>
           </Link>
         </NavLogoWrapper>

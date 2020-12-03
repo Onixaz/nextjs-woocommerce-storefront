@@ -29,11 +29,11 @@ const Testimonals = () => {
           </Comment>
           <AuthorContainer>
             <AuthorImageWrapper>
-              <AuthorImg src="./romanas_1.jpg" />
+              <AuthorImg src="./authorRec.jpg" />
             </AuthorImageWrapper>
             <AuthorName>
               <strong> - </strong>
-              <span>Romanas</span>
+              <span>Ironvytas</span>
             </AuthorName>
           </AuthorContainer>
         </Item>
@@ -45,11 +45,11 @@ const Testimonals = () => {
           </Comment>
           <AuthorContainer>
             <AuthorImageWrapper>
-              <AuthorImg src="./romanas_2.jpg" />
+              <AuthorImg src="./authorRec.jpg" />
             </AuthorImageWrapper>
             <AuthorName>
               <strong> - </strong>
-              <span>Romanas</span>
+              <span>Ironvytas</span>
             </AuthorName>
           </AuthorContainer>
         </Item>
@@ -60,11 +60,11 @@ const Testimonals = () => {
           </Comment>
           <AuthorContainer>
             <AuthorImageWrapper>
-              <AuthorImg src="./romanas_1.jpg" />
+              <AuthorImg src="./authorRec.jpg" />
             </AuthorImageWrapper>
             <AuthorName>
               <strong> - </strong>
-              <span>Romanas</span>
+              <span>Ironvytas</span>
             </AuthorName>
           </AuthorContainer>
         </Item>

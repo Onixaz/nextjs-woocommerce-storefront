@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = () => {
       <FooterWrapper>
         <ContentWrapper>
           <LogoSection>
-            <LogoFooter src="./Logotipas.png" />
+            <LogoFooter src="https://aygdknricp.cloudimg.io/v7/https://masazuotojasromanas.000webhostapp.com/wp-content/uploads/2020/12/logotipas.png" />
           </LogoSection>
 
           <ContactInfoSection>
