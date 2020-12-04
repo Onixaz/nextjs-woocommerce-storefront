@@ -34,7 +34,7 @@ const HeroSection: React.FC<HeroProps> = () => {
           <MainButton hero label="Registruotis vizitui" href="/about" />
         </HeroBtnWrapper> */}
         <ScrollDownIconWrapper>
-          {/* <HeroP>Skaityk toliau!</HeroP> */}
+          <HeroP>Skaityk toliau!</HeroP>
           <LinkS to="about" smooth={true} duration={500} exact="true">
             <IconHolder>
               <IconDown />

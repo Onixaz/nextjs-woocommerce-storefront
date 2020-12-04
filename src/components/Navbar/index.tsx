@@ -10,6 +10,8 @@ import {
   LinkText,
   LogoText,
   NavbarLogo,
+  NavBtnWrapper,
+  NavBtn,
 } from './navbar.elements'
 import { FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/router'
@@ -70,6 +72,11 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
                 <LinkText>Paslaugos</LinkText>
               </Link>
             </NavLinksWrapper>
+          </NavItem>
+          <NavItem>
+            {/* <NavBtnWrapper>
+              <NavBtn>Dovanų kuponai</NavBtn>
+            </NavBtnWrapper> */}
           </NavItem>
         </NavMenu>
       </NavbarContainer>

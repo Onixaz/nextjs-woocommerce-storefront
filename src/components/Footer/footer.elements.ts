@@ -9,17 +9,18 @@ export const FooterContainer = styled.footer`
 
 export const FooterWrapper = styled.div`
   margin: 0 auto;
-  max-width: 1400px;
+  max-width: 1500px;
 `
 
 export const ContentWrapper = styled.div`
   display: grid;
   margin-top: 2rem;
 
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr 2fr;
   grid-template-areas: 'ls cs ss ss';
 
   @media screen and (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
       'ls cs'
       'ss ss';
@@ -36,7 +37,8 @@ export const LogoSection = styled.div`
   grid-area: ls;
   margin: 1rem;
   min-height: 30vh;
-  max-height: 320px;
+  min-height: 320px;
+  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,15 +52,18 @@ export const ContactInfoSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-right: 1px solid #fff;
 `
 
 export const ContactWrapperExtra = styled.div`
   display: block;
+
   max-height: 240px;
-  max-width: 340px;
+  //max-width: 340px;
+
   margin: 0 auto;
   padding: 1rem;
-  border-right: 1px solid #fff;
+
   @media screen and (max-width: 992px) {
     border: none;
   }
@@ -87,12 +92,12 @@ export const ContactFooterH1 = styled.h1`
   text-align: center;
   margin: 1rem;
   color: ${({ theme }) => theme.primaryRed};
-  font-size: calc(1rem + 0.3vw);
+  font-size: calc(1.2rem + 0.3vw);
 `
 
 export const ContactFooterP = styled.p`
   color: ${({ theme }) => theme.primaryWhite};
-  font-size: 0.8rem;
+  font-size: calc(0.7rem + 0.3vw);
   font-weight: 600;
   text-align: center;
 

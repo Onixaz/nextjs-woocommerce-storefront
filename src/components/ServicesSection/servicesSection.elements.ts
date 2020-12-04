@@ -18,10 +18,11 @@ export const ServicesCard = styled.div`
   //background: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  //justify-content: space-evenly;
   align-items: center;
+
   margin: 1.5rem;
-  border: none;
+  //border: 1px solid #fff;
   width: calc(25% + 1rem);
   border-radius: 5px;
   padding: 2rem 1rem 1rem 1rem;
@@ -56,21 +57,80 @@ export const ServicesWrapper = styled.div`
       width: 0;
       height: 0;
       background: transparent;
-      border: 2px solid transparent;
+
+      border: 1px solid transparent;
     }
 
     &:hover::before {
-      animation: animate 1s linear forwards;
+      animation: animate 0.3s linear forwards;
     }
 
     @keyframes animate {
       0% {
         width: 0;
         height: 0;
-        border-top-color: transparent;
+        border-top-color: ${({ theme }) => theme.primaryRed};
         border-right-color: transparent;
         border-bottom-color: transparent;
         border-left-color: transparent;
+      }
+      50% {
+        width: 100%;
+        height: 0;
+        border-top-color: ${({ theme }) => theme.primaryRed};
+        border-right-color: ${({ theme }) => theme.primaryRed};
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+      100% {
+        width: 100%;
+        height: 100%;
+        border-top-color: ${({ theme }) => theme.primaryRed};
+        border-right-color: ${({ theme }) => theme.primaryRed};
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 0;
+      height: 0;
+      background: transparent;
+
+      border: 1px solid transparent;
+    }
+
+    &:hover::after {
+      animation: animate2 0.3s linear forwards;
+    }
+
+    @keyframes animate2 {
+      0% {
+        width: 0;
+        height: 0;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: ${({ theme }) => theme.primaryRed};
+      }
+      50% {
+        width: 0;
+        height: 100%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: ${({ theme }) => theme.primaryRed};
+        border-left-color: ${({ theme }) => theme.primaryRed};
+      }
+      100% {
+        width: 100%;
+        height: 100%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: ${({ theme }) => theme.primaryRed};
+        border-left-color: ${({ theme }) => theme.primaryRed};
       }
     }
   }

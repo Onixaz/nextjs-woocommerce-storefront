@@ -59,8 +59,7 @@ const Services: React.FC<ServicesProps> = () => {
             <FaGift />
             <CardHeader>Dovanų kuponai</CardHeader>
             <ServicesP>
-              Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor
-              sem non mi integer non faucibus.
+              Padovanok savo artimam žmogui tai ko trūksta labiausiai, poilsį ir sveikatą 🥰❤️
             </ServicesP>
           </ServicesCard>
         </ServicesWrapper>
