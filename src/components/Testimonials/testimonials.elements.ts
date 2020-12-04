@@ -4,6 +4,13 @@ import Carousel from 'react-elastic-carousel'
 export const CustomCarousel = styled(Carousel)`
   //margin-top: 4rem;
   /* round buttons on hover */
+  margin-top: 2rem;
+
+  .rec.rec-arrow {
+    @media screen and (max-width: 992px) {
+      box-shadow: 0 0 0 #000;
+    }
+  }
 
   .rec.rec-arrow:enabled {
     color: ${({ theme }) => theme.primaryRed};
@@ -13,6 +20,12 @@ export const CustomCarousel = styled(Carousel)`
   .rec.rec-arrow:enabled:hover {
     color: #fff;
     background: ${({ theme }) => theme.primaryRed};
+
+    @media screen and (max-width: 992px) {
+      box-shadow: 0 0 0 #000;
+      background: transparent;
+      color: ${({ theme }) => theme.primaryRed};
+    }
   }
 
   .rec.rec-arrow:disabled {
@@ -35,8 +48,8 @@ export const Comment = styled.p`
   text-align: center;
   font-style: italic;
   font-size: calc(0.75rem + 0.5vw);
-  padding: 0.5rem 1.5rem;
-  max-width: 950px;
+  //padding: 0.5rem 1.5rem;
+  //max-width: 950px;
   margin: 0 auto;
 `
 

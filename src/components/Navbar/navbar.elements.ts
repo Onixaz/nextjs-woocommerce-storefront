@@ -3,18 +3,17 @@ import styled from 'styled-components'
 export const Nav = styled.nav<{ scrollNav: boolean }>`
   background: ${({ scrollNav, theme }) => (scrollNav ? 'transparent' : theme.primaryBlack)};
   height: 80px;
-  //margin-top: -80px;
+  width: 100%;
+  //margin-top: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
   position: sticky;
   top: 0;
+  bottom: 0;
   z-index: 10;
   //border-bottom: 1px solid #000;
-  @media screen and (max-width: 960px) {
-    //transition: 0.3s all ease;
-  }
 `
 
 export const NavbarContainer = styled.div`
@@ -40,7 +39,7 @@ export const NavbarLogo = styled.img`
   width: 160px;
   border-radius: 10px;
   object-fit: cover;
-  transition: filter 1s ease-in-out;
+  //transition: filter 1s ease-in-out;
 `
 
 export const LogoText = styled.a`

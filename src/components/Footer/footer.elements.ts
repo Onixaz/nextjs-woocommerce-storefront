@@ -5,7 +5,6 @@ export const FooterContainer = styled.footer`
   min-height: 40vh;
 
   background: ${({ theme }) => theme.primaryBlack};
-  border: 1px solid #000;
 `
 
 export const FooterWrapper = styled.div`

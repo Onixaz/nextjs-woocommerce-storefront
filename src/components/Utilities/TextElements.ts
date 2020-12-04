@@ -8,13 +8,11 @@ export const WhiteH1 = styled.h1`
   color: ${({ theme }) => theme.primaryWhite};
   font-size: calc(2.5rem + 0.3vw);
   text-align: center;
+  padding-bottom: 2rem;
 
-  /* @media screen and (max-width: 768px) {
-    font-size: 40px;
-    @media screen and (max-width: 480px) {
-      font-size: 32px;
-    }
-  } */
+  @media screen and (max-width: 992px) {
+    padding-bottom: 0;
+  }
 `
 
 export const BlackH1 = styled.h1`

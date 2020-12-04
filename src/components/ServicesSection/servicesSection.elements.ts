@@ -2,10 +2,9 @@ import styled from 'styled-components'
 
 export const ServicesContainer = styled.div`
   background: ${({ theme }) => theme.primaryBlack};
-  padding: 12rem 2rem 8rem 2rem;
-  /* padding-bottom: 12rem; */
+  padding: 10rem 2rem;
   display: flex;
-  min-height: 100vh;
+  min-height: 75vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -47,6 +46,32 @@ export const ServicesWrapper = styled.div`
       cursor: pointer;
       transform: scale(1.05);
       transition: all 0.2s ease-in-out;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 0;
+      height: 0;
+      background: transparent;
+      border: 2px solid transparent;
+    }
+
+    &:hover::before {
+      animation: animate 1s linear forwards;
+    }
+
+    @keyframes animate {
+      0% {
+        width: 0;
+        height: 0;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
     }
   }
 `

@@ -13,6 +13,7 @@ import {
 } from './servicesSection.elements'
 
 import { BlackH1, WhiteH1, MainP, RedSpan } from '../Utilities/TextElements'
+import { RedLine } from '../Utilities/Redline'
 
 interface ServicesProps {}
 
@@ -27,6 +28,7 @@ const Services: React.FC<ServicesProps> = () => {
         mi integer non faucibus.
       </MainP> */}
       <IconContext.Provider value={{ size: '5em', color: '#ff2458' }}>
+        {/* <RedLine data-aos="zoom-in"/> */}
         <ServicesWrapper>
           <ServicesCard data-aos="fade-up">
             <FaHandHoldingHeart />
@@ -62,6 +64,7 @@ const Services: React.FC<ServicesProps> = () => {
             </ServicesP>
           </ServicesCard>
         </ServicesWrapper>
+        {/* <RedLine data-aos="zoom-in"/> */}
         {/* <RedLine /> */}
       </IconContext.Provider>
       {/* <BtnWrapper>

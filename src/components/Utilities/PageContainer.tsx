@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   min-height: 100vh;
-  padding: 4rem 0 2rem 0;
+  padding: 4rem 0 0 0;
 `
 
 const PageContainer = ({ children }) => {

@@ -4,19 +4,20 @@ import { NextPage, GetStaticProps } from 'next'
 import HeroSection from '../components/HeroSection'
 import InfoSection from '../components/InfoSection'
 import { homeObjOne } from '../components/InfoSection/customizations'
-
 import Services from '../components/ServicesSection'
-//import GallerySection from '../components/Gallery'
+import ClientSection from '../components/ClientSection'
 import dynamic from 'next/dynamic'
 import PageContainer from '../components/Utilities/PageContainer'
-//import ContactSection from '../components/Contact'
-const GallerySection = dynamic(() => import('../components/Gallery'), { ssr: false })
+import GallerySection from '../components/GallerySection'
+import { indexGalleryObj } from '../components/GallerySection/customizations'
+
+//const GallerySection = dynamic(() => import('../components/Gallery'), { ssr: false })
 
 interface BlogProps {
   posts: PostPreview[]
 }
 
-const Blog: NextPage<BlogProps> = ({ posts }) => {
+const Blog: NextPage<BlogProps> = () => {
   return (
     <>
       <Layout pageTitle="Pradžia">
@@ -24,8 +25,8 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
         <PageContainer>
           <InfoSection {...homeObjOne} />
           <Services />
-          <GallerySection />
-          {/* <ContactSection /> */}
+          <GallerySection {...indexGalleryObj} />
+          {/* <ClientSection /> */}
         </PageContainer>
       </Layout>
     </>
