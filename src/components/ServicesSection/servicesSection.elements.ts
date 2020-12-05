@@ -62,7 +62,7 @@ export const ServicesWrapper = styled.div`
     }
 
     &:hover::before {
-      animation: animate 0.3s linear forwards;
+      animation: animate 0.5s linear forwards;
     }
 
     @keyframes animate {
@@ -104,7 +104,7 @@ export const ServicesWrapper = styled.div`
     }
 
     &:hover::after {
-      animation: animate2 0.3s linear forwards;
+      animation: animate2 0.5s linear forwards;
     }
 
     @keyframes animate2 {

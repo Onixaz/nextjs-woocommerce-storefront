@@ -1,7 +1,7 @@
 import React from 'react'
 import LazyLoad from 'react-lazyload'
 
-import { PhotoCard, Photo, PhotoContainer } from './photos.elements'
+import { PhotoCard, Photo, PhotoContainer, PhotoAnimHolder, PhotoText } from './photos.elements'
 
 const baseUrl =
   'https://aygdknricp.cloudimg.io/v7/https://masazuotojasromanas.000webhostapp.com/wp-content/uploads/2020/12/'
@@ -14,7 +14,10 @@ const Photos: React.FC<PhotosProps> = ({ imgUrls }) => {
   const listImages = imgUrls.map((img) => {
     return (
       <PhotoCard key={img.toString()}>
-        <Photo src={baseUrl + img} />
+        <PhotoAnimHolder>
+          <Photo src={baseUrl + img} />
+          <PhotoText>Lankstau klientą...</PhotoText>
+        </PhotoAnimHolder>
       </PhotoCard>
     )
   })

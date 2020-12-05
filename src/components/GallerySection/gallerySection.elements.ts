@@ -13,5 +13,5 @@ export const GallerySectionContainer = styled.div`
 
 export const GalleryPhotosWrapper = styled.div`
   max-width: 1400px;
-  margin: 0 auto;
+  width: calc(50% + 10vw + 10rem);
 `
