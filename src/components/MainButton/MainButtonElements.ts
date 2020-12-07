@@ -5,7 +5,7 @@ export const Button = styled.button<{ hero?: boolean }>`
   border-radius: 30px;
   background: ${({ theme }) => theme.primaryRed};
   white-space: nowrap;
-  margin: 0 1rem;
+  margin: 1rem;
   padding: 14px 48px;
   color: ${({ theme }) => theme.primaryBlack};
   font-size: 20px;

@@ -111,7 +111,7 @@ export const Subtitle = styled.p`
   color: ${({ theme }) => theme.primaryBlack};
   @media screen and (max-width: 992px) {
     margin: 0 auto;
-    text-align: center;
+    //text-align: center;
   }
 `
 
@@ -121,7 +121,9 @@ export const BtnWrap = styled.div`
   display: flex;
   justify-content: flex-start;
   @media screen and (max-width: 992px) {
+    flex-direction: column;
     justify-content: center;
+    margin-left: 0;
   }
 `
 

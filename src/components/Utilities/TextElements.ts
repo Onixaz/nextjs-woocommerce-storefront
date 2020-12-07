@@ -18,7 +18,7 @@ export const WhiteH1 = styled.h1`
 export const BlackH1 = styled.h1`
   display: inline-block;
 
-  margin: 0.5rem 3rem;
+  margin: 0.5rem 2rem;
   color: ${({ theme }) => theme.primaryBlack};
   text-align: center;
   font-size: calc(2.5rem + 0.3vw);
@@ -29,7 +29,10 @@ export const MainP = styled.p`
   margin: 0 auto;
   padding: 1rem 0.5rem;
   letter-spacing: 0.5px;
+  text-align: center;
   color: ${({ theme }) => theme.primaryBlack};
   font-size: calc(1rem + 0.1vw);
-  text-align: center;
+  @media screen and (max-width: 992px) {
+    text-align: start;
+  }
 `

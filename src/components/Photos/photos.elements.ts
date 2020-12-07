@@ -56,16 +56,14 @@ export const PhotoText = styled.p`
   text-align: center;
   position: relative;
   z-index: 3;
-  transform: translateY(-50px);
+  transform: translateY(-100px);
   opacity: 0;
   transition: 1s all;
   color: #fff;
   font-size: calc(0.8rem + 0.075vw);
   font-weight: 400;
-  //ont-style: italic;
-  line-height: 1.8;
   padding: 0.5rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 `
 export const PhotoAnimHolder = styled.div`
   display: flex;
@@ -84,7 +82,7 @@ export const PhotoAnimHolder = styled.div`
     cursor: pointer;
     ${PhotoText} {
       opacity: 1;
-      transform: translateY(50px);
+      transform: translateY(0px);
     }
   }
 
