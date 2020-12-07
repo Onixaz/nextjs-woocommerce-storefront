@@ -61,10 +61,11 @@ export const PhotoText = styled.p`
   transition: 1s all;
   color: #fff;
   font-size: calc(0.8rem + 0.075vw);
-  //font-weight: 300;
-  //font-style: italic;
+  font-weight: 400;
+  //ont-style: italic;
+  line-height: 1.8;
   padding: 0.5rem;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.5px;
 `
 export const PhotoAnimHolder = styled.div`
   display: flex;
@@ -80,6 +81,7 @@ export const PhotoAnimHolder = styled.div`
   &:hover {
     box-shadow: 0 0 15px rgba(255, 36, 88, 1);
     transition: 1s all;
+    cursor: pointer;
     ${PhotoText} {
       opacity: 1;
       transform: translateY(50px);
@@ -105,7 +107,7 @@ export const PhotoAnimHolder = styled.div`
   }
 
   &:hover:before {
-    opacity: 0.9;
+    opacity: 0.95;
 
     animation: animatePhoto1 0.5s linear forwards;
 
@@ -155,7 +157,7 @@ export const PhotoAnimHolder = styled.div`
   }
 
   &:hover:after {
-    opacity: 0.9;
+    opacity: 0.95;
 
     animation: animatePhoto2 0.5s linear forwards;
 

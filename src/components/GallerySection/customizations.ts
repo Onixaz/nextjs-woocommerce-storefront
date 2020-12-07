@@ -10,7 +10,7 @@ export const indexGalleryObj = {
     'gal_8.jpg',
   ],
   imgDesc: [
-    `Šiandien pas mane apsilankė žymus šalies reperis, verslininkas, sportininkas. Dar žinomas kaip Vytautas Medineckas - IronVytas! Po intensyvaus sportinio masažo atlikėjas šoktelėjo kaip atjaunėjęs ir pilnas jėgų! Sudominau? Kviečiu ir jūs atvykti!`,
+    `Pas mane apsilankė žymus šalies reperis, verslininkas, sportininkas. Dar žinomas kaip Vytautas Medineckas - IronVytas! Po intensyvaus sportinio masažo atlikėjas šoktelėjo kaip atjaunėjęs ir pilnas jėgų! Sudominau? Kviečiu ir jūs atvykti!`,
     `Greičiausiai dauguma sutiks, kad vienas nerealiausių gyvenime dalyku yra, kai dirbi TIKRAI širdį glostanti ir mėgstamą darbą. Ypač džiaugiuosi tuo momentu, kai pamatau Jūsų nerealias šiltas emocijas pakylant nuo stalo, tas šypsenas veide 🙈`,
     `Atvirai pasakysiu... Nu tikrai yra superinis jausmas, kai gali ištiesti pagalbos ranką! Pamatyti tas emocijas kai žmogus pakilęs nuo stalo, atsisėdęs ant jo krašto niekur neskuba. Ir tiesiog su pailsėjusiom mintim šypsosi!❤️`,
     `Štai ką teko išgirsti iš savo klientų 😃 Supraskite mane teisingai, pagal mane masažas turi būti malonus ir be skausmis! Bet, dėja kūne pasitaiko vietų/įšimčių, kad kartais reikia ir pakentėti vardan gero rezultato!😎🙌💪`,
