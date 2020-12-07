@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FaHandHoldingHeart, FaGift, FaCommentMedical } from 'react-icons/fa'
 
 export const ServicesContainer = styled.div`
   background: ${({ theme }) => theme.primaryBlack};
@@ -14,8 +15,20 @@ export const ServicesContainer = styled.div`
   }
 `
 
+export const CustomFaHandHoldingHeart = styled(FaHandHoldingHeart)`
+  color: ${({ theme }) => theme.primaryRed};
+`
+
+export const CustomFaCommentMedical = styled(FaCommentMedical)`
+  color: ${({ theme }) => theme.primaryRed};
+`
+
+export const CustomFaGift = styled(FaGift)`
+  color: ${({ theme }) => theme.primaryRed};
+`
+
 export const ServicesCard = styled.div`
-  //background: #fff;
+  //background: ${({ theme }) => theme.secondaryBlack};
   display: flex;
   flex-direction: column;
   //justify-content: space-evenly;
@@ -46,7 +59,12 @@ export const ServicesWrapper = styled.div`
     &:hover {
       cursor: pointer;
       transform: scale(1.05);
-      transition: all 0.2s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      background: linear-gradient(to top, rgba(255, 36, 88, 0.2), rgb(13, 13, 13, 1));
+      box-shadow: 0 0 20px rgba(255, 36, 88, 0.5);
+      ${CustomFaGift}, ${CustomFaCommentMedical}, ${CustomFaHandHoldingHeart} {
+        color: #fff;
+      }
     }
 
     &:before {
@@ -56,13 +74,14 @@ export const ServicesWrapper = styled.div`
       left: -2px;
       width: 0;
       height: 0;
-      background: transparent;
+      //border-radius: 15px;
+      //background: transparent;
 
       border: 1px solid transparent;
     }
 
     &:hover::before {
-      animation: animate 0.5s linear forwards;
+      animation: animate 0.3s linear forwards;
     }
 
     @keyframes animate {
@@ -75,10 +94,10 @@ export const ServicesWrapper = styled.div`
         border-left-color: transparent;
       }
       50% {
-        width: 100%;
-        height: 0;
+        width: 0;
+        height: 100%;
         border-top-color: ${({ theme }) => theme.primaryRed};
-        border-right-color: ${({ theme }) => theme.primaryRed};
+        border-right-color: transparent;
         border-bottom-color: transparent;
         border-left-color: transparent;
       }
@@ -86,8 +105,8 @@ export const ServicesWrapper = styled.div`
         width: 100%;
         height: 100%;
         border-top-color: ${({ theme }) => theme.primaryRed};
-        border-right-color: ${({ theme }) => theme.primaryRed};
-        border-bottom-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: ${({ theme }) => theme.primaryRed};
         border-left-color: transparent;
       }
     }
@@ -98,13 +117,13 @@ export const ServicesWrapper = styled.div`
       left: -2px;
       width: 0;
       height: 0;
-      background: transparent;
-
+      //background: transparent;
+      //border-radius: 15px;
       border: 1px solid transparent;
     }
 
     &:hover::after {
-      animation: animate2 0.5s linear forwards;
+      animation: animate2 0.3s linear forwards;
     }
 
     @keyframes animate2 {
@@ -117,19 +136,19 @@ export const ServicesWrapper = styled.div`
         border-left-color: ${({ theme }) => theme.primaryRed};
       }
       50% {
-        width: 0;
-        height: 100%;
+        width: 100%;
+        height: 0;
         border-top-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: ${({ theme }) => theme.primaryRed};
+        border-right-color: ${({ theme }) => theme.primaryRed};
+        border-bottom-color: transparent;
         border-left-color: ${({ theme }) => theme.primaryRed};
       }
       100% {
         width: 100%;
         height: 100%;
         border-top-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: ${({ theme }) => theme.primaryRed};
+        border-right-color: ${({ theme }) => theme.primaryRed};
+        border-bottom-color: transparent;
         border-left-color: ${({ theme }) => theme.primaryRed};
       }
     }

@@ -117,6 +117,7 @@ export const Subtitle = styled.p`
 
 export const BtnWrap = styled.div`
   padding-top: 3rem;
+  margin-left: -22px;
   display: flex;
   justify-content: flex-start;
   @media screen and (max-width: 992px) {

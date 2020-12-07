@@ -8,15 +8,16 @@ const baseUrl =
 
 interface PhotosProps {
   imgUrls: string[]
+  imgDesc: string[]
 }
 
-const Photos: React.FC<PhotosProps> = ({ imgUrls }) => {
-  const listImages = imgUrls.map((img) => {
+const Photos: React.FC<PhotosProps> = ({ imgUrls, imgDesc }) => {
+  const listImages = imgUrls.map((img, index) => {
     return (
-      <PhotoCard key={img.toString()}>
+      <PhotoCard key={index}>
         <PhotoAnimHolder>
           <Photo src={baseUrl + img} />
-          <PhotoText>Lankstau klientą...</PhotoText>
+          <PhotoText>{imgDesc[index]}</PhotoText>
         </PhotoAnimHolder>
       </PhotoCard>
     )

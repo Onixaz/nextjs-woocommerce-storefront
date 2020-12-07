@@ -73,9 +73,12 @@ const InfoSection: React.FC<InfoProps> = ({
               ) : null}
               <Subtitle>{infoText}</Subtitle>
               {buttonPresent ? (
-                <BtnWrap>
-                  <MainButton label="Plačiau" href="/about" />
-                </BtnWrap>
+                <div>
+                  <BtnWrap>
+                    <MainButton label="Plačiau" href="/about" />
+                    <MainButton label="Susisiek" href="/about" />
+                  </BtnWrap>
+                </div>
               ) : null}
             </TextWrapper>
           </Column1>

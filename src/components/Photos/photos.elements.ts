@@ -44,27 +44,27 @@ export const Photo = styled.img`
   width: 100%;
   height: 100%;
   position: absolute;
-  border-radius: 10px;
+  //border-radius: 10px;
   object-fit: cover;
   //transition: filter 1s ease-in-out;
   //border: 3px solid #fff;
   top: 0;
   left: 0;
-  box-shadow: 0 0 10px #000;
 `
 
 export const PhotoText = styled.p`
   text-align: center;
   position: relative;
   z-index: 3;
-  transform: translateY(100px);
+  transform: translateY(-50px);
   opacity: 0;
-  transition: 0.5s all;
+  transition: 1s all;
   color: #fff;
-  font-size: calc(1rem + 0.1vw);
+  font-size: calc(0.8rem + 0.075vw);
   //font-weight: 300;
-  font-style: italic;
-  //letter-spacing: 0.5px;
+  //font-style: italic;
+  padding: 0.5rem;
+  letter-spacing: 0.2px;
 `
 export const PhotoAnimHolder = styled.div`
   display: flex;
@@ -74,6 +74,17 @@ export const PhotoAnimHolder = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+  box-shadow: 0 0 10px #000;
+  border-bottom-color: ${({ theme }) => theme.primaryRed};
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(255, 36, 88, 1);
+    transition: 1s all;
+    ${PhotoText} {
+      opacity: 1;
+      transform: translateY(50px);
+    }
+  }
 
   &::before {
     content: '';
@@ -82,23 +93,97 @@ export const PhotoAnimHolder = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 10px;
     display: block;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(255, 36, 88, 0.5), rgb(13, 13, 13, 1));
+    border: 1px solid transparent;
+    background: rgb(0, 0, 0, 0.9);
+
     z-index: 2;
-    transition: 0.5s all;
+
     opacity: 0;
-  }
-  &:hover {
-    ${PhotoText} {
-      opacity: 1;
-      transform: translateY(80px);
-    }
   }
 
   &:hover:before {
-    opacity: 1;
+    opacity: 0.9;
+
+    animation: animatePhoto1 0.5s linear forwards;
+
+    @keyframes animatePhoto1 {
+      0% {
+        width: 0;
+        height: 0;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+      50% {
+        width: 100%;
+        height: 0%;
+        border-top-color: ${({ theme }) => theme.primaryRed};
+        border-right-color: ${({ theme }) => theme.primaryRed};
+        border-bottom-color: transparent;
+        border-left-color: ${({ theme }) => theme.primaryRed};
+      }
+      100% {
+        width: 100%;
+        height: 100%;
+        border-top-color: ${({ theme }) => theme.primaryRed};
+        border-right-color: ${({ theme }) => theme.primaryRed};
+        border-bottom-color: ${({ theme }) => theme.primaryRed};
+        border-left-color: ${({ theme }) => theme.primaryRed};
+      }
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+
+    z-index: 2;
+    transition: 1s all;
+    opacity: 0;
+  }
+
+  &:hover:after {
+    opacity: 0.9;
+
+    animation: animatePhoto2 0.5s linear forwards;
+
+    @keyframes animatePhoto2 {
+      0% {
+        width: 0;
+        height: 0;
+        border-top-color: ${({ theme }) => theme.primaryRed};
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+      50% {
+        width: 100%;
+        height: 0%;
+        border-top-color: ${({ theme }) => theme.primaryRed};
+        border-right-color: ${({ theme }) => theme.primaryRed};
+        border-bottom-color: transparent;
+        border-left-color: ${({ theme }) => theme.primaryRed};
+      }
+      100% {
+        width: 100%;
+        height: 100%;
+        border-top-color: ${({ theme }) => theme.primaryRed};
+        border-right-color: ${({ theme }) => theme.primaryRed};
+        border-bottom-color: ${({ theme }) => theme.primaryRed};
+        border-left-color: ${({ theme }) => theme.primaryRed};
+      }
+    }
   }
 `

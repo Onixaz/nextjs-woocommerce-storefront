@@ -10,6 +10,9 @@ import {
   ServicesWrapper,
   BtnWrapper,
   CardHeader,
+  CustomFaCommentMedical,
+  CustomFaGift,
+  CustomFaHandHoldingHeart,
 } from './servicesSection.elements'
 
 import { BlackH1, WhiteH1, MainP, RedSpan } from '../Utilities/TextElements'
@@ -27,11 +30,11 @@ const Services: React.FC<ServicesProps> = () => {
         Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non
         mi integer non faucibus.
       </MainP> */}
-      <IconContext.Provider value={{ size: '5em', color: '#ff2458' }}>
+      <IconContext.Provider value={{ size: '5em' }}>
         {/* <RedLine data-aos="zoom-in"/> */}
         <ServicesWrapper>
           <ServicesCard data-aos="fade-up">
-            <FaHandHoldingHeart />
+            <CustomFaHandHoldingHeart />
 
             <CardHeader>Masažai</CardHeader>
             <ServicesP>
@@ -40,7 +43,7 @@ const Services: React.FC<ServicesProps> = () => {
             </ServicesP>
           </ServicesCard>
           <ServicesCard data-aos="fade-up">
-            <FaCommentMedical />
+            <CustomFaCommentMedical />
             <CardHeader>Kosultacijos</CardHeader>
             <ServicesP>
               Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor
@@ -56,7 +59,7 @@ const Services: React.FC<ServicesProps> = () => {
             </ServicesP>
           </ServicesCard> */}
           <ServicesCard data-aos="fade-up">
-            <FaGift />
+            <CustomFaGift />
             <CardHeader>Dovanų kuponai</CardHeader>
             <ServicesP>
               Padovanok savo artimam žmogui tai ko trūksta labiausiai, poilsį ir sveikatą 🥰❤️

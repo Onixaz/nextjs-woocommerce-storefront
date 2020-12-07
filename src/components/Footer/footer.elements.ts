@@ -36,8 +36,9 @@ export const ContentWrapper = styled.div`
 export const LogoSection = styled.div`
   grid-area: ls;
   margin: 1rem;
-  min-height: 30vh;
-  min-height: 320px;
+
+  max-height: 340px;
+  min-height: 300px;
   width: auto;
   display: flex;
   flex-direction: column;
