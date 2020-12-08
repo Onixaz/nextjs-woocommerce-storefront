@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const QualificationsWrapper = styled.div`
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -12,7 +12,7 @@ export const QualificationsWrapper = styled.div`
   }
 `
 export const QualPhotosWrapper = styled.div`
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  width: calc(50% + 10vw + 10rem);
+  width: calc(100% - 6rem);
 `

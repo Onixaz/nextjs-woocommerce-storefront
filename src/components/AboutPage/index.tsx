@@ -28,6 +28,7 @@ const AboutPage = () => {
       <InfoSection {...aboutObj}>
         <AboutInfoChild />
       </InfoSection>
+      <RedLine />
 
       <QualificationsSection {...aboutGalleryObj} />
     </>

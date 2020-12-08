@@ -10,12 +10,13 @@ interface PhotosProps {
   imgUrls: string[]
   imgDesc: string[]
   rows: number
+  gaps: number
 }
 
-const Photos: React.FC<PhotosProps> = ({ imgUrls, imgDesc, rows }) => {
+const Photos: React.FC<PhotosProps> = ({ imgUrls, imgDesc, rows, gaps }) => {
   const listImages = imgUrls.map((img, index) => {
     return (
-      <PhotoCard key={index}>
+      <PhotoCard gaps={gaps} key={index}>
         <PhotoAnimHolder>
           <Photo src={baseUrl + img} />
           <PhotoText>{imgDesc[index]}</PhotoText>

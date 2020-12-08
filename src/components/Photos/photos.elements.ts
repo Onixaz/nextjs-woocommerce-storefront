@@ -3,12 +3,8 @@ import styled from 'styled-components'
 export const PhotoContainer = styled.div<{ rows: number }>`
   //background-color: ${({ theme }) => theme.primaryBlack};
   display: grid;
-
+  position: relative;
   margin: 0 auto;
-  //position: relative;
-  //min-height: 100vh;
-  //margin: 0 auto;
-  padding: 3rem 1rem;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -31,10 +27,10 @@ export const PhotoContainer = styled.div<{ rows: number }>`
   }
 `
 
-export const PhotoCard = styled.div`
+export const PhotoCard = styled.div<{ gaps: number }>`
   height: 440px;
   width: 100%;
-  padding: 1rem;
+  padding: ${({ gaps }) => `${gaps}rem`};
 `
 
 export const Photo = styled.img`

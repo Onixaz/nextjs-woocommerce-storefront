@@ -1,5 +1,6 @@
 export const indexGalleryObj = {
   rows: 2,
+  gaps: 0.5,
   imgUrls: [
     'gal_1.jpg',
     'gal_2.jpg',
@@ -27,6 +28,7 @@ export const indexGalleryObj = {
 
 export const aboutGalleryObj = {
   rows: 1,
+  gaps: 1,
   imgUrls: ['sert_1.jpg', 'sert_2.jpg', 'sert_2.jpg'],
   imgDesc: [
     `Pas mane apsilankė žymus šalies reperis, verslininkas, sportininkas. Dar žinomas kaip Vytautas Medineckas - IronVytas! Po intensyvaus sportinio masažo atlikėjas šoktelėjo kaip atjaunėjęs ir pilnas jėgų! Sudominau? Kviečiu ir jūs atvykti!`,

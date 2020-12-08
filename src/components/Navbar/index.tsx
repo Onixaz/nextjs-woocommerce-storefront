@@ -74,9 +74,11 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
             </NavLinksWrapper>
           </NavItem>
           <NavItem>
-            {/* <NavBtnWrapper>
-              <NavBtn>Dovanų kuponai</NavBtn>
-            </NavBtnWrapper> */}
+            <NavLinksWrapper>
+              <Link href="/paslaugos">
+                <LinkText>Susisiek</LinkText>
+              </Link>
+            </NavLinksWrapper>
           </NavItem>
         </NavMenu>
       </NavbarContainer>

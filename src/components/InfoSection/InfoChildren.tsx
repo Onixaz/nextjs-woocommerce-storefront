@@ -92,11 +92,7 @@ export const ServicesInfoChildThree = () => {
         Mano tikslas - tvarkyti raumenų disbalansus, fizinį bei stresinį jų nuovargį. Nemeluosiu,
         mano masažai - tai ne poilsio ar relax'o procesas. Mano masažai - tai procedūra, kurioje
         gali tekti šiek tiek pasikankinti vardan to, kad visa likusį laiką - skraidytumėte kaip ant
-        sparnų. Neprireiks ir Red Bull. Man svarbus ir malonus mano darbas, todėl esu visada pilnai
-        atsidavęs klientui. Todėl neabejotinai darbus atlieku kokybiškai. Ir visa tai vien todėl -
-        kad padėčiau Jums. Neslėpsiu - geram masažuotojui pirmiau svarbu klientas, o tik poto –
-        atlygis. Kodel? Nes Jūsų geras atsiliepimas savo draugams ir artimisiems, man yra didžiausia
-        padėka, kuri generuoja klientus ir augimą savo srityje.
+        sparnų. Neprireiks ir Red Bull.
       </InfoPlainText>
     </div>
   )
