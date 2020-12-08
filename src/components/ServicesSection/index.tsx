@@ -1,6 +1,5 @@
 import React from 'react'
-import MainButton from '../MainButton'
-import { FaHandHoldingHeart, FaGift, FaCommentMedical } from 'react-icons/fa'
+import Link from 'next/link'
 import { IconContext } from 'react-icons'
 
 import {
@@ -8,21 +7,19 @@ import {
   ServicesCard,
   ServicesP,
   ServicesWrapper,
-  BtnWrapper,
   CardHeader,
   CustomFaCommentMedical,
   CustomFaGift,
   CustomFaHandHoldingHeart,
 } from './servicesSection.elements'
 
-import { BlackH1, WhiteH1, MainP, RedSpan } from '../Utilities/TextElements'
-import { RedLine } from '../Utilities/Redline'
+import { WhiteH1, RedSpan } from '../Utilities/TextElements'
 
 interface ServicesProps {}
 
 const Services: React.FC<ServicesProps> = () => {
   return (
-    <ServicesContainer id="services">
+    <ServicesContainer id="paslaugos-trumpai">
       <WhiteH1>
         Ką aš galiu Jums <RedSpan>pasiūlyti?</RedSpan>
       </WhiteH1>
@@ -33,35 +30,34 @@ const Services: React.FC<ServicesProps> = () => {
       <IconContext.Provider value={{ size: '5em' }}>
         {/* <RedLine data-aos="zoom-in"/> */}
         <ServicesWrapper>
-          <ServicesCard data-aos="fade-up">
-            <CustomFaHandHoldingHeart />
+          <Link href="/paslaugos#masazai" passHref>
+            <ServicesCard data-aos="fade-up">
+              <CustomFaHandHoldingHeart />
 
-            <CardHeader>Masažai</CardHeader>
-            <ServicesP>
-              Masažuoju pagal jūsų pageidavimus ir iškylusias problemas. Prisitaikau prie kūno,
-              parenku tinkama metodiką, bei jos atlikimo techniką.
-            </ServicesP>
-          </ServicesCard>
-          <ServicesCard data-aos="fade-up">
-            <CustomFaCommentMedical />
-            <CardHeader>Kosultacijos</CardHeader>
-            <ServicesP>Masazai, sportas, mityba, sveikatingumas, gyvensena, laikysena.</ServicesP>
-          </ServicesCard>
-          {/* <ServicesCard>
-            <FaCommentMedical />
-            <CardHeader>Gal dar kažkas</CardHeader>
-            <ServicesP>
-              Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor
-              sem non mi integer non faucibus.
-            </ServicesP>
-          </ServicesCard> */}
-          <ServicesCard data-aos="fade-up">
-            <CustomFaGift />
-            <CardHeader>Dovanų kuponai</CardHeader>
-            <ServicesP>
-              Padovanok savo artimam žmogui tai ko trūksta labiausiai, poilsį ir sveikatą 🥰❤️
-            </ServicesP>
-          </ServicesCard>
+              <CardHeader>Masažai</CardHeader>
+              <ServicesP>
+                Masažuoju pagal jūsų pageidavimus ir iškylusias problemas. Prisitaikau prie kūno,
+                parenku tinkama metodiką, bei jos atlikimo techniką.
+              </ServicesP>
+            </ServicesCard>
+          </Link>
+          <Link href="/paslaugos#konsultacijos" scroll={false} passHref>
+            <ServicesCard data-aos="fade-up">
+              <CustomFaCommentMedical />
+              <CardHeader>Kosultacijos</CardHeader>
+              <ServicesP>Masazai, sportas, mityba, sveikatingumas, gyvensena, laikysena.</ServicesP>
+            </ServicesCard>
+          </Link>
+
+          <Link href="/paslaugos#dovanu-kuponai">
+            <ServicesCard data-aos="fade-up">
+              <CustomFaGift />
+              <CardHeader>Dovanų kuponai</CardHeader>
+              <ServicesP>
+                Padovanok savo artimam žmogui tai ko trūksta labiausiai, poilsį ir sveikatą 🥰❤️
+              </ServicesP>
+            </ServicesCard>
+          </Link>
         </ServicesWrapper>
         {/* <RedLine data-aos="zoom-in"/> */}
         {/* <RedLine /> */}

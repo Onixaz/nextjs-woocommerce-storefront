@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const RedLine = styled.div`
   height: 5px;
   width: 100%;
+  padding: 2rem 0;
   opacity: 0.85;
   &::after {
     content: '';
@@ -15,9 +16,5 @@ export const RedLine = styled.div`
       rgba(0, 0, 0, 0) 100%
     );
     display: block;
-  }
-
-  @media screen and (max-width: 992px) {
-    display: none;
   }
 `

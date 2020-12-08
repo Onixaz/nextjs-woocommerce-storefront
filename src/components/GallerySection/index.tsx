@@ -15,7 +15,7 @@ interface GallerySectionProps {
 
 const GallerySection: React.FC<GallerySectionProps> = ({ imgUrls, imgDesc, rows }) => {
   return (
-    <GallerySectionContainer>
+    <GallerySectionContainer id="gallery">
       <BlackH1>
         Akimirkos iš mano <RedSpan>darbo!</RedSpan>
       </BlackH1>

@@ -35,7 +35,7 @@ const HeroSection: React.FC<HeroProps> = () => {
         </HeroBtnWrapper> */}
         <ScrollDownIconWrapper>
           <HeroP>Skaityk toliau!</HeroP>
-          <LinkS to="about" smooth={true} duration={500} exact="true">
+          <LinkS to="intro" smooth={true} duration={500} exact="true">
             <IconHolder>
               <IconDown />
             </IconHolder>

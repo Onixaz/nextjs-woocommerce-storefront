@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import MainButton from '../MainButton'
-import { RedSpan } from '../Utilities/TextElements'
 
 import {
   InfoContainer,
@@ -9,8 +7,6 @@ import {
   InfoRow,
   Column1,
   TextWrapper,
-  Heading,
-  BtnWrap,
   Column2,
   ImgWrap,
   Img,
@@ -18,30 +14,12 @@ import {
 
 interface InfoProps {
   imgStart: boolean
-  headingPresent: boolean
-  buttonPresent: boolean
   img: string
   imgSize: number
   noPadding: boolean
-  headingScale?: number
-  headingRegular?: string
-  headingEmp?: string | null
 }
 
-const InfoSection: React.FC<InfoProps> = ({
-  children,
-  imgStart,
-  headingPresent,
-  buttonPresent,
-
-  img,
-  imgSize,
-  noPadding,
-  headingScale,
-  headingRegular,
-  headingEmp,
-}) => {
-  //const imgStart = false
+const InfoSection: React.FC<InfoProps> = ({ children, imgStart, img, imgSize, noPadding }) => {
   const [isIndex, setIsIndex] = useState(false)
   const router = useRouter()
 
@@ -59,28 +37,11 @@ const InfoSection: React.FC<InfoProps> = ({
   }, [])
 
   return (
-    <InfoContainer noPadding={noPadding} id="about">
+    <InfoContainer noPadding={noPadding} id="intro">
       <InfoWrapper>
         <InfoRow imgStart={imgStart}>
           <Column1>
-            <TextWrapper data-aos={isIndex ? 'fade-up' : ''}>
-              {/* <TopLine>{topLine}</TopLine> */}
-              {headingPresent ? (
-                <Heading headingScale={headingScale}>
-                  {headingRegular} <RedSpan>{headingEmp}</RedSpan>
-                </Heading>
-              ) : null}
-              {/* <Subtitle>{infoText}</Subtitle> */}
-              {children}
-              {buttonPresent ? (
-                <div>
-                  <BtnWrap>
-                    <MainButton label="Plačiau" href="/about" />
-                    <MainButton label="Susisiek" href="/about" />
-                  </BtnWrap>
-                </div>
-              ) : null}
-            </TextWrapper>
+            <TextWrapper data-aos={isIndex ? 'fade-up' : ''}>{children}</TextWrapper>
           </Column1>
           <Column2>
             <ImgWrap imgSize={imgSize} data-aos={isIndex ? 'fade-up' : ''}>

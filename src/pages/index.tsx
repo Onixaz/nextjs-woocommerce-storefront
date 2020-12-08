@@ -6,7 +6,6 @@ import InfoSection from '../components/InfoSection'
 import { homeObjOne } from '../components/InfoSection/customizations'
 import Services from '../components/ServicesSection'
 
-import PageContainer from '../components/Utilities/PageContainer'
 import GallerySection from '../components/GallerySection'
 import { indexGalleryObj } from '../components/Photos/customizations'
 import { IndexInfoChild } from '../components/InfoSection/InfoChildren'
@@ -22,15 +21,14 @@ const Blog: NextPage<BlogProps> = () => {
     <>
       <Layout pageTitle="Pradžia">
         <HeroSection />
-        <PageContainer>
-          <InfoSection {...homeObjOne}>
-            {/* <IndexInfoChild /> */}
-            <IndexInfoChild />
-          </InfoSection>
-          <Services />
-          <GallerySection {...indexGalleryObj} />
-          {/* <ClientSection /> */}
-        </PageContainer>
+
+        <InfoSection {...homeObjOne}>
+          {/* <IndexInfoChild /> */}
+          <IndexInfoChild />
+        </InfoSection>
+        <Services />
+        <GallerySection {...indexGalleryObj} />
+        {/* <ClientSection /> */}
       </Layout>
     </>
   )
