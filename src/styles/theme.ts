@@ -9,8 +9,9 @@ const defaultTheme = {
   medium: '#555',
   light: '#8d99ae',
   //bg
-  lightMediumBg: '#f7f7f7',
-  //lightMediumBg: '#dbdbdb',
+  lightMediumBg: '#fafafa',
+
+  //lightMediumBg: "linear-gradient(0.5turn, #f7f7f7, #f5f5f5)",
 
   lightDarkerBg: '#cfcfcf',
   lightWhiteBg: '#fff',

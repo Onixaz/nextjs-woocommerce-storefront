@@ -10,7 +10,6 @@ import {
   Column1,
   TextWrapper,
   Heading,
-  Subtitle,
   BtnWrap,
   Column2,
   ImgWrap,
@@ -21,7 +20,6 @@ interface InfoProps {
   imgStart: boolean
   headingPresent: boolean
   buttonPresent: boolean
-  infoText: string
   img: string
   imgSize: number
   noPadding: boolean
@@ -31,10 +29,11 @@ interface InfoProps {
 }
 
 const InfoSection: React.FC<InfoProps> = ({
+  children,
   imgStart,
   headingPresent,
   buttonPresent,
-  infoText,
+
   img,
   imgSize,
   noPadding,
@@ -71,7 +70,8 @@ const InfoSection: React.FC<InfoProps> = ({
                   {headingRegular} <RedSpan>{headingEmp}</RedSpan>
                 </Heading>
               ) : null}
-              <Subtitle>{infoText}</Subtitle>
+              {/* <Subtitle>{infoText}</Subtitle> */}
+              {children}
               {buttonPresent ? (
                 <div>
                   <BtnWrap>

@@ -26,7 +26,7 @@ export const InfoWrapper = styled.div`
 
   //border: 1px solid #000;
 
-  border-radius: 15px;
+  //border-radius: 15px;
 
   padding: 0 24px;
   @media screen and (max-width: 992px) {
@@ -42,10 +42,15 @@ export const InfoRow = styled.div<{ imgStart: boolean }>`
 
   align-items: center;
   grid-template-areas: ${({ imgStart }) => (imgStart ? `'col2 col1'` : `'col1 col2'`)};
+
   @media screen and (max-width: 992px) {
-    grid-template-areas: ${({ imgStart }) =>
-      imgStart ? `'col2' 'col1'` : `'col1 col1' 'col2 col2'`};
+    grid-template-areas: 'col1 col1' 'col2 col2';
   }
+
+  /* @media screen and (max-width: 992px) {
+    grid-template-areas: ${({ imgStart }) =>
+    imgStart ? `'col2' 'col1'` : `'col1 col1' 'col2 col2'`};
+  } */
 `
 
 export const Column1 = styled.div`
@@ -101,7 +106,7 @@ export const Heading = styled.h1<{ headingScale: number }>`
   }
 `
 
-export const Subtitle = styled.p`
+export const InfoPlainText = styled.p`
   //max-width: 440px;
   margin: 0;
   letter-spacing: 0.5px;
@@ -134,13 +139,13 @@ export const ImgWrap = styled.div<{ imgSize: number }>`
   margin-bottom: 3rem;
 
   &::before {
-    opacity: 0.9;
+    opacity: 1;
     position: absolute;
     left: -31px;
     top: -30px;
     width: 90%;
     height: 92%;
-    border-radius: 15px;
+    //border-radius: 15px;
     box-shadow: 0 0 5px #000;
     z-index: -1;
     content: '';
@@ -149,13 +154,13 @@ export const ImgWrap = styled.div<{ imgSize: number }>`
   }
 
   &::after {
-    opacity: 0.9;
+    opacity: 1;
     position: absolute;
     right: -31px;
     bottom: -30px;
     width: 90%;
     height: 92%;
-    border-radius: 15px;
+    //border-radius: 15px;
     box-shadow: 0 0 5px #000;
     z-index: -1;
     content: '';
@@ -168,7 +173,7 @@ export const Img = styled.img`
   position: relative;
   width: 100%;
   border: 3px solid #fff;
-  border-radius: 15px;
+  //border-radius: 15px;
   max-height: 600px;
   padding-right: 0;
 `

@@ -9,9 +9,10 @@ const baseUrl =
 interface PhotosProps {
   imgUrls: string[]
   imgDesc: string[]
+  rows: number
 }
 
-const Photos: React.FC<PhotosProps> = ({ imgUrls, imgDesc }) => {
+const Photos: React.FC<PhotosProps> = ({ imgUrls, imgDesc, rows }) => {
   const listImages = imgUrls.map((img, index) => {
     return (
       <PhotoCard key={index}>
@@ -22,7 +23,11 @@ const Photos: React.FC<PhotosProps> = ({ imgUrls, imgDesc }) => {
       </PhotoCard>
     )
   })
-  return <PhotoContainer data-aos="fade-up">{listImages}</PhotoContainer>
+  return (
+    <PhotoContainer rows={rows} data-aos="fade-up">
+      {listImages}
+    </PhotoContainer>
+  )
 }
 
 export default Photos

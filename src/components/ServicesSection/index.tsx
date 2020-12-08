@@ -38,17 +38,14 @@ const Services: React.FC<ServicesProps> = () => {
 
             <CardHeader>Masažai</CardHeader>
             <ServicesP>
-              Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor
-              sem non mi integer non faucibus.
+              Masažuoju pagal jūsų pageidavimus ir iškylusias problemas. Prisitaikau prie kūno,
+              parenku tinkama metodiką, bei jos atlikimo techniką.
             </ServicesP>
           </ServicesCard>
           <ServicesCard data-aos="fade-up">
             <CustomFaCommentMedical />
             <CardHeader>Kosultacijos</CardHeader>
-            <ServicesP>
-              Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor
-              sem non mi integer non faucibus.
-            </ServicesP>
+            <ServicesP>Masazai, sportas, mityba, sveikatingumas, gyvensena, laikysena.</ServicesP>
           </ServicesCard>
           {/* <ServicesCard>
             <FaCommentMedical />

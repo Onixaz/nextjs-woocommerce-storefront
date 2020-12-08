@@ -10,9 +10,10 @@ import { RedSpan, BlackH1 } from '../Utilities/TextElements'
 interface GallerySectionProps {
   imgUrls: string[]
   imgDesc: string[]
+  rows: number
 }
 
-const GallerySection: React.FC<GallerySectionProps> = ({ imgUrls, imgDesc }) => {
+const GallerySection: React.FC<GallerySectionProps> = ({ imgUrls, imgDesc, rows }) => {
   return (
     <GallerySectionContainer>
       <BlackH1>
@@ -20,7 +21,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({ imgUrls, imgDesc }) => 
       </BlackH1>
       <GalleryPhotosWrapper>
         <RedLine data-aos="zoom-in" />
-        <Photos imgUrls={imgUrls} imgDesc={imgDesc} />
+        <Photos rows={rows} imgUrls={imgUrls} imgDesc={imgDesc} />
         <RedLine data-aos="zoom-in" />
       </GalleryPhotosWrapper>
     </GallerySectionContainer>

@@ -29,7 +29,7 @@ export const MainP = styled.p`
   margin: 0 auto;
   padding: 1rem 0.5rem;
   letter-spacing: 0.5px;
-  text-align: center;
+  //text-align: center;
   color: ${({ theme }) => theme.primaryBlack};
   font-size: calc(1rem + 0.1vw);
   @media screen and (max-width: 992px) {

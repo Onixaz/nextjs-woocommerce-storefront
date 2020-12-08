@@ -18,6 +18,7 @@ export const Button = styled.button<{ hero?: boolean }>`
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   &:hover {
     transition: all 0.2s ease-in-out;
     background: ${({ hero, theme }) => (hero ? theme.primaryWhite : theme.primaryBlack)};

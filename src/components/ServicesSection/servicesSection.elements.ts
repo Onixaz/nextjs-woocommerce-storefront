@@ -57,9 +57,10 @@ export const ServicesWrapper = styled.div`
 
   ${ServicesCard} {
     &:hover {
+      transition: all 1.5s ease;
       cursor: pointer;
       transform: scale(1.05);
-      transition: all 0.3s ease-in-out;
+
       background: linear-gradient(to top, rgba(255, 36, 88, 0.2), rgb(13, 13, 13, 1));
       box-shadow: 0 0 20px rgba(255, 36, 88, 0.5);
       ${CustomFaGift}, ${CustomFaCommentMedical}, ${CustomFaHandHoldingHeart} {
@@ -70,87 +71,48 @@ export const ServicesWrapper = styled.div`
     &:before {
       content: '';
       position: absolute;
-      top: -2px;
-      left: -2px;
+      bottom: 0;
+      left: 0;
       width: 0;
       height: 0;
-      //border-radius: 15px;
-      //background: transparent;
 
       border: 1px solid transparent;
     }
 
     &:hover::before {
-      animation: animate 0.3s linear forwards;
+      /* transition: all 0.3s;
+      opacity: 1; */
+
+      //animation: animate 0.3s linear forwards;
+      width: 100%;
+      height: 100%;
+      border: 1px solid ${({ theme }) => theme.primaryRed};
+      border-right: none;
+      border-bottom: none;
+      transition: height 0.2s linear, width 0.2s linear 0.2s;
     }
 
-    @keyframes animate {
-      0% {
-        width: 0;
-        height: 0;
-        border-top-color: ${({ theme }) => theme.primaryRed};
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-left-color: transparent;
-      }
-      50% {
-        width: 0;
-        height: 100%;
-        border-top-color: ${({ theme }) => theme.primaryRed};
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-left-color: transparent;
-      }
-      100% {
-        width: 100%;
-        height: 100%;
-        border-top-color: ${({ theme }) => theme.primaryRed};
-        border-right-color: transparent;
-        border-bottom-color: ${({ theme }) => theme.primaryRed};
-        border-left-color: transparent;
-      }
-    }
     &:after {
       content: '';
       position: absolute;
-      top: -2px;
-      left: -2px;
-      width: 0;
+      top: 0;
+      right: 0;
       height: 0;
-      //background: transparent;
-      //border-radius: 15px;
+      width: 0;
       border: 1px solid transparent;
     }
 
     &:hover::after {
-      animation: animate2 0.3s linear forwards;
-    }
+      /* transition: all 0.3s;
+      opacity: 1; */
 
-    @keyframes animate2 {
-      0% {
-        width: 0;
-        height: 0;
-        border-top-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-left-color: ${({ theme }) => theme.primaryRed};
-      }
-      50% {
-        width: 100%;
-        height: 0;
-        border-top-color: transparent;
-        border-right-color: ${({ theme }) => theme.primaryRed};
-        border-bottom-color: transparent;
-        border-left-color: ${({ theme }) => theme.primaryRed};
-      }
-      100% {
-        width: 100%;
-        height: 100%;
-        border-top-color: transparent;
-        border-right-color: ${({ theme }) => theme.primaryRed};
-        border-bottom-color: transparent;
-        border-left-color: ${({ theme }) => theme.primaryRed};
-      }
+      //animation: animate 0.3s linear forwards;
+      width: 100%;
+      height: 100%;
+      border: 1px solid ${({ theme }) => theme.primaryRed};
+      border-left: none;
+      border-top: none;
+      transition: height 0.2s linear, width 0.2s linear 0.2s;
     }
   }
 `
