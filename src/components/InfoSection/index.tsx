@@ -17,9 +17,17 @@ interface InfoProps {
   img: string
   imgSize: number
   noPadding: boolean
+  resizeAtFull: boolean
 }
 
-const InfoSection: React.FC<InfoProps> = ({ children, imgStart, img, imgSize, noPadding }) => {
+const InfoSection: React.FC<InfoProps> = ({
+  children,
+  imgStart,
+  img,
+  imgSize,
+  noPadding,
+  resizeAtFull,
+}) => {
   const [isIndex, setIsIndex] = useState(false)
   const router = useRouter()
 
@@ -44,7 +52,11 @@ const InfoSection: React.FC<InfoProps> = ({ children, imgStart, img, imgSize, no
             <TextWrapper data-aos={isIndex ? 'fade-up' : ''}>{children}</TextWrapper>
           </Column1>
           <Column2>
-            <ImgWrap imgSize={imgSize} data-aos={isIndex ? 'fade-up' : ''}>
+            <ImgWrap
+              imgSize={imgSize}
+              resizeAtFull={resizeAtFull}
+              data-aos={isIndex ? 'fade-up' : ''}
+            >
               {/*Disabled for Netlfy for now */}
               {/* <NextCustomImage src={img} alt="Masažuotojas Romanas" width={555} height={555} /> */}
               <Img src={img} alt="Masažuotojas Romanas" />

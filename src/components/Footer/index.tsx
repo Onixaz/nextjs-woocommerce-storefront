@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = () => {
       <FooterWrapper>
         <ContentWrapper>
           <LogoSection>
-            <LogoFooter src="https://aygdknricp.cloudimg.io/v7/https://masazuotojasromanas.000webhostapp.com/wp-content/uploads/2020/12/logotipas.png" />
+            <LogoFooter src="https://aygdknricp.cloudimg.io/v7/https://epizootic-ingredien.000webhostapp.com/wp-content/uploads/2020/12/logotipas.png" />
           </LogoSection>
 
           <ContactInfoSection>
@@ -47,7 +47,10 @@ const Footer: React.FC<FooterProps> = () => {
           </SocialSection>
         </ContentWrapper>
 
-        <CopyrightElement>Copyright</CopyrightElement>
+        <CopyrightElement>
+          &#169; Roman Oleskevic {new Date().getFullYear()}. Visos teisės saugomos. Dizainas ir
+          programavimas - <a href="http://www.pajustudio.net">Paju Studio</a>.
+        </CopyrightElement>
       </FooterWrapper>
     </FooterContainer>
   )

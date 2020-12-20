@@ -10,10 +10,10 @@ export const PhotoContainer = styled.div<{ rows: number }>`
   overflow: hidden;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(rows, 1fr);
+  padding: 3rem 1rem;
 
   @media screen and (max-width: 992px) {
     display: grid;
-    padding: 3rem 1rem;
 
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(rows * 2, 1fr);
@@ -28,7 +28,7 @@ export const PhotoContainer = styled.div<{ rows: number }>`
 `
 
 export const PhotoCard = styled.div<{ gaps: number }>`
-  height: 440px;
+  height: 340px;
   width: 100%;
   padding: ${({ gaps }) => `${gaps}rem`};
 `

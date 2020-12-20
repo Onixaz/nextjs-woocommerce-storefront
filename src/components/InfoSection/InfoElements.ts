@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { IoIosArrowForward } from 'react-icons/io'
 
 export const InfoContainer = styled.div<{ noPadding: boolean }>`
   position: relative;
@@ -109,6 +110,7 @@ export const Heading = styled.h1<{ headingScale: number }>`
 export const InfoPlainText = styled.p`
   //max-width: 440px;
   margin: 0;
+
   letter-spacing: 0.5px;
   margin-bottom: 15px;
   font-size: calc(1rem + 0.1vw);
@@ -132,11 +134,16 @@ export const BtnWrap = styled.div`
   }
 `
 
-export const ImgWrap = styled.div<{ imgSize: number }>`
+export const ImgWrap = styled.div<{ imgSize: number; resizeAtFull: boolean }>`
   position: relative;
   max-width: ${({ imgSize }) => `${imgSize}px`};
   height: 100%;
   margin-bottom: 3rem;
+
+  @media screen and (max-width: 992px) {
+    max-width: ${({ imgSize, resizeAtFull }) =>
+      resizeAtFull ? `${imgSize + 155}px` : `${imgSize + 155}px`};
+  }
 
   &::before {
     opacity: 1;
@@ -178,8 +185,64 @@ export const Img = styled.img`
   padding-right: 0;
 `
 
-// export const NextCustomImage = styled(Image)`
-//   border-radius: 15px;
-//   border: 5px solid #fff !important;
-//   //box-shadow: 0 0 1px #000 !important;
-// `
+export const ServicesInfoWrapper = styled.div`
+  padding-top: 2rem;
+`
+
+export const ServiceList = styled.ul`
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+`
+
+export const ListItem = styled.li`
+  //margin: 0 5px 0 5px;
+  padding: 0.25rem 0;
+  font-size: calc(1.2rem + 0.1vw);
+  //margin-left: 1.5em;
+
+  &:before {
+    content: '\\27A4';
+    color: ${({ theme }) => theme.primaryRed};
+
+    font-weight: 900;
+    display: inline-block;
+
+    width: 1.5em;
+  }
+`
+
+export const ConsultCardWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+  flex-direction: column;
+`
+
+export const ConsultCard = styled.div`
+  box-shadow: 0 0 3px #000;
+  min-height: 140px;
+  margin: 2rem 0;
+  padding: 0.25rem;
+  border: 1px solid ${({ theme }) => theme.primaryBlack};
+`
+
+export const ConsultCardHeader = styled.p`
+  font-size: calc(1.2rem + 0.1vw);
+  padding: 0.35rem 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  color: ${({ theme }) => theme.primaryRed};
+
+  @media screen and (max-width: 992px) {
+    text-align: center;
+  }
+`
+
+export const ConsultCardText = styled.p`
+  font-size: calc(0.9rem + 0.1vw);
+  text-align: center;
+  padding: 1rem;
+  opacity: 0.95;
+  letter-spacing: 0.5px;
+`

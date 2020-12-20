@@ -35,16 +35,13 @@ const Services: React.FC<ServicesProps> = () => {
               <CustomFaHandHoldingHeart />
 
               <CardHeader>Masažai</CardHeader>
-              <ServicesP>
-                Masažuoju pagal jūsų pageidavimus ir iškylusias problemas. Prisitaikau prie kūno,
-                parenku tinkama metodiką, bei jos atlikimo techniką.
-              </ServicesP>
+              <ServicesP>Masažuoju pagal jūsų pageidavimus ir iškylusias problemas.</ServicesP>
             </ServicesCard>
           </Link>
           <Link href="/paslaugos#konsultacijos" scroll={false} passHref>
             <ServicesCard data-aos="fade-up">
               <CustomFaCommentMedical />
-              <CardHeader>Kosultacijos</CardHeader>
+              <CardHeader>Konsultacijos</CardHeader>
               <ServicesP>Masazai, sportas, mityba, sveikatingumas, gyvensena, laikysena.</ServicesP>
             </ServicesCard>
           </Link>
@@ -54,7 +51,7 @@ const Services: React.FC<ServicesProps> = () => {
               <CustomFaGift />
               <CardHeader>Dovanų kuponai</CardHeader>
               <ServicesP>
-                Padovanok savo artimam žmogui tai ko trūksta labiausiai, poilsį ir sveikatą 🥰❤️
+                Padovanok savo artimam žmogui tai ko trūksta labiausiai, poilsį ir sveikatą.
               </ServicesP>
             </ServicesCard>
           </Link>

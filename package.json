@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx --fix"
   },
+  "proxy": "https://cors-anywhere.herokuapp.com/",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -26,6 +27,8 @@
   "license": "ISC",
   "dependencies": {
     "aos": "^2.3.4",
+    "axios": "^0.21.0",
+    "formik": "^2.2.6",
     "gray-matter": "^4.0.2",
     "next": "^10.0.3",
     "react": "^16.13.1",

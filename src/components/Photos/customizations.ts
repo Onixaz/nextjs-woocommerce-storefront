@@ -29,7 +29,14 @@ export const indexGalleryObj = {
 export const aboutGalleryObj = {
   rows: 1,
   gaps: 1,
-  imgUrls: ['sert_1.jpg', 'sert_2.jpg', 'sert_2.jpg'],
+  imgUrls: [
+    'serti_1.jpg',
+    'serti_2.jpeg',
+    'serti_3.jpeg',
+    'serti_4.jpeg',
+    'serti_5.jpeg',
+    'serti_6.jpg',
+  ],
   imgDesc: [
     `Pas mane apsilankė žymus šalies reperis, verslininkas, sportininkas. Dar žinomas kaip Vytautas Medineckas - IronVytas! Po intensyvaus sportinio masažo atlikėjas šoktelėjo kaip atjaunėjęs ir pilnas jėgų! Sudominau? Kviečiu ir jūs atvykti!`,
     `Greičiausiai dauguma sutiks, kad vienas nerealiausių gyvenime dalyku yra, kai dirbi TIKRAI širdį glostanti ir mėgstamą darbą. Ypač džiaugiuosi tuo momentu, kai pamatau Jūsų nerealias šiltas emocijas pakylant nuo stalo, tas šypsenas veide 🙈`,

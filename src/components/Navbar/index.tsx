@@ -18,7 +18,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 interface NavbarProps {
-  toggle: any
+  toggle: () => void
 }
 
 const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
         <NavLogoWrapper>
           <Link href="/">
             <LinkText>
-              <NavbarLogo src="https://aygdknricp.cloudimg.io/v7/https://masazuotojasromanas.000webhostapp.com/wp-content/uploads/2020/12/masazuotojas_romanas_logo.png" />
+              <NavbarLogo src="https://aygdknricp.cloudimg.io/v7/https://epizootic-ingredien.000webhostapp.com/wp-content/uploads/2020/12/masazuotojas_romanas_logo.png" />
             </LinkText>
           </Link>
         </NavLogoWrapper>
@@ -75,7 +75,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
           </NavItem>
           <NavItem>
             <NavLinksWrapper>
-              <Link href="/paslaugos">
+              <Link href="/susisiek">
                 <LinkText>Susisiek</LinkText>
               </Link>
             </NavLinksWrapper>

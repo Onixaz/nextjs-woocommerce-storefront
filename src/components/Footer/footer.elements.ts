@@ -53,7 +53,7 @@ export const ContactInfoSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid #fff;
+  border-right: 2px solid #fff;
 `
 
 export const ContactWrapperExtra = styled.div`
@@ -153,7 +153,12 @@ export const StyledFaYoutube = styled(FaYoutube)`
 export const CopyrightElement = styled.div`
   text-align: center;
   color: #fff;
-  border-top: 1px solid #fff;
+  border-top: 2px solid #fff;
   font-size: 0.8rem;
   padding: 2rem 0;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
 `

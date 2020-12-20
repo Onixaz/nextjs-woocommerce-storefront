@@ -14,5 +14,5 @@ export const QualificationsWrapper = styled.div`
 export const QualPhotosWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  width: calc(100% - 6rem);
+  width: 100%;
 `

@@ -28,14 +28,10 @@ export const CustomFaGift = styled(FaGift)`
 `
 
 export const ServicesCard = styled.div`
-  //background: ${({ theme }) => theme.secondaryBlack};
   display: flex;
   flex-direction: column;
-  //justify-content: space-evenly;
   align-items: center;
-
   margin: 1.5rem;
-  //border: 1px solid #fff;
   width: calc(25% + 1rem);
   border-radius: 5px;
   padding: 2rem 1rem 1rem 1rem;
@@ -76,7 +72,7 @@ export const ServicesWrapper = styled.div`
       width: 0;
       height: 0;
 
-      border: 1px solid transparent;
+      border: 2px solid transparent;
     }
 
     &:hover::before {
@@ -86,7 +82,7 @@ export const ServicesWrapper = styled.div`
       //animation: animate 0.3s linear forwards;
       width: 100%;
       height: 100%;
-      border: 1px solid ${({ theme }) => theme.primaryRed};
+      border: 2px solid ${({ theme }) => theme.primaryRed};
       border-right: none;
       border-bottom: none;
       transition: height 0.2s linear, width 0.2s linear 0.2s;
@@ -99,7 +95,7 @@ export const ServicesWrapper = styled.div`
       right: 0;
       height: 0;
       width: 0;
-      border: 1px solid transparent;
+      border: 2px solid transparent;
     }
 
     &:hover::after {
@@ -109,7 +105,7 @@ export const ServicesWrapper = styled.div`
       //animation: animate 0.3s linear forwards;
       width: 100%;
       height: 100%;
-      border: 1px solid ${({ theme }) => theme.primaryRed};
+      border: 2px solid ${({ theme }) => theme.primaryRed};
       border-left: none;
       border-top: none;
       transition: height 0.2s linear, width 0.2s linear 0.2s;
@@ -120,15 +116,16 @@ export const ServicesWrapper = styled.div`
 export const ServicesP = styled.p`
   max-width: 440px;
   padding: 10px;
-  font-size: calc(15px + 0.1vw);
-  line-height: 24px;
+  font-size: calc(0.95rem + 0.1vw);
+  line-height: 28px;
   text-align: center;
+  letter-spacing: 0.5px;
   color: #fff;
 `
 
 export const CardHeader = styled.p`
   color: #fff;
-  font-size: clamp(1.25rem, 5vw + 1rem, 1.5rem);
+  font-size: calc(1.5rem + 0.1vw);
   font-weight: 600;
   padding-top: 2rem;
   text-align: center;

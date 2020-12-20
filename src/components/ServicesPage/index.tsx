@@ -17,7 +17,7 @@ const ServicesPage: React.FC<ServicesPageProps> = () => {
     <>
       <ServicesPageHeadingWrapper>
         <BlackH1>
-          Mano teikiamos<RedSpan> paslaugos!</RedSpan>
+          Mano teikiamos<RedSpan> paslaugos:</RedSpan>
         </BlackH1>
       </ServicesPageHeadingWrapper>
       <RedLine id="masazai" />

@@ -11,13 +11,13 @@ const GlobalStyle = createGlobalStyle<Props>`
     margin: 0;
     padding: 0;
     outline: none;
-    font-family: 'Fira Sans', 'Lato', sans-serif;
+    font-family: 'Fira Sans',  sans-serif; //'Fira Sans', 'Lato',
   }
 
 
   body {
     
-    font-family: 'Fira Sans', 'Lato', sans-serif;
+    font-family: 'Fira Sans', sans-serif; //'Fira Sans', 'Lato',
     line-height: 1.7;
     background: ${({ theme }) => theme.lightMediumBg};
     
@@ -48,6 +48,18 @@ const GlobalStyle = createGlobalStyle<Props>`
   ul {
     list-style: none
   }
+
+  
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active  {
+    box-shadow: inherit;
+    -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.lightMediumBg} inset !important;
+}
+
+  
 `
 
 export default GlobalStyle
