@@ -30,7 +30,8 @@ export const ModalContainer = styled.div<{ showDescription: boolean }>`
   z-index: 10;
 
   @media screen and (max-width: 768px) {
-    max-width: 480px;
+    max-width: 360px;
+
     grid-template-areas:
       'img img'
       'desc desc';
