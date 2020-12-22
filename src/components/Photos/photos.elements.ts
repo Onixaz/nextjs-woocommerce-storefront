@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const PhotoContainer = styled.div<{ rows: number }>`
-  //background-color: ${({ theme }) => theme.primaryBlack};
   display: grid;
   position: relative;
   margin: 0 auto;
@@ -43,19 +42,6 @@ export const Photo = styled.img`
   left: 0;
 `
 
-export const PhotoText = styled.p`
-  text-align: center;
-  position: relative;
-  z-index: 3;
-  transform: translateY(-100px);
-  opacity: 0;
-  transition: 1s all;
-  color: ${({ theme }) => theme.lightMediumBg};
-  font-size: calc(0.8rem + 0.075vw);
-  font-weight: 400;
-  padding: 0.5rem;
-  letter-spacing: 0.3px;
-`
 export const PhotoAnimHolder = styled.div`
   display: flex;
   background: ${({ theme }) => theme.primaryBlack};
@@ -73,7 +59,7 @@ export const PhotoAnimHolder = styled.div`
     cursor: pointer;
 
     ${Photo} {
-      transform: scale(1.05);
+      transform: scale(1.02);
       opacity: 0.7;
     }
   }

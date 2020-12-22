@@ -18,7 +18,7 @@ export const InfoWrapper = styled.div`
   display: grid;
   position: relative;
   align-items: center;
-  z-index: 1;
+  //z-index: 1;
   width: 100%;
   min-height: 50vh;
   max-width: 1200px;

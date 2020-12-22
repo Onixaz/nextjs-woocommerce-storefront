@@ -9,6 +9,7 @@ export const RedLine = styled.div`
     content: '';
     height: 1px;
     width: 100%;
+    //z-index: 1;
     background: linear-gradient(
       to right,
       rgba(0, 0, 0, 0) 0%,

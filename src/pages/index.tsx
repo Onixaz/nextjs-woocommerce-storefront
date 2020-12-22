@@ -5,12 +5,9 @@ import HeroSection from '../components/HeroSection'
 import InfoSection from '../components/InfoSection'
 import { homeObjOne } from '../components/InfoSection/customizations'
 import Services from '../components/ServicesSection'
-
 import GallerySection from '../components/GallerySection'
 import { indexGalleryObj } from '../components/Photos/customizations'
 import { IndexInfoChild } from '../components/InfoSection/InfoChildren'
-
-//const GallerySection = dynamic(() => import('../components/Gallery'), { ssr: false })
 
 interface BlogProps {
   posts: PostPreview[]
@@ -23,12 +20,10 @@ const Blog: NextPage<BlogProps> = () => {
         <HeroSection />
 
         <InfoSection {...homeObjOne}>
-          {/* <IndexInfoChild /> */}
           <IndexInfoChild />
         </InfoSection>
         <Services />
         <GallerySection {...indexGalleryObj} />
-        {/* <ClientSection /> */}
       </Layout>
     </>
   )

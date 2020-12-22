@@ -13,12 +13,19 @@ import { RedSpan, BlackH1 } from '../Utilities/TextElements'
 
 interface GallerySectionProps {
   imgUrls: string[]
-  imgDesc: string[]
+  imgDesc?: string[]
   rows: number
   gaps: number
+  showDescription: boolean
 }
 
-const GallerySection: React.FC<GallerySectionProps> = ({ imgUrls, imgDesc, rows, gaps }) => {
+const GallerySection: React.FC<GallerySectionProps> = ({
+  imgUrls,
+  imgDesc,
+  rows,
+  gaps,
+  showDescription,
+}) => {
   return (
     <GallerySectionContainer id="gallery">
       <BlackH1>
@@ -27,8 +34,13 @@ const GallerySection: React.FC<GallerySectionProps> = ({ imgUrls, imgDesc, rows,
 
       <GalleryPhotosWrapper>
         <RedLine data-aos="zoom-in" />
-        <Photos gaps={gaps} rows={rows} imgUrls={imgUrls} imgDesc={imgDesc} />
-        <RedLine data-aos="zoom-in" />
+        <Photos
+          showDescription={showDescription}
+          gaps={gaps}
+          rows={rows}
+          imgUrls={imgUrls}
+          imgDesc={imgDesc}
+        />
       </GalleryPhotosWrapper>
       {/* <GallerySlideBg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

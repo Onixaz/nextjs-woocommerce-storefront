@@ -48,7 +48,7 @@ const Footer: React.FC<FooterProps> = () => {
         </ContentWrapper>
 
         <CopyrightElement>
-          &#169; Roman Oleskevic {new Date().getFullYear()}. Visos teisės saugomos. Dizainas ir
+          &#169; Roman Oleškevič {new Date().getFullYear()}. Visos teisės saugomos. Dizainas ir
           programavimas - <a href="http://www.pajustudio.net">Paju Studio</a>.
         </CopyrightElement>
       </FooterWrapper>

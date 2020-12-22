@@ -20,8 +20,9 @@ const GlobalStyle = createGlobalStyle<Props>`
     font-family: 'Fira Sans', sans-serif; //'Fira Sans', 'Lato',
     line-height: 1.7;
     background: ${({ theme }) => theme.lightMediumBg};
+
     
-     //color: ${({ theme }) => theme.medium};
+     
      /* &::after{
       content: ' ';
       background-image: url('/full_back.jpg');
@@ -43,7 +44,7 @@ const GlobalStyle = createGlobalStyle<Props>`
   } 
   a {
     
-    color: ${({ theme }) => theme.dark}
+    color: ${({ theme }) => theme.primaryBlack}
   }
   ul {
     list-style: none
