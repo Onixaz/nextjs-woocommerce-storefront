@@ -8,6 +8,7 @@ interface QualificationsSectionProps {
   imgDesc: string[]
   rows: number
   gaps: number
+  showDescription: boolean
 }
 
 const QualificationsSection: React.FC<QualificationsSectionProps> = ({
@@ -15,6 +16,7 @@ const QualificationsSection: React.FC<QualificationsSectionProps> = ({
   imgDesc,
   rows,
   gaps,
+  showDescription,
 }) => {
   return (
     <>
@@ -24,7 +26,13 @@ const QualificationsSection: React.FC<QualificationsSectionProps> = ({
         </BlackH1>
       </QualificationsWrapper>
       <QualPhotosWrapper>
-        <Photos gaps={gaps} rows={rows} imgUrls={imgUrls} imgDesc={imgDesc} />
+        <Photos
+          showDescription={showDescription}
+          gaps={gaps}
+          rows={rows}
+          imgUrls={imgUrls}
+          imgDesc={imgDesc}
+        />
       </QualPhotosWrapper>
     </>
   )
