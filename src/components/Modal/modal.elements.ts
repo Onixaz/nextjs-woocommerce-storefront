@@ -12,7 +12,7 @@ export const ModalBackground = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 768px) {
     top: 50px;
   }
 `
@@ -29,7 +29,7 @@ export const ModalContainer = styled.div<{ showDescription: boolean }>`
   position: relative;
   z-index: 10;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 768px) {
     max-width: 480px;
     grid-template-areas:
       'img img'
