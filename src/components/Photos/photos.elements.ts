@@ -18,7 +18,6 @@ export const PhotoContainer = styled.div<{ rows: number }>`
     grid-template-rows: repeat(rows * 2, 1fr);
   }
   @media screen and (max-width: 768px) {
-    //justify-content: space-evenly;
     display: grid;
     padding: 3rem;
     grid-template-columns: repeat(1, 1fr);

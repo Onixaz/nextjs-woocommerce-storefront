@@ -50,7 +50,7 @@ export const HeroContent = styled.div`
 export const HeroH1 = styled.h1<{ hero?: boolean }>`
   display: inline-block;
   color: ${({ theme, hero }) => (hero ? theme.primaryWhite : theme.primaryBlack)};
-  font-size: clamp(0.5rem, 2vw + 2vh + 0.5rem, 1.5rem);
+  font-size: calc(2rem + 0.5vw);
   text-align: center;
 `
 
@@ -75,7 +75,7 @@ export const ScrollDownIconWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: calc(17rem + 3vw);
+  top: calc(10rem + 5vw + 5vh);
 `
 
 export const IconDown = styled(FaAngleDoubleDown)`

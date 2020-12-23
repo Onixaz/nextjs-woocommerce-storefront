@@ -3,7 +3,7 @@ import { FaHandHoldingHeart, FaGift, FaCommentMedical } from 'react-icons/fa'
 
 export const ServicesContainer = styled.div`
   background: ${({ theme }) => theme.primaryBlack};
-  padding: 10rem 2rem;
+  padding: 10rem 0;
   display: flex;
   min-height: 75vh;
   flex-direction: column;
@@ -11,7 +11,7 @@ export const ServicesContainer = styled.div`
   justify-content: center;
 
   @media screen and (max-width: 992px) {
-    padding: 4rem 2rem;
+    padding: 4rem 0;
   }
 `
 
@@ -32,24 +32,28 @@ export const ServicesCard = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 1.5rem;
-  width: calc(25% + 1rem);
+  //max-width: calc(25% + 1rem);
   border-radius: 5px;
   padding: 2rem 1rem 1rem 1rem;
 
   @media screen and (max-width: 992px) {
     margin: 1rem;
-    width: calc(80% + 2rem);
+    //max-width: calc(80% + 2rem);
   }
 `
 
 export const ServicesWrapper = styled.div`
   display: flex;
-  padding: 4rem 1rem;
-  flex-wrap: wrap;
+  //padding: 4rem 1rem;
+
   justify-content: center;
-  align-items: stretch;
+
   max-width: 1400px;
   margin: 0 auto;
+
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+  }
 
   ${ServicesCard} {
     &:hover {

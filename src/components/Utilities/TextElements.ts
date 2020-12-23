@@ -6,7 +6,7 @@ export const RedSpan = styled.span`
 export const WhiteH1 = styled.h1`
   display: inline-block;
   color: ${({ theme }) => theme.primaryWhite};
-  font-size: calc(2.5rem + 0.3vw);
+  font-size: calc(2rem + 0.5vw);
   text-align: center;
   padding-bottom: 2rem;
 
@@ -21,7 +21,7 @@ export const BlackH1 = styled.h1`
   margin: 0.5rem 2rem;
   color: ${({ theme }) => theme.primaryBlack};
   text-align: center;
-  font-size: calc(2.5rem + 0.3vw);
+  font-size: calc(2rem + 0.5vw);
   letter-spacing: 0.5px;
 `
 

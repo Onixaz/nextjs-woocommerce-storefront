@@ -72,14 +72,13 @@ export const ContactColumn2 = styled.div`
   }
 `
 
-export const FormH1 = styled.h1`
+export const FormH1 = styled.p`
   opacity: 0.95;
   letter-spacing: 1px;
   font-size: calc(2.5rem + 0.1vw);
   font-weight: 600;
   line-height: 1.3;
   padding: 1rem 0.5rem;
-  white-space: nowrap;
   @media screen and (max-width: 992px) {
     text-align: center;
     margin-bottom: 1rem;

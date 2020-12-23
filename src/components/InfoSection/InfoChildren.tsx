@@ -19,7 +19,7 @@ interface AboutInfoProps {}
 interface IndexInfoProps {}
 
 export const IndexInfoChild: React.FC<IndexInfoProps> = () => {
-  const headingScale = 3
+  const headingScale = 2
   return (
     <>
       <Heading headingScale={headingScale}>
@@ -39,7 +39,7 @@ export const IndexInfoChild: React.FC<IndexInfoProps> = () => {
 }
 
 export const AboutInfoChild: React.FC<AboutInfoProps> = () => {
-  const headingScale = 1.3
+  const headingScale = 1
   return (
     <>
       <Heading headingScale={headingScale}>Kodel verta rinktis mane ?</Heading>
@@ -58,7 +58,7 @@ export const AboutInfoChild: React.FC<AboutInfoProps> = () => {
 }
 
 export const ServicesInfoChildOne = () => {
-  const headingScale = 2.5
+  const headingScale = 2
   return (
     <ServicesInfoWrapper>
       <Heading headingScale={headingScale}>Masažai</Heading>
@@ -81,7 +81,7 @@ export const ServicesInfoChildOne = () => {
 }
 
 export const ServicesInfoChildTwo = () => {
-  const headingScale = 2.5
+  const headingScale = 2
   return (
     <ServicesInfoWrapper>
       <Heading headingScale={headingScale}>Konsultacijos</Heading>
@@ -121,7 +121,7 @@ export const ServicesInfoChildTwo = () => {
 }
 
 export const ServicesInfoChildThree = () => {
-  const headingScale = 2.5
+  const headingScale = 2
   return (
     <ServicesInfoWrapper>
       <Heading headingScale={headingScale}>Dovanų kuponai</Heading>

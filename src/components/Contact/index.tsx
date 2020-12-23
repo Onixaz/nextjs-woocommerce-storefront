@@ -155,9 +155,6 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               <ContactListItem>Norite pasikonsultuoti</ContactListItem>
               <ContactListItem>Ir dar kažką ką reiktų susigalvoti ?</ContactListItem>
             </ContactList>
-            {/* <EnvelopeImgWrap>
-              <EnvelopeImg src="./envelope-line.svg" />
-            </EnvelopeImgWrap> */}
           </ContactColumn2>
         </ContactRow>
       </ContactWrapper>

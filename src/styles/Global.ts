@@ -14,9 +14,10 @@ const GlobalStyle = createGlobalStyle<Props>`
     font-family: 'Fira Sans',  sans-serif; //'Fira Sans', 'Lato',
   }
 
+  
 
   body {
-    
+    //min-width: 100vw;
     font-family: 'Fira Sans', sans-serif; //'Fira Sans', 'Lato',
     line-height: 1.7;
     background: ${({ theme }) => theme.lightMediumBg};

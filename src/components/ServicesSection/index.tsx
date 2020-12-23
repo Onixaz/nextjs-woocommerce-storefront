@@ -23,10 +23,7 @@ const Services: React.FC<ServicesProps> = () => {
       <WhiteH1>
         Ką aš galiu Jums <RedSpan>pasiūlyti?</RedSpan>
       </WhiteH1>
-      {/* <MainP>
-        Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non
-        mi integer non faucibus.
-      </MainP> */}
+
       <IconContext.Provider value={{ size: '5em' }}>
         {/* <RedLine data-aos="zoom-in"/> */}
         <ServicesWrapper>

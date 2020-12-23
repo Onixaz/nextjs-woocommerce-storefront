@@ -12,7 +12,7 @@ export const Nav = styled.nav<{ scrollNav: boolean }>`
   position: sticky;
   top: 0;
   bottom: 0;
-  z-index: 10;
+  z-index: 5;
   //border-bottom: 1px solid #000;
 `
 

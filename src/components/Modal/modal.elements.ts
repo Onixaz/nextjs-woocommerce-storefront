@@ -4,13 +4,14 @@ import styled from 'styled-components'
 export const ModalBackground = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9;
 `
 
 export const ModalContainer = styled.div<{ showDescription: boolean }>`
@@ -54,7 +55,7 @@ export const ModalContent = styled.div<{ showDescription: boolean }>`
 export const ModalText = styled.p`
   text-align: center;
   //color: ${({ theme }) => theme.lightMediumBg};
-  font-size: calc(0.7rem + 0.15vw);
+  font-size: calc(0.7rem + 0.2vw);
   font-weight: 400;
   padding: 1rem;
   letter-spacing: 0.3px;

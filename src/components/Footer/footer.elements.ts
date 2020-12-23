@@ -3,6 +3,7 @@ import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 export const FooterContainer = styled.footer`
   min-height: 40vh;
+  overflow: hidden;
 
   background: ${({ theme }) => theme.primaryBlack};
 `
@@ -37,9 +38,9 @@ export const LogoSection = styled.div`
   grid-area: ls;
   margin: 1rem;
 
-  max-height: 340px;
-  min-height: 300px;
-  width: auto;
+  height: 340px;
+  max-width: 300px;
+  //width: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,7 +49,7 @@ export const LogoSection = styled.div`
 
 export const ContactInfoSection = styled.div`
   grid-area: cs;
-  padding: 2rem;
+  //padding: 2rem;
 
   display: flex;
   justify-content: center;

@@ -11,7 +11,7 @@ import {
 interface ModalProps {
   prev: boolean
   showModal: boolean
-  setShowModal: (prev: any) => void
+  setShowModal: (showModal: any) => void
   imgSrc: string
   imgDesc: string
   showDescription: boolean
