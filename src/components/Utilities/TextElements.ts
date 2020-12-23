@@ -8,7 +8,7 @@ export const WhiteH1 = styled.h1`
   color: ${({ theme }) => theme.primaryWhite};
   font-size: calc(2rem + 0.5vw);
   text-align: center;
-  padding-bottom: 2rem;
+  padding: 1rem 0.25rem;
 
   @media screen and (max-width: 992px) {
     padding-bottom: 0;
@@ -18,7 +18,7 @@ export const WhiteH1 = styled.h1`
 export const BlackH1 = styled.h1`
   display: inline-block;
 
-  margin: 0.5rem 2rem;
+  padding: 2rem 0.5rem;
   color: ${({ theme }) => theme.primaryBlack};
   text-align: center;
   font-size: calc(2rem + 0.5vw);

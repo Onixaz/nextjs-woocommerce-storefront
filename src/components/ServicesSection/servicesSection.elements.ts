@@ -38,7 +38,7 @@ export const ServicesCard = styled.div`
 
   @media screen and (max-width: 992px) {
     margin: 1rem;
-    //max-width: calc(80% + 2rem);
+    padding: 2rem 0rem 1rem 0rem;
   }
 `
 

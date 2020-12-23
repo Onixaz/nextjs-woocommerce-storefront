@@ -53,12 +53,7 @@ const Services: React.FC<ServicesProps> = () => {
             </ServicesCard>
           </Link>
         </ServicesWrapper>
-        {/* <RedLine data-aos="zoom-in"/> */}
-        {/* <RedLine /> */}
       </IconContext.Provider>
-      {/* <BtnWrapper>
-        <MainButton href="about" label="Plačiau" />
-      </BtnWrapper> */}
     </ServicesContainer>
   )
 }
