@@ -20,11 +20,11 @@ export const indexGalleryObj = {
     `Štai ką teko išgirsti iš savo klientų 😃 Supraskite mane teisingai, pagal mane masažas turi būti malonus ir be skausmis! Bet, dėja kūne pasitaiko vietų/įšimčių, kad kartais reikia ir pakentėti vardan gero rezultato!😎🙌💪`,
     `“Kas tikisi išlikti sveikas tinginiaudamas, tas elgiasi taip pat kvailai, kaip žmogus, manantis tylėjimu patobulinsiąs balsą.” - Plutarch`,
     `Darykite tai kas yra arčiau širdies, ir net nepastebėsite kaip mylima veikla gali atnešti jums laimės!`,
-    `Atvirai pasakysiu... Nu tikrai yra superinis jausmas, kai gali ištiesti pagalbos ranką! Pamatyti tas emocijas kai žmogus pakilęs nuo stalo, atsisėdęs ant jo krašto niekur neskuba. Ir tiesiog su pailsėjusiom mintim šypsosi!❤️`,
+    `"Žmogus mylintis savo darbą ir mylintis Jūsų kūną už Jus ❤️"`,
     `Skausmas tam tikroje kūno vietoje NE VISADA yra skausmo židinys/priežastis☝️ Todėl prieš
   masažuodamas, pirma ką darau, tai užduodu klientui konkrečių klausimų, bei prašau iš jo
   išsamių atsakymų į juos.`,
-    `Norite padaryti staigmeną svečiams? Masažuotojas Romanas jūsų šventei.`,
+    `Norite padaryti staigmeną svečiams? Masažuotojas Romanas jūsų šventei!😎`,
   ],
 }
 

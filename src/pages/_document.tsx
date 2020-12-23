@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
+      <Html lang="lt-LT">
         <Head />
         <body>
           <Main />

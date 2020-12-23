@@ -11,10 +11,6 @@ export const ModalBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  @media screen and (max-width: 768px) {
-    top: 50px;
-  }
 `
 
 export const ModalContainer = styled.div<{ showDescription: boolean }>`
@@ -30,8 +26,6 @@ export const ModalContainer = styled.div<{ showDescription: boolean }>`
   z-index: 10;
 
   @media screen and (max-width: 768px) {
-    max-width: 360px;
-
     grid-template-areas:
       'img img'
       'desc desc';
@@ -60,7 +54,7 @@ export const ModalContent = styled.div<{ showDescription: boolean }>`
 export const ModalText = styled.p`
   text-align: center;
   //color: ${({ theme }) => theme.lightMediumBg};
-  font-size: calc(0.85rem + 0.1vw);
+  font-size: calc(0.7rem + 0.15vw);
   font-weight: 400;
   padding: 1rem;
   letter-spacing: 0.3px;

@@ -60,9 +60,14 @@ const ContactForm: React.FC<ContactFormProps> = () => {
       })
         .then((response) => {
           // actions taken when submission goes OK
-
+          console.log(response)
           setResponseMsg(response.data.message)
-          resetForm()
+          console.log(response.data)
+          if (response.data.status === 'mail_sent') {
+            resetForm()
+          }
+          //console.log(response.data.invalid_fields.length)
+
           setSubmitting(false)
           setMessageSent(true)
           setIsSuccessMessage(true)

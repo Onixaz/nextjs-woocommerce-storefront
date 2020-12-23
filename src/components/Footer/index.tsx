@@ -40,9 +40,27 @@ const Footer: React.FC<FooterProps> = () => {
           <SocialSection>
             <SocialFooterH1>Ieškok manęs socialiniuose tinkluose!</SocialFooterH1>
             <SocialLinkstWrapper>
-              <StyledFaFacebook />
-              <StyledFaInstagram />
-              <StyledFaYoutube />
+              <a
+                href="https://www.facebook.com/masazuotojasromanas/"
+                target="_blank"
+                rel="noopener"
+              >
+                <StyledFaFacebook />
+              </a>
+              <a
+                href="https://www.instagram.com/masazuotojas_romanas/"
+                target="_blank"
+                rel="noopener"
+              >
+                <StyledFaInstagram />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCanzhCCKJdkl1MWlJsGkqvQ"
+                target="_blank"
+                rel="noopener"
+              >
+                <StyledFaYoutube />
+              </a>
             </SocialLinkstWrapper>
           </SocialSection>
         </ContentWrapper>
