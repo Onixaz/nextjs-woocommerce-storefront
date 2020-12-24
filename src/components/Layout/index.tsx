@@ -75,13 +75,19 @@ const Layout: React.FC<LayoutProps> = ({
         <Footer />
         <CookieConsent
           buttonText="Supratau"
-          style={{ background: 'rgba(0,0,0,0.7)' }}
+          style={{
+            background: 'rgba(0,0,0,0.7)',
+            padding: '0 15px',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
           buttonStyle={{
             background: '#ff3b6a',
             borderRadius: '30px',
             color: '#000',
             fontSize: '15px',
             fontWeight: '600',
+            padding: '10px',
           }}
         >
           Šioje svetainėje naudojami slapukai (angl. cookies):{' '}
