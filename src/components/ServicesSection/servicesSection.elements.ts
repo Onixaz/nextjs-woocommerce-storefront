@@ -17,14 +17,17 @@ export const ServicesContainer = styled.div`
 
 export const CustomFaHandHoldingHeart = styled(FaHandHoldingHeart)`
   color: ${({ theme }) => theme.primaryRed};
+  font-size: calc(4rem + 0.5vw);
 `
 
 export const CustomFaCommentMedical = styled(FaCommentMedical)`
   color: ${({ theme }) => theme.primaryRed};
+  font-size: calc(4rem + 0.5vw);
 `
 
 export const CustomFaGift = styled(FaGift)`
   color: ${({ theme }) => theme.primaryRed};
+  font-size: calc(4rem + 0.5vw);
 `
 
 export const ServicesCard = styled.div`
@@ -45,9 +48,9 @@ export const ServicesCard = styled.div`
 export const ServicesWrapper = styled.div`
   display: flex;
   //padding: 4rem 1rem;
-
+  padding: 4rem 0;
   justify-content: center;
-
+  width: 95%;
   max-width: 1400px;
   margin: 0 auto;
 
@@ -119,8 +122,8 @@ export const ServicesWrapper = styled.div`
 
 export const ServicesP = styled.p`
   max-width: 440px;
-  padding: 10px;
-  font-size: calc(0.95rem + 0.1vw);
+  padding: 0.5rem;
+  font-size: calc(0.9rem + 0.2vw);
   line-height: 28px;
   text-align: center;
   letter-spacing: 0.5px;
@@ -129,7 +132,7 @@ export const ServicesP = styled.p`
 
 export const CardHeader = styled.p`
   color: #fff;
-  font-size: calc(1.5rem + 0.1vw);
+  font-size: calc(1.2rem + 0.2vw);
   font-weight: 600;
   padding-top: 2rem;
   text-align: center;

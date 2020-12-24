@@ -24,36 +24,34 @@ const Services: React.FC<ServicesProps> = () => {
         Ką aš galiu Jums <RedSpan>pasiūlyti?</RedSpan>
       </WhiteH1>
 
-      <IconContext.Provider value={{ size: '5em' }}>
-        {/* <RedLine data-aos="zoom-in"/> */}
-        <ServicesWrapper>
-          <Link href="/paslaugos#masazai" passHref>
-            <ServicesCard data-aos="fade-up">
-              <CustomFaHandHoldingHeart />
+      {/* <RedLine data-aos="zoom-in"/> */}
+      <ServicesWrapper>
+        <Link href="/paslaugos#masazai" passHref>
+          <ServicesCard data-aos="fade-up">
+            <CustomFaHandHoldingHeart />
 
-              <CardHeader>Masažai</CardHeader>
-              <ServicesP>Masažuoju pagal jūsų pageidavimus ir iškylusias problemas.</ServicesP>
-            </ServicesCard>
-          </Link>
-          <Link href="/paslaugos#konsultacijos" scroll={false} passHref>
-            <ServicesCard data-aos="fade-up">
-              <CustomFaCommentMedical />
-              <CardHeader>Konsultacijos</CardHeader>
-              <ServicesP>Masazai, sportas, mityba, sveikatingumas, gyvensena, laikysena.</ServicesP>
-            </ServicesCard>
-          </Link>
+            <CardHeader>Masažai</CardHeader>
+            <ServicesP>Masažuoju pagal jūsų pageidavimus ir iškylusias problemas.</ServicesP>
+          </ServicesCard>
+        </Link>
+        <Link href="/paslaugos#konsultacijos" scroll={false} passHref>
+          <ServicesCard data-aos="fade-up">
+            <CustomFaCommentMedical />
+            <CardHeader>Konsultacijos</CardHeader>
+            <ServicesP>Masazai, sportas, mityba, sveikatingumas, gyvensena, laikysena.</ServicesP>
+          </ServicesCard>
+        </Link>
 
-          <Link href="/paslaugos#dovanu-kuponai">
-            <ServicesCard data-aos="fade-up">
-              <CustomFaGift />
-              <CardHeader>Dovanų kuponai</CardHeader>
-              <ServicesP>
-                Padovanok savo artimam žmogui tai ko trūksta labiausiai, poilsį ir sveikatą.
-              </ServicesP>
-            </ServicesCard>
-          </Link>
-        </ServicesWrapper>
-      </IconContext.Provider>
+        <Link href="/paslaugos#dovanu-kuponai">
+          <ServicesCard data-aos="fade-up">
+            <CustomFaGift />
+            <CardHeader>Dovanų kuponai</CardHeader>
+            <ServicesP>
+              Padovanok savo artimam žmogui tai ko trūksta labiausiai, poilsį ir sveikatą.
+            </ServicesP>
+          </ServicesCard>
+        </Link>
+      </ServicesWrapper>
     </ServicesContainer>
   )
 }

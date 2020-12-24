@@ -55,6 +55,10 @@ export const ContactInfoSection = styled.div`
   justify-content: center;
   align-items: center;
   border-right: 2px solid #fff;
+
+  @media screen and (max-width: 992px) {
+    border: none;
+  }
 `
 
 export const ContactWrapperExtra = styled.div`
@@ -102,10 +106,6 @@ export const ContactFooterP = styled.p`
   font-size: calc(0.7rem + 0.3vw);
   font-weight: 600;
   text-align: center;
-
-  @media screen and (max-width: 480px) {
-    font-size: 1rem;
-  }
 `
 
 export const SocialLinkstWrapper = styled.div`
@@ -151,15 +151,35 @@ export const StyledFaYoutube = styled(FaYoutube)`
   }
 `
 
-export const CopyrightElement = styled.div`
-  text-align: center;
+export const CopyrightElement = styled.p`
+  //text-align: center;
   color: #fff;
-  border-top: 2px solid #fff;
-  font-size: 0.8rem;
-  padding: 2rem 0;
+
+  font-size: calc(0.6rem + 0.2vw);
+  padding: 0.25rem;
+
+  @media scren and (max-width: 480px) {
+    text-align: center;
+  }
 
   a {
     color: #fff;
     text-decoration: none;
+  }
+`
+
+export const CopyrightWrapper = styled.div`
+  border-top: 2px solid #fff;
+  display: flex;
+  padding: 2rem 0;
+  justify-content: space-around;
+  max-width: 1400px;
+  width: 85%;
+  margin: 0 auto;
+
+  @media screen and (max-width: 480px) {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 `

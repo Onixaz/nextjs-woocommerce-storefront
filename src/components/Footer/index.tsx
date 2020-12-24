@@ -18,6 +18,7 @@ import {
   StyledFaFacebook,
   StyledFaInstagram,
   StyledFaYoutube,
+  CopyrightWrapper,
 } from './footer.elements'
 interface FooterProps {}
 
@@ -34,7 +35,7 @@ const Footer: React.FC<FooterProps> = () => {
             <ContactWrapperExtra>
               <ContactFooterH1>Kontaktine informacija</ContactFooterH1>
               <ContactFooterP>Tel: +37068241111</ContactFooterP>
-              <ContactFooterP>Email: oleskevic.roman@gmail.com</ContactFooterP>
+              <ContactFooterP>Email: masazuotojasromanas@gmail.com</ContactFooterP>
             </ContactWrapperExtra>
           </ContactInfoSection>
           <SocialSection>
@@ -65,10 +66,18 @@ const Footer: React.FC<FooterProps> = () => {
           </SocialSection>
         </ContentWrapper>
 
-        <CopyrightElement>
-          &#169; Roman Oleškevič {new Date().getFullYear()}. Visos teisės saugomos. Dizainas ir
-          programavimas - <a href="http://www.pajustudio.net">Paju Studio</a>.
-        </CopyrightElement>
+        <CopyrightWrapper>
+          <CopyrightElement>
+            <a href="http://www.pajustudio.net">Privatumo Politika</a>
+          </CopyrightElement>
+          <CopyrightElement>
+            &#169; Roman Oleškevič {new Date().getFullYear()}. Visos teisės saugomos.
+          </CopyrightElement>
+
+          <CopyrightElement>
+            Dizainas ir programavimas - <a href="http://www.pajustudio.net">Paju Studio</a>
+          </CopyrightElement>
+        </CopyrightWrapper>
       </FooterWrapper>
     </FooterContainer>
   )

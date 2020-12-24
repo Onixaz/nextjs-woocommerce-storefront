@@ -5,8 +5,6 @@ import {
   ClosedIcon,
   Icon,
   SidebarWrapper,
-  SideBtnWrap,
-  SidebarRoute,
   SidebarMenu,
   SidebarLinkWrapper,
   SidebarLinkText,

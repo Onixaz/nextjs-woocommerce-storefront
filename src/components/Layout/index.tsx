@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-
+import CookieConsent from 'react-cookie-consent'
+import Link from 'next/link'
 import Head from 'next/head'
 import Footer from '../Footer'
 import LayoutElement, { NavbarHolder } from './layout.elements'
@@ -68,8 +69,26 @@ const Layout: React.FC<LayoutProps> = ({
       <LayoutElement>
         <Sidebar isOpen={isOpen} toggle={toggle} />
         <Navbar toggle={toggle} />
+
         <main>{children}</main>
+
         <Footer />
+        <CookieConsent
+          buttonText="Supratau"
+          style={{ background: 'rgba(0,0,0,0.7)' }}
+          buttonStyle={{
+            background: '#ff3b6a',
+            borderRadius: '30px',
+            color: '#000',
+            fontSize: '15px',
+            fontWeight: '600',
+          }}
+        >
+          Šioje svetainėje naudojami slapukai (angl. cookies):{' '}
+          <Link href="/privatumo-politika">
+            <a style={{ color: '#fff' }}>Sužinoti daugiau</a>
+          </Link>
+        </CookieConsent>
       </LayoutElement>
     </>
   )

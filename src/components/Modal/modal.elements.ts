@@ -1,4 +1,4 @@
-import { MdClose } from 'react-icons/md'
+import { FaTimes } from 'react-icons/fa'
 import styled from 'styled-components'
 
 export const ModalBackground = styled.div`
@@ -61,7 +61,7 @@ export const ModalText = styled.p`
   letter-spacing: 0.3px;
 `
 
-export const CloseModalButton = styled(MdClose)`
+export const CloseModalButton = styled(FaTimes)`
   cursor: pointer;
   position: absolute;
   color: ${({ theme }) => theme.primaryBlack};

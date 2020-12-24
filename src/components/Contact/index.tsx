@@ -149,11 +149,10 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             </FormH1>
             <ContactList>
               <ContactListItem>Turite klausimų apie mano paslaugas.</ContactListItem>
-              <ContactListItem>Turite daugiau klausimų apie mane pati.</ContactListItem>
-              <ContactListItem>Norite užsirašyti vizitui</ContactListItem>
-              <ContactListItem>Norite pasikalbėti</ContactListItem>
-              <ContactListItem>Norite pasikonsultuoti</ContactListItem>
-              <ContactListItem>Ir dar kažką ką reiktų susigalvoti ?</ContactListItem>
+              <ContactListItem>Turite klausimų apie mane patį.</ContactListItem>
+              <ContactListItem>Norite užsirašyti vizitui.</ContactListItem>
+              <ContactListItem>Norite pasikonsultuoti.</ContactListItem>
+              <ContactListItem>Turite pageidavimų, pasiūlymų ar pastabų. </ContactListItem>
             </ContactList>
           </ContactColumn2>
         </ContactRow>
