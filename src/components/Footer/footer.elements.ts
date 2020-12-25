@@ -152,19 +152,20 @@ export const StyledFaYoutube = styled(FaYoutube)`
 `
 
 export const CopyrightElement = styled.p`
-  //text-align: center;
   color: #fff;
 
   font-size: calc(0.6rem + 0.2vw);
   padding: 0.25rem;
-
-  @media scren and (max-width: 480px) {
-    text-align: center;
-  }
+  margin-left: -62px;
+  text-align: center;
 
   a {
     color: #fff;
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 992px) {
+    margin-left: 0;
   }
 `
 
@@ -173,8 +174,10 @@ export const CopyrightWrapper = styled.div`
   display: flex;
   padding: 2rem 0;
   justify-content: space-around;
-  max-width: 1400px;
-  width: 85%;
+  align-items: center;
+  max-width: 1600px;
+  width: 95%;
+
   margin: 0 auto;
 
   @media screen and (max-width: 480px) {

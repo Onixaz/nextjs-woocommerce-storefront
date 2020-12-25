@@ -68,10 +68,10 @@ const Footer: React.FC<FooterProps> = () => {
 
         <CopyrightWrapper>
           <CopyrightElement>
-            <a href="http://www.pajustudio.net">Privatumo Politika</a>
+            &#169; Roman Oleškevič {new Date().getFullYear()}. Visos teisės saugomos.
           </CopyrightElement>
           <CopyrightElement>
-            &#169; Roman Oleškevič {new Date().getFullYear()}. Visos teisės saugomos.
+            <a href="http://www.pajustudio.net">Privatumo Politika</a>
           </CopyrightElement>
 
           <CopyrightElement>
