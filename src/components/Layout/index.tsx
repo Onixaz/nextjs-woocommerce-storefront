@@ -37,10 +37,7 @@ const Layout: React.FC<LayoutProps> = ({
   return (
     <>
       <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={baseInfo.description} />
         <meta charSet="utf-8" />
         <meta property="og:type" content="website" key="ogtype" />
