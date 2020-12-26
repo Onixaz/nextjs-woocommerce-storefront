@@ -1,7 +1,8 @@
+import Head from 'next/head'
 import React from 'react'
 
 interface CustomSeoProps {
-  pageTitle: string
+  title: string
 }
 
 const baseInfo = {
@@ -13,14 +14,14 @@ const baseInfo = {
   keywords: `Masažas, Viso kūno masažas, Sportinis masažas, Nugaros masažas, Konsultacijos, Sveikata, Mityba, Laikysena`,
 }
 
-const CustomSeo: React.FC<CustomSeoProps> = ({ pageTitle }) => {
+const CustomSeo: React.FC<CustomSeoProps> = ({ title }) => {
   return (
-    <>
+    <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={baseInfo.description} />
       <meta charSet="utf-8" />
       <meta property="og:type" content="website" key="ogtype" />
-      <meta property="og:title" content={pageTitle} key="ogtitle" />
+      <meta property="og:title" content={title} key="ogtitle" />
       <meta property="og:description" content={baseInfo.description} key="ogdesc" />
       <meta
         property="og:image"
@@ -39,8 +40,8 @@ const CustomSeo: React.FC<CustomSeoProps> = ({ pageTitle }) => {
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
       <meta name="msapplication-TileColor" content="#da532c" />
       <meta name="theme-color" content="#ffffff" />
-      <title>{pageTitle} | Masažuotojas Romanas</title>
-    </>
+      <title>{title} | Masažuotojas Romanas</title>
+    </Head>
   )
 }
 

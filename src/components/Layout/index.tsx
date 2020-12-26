@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import CookieConsent from 'react-cookie-consent'
 import Link from 'next/link'
-import Head from 'next/head'
 import Footer from '../Footer'
 import LayoutElement, { NavbarHolder } from './layout.elements'
 
@@ -28,15 +27,11 @@ const Layout: React.FC<LayoutProps> = ({
   }
   return (
     <>
-      <Head>
-        <CustomSeo pageTitle={pageTitle} />
-      </Head>
+      <CustomSeo title={pageTitle} />
       <LayoutElement>
         <Sidebar isOpen={isOpen} toggle={toggle} />
         <Navbar toggle={toggle} />
-
         <main>{children}</main>
-
         <Footer />
         <CookieConsent
           buttonText="Supratau"

@@ -48,6 +48,7 @@ const Footer: React.FC<FooterProps> = () => {
                 href="https://www.facebook.com/masazuotojasromanas/"
                 target="_blank"
                 rel="noopener"
+                aria-label="Facebook"
               >
                 <StyledFaFacebook />
               </a>
@@ -55,6 +56,7 @@ const Footer: React.FC<FooterProps> = () => {
                 href="https://www.instagram.com/masazuotojas_romanas/"
                 target="_blank"
                 rel="noopener"
+                aria-label="Instagram"
               >
                 <StyledFaInstagram />
               </a>
@@ -62,6 +64,7 @@ const Footer: React.FC<FooterProps> = () => {
                 href="https://www.youtube.com/channel/UCanzhCCKJdkl1MWlJsGkqvQ"
                 target="_blank"
                 rel="noopener"
+                aria-label="Youtube"
               >
                 <StyledFaYoutube />
               </a>
