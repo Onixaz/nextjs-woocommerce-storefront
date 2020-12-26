@@ -26,6 +26,6 @@
     "**/*.ts",
     "**/*.tsx", "next.config.js",
     "decs.d.ts"
-
+, "next-sitemap.js"
   ]
 }
