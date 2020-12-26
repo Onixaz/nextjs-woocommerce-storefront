@@ -32,7 +32,7 @@ const Photos: React.FC<PhotosProps> = ({ imgUrls, imgDesc, rows, gaps, showDescr
         <PhotoCard gaps={gaps} onClick={() => openModal(index)}>
           <PhotoAnimHolder>
             <LazyLoad offset={300}>
-              <Photo src={baseUrl + img} id={img} />
+              <Photo src={baseUrl + img} id={img} alt={'Masažuotojas_Romanas_' + img} />
             </LazyLoad>
           </PhotoAnimHolder>
         </PhotoCard>

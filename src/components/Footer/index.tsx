@@ -1,13 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
-import { FaFacebook } from 'react-icons/fa'
 import {
   FooterContainer,
   FooterWrapper,
   ContentWrapper,
   LogoSection,
   ContactInfoSection,
-  CopyrightElement,
   LogoFooter,
   ContactFooterH1,
   ContactFooterP,
@@ -19,6 +17,8 @@ import {
   StyledFaInstagram,
   StyledFaYoutube,
   CopyrightWrapper,
+  CopyrightText,
+  CopyrightTextElement,
 } from './footer.elements'
 interface FooterProps {}
 
@@ -28,7 +28,10 @@ const Footer: React.FC<FooterProps> = () => {
       <FooterWrapper>
         <ContentWrapper>
           <LogoSection>
-            <LogoFooter src="https://aygdknricp.cloudimg.io/v7/https://epizootic-ingredien.000webhostapp.com/wp-content/uploads/2020/12/logotipas.png" />
+            <LogoFooter
+              src="https://aygdknricp.cloudimg.io/v7/https://epizootic-ingredien.000webhostapp.com/wp-content/uploads/2020/12/logotipas.png"
+              alt="Masažuotojas Romanas Logo"
+            />
           </LogoSection>
 
           <ContactInfoSection>
@@ -67,16 +70,24 @@ const Footer: React.FC<FooterProps> = () => {
         </ContentWrapper>
 
         <CopyrightWrapper>
-          <CopyrightElement>
-            &#169; Roman Oleškevič {new Date().getFullYear()}. Visos teisės saugomos.
-          </CopyrightElement>
-          <CopyrightElement>
-            <a href="http://www.pajustudio.net">Privatumo Politika</a>
-          </CopyrightElement>
+          <CopyrightTextElement>
+            <CopyrightText>
+              &#169; Roman Oleškevič {new Date().getFullYear()}. Visos teisės saugomos.
+            </CopyrightText>
+          </CopyrightTextElement>
+          <CopyrightTextElement>
+            <CopyrightText>
+              <Link href="/privatumo-politika">
+                <a>Privatumo Politika</a>
+              </Link>
+            </CopyrightText>
+          </CopyrightTextElement>
 
-          <CopyrightElement>
-            Dizainas ir programavimas - <a href="http://www.pajustudio.net">Paju Studio</a>
-          </CopyrightElement>
+          <CopyrightTextElement>
+            <CopyrightText>
+              Dizainas ir programavimas - <a href="http://www.pajustudio.net">Paju Studio</a>
+            </CopyrightText>
+          </CopyrightTextElement>
         </CopyrightWrapper>
       </FooterWrapper>
     </FooterContainer>

@@ -102,9 +102,9 @@ export const Heading = styled.h1<{ headingScale: number }>`
   font-weight: 600;
   color: ${({ theme }) => theme.primaryBlack};
 
-  @media screen and (max-width: 992px) {
+  /* @media screen and (max-width: 992px) {
     text-align: center;
-  }
+  } */
 `
 
 export const InfoPlainText = styled.p`
