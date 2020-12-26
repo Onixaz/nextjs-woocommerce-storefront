@@ -55,10 +55,10 @@ export const ModalContent = styled.div<{ showDescription: boolean }>`
 export const ModalText = styled.p`
   text-align: center;
   //color: ${({ theme }) => theme.lightMediumBg};
-  font-size: calc(0.7rem + 0.2vw);
+  font-size: calc(0.7rem + 0.25vw);
   font-weight: 400;
   padding: 1rem;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 `
 
 export const CloseModalButton = styled(FaTimes)`

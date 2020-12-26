@@ -68,7 +68,7 @@ export const ContactWrapperExtra = styled.div`
   //max-width: 340px;
 
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem;
 
   @media screen and (max-width: 992px) {
     border: none;
@@ -89,8 +89,14 @@ export const SocialSection = styled.div`
   }
 `
 export const LogoFooter = styled.img`
-  width: 75%;
-  height: 75%;
+  width: clamp(50%, 50% + 5vw, 100%);
+  height: auto;
+  object-fit: cover;
+
+  @media screen and (max-width: 992px) {
+    width: 75%;
+    height: auto;
+  }
 `
 
 export const ContactFooterH1 = styled.h1`
