@@ -54,7 +54,7 @@ const Layout: React.FC<LayoutProps> = ({
         <meta property="og:url" content={baseInfo.url} key="ogurl" />
         <meta property="og:site_name" content={baseInfo.name} key="ogsitename" />
 
-        <link rel="canonical" href={baseInfo.url} />
+        {/* <link rel="canonical" href={baseInfo.url} /> */}
         <meta name="author" content={baseInfo.author} />
         <meta name="keywords" content={baseInfo.keywords} />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
