@@ -58,7 +58,7 @@ export const AboutInfoChild: React.FC<AboutInfoProps> = () => {
 }
 
 export const ServicesInfoChildOne = () => {
-  const headingScale = 2
+  const headingScale = 1.7
   return (
     <ServicesInfoWrapper>
       <Heading headingScale={headingScale}>Masažai</Heading>
@@ -81,7 +81,7 @@ export const ServicesInfoChildOne = () => {
 }
 
 export const ServicesInfoChildTwo = () => {
-  const headingScale = 2
+  const headingScale = 1.7
   return (
     <ServicesInfoWrapper>
       <Heading headingScale={headingScale}>Konsultacijos</Heading>
@@ -121,7 +121,7 @@ export const ServicesInfoChildTwo = () => {
 }
 
 export const ServicesInfoChildThree = () => {
-  const headingScale = 2
+  const headingScale = 1.7
   return (
     <ServicesInfoWrapper>
       <Heading headingScale={headingScale}>Dovanų kuponai</Heading>

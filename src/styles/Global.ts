@@ -17,31 +17,11 @@ const GlobalStyle = createGlobalStyle<Props>`
   
 
   body {
-    //min-width: 100vw;
     font-family: 'Fira Sans', sans-serif; //'Fira Sans', 'Lato',
     line-height: 1.7;
     background: ${({ theme }) => theme.lightMediumBg};
 
-    
-     
-     /* &::after{
-      content: ' ';
-      background-image: url('/full_back.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      display: block;
-      position: fixed;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      opacity: 0.25;
-
-    } */
+  
   } 
   a {
     
