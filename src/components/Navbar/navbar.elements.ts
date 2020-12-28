@@ -8,11 +8,12 @@ export const Nav = styled.nav<{ scrollNav: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  //padding: 0.5rem calc((100vw - 1200px) /2);
   position: sticky;
   top: 0;
   bottom: 0;
   z-index: 5;
+
   //border-bottom: 1px solid #000;
 `
 
@@ -29,9 +30,6 @@ export const NavLogoWrapper = styled.div`
   justify-self: flex-start;
   display: flex;
   align-items: center;
-  padding-top: 1rem;
-  opacity: 0.9;
-  //margin-left: -24px;
 `
 
 export const NavbarLogo = styled.img`
@@ -43,19 +41,19 @@ export const NavbarLogo = styled.img`
 `
 
 export const LogoText = styled.a`
-  color: ${({ theme }) => theme.primaryRed};
+  color: ${({ theme }) => theme.primaryBlack};
   cursor: pointer;
-  font-size: 36px;
+  font-size: 1.5rem;
   letter-spacing: 1.4px;
   text-decoration: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
 `
 
 export const LinkText = styled.a`
-  color: ${({ theme }) => theme.primaryWhite};
+  color: ${({ theme }) => theme.primaryBlack};
   cursor: pointer;
-  font-size: 1rem;
+  font-size: calc(1rem + 0.1vw);
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 600;
@@ -71,21 +69,22 @@ export const MobileIcon = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-    //transform: translate(-100%, 60%);
-    font-size: 2rem;
+    top: 1.2rem;
+    right: 1.2rem;
+
+    font-size: 2rem; //transform: translate(-100%, 60%);
     cursor: pointer;
-    color: #fff;
+    color: ${({ theme }) => theme.primaryBlack};
   }
 `
 
 export const NavMenu = styled.ul`
   display: flex;
+  justify-content: center;
   align-items: center;
   list-style: none;
   text-align: center;
-  margin-top: 0.2rem;
+  //margin-top: 0.2rem;
   margin-right: -22px;
   @media screen and (max-width: 768px) {
     display: none;
@@ -109,25 +108,5 @@ export const NavBtnWrapper = styled.nav`
   //margin-right: -20px;
   @media screen and (max-width: 768px) {
     display: none;
-  }
-`
-
-export const NavBtn = styled.button`
-  border-radius: 50px;
-  background: ${({ theme }) => theme.blue};
-  white-space: nowrap;
-  padding: 10px 22px;
-  color: #010606;
-  font-size: 16px;
-  outline: none;
-  margin: 10px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: 600;
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #010606;
   }
 `

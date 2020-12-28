@@ -9,9 +9,6 @@ import {
   NavLinksWrapper,
   LinkText,
   LogoText,
-  NavbarLogo,
-  NavBtnWrapper,
-  NavBtn,
 } from './navbar.elements'
 import { FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/router'
@@ -25,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   const router = useRouter()
   const [scrollNav, setScrollNav] = useState(false)
   const changeNav = () => {
-    if (router.pathname === '/' && window.scrollY < 80) {
+    if (router.pathname === '/' && window.scrollY < 160) {
       setScrollNav(true)
     } else {
       setScrollNav(false)
@@ -43,12 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
       <NavbarContainer>
         <NavLogoWrapper>
           <Link href="/">
-            <LinkText>
-              <NavbarLogo
-                src="https://aygdknricp.cloudimg.io/v7/https://epizootic-ingredien.000webhostapp.com/wp-content/uploads/2020/12/masazuotojas_romanas_logo.png"
-                alt="Masažuotojas Romanas Logo Mažas"
-              />
-            </LinkText>
+            <LogoText>Justas</LogoText>
           </Link>
         </NavLogoWrapper>
         <MobileIcon onClick={toggle}>

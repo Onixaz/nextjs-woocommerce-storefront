@@ -1,4 +1,4 @@
 module.exports = {
-    siteUrl: 'https://www.masazuotojasromanas.lt',
+    siteUrl: 'https://www.pajustudio.net',
     generateRobotsTxt: true,
   }

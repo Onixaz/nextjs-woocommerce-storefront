@@ -11,20 +11,16 @@ const GlobalStyle = createGlobalStyle<Props>`
     margin: 0;
     padding: 0;
     outline: none;
-    font-family: 'Fira Sans',  sans-serif; //'Fira Sans', 'Lato',
+    font-family: 'Roboto',  sans-serif;
   }
 
-  
 
   body {
-    font-family: 'Fira Sans', sans-serif; //'Fira Sans', 'Lato',
     line-height: 1.7;
-    background: ${({ theme }) => theme.lightMediumBg};
-
-  
+    
   } 
   a {
-    
+    text-decoration: none;
     color: ${({ theme }) => theme.primaryBlack}
   }
   ul {
@@ -32,7 +28,6 @@ const GlobalStyle = createGlobalStyle<Props>`
   }
 
   
-
   input:-webkit-autofill,
   input:-webkit-autofill:hover, 
   input:-webkit-autofill:focus, 
@@ -40,7 +35,6 @@ const GlobalStyle = createGlobalStyle<Props>`
     box-shadow: inherit;
     -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.lightMediumBg} inset !important;
 }
-
   
 `
 

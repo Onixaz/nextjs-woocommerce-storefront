@@ -1,29 +1,14 @@
 import Layout from '../components/Layout'
 import { NextPage } from 'next'
-import HeroSection from '../components/HeroSection'
-import InfoSection from '../components/InfoSection'
-import { homeObjOne } from '../components/InfoSection/customizations'
-import Services from '../components/ServicesSection'
-import GallerySection from '../components/GallerySection'
-import { indexGalleryObj } from '../components/Photos/customizations'
-import { IndexInfoChild } from '../components/InfoSection/InfoChildren'
 
-interface BlogProps {}
+interface IndexPageProps {}
 
-const Blog: NextPage<BlogProps> = () => {
+const IndexPage: NextPage<IndexPageProps> = () => {
   return (
     <>
-      <Layout pageTitle="Pradžia">
-        <HeroSection />
-
-        <InfoSection {...homeObjOne}>
-          <IndexInfoChild />
-        </InfoSection>
-        <Services />
-        <GallerySection {...indexGalleryObj} />
-      </Layout>
+      <Layout pageTitle="Pradžia"></Layout>
     </>
   )
 }
 
-export default Blog
+export default IndexPage
