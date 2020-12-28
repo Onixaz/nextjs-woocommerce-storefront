@@ -10,7 +10,6 @@
     "lint": "eslint --ext .ts,.tsx --fix",
     "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
-  "proxy": "https://cors-anywhere.herokuapp.com/",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
