@@ -6,7 +6,9 @@ interface IndexPageProps {}
 const IndexPage: NextPage<IndexPageProps> = () => {
   return (
     <>
-      <Layout pageTitle="Pradžia"></Layout>
+      <Layout pageTitle="Pradžia">
+        <h1>Hello</h1>
+      </Layout>
     </>
   )
 }
