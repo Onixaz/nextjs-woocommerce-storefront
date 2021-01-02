@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
 import { NextPage } from 'next'
+import HeroSection from '../components/Hero'
 
 interface IndexPageProps {}
 
@@ -7,7 +8,7 @@ const IndexPage: NextPage<IndexPageProps> = () => {
   return (
     <>
       <Layout pageTitle="Pradžia">
-        <h1>Hello</h1>
+        <HeroSection />
       </Layout>
     </>
   )

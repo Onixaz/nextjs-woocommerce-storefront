@@ -11,20 +11,25 @@ const GlobalStyle = createGlobalStyle<Props>`
     margin: 0;
     padding: 0;
     outline: none;
-    font-family: 'Roboto',  sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    line-height: 1.6;
   }
 
-
-  body {
-    line-height: 1.7;
+  body{
     
-  } 
+  }
+  
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.primaryBlack}
   }
   ul {
     list-style: none
+  }
+
+  img{
+    max-width: 100%;
   }
 
   

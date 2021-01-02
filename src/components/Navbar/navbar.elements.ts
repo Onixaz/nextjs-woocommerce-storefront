@@ -4,17 +4,15 @@ export const Nav = styled.nav<{ scrollNav: boolean }>`
   background: ${({ scrollNav, theme }) => (scrollNav ? 'transparent' : theme.primaryBlack)};
   height: 80px;
   width: 100%;
-  //margin-top: 80px;
+  margin-top: -80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  //padding: 0.5rem calc((100vw - 1200px) /2);
+
   position: sticky;
   top: 0;
   bottom: 0;
   z-index: 5;
-
-  //border-bottom: 1px solid #000;
 `
 
 export const NavbarContainer = styled.div`
@@ -22,32 +20,37 @@ export const NavbarContainer = styled.div`
   justify-content: space-between;
   height: 80px;
   z-index: 1;
-  width: 100%;
-  padding: 0 24px;
+  width: 90%;
+
   max-width: 1200px;
 `
 export const NavLogoWrapper = styled.div`
-  justify-self: flex-start;
   display: flex;
+  justify-content: center;
   align-items: center;
+  //align-items: normal;
 `
 
 export const NavbarLogo = styled.img`
   height: 80px;
   width: 160px;
   border-radius: 10px;
-  object-fit: cover;
-  //transition: filter 1s ease-in-out;
 `
 
 export const LogoText = styled.a`
-  color: ${({ theme }) => theme.primaryBlack};
+  color: ${({ theme }) => theme.primaryGreen};
   cursor: pointer;
-  font-size: 1.5rem;
-  letter-spacing: 1.4px;
-  text-decoration: none;
-  text-transform: uppercase;
+  font-size: calc(1.7rem + 0.1vw);
+  letter-spacing: 2px;
+  opacity: 0.95;
+  text-align: center;
   font-weight: 600;
+  padding-bottom: 1rem;
+`
+
+export const TheDot = styled.span`
+  color: #3a90b1;
+  font-size: 3rem;
 `
 
 export const LinkText = styled.a`
@@ -55,12 +58,14 @@ export const LinkText = styled.a`
   cursor: pointer;
   font-size: calc(1rem + 0.1vw);
   text-decoration: none;
-  text-transform: uppercase;
+  opacity: 0.8;
   font-weight: 600;
+  letter-spacing: 1px;
 
   &:hover {
+    //transform: scale(1.02);
     transition: all 0.2s ease-in-out;
-    color: ${({ theme }) => theme.primaryRed};
+    color: ${({ theme }) => theme.primaryGreen};
   }
 `
 
@@ -69,6 +74,7 @@ export const MobileIcon = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
+    opacity: 0.8;
     top: 1.2rem;
     right: 1.2rem;
 
@@ -85,7 +91,7 @@ export const NavMenu = styled.ul`
   list-style: none;
   text-align: center;
   //margin-top: 0.2rem;
-  margin-right: -22px;
+  //margin-right: -22px;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -93,13 +99,9 @@ export const NavMenu = styled.ul`
 
 export const NavItem = styled.li`
   height: 80px;
-`
-
-export const NavLinksWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 0 1rem;
-  height: 100%;
 `
 
 export const NavBtnWrapper = styled.nav`

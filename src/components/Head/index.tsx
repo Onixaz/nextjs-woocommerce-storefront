@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 
-interface CustomSeoProps {
+interface CustomHeadProps {
   title: string
 }
 
@@ -15,7 +15,7 @@ const baseInfo = {
   keywords: `Masažas, Viso kūno masažas, Sportinis masažas, Nugaros masažas, Konsultacijos, Sveikata, Mityba, Laikysena`,
 }
 
-const CustomSeo: React.FC<CustomSeoProps> = ({ title }) => {
+const CustomHead: React.FC<CustomHeadProps> = ({ title }) => {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,4 +48,4 @@ const CustomSeo: React.FC<CustomSeoProps> = ({ title }) => {
   )
 }
 
-export default CustomSeo
+export default CustomHead

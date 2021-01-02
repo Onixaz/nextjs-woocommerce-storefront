@@ -4,8 +4,8 @@ import LayoutElement, { NavbarHolder } from './layout.elements'
 
 import Sidebar from '../Sidebar'
 import dynamic from 'next/dynamic'
-import CustomSeo from '../Seo/seo'
-import CookiesConsent from '../Cookies/cookies'
+import CustomHead from '../Head'
+import CookiesConsent from '../Cookies'
 const Navbar = dynamic(() => import('../Navbar'), { ssr: false, loading: () => <NavbarHolder /> })
 
 interface LayoutProps {
@@ -24,7 +24,7 @@ const Layout: React.FC<LayoutProps> = ({
   }
   return (
     <>
-      <CustomSeo title={pageTitle} />
+      <CustomHead title={pageTitle} />
       <LayoutElement>
         <Sidebar isOpen={isOpen} toggle={toggle} />
         <Navbar toggle={toggle} />

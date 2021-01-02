@@ -6,9 +6,9 @@ import {
   MobileIcon,
   NavMenu,
   NavItem,
-  NavLinksWrapper,
   LinkText,
   LogoText,
+  TheDot,
 } from './navbar.elements'
 import { FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/router'
@@ -40,7 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
       <NavbarContainer>
         <NavLogoWrapper>
           <Link href="/">
-            <LogoText>Justas</LogoText>
+            <LogoText>
+              Elec<TheDot>.</TheDot>lt
+            </LogoText>
           </Link>
         </NavLogoWrapper>
         <MobileIcon onClick={toggle}>
@@ -48,32 +50,24 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
         </MobileIcon>
         <NavMenu>
           <NavItem>
-            <NavLinksWrapper>
-              <Link href="/">
-                <LinkText>Pradžia</LinkText>
-              </Link>
-            </NavLinksWrapper>
+            <Link href="/">
+              <LinkText>Pradžia</LinkText>
+            </Link>
           </NavItem>
           <NavItem>
-            <NavLinksWrapper>
-              <Link href="/apie">
-                <LinkText>Apie mane</LinkText>
-              </Link>
-            </NavLinksWrapper>
+            <Link href="/apie">
+              <LinkText>Apie mane</LinkText>
+            </Link>
           </NavItem>
           <NavItem>
-            <NavLinksWrapper>
-              <Link href="/paslaugos">
-                <LinkText>Paslaugos</LinkText>
-              </Link>
-            </NavLinksWrapper>
+            <Link href="/paslaugos">
+              <LinkText>Paslaugos</LinkText>
+            </Link>
           </NavItem>
           <NavItem>
-            <NavLinksWrapper>
-              <Link href="/susisiek">
-                <LinkText>Susisiek</LinkText>
-              </Link>
-            </NavLinksWrapper>
+            <Link href="/susisiek">
+              <LinkText>Susisiek</LinkText>
+            </Link>
           </NavItem>
         </NavMenu>
       </NavbarContainer>

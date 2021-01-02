@@ -3,8 +3,10 @@ const defaultTheme = {
   lightWhiteBg: '#fff',
   //text button colors
   primaryBlack: '#0d0d0d',
-  primaryWhite: '#fff',
-  primaryRed: '#ff2458',
+  secondaryBlack: '#898989',
+  primaryText: '#3E3E3E',
+  primaryWhite: '#fafafa',
+  primaryGreen: '#93e065',
 }
 
 export type ThemeType = typeof defaultTheme
