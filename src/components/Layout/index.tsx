@@ -6,7 +6,9 @@ import Sidebar from '../Sidebar'
 import dynamic from 'next/dynamic'
 import CustomHead from '../Head'
 import CookiesConsent from '../Cookies'
-const Navbar = dynamic(() => import('../Navbar'), { ssr: false, loading: () => <NavbarHolder /> })
+//const Navbar = dynamic(() => import('../Navbar'), { ssr: false, loading: () => <NavbarHolder /> })
+
+import Navbar from '../Navbar'
 
 interface LayoutProps {
   pageTitle: string

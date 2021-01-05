@@ -1,0 +1,850 @@
+[
+    {
+        "id": 30,
+        "name": "Rudoji karčiuotė",
+        "slug": "rudoji-karciuote",
+        "permalink": "https://woo-test.local/product/rudoji-karciuote/",
+        "date_created": "2021-01-03T13:43:53",
+        "date_created_gmt": "2021-01-03T13:43:53",
+        "date_modified": "2021-01-03T13:44:44",
+        "date_modified_gmt": "2021-01-03T13:44:44",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Rudoji karčiuotė – karčiuotinių šeimos žolinis augalas. Paplitęs Pietryčių Azijoje. Lapai dideli, 60 cm ilgio. Žiedas didelis, tamsiai bordinis, formuojasi ant ilgo stiebo. Žydi nuo birželio iki gruodžio.</p>\n",
+        "short_description": "<p>Retas augalas</p>\n",
+        "sku": "",
+        "price": "500",
+        "regular_price": "500",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&euro;</span>500,00</bdi></span>",
+        "on_sale": false,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "related_ids": [
+            27,
+            22,
+            14,
+            10,
+            17
+        ],
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 15,
+                "name": "Uncategorized",
+                "slug": "uncategorized"
+            }
+        ],
+        "tags": [],
+        "images": [
+            {
+                "id": 31,
+                "date_created": "2021-01-03T13:43:45",
+                "date_created_gmt": "2021-01-03T13:43:45",
+                "date_modified": "2021-01-03T13:43:45",
+                "date_modified_gmt": "2021-01-03T13:43:45",
+                "src": "https://woo-test.local/wp-content/uploads/2021/01/black-bat-flower-seeds-tacca-chantrieri.jpg",
+                "name": "black-bat-flower-seeds-tacca-chantrieri",
+                "alt": ""
+            }
+        ],
+        "attributes": [],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "meta_data": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products/30"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    },
+    {
+        "id": 27,
+        "name": "Juostuotoji raibuolė",
+        "slug": "juostuotoji-raibuole",
+        "permalink": "https://woo-test.local/product/juostuotoji-raibuole/",
+        "date_created": "2021-01-03T13:40:55",
+        "date_created_gmt": "2021-01-03T13:40:55",
+        "date_modified": "2021-01-03T13:40:55",
+        "date_modified_gmt": "2021-01-03T13:40:55",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Paphiopedilum rothschildianum, jis paprastai žinomas kaip Kinabalu orchidėjos auksas arba Rothschildo šlepetės orchidėja, yra didelio dydžio skaidrių lapų orchidėjų rūšis. Žydi aukštu žiedynu, turinčiu iki šešių, didelių žiedų.</p>\n",
+        "short_description": "<p>Retas augalas</p>\n",
+        "sku": "",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&euro;</span>100,00</bdi></span>",
+        "on_sale": false,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "related_ids": [
+            10,
+            20,
+            30,
+            25,
+            17
+        ],
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 15,
+                "name": "Uncategorized",
+                "slug": "uncategorized"
+            }
+        ],
+        "tags": [],
+        "images": [
+            {
+                "id": 28,
+                "date_created": "2021-01-03T13:40:47",
+                "date_created_gmt": "2021-01-03T13:40:47",
+                "date_modified": "2021-01-03T13:40:47",
+                "date_modified_gmt": "2021-01-03T13:40:47",
+                "src": "https://woo-test.local/wp-content/uploads/2021/01/Paphiopedilum_rothschildianum_25834537567.jpg",
+                "name": "Paphiopedilum rothschildianum",
+                "alt": ""
+            }
+        ],
+        "attributes": [],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "meta_data": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products/27"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    },
+    {
+        "id": 25,
+        "name": "Raudonoji lelija",
+        "slug": "raudonoji-lelija",
+        "permalink": "https://woo-test.local/product/raudonoji-lelija/",
+        "date_created": "2021-01-03T13:37:44",
+        "date_created_gmt": "2021-01-03T13:37:44",
+        "date_modified": "2021-01-03T13:37:44",
+        "date_modified_gmt": "2021-01-03T13:37:44",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Oranžinė lelija, ugninė lelija ir tigrinė lelija, yra žolinė Europos lelija su požeminėmis lemputėmis, priklausanti lelijai.</p>\n",
+        "short_description": "<p>Retas augalas</p>\n",
+        "sku": "",
+        "price": "50",
+        "regular_price": "50",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&euro;</span>50,00</bdi></span>",
+        "on_sale": false,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "related_ids": [
+            10,
+            20,
+            22,
+            14,
+            30
+        ],
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 15,
+                "name": "Uncategorized",
+                "slug": "uncategorized"
+            }
+        ],
+        "tags": [],
+        "images": [
+            {
+                "id": 26,
+                "date_created": "2021-01-03T13:37:20",
+                "date_created_gmt": "2021-01-03T13:37:20",
+                "date_modified": "2021-01-03T13:37:20",
+                "date_modified_gmt": "2021-01-03T13:37:20",
+                "src": "https://woo-test.local/wp-content/uploads/2021/01/Fire-lilies.jpg",
+                "name": "Fire lilies",
+                "alt": ""
+            }
+        ],
+        "attributes": [],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "meta_data": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products/25"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    },
+    {
+        "id": 22,
+        "name": "Vaiduoklių orchidėja",
+        "slug": "vaiduokliu-orchideja",
+        "permalink": "https://woo-test.local/product/vaiduokliu-orchideja/",
+        "date_created": "2021-01-03T13:33:27",
+        "date_created_gmt": "2021-01-03T13:33:27",
+        "date_modified": "2021-01-03T13:33:27",
+        "date_modified_gmt": "2021-01-03T13:33:27",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Vaiduoklių orchidėja yra daugiametis epifitas iš orchidėjų šeimos. Tai yra gimtoji vieta Floridoje ir Kuboje. Kiti paplitę pavadinimai apima palmių žiedadulkę ir baltųjų varlių orchidėjas.</p>\n",
+        "short_description": "<p>Retas augalas.</p>\n",
+        "sku": "",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&euro;</span>100,00</bdi></span>",
+        "on_sale": false,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "related_ids": [
+            27,
+            30,
+            10,
+            14,
+            17
+        ],
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 15,
+                "name": "Uncategorized",
+                "slug": "uncategorized"
+            }
+        ],
+        "tags": [],
+        "images": [
+            {
+                "id": 23,
+                "date_created": "2021-01-03T13:32:59",
+                "date_created_gmt": "2021-01-03T13:32:59",
+                "date_modified": "2021-01-03T13:32:59",
+                "date_modified_gmt": "2021-01-03T13:32:59",
+                "src": "https://woo-test.local/wp-content/uploads/2021/01/c9f48b3818c394136b3c1739d5ae2932.jpg",
+                "name": "c9f48b3818c394136b3c1739d5ae2932",
+                "alt": ""
+            }
+        ],
+        "attributes": [],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "meta_data": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products/22"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    },
+    {
+        "id": 20,
+        "name": "Puošniausioji karpažolė",
+        "slug": "puosniausioji-karpazole",
+        "permalink": "https://woo-test.local/product/puosniausioji-karpazole/",
+        "date_created": "2021-01-03T13:26:02",
+        "date_created_gmt": "2021-01-03T13:26:02",
+        "date_modified": "2021-01-03T13:26:03",
+        "date_modified_gmt": "2021-01-03T13:26:03",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>uošniausioji karpažolė arba puansetija – karpažolinių šeimos augalas. Kilęs iš Meksikos ir Gvatemalos. Šis augalas turi balsvų nuodingų syvų. Žiedai smulkūs, tačiau pažiedlapiai labai spalvingi: raudoni, geltoni arba balti. Puošniausioji karpažolė auginama drėgnoje ir šiltoje aplinkoje.</p>\n",
+        "short_description": "<p>Kalėdų gėlė.</p>\n",
+        "sku": "",
+        "price": "10",
+        "regular_price": "10",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&euro;</span>10,00</bdi></span>",
+        "on_sale": false,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "related_ids": [
+            10,
+            25,
+            22,
+            14,
+            30
+        ],
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 15,
+                "name": "Uncategorized",
+                "slug": "uncategorized"
+            }
+        ],
+        "tags": [],
+        "images": [
+            {
+                "id": 21,
+                "date_created": "2021-01-03T13:25:52",
+                "date_created_gmt": "2021-01-03T13:25:52",
+                "date_modified": "2021-01-03T13:25:52",
+                "date_modified_gmt": "2021-01-03T13:25:52",
+                "src": "https://woo-test.local/wp-content/uploads/2021/01/iStock-531579027-400x267-1.jpg",
+                "name": "iStock-531579027-400&#215;267",
+                "alt": ""
+            }
+        ],
+        "attributes": [],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "meta_data": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products/20"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    },
+    {
+        "id": 17,
+        "name": "Lotosas",
+        "slug": "lotosas",
+        "permalink": "https://woo-test.local/product/lotosas/",
+        "date_created": "2021-01-03T13:22:40",
+        "date_created_gmt": "2021-01-03T13:22:40",
+        "date_modified": "2021-01-03T13:22:40",
+        "date_modified_gmt": "2021-01-03T13:22:40",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Lotosas – monotipinės lotosinių augalų šeimos gentis. Tai daugiametės vandens žolės, paplitusios tropinio, subtropinio klimato srityse. Lapai dideli, žiedai iki 35 cm skersmens.</p>\n",
+        "short_description": "<p>Retas ir labai gražus augalas</p>\n",
+        "sku": "",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&euro;</span>30,00</bdi></span>",
+        "on_sale": false,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "related_ids": [
+            10,
+            22,
+            25,
+            20,
+            14
+        ],
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 15,
+                "name": "Uncategorized",
+                "slug": "uncategorized"
+            }
+        ],
+        "tags": [],
+        "images": [
+            {
+                "id": 18,
+                "date_created": "2021-01-03T13:22:12",
+                "date_created_gmt": "2021-01-03T13:22:12",
+                "date_modified": "2021-01-03T13:22:12",
+                "date_modified_gmt": "2021-01-03T13:22:12",
+                "src": "https://woo-test.local/wp-content/uploads/2021/01/Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2-scaled.jpg",
+                "name": "Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2",
+                "alt": ""
+            }
+        ],
+        "attributes": [],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "meta_data": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products/17"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    },
+    {
+        "id": 14,
+        "name": "Nuodingasis raugmedis",
+        "slug": "nuodingasis-raugmedis",
+        "permalink": "https://woo-test.local/product/nuodingasis-raugmedis/",
+        "date_created": "2021-01-03T13:18:03",
+        "date_created_gmt": "2021-01-03T13:18:03",
+        "date_modified": "2021-01-03T13:18:03",
+        "date_modified_gmt": "2021-01-03T13:18:03",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Toxicodendron radicans, paprastai žinomas kaip rytinė nuodingoji gebenė arba nuodinė gebenė, yra alergiškas Azijos ir Rytų Šiaurės Amerikos žydintis augalas, veikiantis toksikodendrų gentį.</p>\n",
+        "short_description": "<p>Nuodingas augalas.</p>\n",
+        "sku": "",
+        "price": "5",
+        "regular_price": "5",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&euro;</span>5,00</bdi></span>",
+        "on_sale": false,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "related_ids": [
+            25,
+            20,
+            22,
+            27,
+            10
+        ],
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 15,
+                "name": "Uncategorized",
+                "slug": "uncategorized"
+            }
+        ],
+        "tags": [],
+        "images": [
+            {
+                "id": 15,
+                "date_created": "2021-01-03T13:17:40",
+                "date_created_gmt": "2021-01-03T13:17:40",
+                "date_modified": "2021-01-03T13:17:40",
+                "date_modified_gmt": "2021-01-03T13:17:40",
+                "src": "https://woo-test.local/wp-content/uploads/2021/01/poisonivy_large.jpg",
+                "name": "poisonivy_large",
+                "alt": ""
+            }
+        ],
+        "attributes": [],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "meta_data": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products/14"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "name": "Baltasis Sukutis",
+        "slug": "moonflower",
+        "permalink": "https://woo-test.local/product/moonflower/",
+        "date_created": "2021-01-03T13:02:54",
+        "date_created_gmt": "2021-01-03T13:02:54",
+        "date_modified": "2021-01-03T13:08:31",
+        "date_modified_gmt": "2021-01-03T13:08:31",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Ipomoea alba, kartais vadinama atogrąžų balta ryto šlove arba mėnulio žiedu ar mėnulio vynuogynu, yra naktį žydinčios ryto šlovės rūšis, kilusi iš tropinių ir subtropinių Šiaurės ir Pietų Amerikos regionų, nuo Argentinos iki Meksikos šiaurės, Floridos ir Puerto Riko.</p>\n",
+        "short_description": "<p>Egzotinis augalas</p>\n",
+        "sku": "",
+        "price": "20",
+        "regular_price": "20",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&euro;</span>20,00</bdi></span>",
+        "on_sale": false,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "related_ids": [
+            25,
+            30,
+            22,
+            14,
+            20
+        ],
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 15,
+                "name": "Uncategorized",
+                "slug": "uncategorized"
+            }
+        ],
+        "tags": [],
+        "images": [
+            {
+                "id": 11,
+                "date_created": "2021-01-03T13:02:02",
+                "date_created_gmt": "2021-01-03T13:02:02",
+                "date_modified": "2021-01-03T13:02:02",
+                "date_modified_gmt": "2021-01-03T13:02:02",
+                "src": "https://woo-test.local/wp-content/uploads/2021/01/01052-pk-p1.jpg",
+                "name": "01052-pk-p1",
+                "alt": ""
+            }
+        ],
+        "attributes": [],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "meta_data": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products/10"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-test.local/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    }
+]

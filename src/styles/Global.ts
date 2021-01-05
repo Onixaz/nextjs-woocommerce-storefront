@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle<Props>`
   }
 
   body{
-    
+    background: ${({ theme }) => theme.lightWhiteBg};
   }
   
   a {

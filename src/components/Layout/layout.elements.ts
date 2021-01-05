@@ -9,6 +9,6 @@ const LayoutElement = styled.div`
 
 export const NavbarHolder = styled.div`
   position: sticky;
-  height: 80px;
+  height: 160px;
 `
 export default LayoutElement
