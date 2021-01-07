@@ -1,24 +1,14 @@
 import React, { useState } from 'react'
-
-import LayoutElement, { NavbarHolder } from './layout.elements'
-
+import LayoutElement from './layout.elements'
 import Sidebar from '../Sidebar'
-import dynamic from 'next/dynamic'
-import CustomHead from '../Head'
+import Seo from '../Seo'
 import CookiesConsent from '../Cookies'
-//const Navbar = dynamic(() => import('../Navbar'), { ssr: false, loading: () => <NavbarHolder /> })
 
 import Navbar from '../Navbar'
 
-interface LayoutProps {
-  pageTitle: string
-}
+interface LayoutProps {}
 
-const Layout: React.FC<LayoutProps> = ({
-  pageTitle,
-
-  children,
-}) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggle = () => {
@@ -26,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({
   }
   return (
     <>
-      <CustomHead title={pageTitle} />
+      <Seo />
       <LayoutElement>
         <Sidebar isOpen={isOpen} toggle={toggle} />
         <Navbar toggle={toggle} />

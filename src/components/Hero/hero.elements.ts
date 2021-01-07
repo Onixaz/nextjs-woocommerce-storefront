@@ -9,6 +9,7 @@ export const HeroBg = styled.div`
   background: ${({ theme }) => theme.lightMediumBg};
   position: relative;
   margin: 0 auto;
+  border-radius: 10px;
 
   &:before {
     content: '';

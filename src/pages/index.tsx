@@ -4,20 +4,19 @@ import Section from '../components/Section'
 import Hero from '../components/Hero'
 import products from '../../products.json'
 import LatestProducts from '../components/Latest'
+import Categories from '../components/Categories'
 
 interface IndexPageProps {}
 
 const IndexPage: NextPage<IndexPageProps> = () => {
   return (
     <>
-      <Layout pageTitle="Pradžia">
-        <Section width={100} id="Hero">
-          <Hero />
-        </Section>
-        <Section width={90} id="Latest">
-          <LatestProducts products={products} />
-        </Section>
-      </Layout>
+      <Section id="Hero" height={100} width={100}>
+        <Hero />
+      </Section>
+      <Section id="Categories" height={30} width={90}>
+        <Categories />
+      </Section>
     </>
   )
 }

@@ -1,16 +1,16 @@
 import React from 'react'
 
-import { CardPhotoWrapper, CardWrapper, Photo } from './card.elements'
+import { CardPhotoWrapper, CardWrapper, CardPhoto, CardPrice, CardName } from './card.elements'
 
 const ProductCard = ({ price, productImg, name }) => {
   return (
     <CardWrapper>
       <CardPhotoWrapper>
-        <Photo src={productImg} alt={productImg} />
+        <CardPhoto src={productImg} alt={productImg} />
       </CardPhotoWrapper>
 
-      <p>{name}</p>
-      <p>{price}</p>
+      <CardName>{name}</CardName>
+      <CardPrice>{price}&#8364;</CardPrice>
     </CardWrapper>
   )
 }
