@@ -8,7 +8,7 @@ import {
   SidebarMenu,
   SidebarLinkWrapper,
   SidebarLinkText,
-} from './sidebar.elements'
+} from './SidebarElements'
 
 interface SidebarProps {
   toggle: any

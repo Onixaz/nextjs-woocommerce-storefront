@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import LayoutElement from './layout.elements'
+import LayoutElement from './LayoutElements'
 import Sidebar from '../Sidebar'
 import Seo from '../Seo'
 import CookiesConsent from '../Cookies'
