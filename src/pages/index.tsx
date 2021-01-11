@@ -19,7 +19,7 @@ const IndexPage: NextPage<IndexPageProps> = () => {
           height: '100%',
         }}
       >
-        I'm a starter!
+        Index Page!
       </h1>
     </>
   )
