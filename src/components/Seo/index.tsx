@@ -18,10 +18,10 @@ const Seo: React.FC<CustomHeadProps> = () => {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={baseInfo.description} />
       <meta charSet="utf-8" />
-      <meta property="og:type" content="website" key="ogtype" />
-      <meta property="og:description" content={baseInfo.description} key="ogdesc" />
-      <meta property="og:url" content={baseInfo.url} key="ogurl" />
-      <meta property="og:site_name" content={baseInfo.name} key="ogsitename" />
+      <meta property="og:type" content="website" />
+      <meta property="og:description" content={baseInfo.description} />
+      <meta property="og:url" content={baseInfo.url} />
+      <meta property="og:site_name" content={baseInfo.name} />
       <meta name="author" content={baseInfo.author} />
       <meta name="keywords" content={baseInfo.keywords} />
     </Head>
