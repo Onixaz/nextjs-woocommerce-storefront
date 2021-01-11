@@ -44,9 +44,6 @@ const Sidebar: React.FC<SidebarProps> = ({ toggle, isOpen }) => {
             </Link>
           </SidebarLinkWrapper>
         </SidebarMenu>
-        {/* <SideBtnWrap>
-          <SidebarRoute>Mygtukas</SidebarRoute>
-        </SideBtnWrap> */}
       </SidebarWrapper>
     </SidebarContainer>
   )

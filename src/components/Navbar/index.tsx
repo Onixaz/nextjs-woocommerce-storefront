@@ -11,7 +11,6 @@ import {
   TheDot,
 } from './NavbarElements'
 import { FaBars } from 'react-icons/fa'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 interface NavbarProps {
@@ -40,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
         <NavLogoWrapper>
           <Link href="/">
             <LogoText>
-              Elec<TheDot>.</TheDot>lt
+              Logo<TheDot>.</TheDot>lt
             </LogoText>
           </Link>
         </NavLogoWrapper>
@@ -50,22 +49,22 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
         <NavMenu>
           <NavItem>
             <Link href="/">
-              <LinkText>Pradžia</LinkText>
+              <LinkText>Home</LinkText>
             </Link>
           </NavItem>
           <NavItem>
             <Link href="/apie">
-              <LinkText>Apie mane</LinkText>
+              <LinkText>Shop</LinkText>
             </Link>
           </NavItem>
           <NavItem>
             <Link href="/paslaugos">
-              <LinkText>Paslaugos</LinkText>
+              <LinkText>About</LinkText>
             </Link>
           </NavItem>
           <NavItem>
             <Link href="/susisiek">
-              <LinkText>Susisiek</LinkText>
+              <LinkText>Contact</LinkText>
             </Link>
           </NavItem>
         </NavMenu>
