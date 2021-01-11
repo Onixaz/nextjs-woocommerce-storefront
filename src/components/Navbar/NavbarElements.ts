@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const LinkText = styled.a`
-  //color: ${({ theme }) => theme.primaryBlack};
   cursor: pointer;
   font-size: calc(1rem + 0.1vw);
   text-decoration: none;
@@ -14,7 +13,6 @@ export const NavLogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  //align-items: normal;
 `
 
 export const NavbarLogo = styled.img`
@@ -76,7 +74,7 @@ export const NavItem = styled.li`
 export const NavBtnWrapper = styled.nav`
   display: flex;
   align-items: center;
-  //margin-right: -20px;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -89,8 +87,6 @@ export const NavbarContainer = styled.div`
   z-index: 1;
   width: 95%;
   max-width: 1200px;
-
-  //max-width: 1000px;
 `
 export const Nav = styled.nav<{ scrollNav: boolean }>`
   background: ${({ scrollNav, theme }) => (scrollNav ? 'transparent' : theme.primaryBlack)};

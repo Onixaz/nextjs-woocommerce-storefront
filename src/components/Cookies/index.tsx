@@ -8,7 +8,8 @@ const CookiesConsent: React.FC<CookiesConsentProps> = () => {
   return (
     <>
       <CookieConsent
-        buttonText="Supratau"
+        buttonText="Got it"
+        debug={true}
         style={{
           background: 'rgba(0,0,0,0.7)',
           padding: '0 15px',
@@ -16,7 +17,7 @@ const CookiesConsent: React.FC<CookiesConsentProps> = () => {
           justifyContent: 'center',
         }}
         buttonStyle={{
-          background: '#ff3b6a',
+          background: '#b5e896',
           borderRadius: '30px',
           color: '#000',
           fontSize: '15px',
@@ -24,9 +25,9 @@ const CookiesConsent: React.FC<CookiesConsentProps> = () => {
           padding: '10px',
         }}
       >
-        Šioje svetainėje naudojami slapukai (angl. cookies):{' '}
-        <Link href="/privatumo-politika">
-          <a style={{ color: '#fff' }}>Sužinoti daugiau</a>
+        We se cookies:{' '}
+        <Link href="/">
+          <a style={{ color: '#fff' }}>Learn More</a>
         </Link>
       </CookieConsent>
     </>

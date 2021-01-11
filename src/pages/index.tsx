@@ -19,7 +19,7 @@ const IndexPage: React.FC<IndexPageProps> = () => {
           height: '100%',
         }}
       >
-        I'm a starter
+        I'm a starter!
       </h1>
     </>
   )
