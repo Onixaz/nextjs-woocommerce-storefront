@@ -16,7 +16,6 @@ const Seo: React.FC<CustomHeadProps> = () => {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content={baseInfo.description} />
       <meta charSet="utf-8" />
       <meta property="og:type" content="website" />
       <meta property="og:description" content={baseInfo.description} />
