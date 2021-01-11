@@ -53,17 +53,17 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
             </Link>
           </NavItem>
           <NavItem>
-            <Link href="/apie">
+            <Link href="/">
               <LinkText>Shop</LinkText>
             </Link>
           </NavItem>
           <NavItem>
-            <Link href="/paslaugos">
+            <Link href="/about">
               <LinkText>About</LinkText>
             </Link>
           </NavItem>
           <NavItem>
-            <Link href="/susisiek">
+            <Link href="/">
               <LinkText>Contact</LinkText>
             </Link>
           </NavItem>

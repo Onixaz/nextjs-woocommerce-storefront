@@ -1,12 +1,12 @@
 import CustomHead from '../components/CustomHead'
 
-interface IndexPageProps {}
+interface AboutPageProps {}
 
-const IndexPage: React.FC<IndexPageProps> = () => {
+const AboutPage: React.FC<AboutPageProps> = () => {
   return (
     <>
       <CustomHead
-        title="Unofficial starter | Next.Js"
+        title="About | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />
       <h1
@@ -18,10 +18,10 @@ const IndexPage: React.FC<IndexPageProps> = () => {
           height: '100%',
         }}
       >
-        I'm a starter!
+        About Page!
       </h1>
     </>
   )
 }
 
-export default IndexPage
+export default AboutPage
