@@ -1,8 +1,9 @@
+import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
 
 interface AboutPageProps {}
 
-const AboutPage: React.FC<AboutPageProps> = () => {
+const AboutPage: NextPage<AboutPageProps> = () => {
   return (
     <>
       <CustomHead

@@ -1,8 +1,9 @@
+import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
 
 interface IndexPageProps {}
 
-const IndexPage: React.FC<IndexPageProps> = () => {
+const IndexPage: NextPage<IndexPageProps> = () => {
   return (
     <>
       <CustomHead
