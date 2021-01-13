@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { RiShoppingCart2Fill } from 'react-icons/ri'
+import { MdAccountCircle } from 'react-icons/md'
 
 export const LinkText = styled.a`
   cursor: pointer;
@@ -24,10 +26,10 @@ export const NavbarLogo = styled.img`
 export const LogoText = styled.a`
   color: ${({ theme }) => theme.primaryGreen};
   cursor: pointer;
-  font-size: calc(1.7rem + 0.1vw);
+  font-size: calc(1.8rem + 0.1vw);
   letter-spacing: 2px;
   opacity: 0.95;
-
+  //margin-left: 22px;
   font-weight: 600;
   padding-bottom: 1rem;
 `
@@ -57,8 +59,6 @@ export const NavMenu = styled.ul`
   align-items: center;
   list-style: none;
 
-  //margin-top: 0.2rem;
-  //margin-right: -22px;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -80,6 +80,56 @@ export const NavBtnWrapper = styled.nav`
   }
 `
 
+export const NavIconHolder = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`
+export const ShoppingCartHolder = styled.div`
+  display: flex;
+  position: relative;
+`
+
+export const TotalPrice = styled.p`
+  color: ${({ theme }) => theme.primaryText};
+  font-size: calc(1rem + 0.1vw);
+  margin: 0 0.5rem;
+  font-weight: 400;
+`
+
+export const CartBadge = styled.button<{ hasItems: boolean }>`
+  display: ${({ hasItems }) => (hasItems ? 'inheri' : 'none')};
+  background: red;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: -15px;
+  left: 25px;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+`
+export const CartIcon = styled(RiShoppingCart2Fill)`
+  font-size: calc(2rem + 0.1vw);
+  color: ${({ theme }) => theme.primaryText};
+  cursor: pointer;
+  margin: 0 0.5rem;
+  flex: 1;
+`
+export const AccIcon = styled(MdAccountCircle)`
+  font-size: calc(2rem + 0.1vw);
+  color: ${({ theme }) => theme.primaryText};
+  cursor: pointer;
+  flex: 1;
+  margin: 0 0.5rem;
+`
+
 export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -90,9 +140,8 @@ export const NavbarContainer = styled.div`
 `
 export const Nav = styled.nav<{ scrollNav: boolean }>`
   background: ${({ scrollNav, theme }) => (scrollNav ? 'transparent' : theme.primaryBlack)};
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in;
   height: 80px;
-  margin: 0 auto;
   width: 100%;
   margin-top: -80px;
   display: flex;

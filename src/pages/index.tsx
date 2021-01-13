@@ -13,13 +13,13 @@ const IndexPage: NextPage<IndexPageProps> = () => {
       <h1
         style={{
           display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
           width: '100%',
           height: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        Index Page!
+        Index Page
       </h1>
     </>
   )
