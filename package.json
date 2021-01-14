@@ -18,8 +18,6 @@
   "lint-staged": {
     "./src/**/*.+(ts|tsx)": [
       "eslint --fix",
-      "replace '\\r\\n' '\n'",
-      "prettier --write",
       "git add"
     ],
     "./src/**/*.+(css|scss|js)": "prettier --write"

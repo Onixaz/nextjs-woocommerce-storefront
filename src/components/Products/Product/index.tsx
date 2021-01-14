@@ -18,9 +18,28 @@ interface ProductItemProps {
 const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   const [cart, setCart] = useContext(CartContext)
 
-  const addToCart = () => {
-    setCart((curr) => [...curr, { id: product.id, price: parseInt(product.regular_price) }])
-    console.log('Adding to cart')
+  const addToCart = (product) => {
+    let newCart = [...cart]
+    let itemInCart = newCart.find((item) => item.id === product.id)
+    console.log(itemInCart)
+
+    if (itemInCart) {
+      itemInCart.quantity++
+    } else {
+      itemInCart = {
+        ...product,
+        quantity: 1,
+      }
+      newCart.push(itemInCart)
+
+      //setCart((curr) => [...curr, { quantity, product }])
+    }
+
+    setCart(newCart)
+  }
+
+  const removeFromCart = (product) => {
+    console.log('Dman')
   }
 
   return (
@@ -32,7 +51,8 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
       <PriceWrapper>
         {/* <SalePrice>{item.sale_price}$</SalePrice> //add later */}
         <RegularPrice>{product.regular_price}$</RegularPrice>
-        <AddToCartIcon onClick={addToCart} />
+        <AddToCartIcon onClick={() => addToCart(product)} />
+        <AddToCartIcon style={{ color: 'red' }} onClick={() => removeFromCart(product)} />
       </PriceWrapper>
     </ProductCard>
   )
