@@ -1,3 +1,4 @@
+import React from 'react'
 import { NextPage } from 'next'
 import { useContext } from 'react'
 import CustomHead from '../components/CustomHead'
@@ -15,8 +16,16 @@ const CartPage: NextPage<CartPageProps> = () => {
         description="A starter for Next.Js with Styled-components and TS"
       />
 
-      {cart?.map((item, index) => {
-        return <p key={index}>{item.name}</p>
+      {cart?.map((item) => {
+        return (
+          <React.Fragment key={item.id}>
+            <p>
+              {item.name}
+              {item.quantity}
+            </p>
+            <img src={item.image} />
+          </React.Fragment>
+        )
       })}
     </>
   )

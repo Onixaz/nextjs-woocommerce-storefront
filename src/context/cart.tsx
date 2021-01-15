@@ -21,6 +21,8 @@ const CartProvider = ({ children }) => {
     }
   }, [cart])
 
+  //TODO: use CoCart plugin to save cart on the server instead of localstorage
+
   return <CartContext.Provider value={[cart, setCart]}>{children}</CartContext.Provider>
 }
 

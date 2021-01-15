@@ -90,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
           <Link href="/cart" passHref>
             <ShoppingCartHolder>
               {/* <CartBadge hasItems={cart.length > 0 ? true : false}>{cart.length}</CartBadge> */}
-              <CartBadge hasItems={cart.length > 0 ? true : false}>{totalQuantity}</CartBadge>
+              <CartBadge hasItems={totalQuantity > 0 ? true : false}>{totalQuantity}</CartBadge>
               <CartIcon onClick={openCart} />
             </ShoppingCartHolder>
           </Link>
