@@ -1,7 +1,8 @@
 import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
-import Products from '../components/Products'
 import useSWR from 'swr'
+import ProductItem from '../components/Product'
+import { Container, BasicGrid, Loader } from '../styles/Utils'
 
 interface ShopPageProps {}
 
@@ -14,7 +15,18 @@ const ShopPage: NextPage<ShopPageProps> = () => {
         title="Shop | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />
-      <Products products={data} />
+
+      <Container id="Products">
+        <BasicGrid cols={4} height={80}>
+          {!data ? (
+            <Loader>Loading products...</Loader>
+          ) : (
+            data?.slice(2, 10).map((product) => {
+              return <ProductItem key={product.id} product={product} />
+            })
+          )}
+        </BasicGrid>
+      </Container>
     </>
   )
 }

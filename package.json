@@ -30,6 +30,7 @@
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.11.0",
     "axios": "^0.21.1",
+    "js-cookie": "^2.2.1",
     "next": "^10.0.5",
     "react": "^16.13.1",
     "react-cookie-consent": "^6.2.1",

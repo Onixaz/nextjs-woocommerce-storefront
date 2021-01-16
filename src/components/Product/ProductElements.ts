@@ -1,3 +1,6 @@
+import styled from 'styled-components'
+import { RiShoppingCart2Fill } from 'react-icons/ri'
+
 export const ProductCard = styled.div`
   display: flex;
   position: relative;
@@ -46,8 +49,6 @@ export const ProductBtn = styled.div`
   padding: 1rem calc(0.5rem + 0.5vw);
   background: ${({ theme }) => theme.primaryWhite};
 `
-import styled from 'styled-components'
-import { RiShoppingCart2Fill } from 'react-icons/ri'
 
 export const PriceWrapper = styled.div`
   display: flex;

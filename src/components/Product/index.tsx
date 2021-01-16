@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { CartContext } from '../../../context/cart'
-import ProductTypes from '../../../types/products'
+import { CartContext } from '../../context/cart'
+import ProductTypes from '../../types/products'
 import {
   ProductCard,
   ProductImgWrapper,
@@ -9,7 +9,7 @@ import {
   PriceWrapper,
   RegularPrice,
   AddToCartIcon,
-} from '../Product/ProductElements'
+} from './ProductElements'
 
 interface ProductItemProps {
   product: ProductTypes
