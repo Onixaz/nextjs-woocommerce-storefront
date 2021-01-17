@@ -1,15 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NextPage } from 'next'
 import { useContext } from 'react'
 import CustomHead from '../components/CustomHead'
 import { CartContext } from '../context/cart'
 import CartItems from '../components/Cart'
+import axios from 'axios'
+import { Cookies } from 'react-cookie-consent'
 
 interface CartPageProps {}
 
 const CartPage: NextPage<CartPageProps> = () => {
   const [cart] = useContext(CartContext)
-  console.log(cart)
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://elementor.local/wp-json/cocart/v1/get-cart?cart_key=${Cookies.get(
+          'remote_cart_key',
+        )}`,
+      )
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => console.log(error))
+  }, [])
+
   return (
     <>
       <CustomHead

@@ -8,6 +8,7 @@ type ProductTypes = {
   }>
   price: string
   regular_price: string
+  sale_price?: string
 }
 
 export default ProductTypes

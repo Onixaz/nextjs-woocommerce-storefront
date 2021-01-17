@@ -1,14 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import axios from 'axios'
+import { Cookies } from 'react-cookie-consent'
 import { CartContext } from '../../context/cart'
 import ProductTypes from '../../types/products'
 import {
   ProductCard,
   ProductImgWrapper,
   Img,
-  ProductBtn,
+  ProductName,
   PriceWrapper,
   RegularPrice,
   AddToCartIcon,
+  SalePrice,
+  AddToCartBtn,
 } from './ProductElements'
 
 interface ProductItemProps {
@@ -16,13 +20,12 @@ interface ProductItemProps {
 }
 
 const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
-  const [cart, setCart] = useContext(CartContext)
+  const [cart, setCart, remoteUpd, setRemoteUpd] = useContext(CartContext)
 
   const addToCart = (product: ProductTypes) => {
     let newCart = [...cart]
-
+    const price = product.sale_price !== '' ? product.sale_price : product.regular_price
     let itemInCart = newCart.find((item) => item.id === product.id)
-
     if (itemInCart) {
       itemInCart.quantity++
     } else {
@@ -30,7 +33,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
         //TODO: add sale price to the cart, maybe some other product attributes
         id: product.id,
         name: product.name,
-        regular_price: product.regular_price,
+        price: price,
         image: product.images[0].src,
         quantity: 1,
       }
@@ -39,6 +42,18 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     }
 
     setCart(newCart)
+    setRemoteUpd(true)
+    axios
+      .post(
+        `https://elementor.local/wp-json/cocart/v1/add-item?cart_key=${Cookies.get(
+          'remote_cart_key',
+        )}`,
+        { product_id: product.id.toString(), quantity: 1 },
+      )
+      .then(() => {
+        setRemoteUpd(false)
+      })
+      .catch((error) => console.log(error))
   }
 
   const removeFromCart = (product: ProductTypes) => {
@@ -56,13 +71,24 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     <ProductCard>
       <ProductImgWrapper>
         <Img src={product.images[0].src} alt={product.images[0].alt} />
-        <ProductBtn>{product.name}</ProductBtn>
+        <AddToCartBtn onClick={() => addToCart(product)} disabled={remoteUpd}>
+          Add To Cart
+        </AddToCartBtn>
       </ProductImgWrapper>
+      <ProductName>{product.name}</ProductName>
       <PriceWrapper>
-        {/* <SalePrice>{item.sale_price}$</SalePrice> //TODO: add later */}
-        <RegularPrice>{product.regular_price}$</RegularPrice>
-        <AddToCartIcon onClick={() => addToCart(product)} />
-        <AddToCartIcon style={{ color: 'red' }} onClick={() => removeFromCart(product)} />
+        {product.sale_price.length === 0 ? (
+          <RegularPrice isOnSale={false}>{product.regular_price}$</RegularPrice>
+        ) : (
+          <>
+            <SalePrice>{product.sale_price}$</SalePrice>
+            <RegularPrice isOnSale={true}>{product.regular_price}$</RegularPrice>
+          </>
+        )}
+
+        {/* <AddToCartIcon onClick={() => addToCart(product)} disabled={remoteUpd}/> */}
+
+        {/* <AddToCartIcon style={{ color: 'red' }} onClick={() => removeFromCart(product)} /> */}
       </PriceWrapper>
     </ProductCard>
   )

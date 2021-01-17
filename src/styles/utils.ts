@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 5rem;
   max-width: 1400px;
   width: 100%;
   display: flex;
@@ -10,11 +11,11 @@ export const Container = styled.section`
   margin: 0 auto;
 `
 
-export const BasicGrid = styled.div<{ cols: number; height: number }>`
+export const BasicGrid = styled.div<{ cols: number }>`
   display: grid;
   grid-template-columns: ${({ cols }) => `repeat(${cols}, 1fr)`};
   width: 100%;
-  height: ${({ height }) => `${height}%`};
+  height: 80%;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: ${({ cols }) => `repeat(${cols / 2}, 1fr)`};

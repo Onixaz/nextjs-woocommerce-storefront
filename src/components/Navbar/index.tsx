@@ -25,13 +25,15 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
-  const [cart] = useContext(CartContext)
+  const [cart, remoteUpd] = useContext(CartContext)
+  let totalPrice = 0
+  let totalQuantity = 0
 
-  const totalPrice = cart.reduce(
-    (acc, curr) => acc + parseFloat(curr.regular_price) * curr.quantity,
-    0,
-  )
-  const totalQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0)
+  if (remoteUpd) {
+    totalPrice = cart.reduce((acc, curr) => acc + parseFloat(curr.price) * curr.quantity, 0)
+    totalQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0)
+  }
+
   const [scrollNav, setScrollNav] = useState(true)
   const changeNav = () => {
     if (window.scrollY < 80) {
@@ -80,7 +82,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
             </Link>
           </NavItem>
           <NavItem>
-            <Link href="/">
+            <Link href="/contact">
               <LinkText>Contact</LinkText>
             </Link>
           </NavItem>
@@ -89,7 +91,6 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
           <TotalPrice>Total: {totalPrice}$</TotalPrice>
           <Link href="/cart" passHref>
             <ShoppingCartHolder>
-              {/* <CartBadge hasItems={cart.length > 0 ? true : false}>{cart.length}</CartBadge> */}
               <CartBadge hasItems={totalQuantity > 0 ? true : false}>{totalQuantity}</CartBadge>
               <CartIcon onClick={openCart} />
             </ShoppingCartHolder>

@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
 import useSWR from 'swr'
 import ProductItem from '../components/Product'
-import { Container, BasicGrid, Loader } from '../styles/Utils'
+import { Container, BasicGrid, Loader } from '../styles/utils'
 
 interface ShopPageProps {}
 
@@ -17,7 +17,7 @@ const ShopPage: NextPage<ShopPageProps> = () => {
       />
 
       <Container id="Products">
-        <BasicGrid cols={4} height={80}>
+        <BasicGrid cols={4}>
           {!data ? (
             <Loader>Loading products...</Loader>
           ) : (
