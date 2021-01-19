@@ -10,7 +10,6 @@ import {
   ProductName,
   PriceWrapper,
   RegularPrice,
-  AddToCartIcon,
   SalePrice,
   AddToCartBtn,
 } from './ProductElements'
@@ -41,7 +40,6 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
       newCart.push(itemInCart)
     }
 
-    setCart(newCart)
     setRemoteUpd(true)
     axios
       .post(
@@ -52,6 +50,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
       )
       .then(() => {
         setRemoteUpd(false)
+        setCart(newCart)
       })
       .catch((error) => console.log(error))
   }
