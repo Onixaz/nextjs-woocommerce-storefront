@@ -93,15 +93,21 @@ export const ShoppingCartHolder = styled.div`
   position: relative;
 `
 
-export const TotalPrice = styled.p`
+export const TotalPrice = styled.p<{ hasItems: boolean }>`
+  display: ${({ hasItems }) => (hasItems ? '' : 'none')};
   color: ${({ theme }) => theme.primaryText};
   font-size: calc(1rem + 0.1vw);
+  opacity: 0.9;
   margin: 0 0.5rem;
-  font-weight: 400;
+  font-weight: 600;
+  position: absolute;
+  top: 27px;
+  right: 100px;
+  white-space: nowrap;
 `
 
 export const CartBadge = styled.button<{ hasItems: boolean }>`
-  display: ${({ hasItems }) => (hasItems ? 'inheri' : 'none')};
+  display: ${({ hasItems }) => (hasItems ? '' : 'none')};
   background: red;
   border-radius: 50%;
   color: #fff;

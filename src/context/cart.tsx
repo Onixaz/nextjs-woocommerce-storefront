@@ -1,37 +1,53 @@
 import React, { useState, useEffect } from 'react'
-import { Cookies } from 'react-cookie-consent'
-import { v4 as uuidv4 } from 'uuid'
+
 import axios from 'axios'
 
 export const CartContext = React.createContext([])
 
-const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([])
-  const [remoteUpd, setRemoteUpd] = useState(false)
+interface CartProviderProps {}
+interface CartItemTypes {
+  key: string
+  time_stamp: number
+  items: string[]
+}
+
+const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
+  const [cart, setCart] = useState({ items: [], key: '', time_stamp: 0 })
+  const [isUpdating, setIsUpdating] = useState(false)
+  const expireIn = 25920000
+
+  const createCart = () => {
+    axios.get(`https://elementor.local/wp-json/cocart/v1/get-cart`).then((response) => {
+      const newCart: CartItemTypes = {
+        ...cart,
+        key: response.headers['x-cocart-api'],
+        time_stamp: new Date().getTime(),
+      }
+
+      setCart(newCart)
+
+      localStorage.setItem('local_cart', JSON.stringify(newCart))
+    })
+  }
 
   useEffect(() => {
-    let initialCartData = localStorage.getItem('cart')
-    if (initialCartData !== null) {
-      let cartFromLocalStorage = JSON.parse(initialCartData)
-      setCart(cartFromLocalStorage)
-    }
-    if (Cookies.get('remote_cart_key') === undefined) {
-      Cookies.set('remote_cart_key', uuidv4(), { expires: 1 })
+    const localCart = JSON.parse(localStorage.getItem('local_cart'))
+
+    if (localCart === null) {
+      createCart()
+    } else if (localCart !== null && new Date().getTime() - localCart.time_stamp > expireIn) {
+      createCart()
+    } else {
+      setCart(localCart)
     }
   }, [])
 
   useEffect(() => {
-    if (cart.length > 0) {
-      localStorage.setItem('cart', JSON.stringify(cart))
-    } else {
-      localStorage.removeItem('cart')
-    }
+    localStorage.setItem('local_cart', JSON.stringify(cart))
   }, [cart])
 
-  //TODO: use CoCart plugin to save cart on the server instead of localstorage
-
   return (
-    <CartContext.Provider value={[cart, setCart, remoteUpd, setRemoteUpd]}>
+    <CartContext.Provider value={[cart, setCart, isUpdating, setIsUpdating]}>
       {children}
     </CartContext.Provider>
   )

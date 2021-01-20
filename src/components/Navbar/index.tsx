@@ -25,16 +25,15 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
-  const [cart, remoteUpd] = useContext(CartContext)
-  let totalPrice = 0
-  let totalQuantity = 0
-
-  if (remoteUpd) {
-    totalPrice = cart.reduce((acc, curr) => acc + parseFloat(curr.price) * curr.quantity, 0)
-    totalQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0)
-  }
-
+  const [cart] = useContext(CartContext)
   const [scrollNav, setScrollNav] = useState(true)
+
+  const totalPrice = cart.items.reduce(
+    (acc, curr) => acc + parseFloat(curr.price) * curr.quantity,
+    0,
+  )
+  const totalQuantity = cart.items.reduce((acc, curr) => acc + curr.quantity, 0)
+
   const changeNav = () => {
     if (window.scrollY < 80) {
       setScrollNav(true)
@@ -88,7 +87,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
           </NavItem>
         </NavMenu>
         <NavIconHolder>
-          <TotalPrice>Total: {totalPrice}$</TotalPrice>
+          <TotalPrice hasItems={totalPrice > 0 ? true : false}>
+            Total: ${totalPrice.toFixed(2)}
+          </TotalPrice>
           <Link href="/cart" passHref>
             <ShoppingCartHolder>
               <CartBadge hasItems={totalQuantity > 0 ? true : false}>{totalQuantity}</CartBadge>

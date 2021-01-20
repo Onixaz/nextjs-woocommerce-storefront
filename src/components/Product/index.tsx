@@ -18,59 +18,67 @@ interface ProductItemProps {
   product: ProductTypes
 }
 
+interface ProductItemTypes {
+  id: number
+  name: string
+  total: number
+  price: number
+  image: string
+  quantity: number
+}
+
 const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
-  const [cart, setCart, remoteUpd, setRemoteUpd] = useContext(CartContext)
+  const [cart, setCart] = useContext(CartContext)
+  const [isUpdating, setIsUpdating] = useState(false)
 
   const addToCart = (product: ProductTypes) => {
-    let newCart = [...cart]
-    const price = product.sale_price !== '' ? product.sale_price : product.regular_price
-    let itemInCart = newCart.find((item) => item.id === product.id)
-    if (itemInCart) {
-      itemInCart.quantity++
-    } else {
-      itemInCart = {
-        //TODO: add sale price to the cart, maybe some other product attributes
-        id: product.id,
-        name: product.name,
-        price: price,
-        image: product.images[0].src,
+    setIsUpdating((prev: boolean) => !prev)
+    axios({
+      url: `https://elementor.local/wp-json/cocart/v1/add-item?cart_key=${cart.key}`,
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        product_id: product.id.toString(),
         quantity: 1,
-      }
+      },
+    })
+      .then((response) => {
+        const { product_id, product_name, product_price, line_total, quantity } = response.data
+        const newCart = { ...cart }
 
-      newCart.push(itemInCart)
-    }
+        const itemInCart = newCart.items.find((item) => item.id === product.id)
+        if (itemInCart) {
+          itemInCart.total = line_total
+          itemInCart.quantity = quantity
+        } else {
+          const newItem: ProductItemTypes = {
+            id: product_id,
+            name: product_name,
+            total: line_total,
+            price: product_price,
+            image: product.images[0].src,
+            quantity,
+          }
+          newCart.items.push(newItem)
+        }
 
-    setRemoteUpd(true)
-    axios
-      .post(
-        `https://elementor.local/wp-json/cocart/v1/add-item?cart_key=${Cookies.get(
-          'remote_cart_key',
-        )}`,
-        { product_id: product.id.toString(), quantity: 1 },
-      )
-      .then(() => {
-        setRemoteUpd(false)
         setCart(newCart)
+        setIsUpdating((prev: boolean) => !prev)
       })
-      .catch((error) => console.log(error))
-  }
-
-  const removeFromCart = (product: ProductTypes) => {
-    let newCart = [...cart]
-    let itemInCart = newCart.find((item) => item.id === product.id)
-    if (itemInCart && itemInCart.quantity > 1) {
-      itemInCart.quantity--
-    } else if (itemInCart && itemInCart.quantity === 1) {
-      newCart = newCart.filter((e) => e !== itemInCart)
-    }
-    setCart(newCart)
+      .catch((error) => {
+        console.log(error)
+        setIsUpdating((prev: boolean) => !prev)
+      })
   }
 
   return (
     <ProductCard>
       <ProductImgWrapper>
         <Img src={product.images[0].src} alt={product.images[0].alt} />
-        <AddToCartBtn onClick={() => addToCart(product)} disabled={remoteUpd}>
+        <AddToCartBtn onClick={() => addToCart(product)} disabled={isUpdating}>
           Add To Cart
         </AddToCartBtn>
       </ProductImgWrapper>
@@ -84,10 +92,6 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
             <RegularPrice isOnSale={true}>{product.regular_price}$</RegularPrice>
           </>
         )}
-
-        {/* <AddToCartIcon onClick={() => addToCart(product)} disabled={remoteUpd}/> */}
-
-        {/* <AddToCartIcon style={{ color: 'red' }} onClick={() => removeFromCart(product)} /> */}
       </PriceWrapper>
     </ProductCard>
   )
