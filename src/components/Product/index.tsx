@@ -22,7 +22,6 @@ interface ProductItemTypes {
   id: number
   name: string
   total: number
-  price: number
   image: string
   quantity: number
 }
@@ -46,10 +45,12 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
       },
     })
       .then((response) => {
-        const { product_id, product_name, product_price, line_total, quantity } = response.data
+        const { product_id, product_name, line_total, quantity } = response.data
         const newCart = { ...cart }
 
-        const itemInCart = newCart.items.find((item) => item.id === product.id)
+        const itemInCart = newCart.items.find(
+          (item: { [key: string]: number }) => item.id === product.id,
+        )
         if (itemInCart) {
           itemInCart.total = line_total
           itemInCart.quantity = quantity
@@ -58,7 +59,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
             id: product_id,
             name: product_name,
             total: line_total,
-            price: product_price,
+
             image: product.images[0].src,
             quantity,
           }
@@ -84,7 +85,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
       </ProductImgWrapper>
       <ProductName>{product.name}</ProductName>
       <PriceWrapper>
-        {product.sale_price.length === 0 ? (
+        {product.sale_price?.length === 0 ? (
           <RegularPrice isOnSale={false}>{product.regular_price}$</RegularPrice>
         ) : (
           <>

@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { NextPage } from 'next'
 import { useContext } from 'react'
 import CustomHead from '../components/CustomHead'
 import { CartContext } from '../context/cart'
 
-import axios from 'axios'
-
 interface CartPageProps {}
+
+interface CartItemTypes {
+  key: string
+  time_stamp: number
+  items: Array<{ id: number; name: string; total: number; quantity: number }>
+}
 
 const CartPage: NextPage<CartPageProps> = () => {
   const [cart] = useContext(CartContext)
@@ -18,7 +22,7 @@ const CartPage: NextPage<CartPageProps> = () => {
         description="A starter for Next.Js with Styled-components and TS"
       />
 
-      {cart.items?.map((item) => {
+      {cart.items.map((item: { [key: string]: string }) => {
         return (
           <React.Fragment key={item.id}>
             <p>

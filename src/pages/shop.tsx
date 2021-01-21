@@ -7,21 +7,25 @@ import axios from 'axios'
 
 interface ShopPageProps {}
 
-const fetcher = (url: string) =>
+const username: any = process.env.NEXT_PUBLIC_WOO_CONSUMER_KEY
+const password: any = process.env.NEXT_PUBLIC_WOO_CONSUMER_SECRET
+
+const fetcher = (url: string, username: string, password: string) =>
   axios({
-    method: 'get',
+    method: 'GET',
     url,
-    // headers: {
-    //   'Content-Type': 'application/json',
-    // },
     auth: {
-      username: process.env.NEXT_PUBLIC_WOO_CONSUMER_KEY,
-      password: process.env.NEXT_PUBLIC_WOO_CONSUMER_SECRET,
+      username,
+      password,
     },
-  }).then((response) => response.data)
+  })
+    .then((response) => response.data)
+    .catch((error) => console.log(error))
 
 const ShopPage: NextPage<ShopPageProps> = () => {
-  const { data } = useSWR(`https://elementor.local/wp-json/wc/v3/products`, fetcher)
+  const { data, error } = useSWR(`https://elementor.local/wp-json/wc/v3/products`, (url: string) =>
+    fetcher(url, username, password),
+  )
 
   return (
     <>
@@ -33,9 +37,9 @@ const ShopPage: NextPage<ShopPageProps> = () => {
       <Container id="Products">
         <BasicGrid cols={4}>
           {!data ? (
-            <Loader>Loading products...</Loader>
+            <Loader>Loading Products</Loader>
           ) : (
-            data?.slice(2, 10).map((product) => {
+            data?.slice(2, 10).map((product: any) => {
               return <ProductItem key={product.id} product={product} />
             })
           )}

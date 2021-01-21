@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
-export const CartContext = React.createContext([])
+export const CartContext = React.createContext<any | null>(null)
 
 interface CartProviderProps {}
+
 interface CartItemTypes {
   key: string
   time_stamp: number
-  items: string[]
+  items: Array<{ id: number; name: string; total: number; quantity: number }>
 }
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const [cart, setCart] = useState({ items: [], key: '', time_stamp: 0 })
-  const [isUpdating, setIsUpdating] = useState(false)
+  const [cart, setCart] = useState<CartItemTypes>({ items: [], key: '', time_stamp: 0 })
   const expireIn = 25920000
 
   const createCart = () => {
     axios.get(`https://elementor.local/wp-json/cocart/v1/get-cart`).then((response) => {
-      const newCart: CartItemTypes = {
+      const newCart = {
         ...cart,
         key: response.headers['x-cocart-api'],
         time_stamp: new Date().getTime(),
@@ -31,14 +31,17 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   useEffect(() => {
-    const localCart = JSON.parse(localStorage.getItem('local_cart'))
+    const localCart = localStorage.getItem('local_cart')
 
     if (localCart === null) {
       createCart()
-    } else if (localCart !== null && new Date().getTime() - localCart.time_stamp > expireIn) {
+    } else if (
+      localCart !== null &&
+      new Date().getTime() - JSON.parse(localCart).time_stamp > expireIn
+    ) {
       createCart()
     } else {
-      setCart(localCart)
+      setCart(JSON.parse(localCart))
     }
   }, [])
 
@@ -46,11 +49,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     localStorage.setItem('local_cart', JSON.stringify(cart))
   }, [cart])
 
-  return (
-    <CartContext.Provider value={[cart, setCart, isUpdating, setIsUpdating]}>
-      {children}
-    </CartContext.Provider>
-  )
+  return <CartContext.Provider value={[cart, setCart]}>{children}</CartContext.Provider>
 }
 
 export default CartProvider
