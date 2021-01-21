@@ -23,7 +23,7 @@ const fetcher = (url: string, username: string, password: string) =>
     .catch((error) => console.log(error))
 
 const ShopPage: NextPage<ShopPageProps> = () => {
-  const { data, error } = useSWR(`https://elementor.local/wp-json/wc/v3/products`, (url: string) =>
+  const { data } = useSWR(`https://elementor.local/wp-json/wc/v3/products`, (url: string) =>
     fetcher(url, username, password),
   )
 

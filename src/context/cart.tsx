@@ -6,14 +6,15 @@ export const CartContext = React.createContext<any | null>(null)
 
 interface CartProviderProps {}
 
-interface CartItemTypes {
+interface Cart {
   key: string
   time_stamp: number
   items: Array<{ id: number; name: string; total: number; quantity: number }>
 }
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const [cart, setCart] = useState<CartItemTypes>({ items: [], key: '', time_stamp: 0 })
+  const [cart, setCart] = useState<Cart>({ items: [], key: '', time_stamp: 0 })
+  const [isUpdating, setIsUpdating] = useState(false)
   const expireIn = 25920000
 
   const createCart = () => {
@@ -49,7 +50,11 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     localStorage.setItem('local_cart', JSON.stringify(cart))
   }, [cart])
 
-  return <CartContext.Provider value={[cart, setCart]}>{children}</CartContext.Provider>
+  return (
+    <CartContext.Provider value={[cart, setCart, isUpdating, setIsUpdating]}>
+      {children}
+    </CartContext.Provider>
+  )
 }
 
 export default CartProvider

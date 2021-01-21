@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import { Cookies } from 'react-cookie-consent'
 import { CartContext } from '../../context/cart'
-import ProductTypes from '../../types/products'
+//import ProductTypes from '../../types/products'
 import {
   ProductCard,
   ProductImgWrapper,
@@ -14,8 +14,21 @@ import {
   AddToCartBtn,
 } from './ProductElements'
 
+interface Product {
+  name: string
+  slug?: string
+  id: number
+  images: Array<{
+    src: string
+    alt: string
+  }>
+  price: string
+  regular_price: string
+  sale_price?: string
+}
+
 interface ProductItemProps {
-  product: ProductTypes
+  product: Product
 }
 
 interface ProductItemTypes {
@@ -27,10 +40,9 @@ interface ProductItemTypes {
 }
 
 const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
-  const [cart, setCart] = useContext(CartContext)
-  const [isUpdating, setIsUpdating] = useState(false)
+  const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
 
-  const addToCart = (product: ProductTypes) => {
+  const addToCart = (product: Product) => {
     setIsUpdating((prev: boolean) => !prev)
     axios({
       url: `https://elementor.local/wp-json/cocart/v1/add-item?cart_key=${cart.key}`,
@@ -56,10 +68,10 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
           itemInCart.quantity = quantity
         } else {
           const newItem: ProductItemTypes = {
+            //keeping these key names to avoid confusion with remote cart response
             id: product_id,
             name: product_name,
             total: line_total,
-
             image: product.images[0].src,
             quantity,
           }

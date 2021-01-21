@@ -1,19 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NextPage } from 'next'
 import { useContext } from 'react'
 import CustomHead from '../components/CustomHead'
 import { CartContext } from '../context/cart'
+import axios from 'axios'
 
 interface CartPageProps {}
 
-interface CartItemTypes {
-  key: string
-  time_stamp: number
-  items: Array<{ id: number; name: string; total: number; quantity: number }>
-}
-
 const CartPage: NextPage<CartPageProps> = () => {
   const [cart] = useContext(CartContext)
+
+  useEffect(() => {
+    axios
+      .get(`https://elementor.local/wp-json/cocart/v1/get-cart?cart_key=${cart.key}`)
+      .then((response: any) => console.log(response.data))
+  }, [])
 
   return (
     <>
