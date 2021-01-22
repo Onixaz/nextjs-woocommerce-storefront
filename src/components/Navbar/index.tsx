@@ -29,12 +29,10 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(true)
 
   const totalPrice = cart.items.reduce(
-    (acc: number, curr: { [key: string]: any }) =>
-      acc + parseFloat(curr.product_price) * curr.quantity,
+    (acc: number, curr: { [key: string]: any }) => acc + curr.line_total,
     0,
   )
 
-  // const totalPrice = 15
   const totalQuantity = cart.items.reduce(
     (acc: number, curr: { [key: string]: number }) => acc + curr.quantity,
     0,
