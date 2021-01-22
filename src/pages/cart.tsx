@@ -14,7 +14,7 @@ const CartPage: NextPage<CartPageProps> = () => {
     axios
       .get(`https://elementor.local/wp-json/cocart/v1/get-cart?cart_key=${cart.key}`)
       .then((response: any) => console.log(response.data))
-  }, [])
+  }, [cart])
 
   return (
     <>

@@ -15,7 +15,7 @@ interface Cart {
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Cart>({ items: [], key: '', time_stamp: 0 })
   const [isUpdating, setIsUpdating] = useState(false)
-  const expireIn = 25920000
+  const expireIn = 25920000 //3 days
 
   const createCart = () => {
     axios.get(`https://elementor.local/wp-json/cocart/v1/get-cart`).then((response) => {

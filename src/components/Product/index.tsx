@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import axios from 'axios'
-import { Cookies } from 'react-cookie-consent'
+import Product from '../../types/product'
 import { CartContext } from '../../context/cart'
-//import ProductTypes from '../../types/products'
+
 import {
   ProductCard,
   ProductImgWrapper,
@@ -14,24 +14,11 @@ import {
   AddToCartBtn,
 } from './ProductElements'
 
-interface Product {
-  name: string
-  slug?: string
-  id: number
-  images: Array<{
-    src: string
-    alt: string
-  }>
-  price: string
-  regular_price: string
-  sale_price?: string
-}
-
 interface ProductItemProps {
   product: Product
 }
 
-interface ProductItemTypes {
+interface ProductProperties {
   id: number
   name: string
   total: number
@@ -39,13 +26,13 @@ interface ProductItemTypes {
   quantity: number
 }
 
-const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
+const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Product, key: string) => {
     setIsUpdating((prev: boolean) => !prev)
     axios({
-      url: `https://elementor.local/wp-json/cocart/v1/add-item?cart_key=${cart.key}`,
+      url: `https://elementor.local/wp-json/cocart/v1/add-item?cart_key=${key}`,
       method: 'POST',
 
       headers: {
@@ -67,12 +54,12 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
           itemInCart.total = line_total
           itemInCart.quantity = quantity
         } else {
-          const newItem: ProductItemTypes = {
+          const newItem: ProductProperties = {
             //keeping these key names to avoid confusion with remote cart response
             id: product_id,
             name: product_name,
             total: line_total,
-            image: product.images[0].src,
+            image: product.images[0].src, //product image for cart page
             quantity,
           }
           newCart.items.push(newItem)
@@ -91,18 +78,22 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     <ProductCard>
       <ProductImgWrapper>
         <Img src={product.images[0].src} alt={product.images[0].alt} />
-        <AddToCartBtn onClick={() => addToCart(product)} disabled={isUpdating}>
+        <AddToCartBtn onClick={() => addToCart(product, cart.key)} disabled={isUpdating}>
           Add To Cart
         </AddToCartBtn>
       </ProductImgWrapper>
       <ProductName>{product.name}</ProductName>
       <PriceWrapper>
         {product.sale_price?.length === 0 ? (
-          <RegularPrice isOnSale={false}>{product.regular_price}$</RegularPrice>
+          <RegularPrice isOnSale={false}>
+            ${parseFloat(product.regular_price).toFixed(2)}
+          </RegularPrice>
         ) : (
           <>
-            <SalePrice>{product.sale_price}$</SalePrice>
-            <RegularPrice isOnSale={true}>{product.regular_price}$</RegularPrice>
+            <RegularPrice isOnSale={true}>
+              ${parseFloat(product.regular_price).toFixed(2)}
+            </RegularPrice>
+            <SalePrice>${parseFloat(product.sale_price).toFixed(2)}</SalePrice>
           </>
         )}
       </PriceWrapper>
@@ -110,4 +101,4 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   )
 }
 
-export default ProductItem
+export default SingleProduct

@@ -76,13 +76,14 @@ export const RegularPrice = styled.p<{ isOnSale: boolean }>`
   color: ${({ theme }) => theme.primaryText};
   text-decoration: ${({ isOnSale }) => (isOnSale ? `line-through` : `none`)};
   font-weight: bolder;
-  font-size: calc(0.9rem + 0.1vw);
+  font-size: ${({ isOnSale }) => (isOnSale ? `calc(0.8rem +  0.1vw)` : `calc(1rem +  0.1vw)`)};
   margin: 0 0.25rem;
+  opacity: ${({ isOnSale }) => (isOnSale ? `0.5` : `0.9`)};
 `
 export const SalePrice = styled.p`
   color: ${({ theme }) => theme.primaryGreen};
   font-weight: bold;
-  font-size: calc(1.3rem + 0.1vw);
+  font-size: calc(1rem + 0.1vw);
   margin: 0 0.25rem;
 `
 export const AddToCartIcon = styled(RiShoppingCart2Fill)`
