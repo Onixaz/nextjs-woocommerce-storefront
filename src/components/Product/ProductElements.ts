@@ -46,7 +46,7 @@ export const ProductCard = styled.div`
 `
 
 export const ProductImgWrapper = styled.div`
-  height: 320px;
+  height: 300px;
   width: 100%;
   overflow: hidden;
   position: relative;

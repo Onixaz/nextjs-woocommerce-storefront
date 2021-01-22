@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
 import useSWR from 'swr'
 import ProductItem from '../components/Product'
-import { Container, BasicGrid, Loader } from '../styles/utils'
+import { Container, Loader, FlexGrid } from '../styles/utils'
 import axios from 'axios'
 import { fetcher } from '../utils/functions'
 
@@ -17,7 +17,6 @@ interface ShopPageProps {
 }
 
 const ShopPage: NextPage<ShopPageProps> = ({ data }) => {
-  console.log(data)
   return (
     <>
       <CustomHead
@@ -26,15 +25,15 @@ const ShopPage: NextPage<ShopPageProps> = ({ data }) => {
       />
 
       <Container id="Products">
-        <BasicGrid cols={4}>
+        <FlexGrid>
           {!data ? (
-            <Loader>Loading Products</Loader>
+            <Loader>There is an error wih the server...</Loader>
           ) : (
-            data?.slice(2, 10).map((product: any) => {
+            data?.map((product: any) => {
               return <ProductItem key={product.id} product={product} />
             })
           )}
-        </BasicGrid>
+        </FlexGrid>
       </Container>
     </>
   )

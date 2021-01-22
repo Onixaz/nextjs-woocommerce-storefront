@@ -1,14 +1,23 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
-  min-height: 100vh;
   padding-top: 5rem;
-  max-width: 1400px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: 1200px;
+  width: 90%;
   margin: 0 auto;
+`
+
+export const FlexGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  & > * {
+    flex-basis: 20%;
+    min-width: 15em;
+    max-width: 25em;
+    flex-grow: 1;
+  }
 `
 
 export const BasicGrid = styled.div<{ cols: number }>`

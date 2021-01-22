@@ -4,9 +4,9 @@ import { MdAccountCircle } from 'react-icons/md'
 
 export const LinkText = styled.a`
   cursor: pointer;
-  font-size: calc(1rem + 0.1vw);
+  font-size: 1.1rem;
   text-decoration: none;
-  opacity: 0.8;
+
   font-weight: 600;
   letter-spacing: 1px;
 `
@@ -29,9 +29,9 @@ export const LogoText = styled.a`
   font-size: calc(1.8rem + 0.1vw);
   letter-spacing: 2px;
   opacity: 0.95;
-  //margin-left: 22px;
+
   font-weight: 600;
-  padding-bottom: 1rem;
+  padding: 0 1rem 1rem 1rem;
 `
 
 export const TheDot = styled.span`
@@ -58,6 +58,10 @@ export const NavMenu = styled.ul`
   justify-content: center;
   align-items: center;
   list-style: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -68,7 +72,8 @@ export const NavItem = styled.li`
   height: 80px;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
+  //padding: 0 0.8rem;
+  margin: 0 0.8rem;
 `
 
 export const NavBtnWrapper = styled.nav`
@@ -84,6 +89,7 @@ export const NavIconHolder = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  padding: 0 1rem;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -95,14 +101,15 @@ export const ShoppingCartHolder = styled.div`
 
 export const TotalPrice = styled.p<{ hasItems: boolean }>`
   display: ${({ hasItems }) => (hasItems ? '' : 'none')};
-  color: ${({ theme }) => theme.primaryText};
-  font-size: calc(1rem + 0.1vw);
-  opacity: 0.9;
+
+  font-size: 0.9rem;
   margin: 0 0.5rem;
   font-weight: 600;
   position: absolute;
-  top: 27px;
-  right: 100px;
+  top: 50%;
+
+  right: 50%;
+  transform: translate(-100%, -50%);
   white-space: nowrap;
 `
 
@@ -115,22 +122,29 @@ export const CartBadge = styled.button<{ hasItems: boolean }>`
   outline: none;
   border: none;
   position: absolute;
-  top: -15px;
-  left: 25px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-250%, -100%);
   z-index: 2;
   width: 30px;
   height: 30px;
 `
 export const CartIcon = styled(RiShoppingCart2Fill)`
-  font-size: calc(2rem + 0.1vw);
-  color: ${({ theme }) => theme.primaryText};
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-300%, -50%);
   cursor: pointer;
   margin: 0 0.5rem;
   flex: 1;
 `
 export const AccIcon = styled(MdAccountCircle)`
-  font-size: calc(2rem + 0.1vw);
-  color: ${({ theme }) => theme.primaryText};
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-150%, -50%);
   cursor: pointer;
   flex: 1;
   margin: 0 0.5rem;
@@ -143,15 +157,18 @@ export const NavbarContainer = styled.div`
   z-index: 1;
   width: 95%;
   max-width: 1200px;
+  position: relative;
 `
 export const Nav = styled.nav<{ scrollNav: boolean }>`
   background: ${({ scrollNav, theme }) => (scrollNav ? 'transparent' : theme.primaryBlack)};
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
   height: 80px;
   width: 100%;
+
+  //padding-top: ${({ scrollNav }) => (scrollNav ? '40px' : '0px')};
   margin-top: -80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   position: sticky;
   top: 0;
@@ -168,6 +185,17 @@ export const Nav = styled.nav<{ scrollNav: boolean }>`
   }
 
   ${MobileIcon} {
+    color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryText : theme.primaryWhite)};
+  }
+
+  ${TotalPrice} {
+    color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryText : theme.primaryWhite)};
+  }
+
+  ${CartIcon} {
+    color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryText : theme.primaryWhite)};
+  }
+  ${AccIcon} {
     color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryText : theme.primaryWhite)};
   }
 `

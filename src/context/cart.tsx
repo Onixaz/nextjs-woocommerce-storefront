@@ -9,7 +9,7 @@ interface CartProviderProps {}
 interface Cart {
   key: string
   timestamp: number
-  items: Array<{ id: number; name: string; total: number; quantity: number }>
+  items: any
 }
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {

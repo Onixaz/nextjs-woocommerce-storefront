@@ -1,5 +1,7 @@
 import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
+import Hero from '../components/Hero'
+import { BasicGrid, Container } from '../styles/utils'
 
 interface IndexPageProps {}
 
@@ -10,17 +12,10 @@ const IndexPage: NextPage<IndexPageProps> = () => {
         title="Unofficial starter | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />
-      <h1
-        style={{
-          display: 'flex',
-          width: '100%',
-          height: '100%',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        Index Page
-      </h1>
+      <Hero />
+      <Container id="Categories">
+        <p>Shop by Category</p>
+      </Container>
     </>
   )
 }
