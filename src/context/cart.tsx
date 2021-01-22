@@ -8,13 +8,15 @@ interface CartProviderProps {}
 
 interface Cart {
   key: string
-  time_stamp: number
+  timestamp: number
   items: Array<{ id: number; name: string; total: number; quantity: number }>
 }
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const [cart, setCart] = useState<Cart>({ items: [], key: '', time_stamp: 0 })
+  const [cart, setCart] = useState<Cart>({ items: [], key: '', timestamp: 0 })
   const [isUpdating, setIsUpdating] = useState(false)
+  //to change cart expiration date on server
+  //https://github.com/co-cart/co-cart/search?q=cocart_cart_expiring+in%3Afile&type=Code
   const expireIn = 25920000 //3 days
 
   const createCart = () => {
@@ -22,7 +24,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       const newCart = {
         ...cart,
         key: response.headers['x-cocart-api'],
-        time_stamp: new Date().getTime(),
+        timestamp: new Date().getTime(),
       }
 
       setCart(newCart)
@@ -38,7 +40,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       createCart()
     } else if (
       localCart !== null &&
-      new Date().getTime() - JSON.parse(localCart).time_stamp > expireIn
+      new Date().getTime() - JSON.parse(localCart).timestamp > expireIn
     ) {
       createCart()
     } else {

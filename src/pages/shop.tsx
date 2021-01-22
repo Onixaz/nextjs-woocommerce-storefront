@@ -17,6 +17,7 @@ interface ShopPageProps {
 }
 
 const ShopPage: NextPage<ShopPageProps> = ({ data }) => {
+  console.log(data)
   return (
     <>
       <CustomHead

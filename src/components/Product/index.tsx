@@ -41,30 +41,13 @@ const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
       data: {
         product_id: product.id.toString(),
         quantity: 1,
+        return_cart: true,
       },
     })
       .then((response) => {
-        const { product_id, product_name, line_total, quantity } = response.data
         const newCart = { ...cart }
-
-        const itemInCart = newCart.items.find(
-          (item: { [key: string]: number }) => item.id === product.id,
-        )
-        if (itemInCart) {
-          itemInCart.total = line_total
-          itemInCart.quantity = quantity
-        } else {
-          const newItem: ProductProperties = {
-            //keeping these key names to avoid confusion with remote cart response
-            id: product_id,
-            name: product_name,
-            total: line_total,
-            image: product.images[0].src, //product image for cart page
-            quantity,
-          }
-          newCart.items.push(newItem)
-        }
-
+        const data = Object.values(response.data)
+        newCart.items = data
         setCart(newCart)
         setIsUpdating((prev: boolean) => !prev)
       })
