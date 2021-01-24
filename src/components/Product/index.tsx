@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react'
 import axios from 'axios'
-//import Product from '../../types/product'
 import { CartContext } from '../../context/cart'
-
+import { Product } from '../../../types'
 import {
   ProductCard,
   ProductImgWrapper,
@@ -14,19 +13,6 @@ import {
   AddToCartBtn,
 } from './ProductElements'
 import Link from 'next/link'
-
-interface Product {
-  name: string
-  slug?: string
-  id: number
-  images: Array<{
-    src: string
-    alt: string
-  }>
-  price: string
-  regular_price: string
-  sale_price: string
-}
 
 interface ProductItemProps {
   product: Product
@@ -48,12 +34,16 @@ const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
         product_id: product.id.toString(),
         quantity: 1,
         return_cart: true,
+        //adding image for cart page
+        cart_item_data: { image: product.images[0].src },
       },
     })
       .then((response) => {
         const newCart = { ...cart }
-        const data = Object.values(response.data)
-        newCart.items = data
+        const remoteCartItems = Object.values(response.data)
+
+        console.log(remoteCartItems)
+        newCart.items = remoteCartItems
         setCart(newCart)
         setIsUpdating((prev: boolean) => !prev)
       })

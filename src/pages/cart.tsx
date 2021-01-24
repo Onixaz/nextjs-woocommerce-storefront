@@ -9,11 +9,16 @@ interface CartPageProps {}
 const CartPage: NextPage<CartPageProps> = () => {
   const [cart] = useContext(CartContext)
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://elementor.local/wp-json/wc/v3/products?cart_key=${cart.key}`)
-  //     .then((response: any) => console.log(response.data))
-  // }, [])
+  const createOrder = (data: any) => {
+    return fetch('http://192.168.1.211:3000/api/orders/create', {
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then((data) => console.log(data))
+  }
 
   const dummyData = {
     payment_method: 'cod',
@@ -69,16 +74,14 @@ const CartPage: NextPage<CartPageProps> = () => {
 
       {cart.items.map((item: { [key: string]: string }) => {
         return (
-          <React.Fragment key={item.id}>
-            <p>
-              {item.name}
-              {item.quantity}
-            </p>
-            {/* <img src={item.image} /> */}
+          <React.Fragment key={item.product_id}>
+            <p>{item.product_name}</p>
+            <p>{item.quantity}</p>
+            <img src={item.image} />
           </React.Fragment>
         )
       })}
-      <button>Create Order</button>
+      <button onClick={() => createOrder(dummyData)}>Create Order</button>
     </>
   )
 }

@@ -1,20 +1,8 @@
 import { NextPage } from 'next'
-import { Params } from 'next/dist/next-server/server/router'
+import { Product } from '../../../types'
 import React from 'react'
 import { fetcher, API_KEY, API_SECRET } from '../../utils/functions'
-
-interface Product {
-  name: string
-  slug?: string
-  id: number
-  images: Array<{
-    src: string
-    alt: string
-  }>
-  price: string
-  regular_price: string
-  sale_price: string
-}
+import { Params } from 'next/dist/next-server/server/router'
 
 interface ProductPageProps {
   product: Product
@@ -30,9 +18,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
 
 export default ProductPage
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params: { slug } }: Params) {
   const productsRes = await fetcher(
-    `https://elementor.local/wp-json/wc/v3/products?slug=${params.slug}`,
+    `https://elementor.local/wp-json/wc/v3/products?slug=${slug}`,
     API_KEY,
     API_SECRET,
   )

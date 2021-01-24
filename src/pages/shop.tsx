@@ -19,14 +19,6 @@ const ShopPage: NextPage<ShopPageProps> = ({ products }) => {
 
       <Container id="Products">
         <BasicGrid lg={4} md={3} sm={2} xs={1}>
-          {/* {!data ? (
-            <Loader>There is an error wih the server...</Loader>
-          ) : (
-            data?.map((product: any) => {
-              return <SingleProduct key={product.id} product={product} />
-            })
-          )} */}
-
           {products.map((product: any) => {
             return (
               <React.Fragment key={product.id}>

@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from 'next'
 import { poster } from '../../../utils/functions'
 
 const dummyData = {
@@ -48,8 +49,13 @@ const dummyData = {
 const apiKey = process.env.WOO_CONSUMER_KEY
 const apiSecret = process.env.WOO_CONSUMER_SECRET
 
-export default (req: any, res: any) => {
-  poster('https://elementor.local/wp-json/wc/v3/orders', apiKey!, apiSecret!, dummyData)
-    .then((response) => response.json())
-    .then((data) => res.status(200).json({ text: data }))
+export default function createOrder(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'POST') {
+    const payload = req.body
+    poster('https://elementor.local/wp-json/wc/v3/orders', apiKey!, apiSecret!, payload)
+      .then((response) => response.json())
+      .then((data) => res.status(200).json({ message: data }))
+  } else {
+    res.status(401).json({ message: 'Invalid parameters' })
+  }
 }
