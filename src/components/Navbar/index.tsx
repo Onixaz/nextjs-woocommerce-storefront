@@ -39,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   )
 
   const changeNav = () => {
-    if (window.scrollY < 80) {
+    if (window.scrollY < 40) {
       setScrollNav(true)
     } else {
       setScrollNav(false)

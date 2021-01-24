@@ -3,16 +3,16 @@ import styled from 'styled-components'
 export const HeroContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
+  padding: 5rem 0.5rem 0 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 `
 
 export const HeroBg = styled.div`
   position: relative;
-  width: 90%;
+  width: 100%;
   height: 50vh;
-  max-width: 1200px;
 
-  margin: 0 auto;
   background: url('./hero.jpg');
   background-position: center;
   background-size: cover;

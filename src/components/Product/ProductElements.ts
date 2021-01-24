@@ -34,7 +34,6 @@ export const ProductCard = styled.div`
   flex-direction: column;
 
   &:hover {
-    cursor: pointer;
     ${AddToCartBtn} {
       opacity: 1;
       &:disabled {
@@ -94,10 +93,10 @@ export const AddToCartIcon = styled(RiShoppingCart2Fill)`
   margin: 0 0.25rem;
 `
 
-export const ProductName = styled.p`
+export const ProductName = styled.a`
   font-size: calc(1rem + 0.1vw);
   align-self: auto;
-
+  cursor: pointer;
   color: ${({ theme }) => theme.primaryText};
 
   margin: 0 1rem;

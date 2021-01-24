@@ -3,18 +3,62 @@ import { NextPage } from 'next'
 import { useContext } from 'react'
 import CustomHead from '../components/CustomHead'
 import { CartContext } from '../context/cart'
-import axios from 'axios'
 
 interface CartPageProps {}
 
 const CartPage: NextPage<CartPageProps> = () => {
   const [cart] = useContext(CartContext)
 
-  useEffect(() => {
-    axios
-      .get(`https://elementor.local/wp-json/cocart/v1/get-cart?cart_key=${cart.key}`)
-      .then((response: any) => console.log(response.data))
-  }, [cart])
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://elementor.local/wp-json/wc/v3/products?cart_key=${cart.key}`)
+  //     .then((response: any) => console.log(response.data))
+  // }, [])
+
+  const dummyData = {
+    payment_method: 'cod',
+    payment_method_title: 'Cash on Delivery',
+    set_paid: false,
+    billing: {
+      first_name: 'John',
+      last_name: 'Doe',
+      address_1: '969 Market',
+      address_2: '',
+      city: 'San Francisco',
+      state: 'CA',
+      postcode: '94103',
+      country: 'US',
+      email: 'john.doe@example.com',
+      phone: '(555) 555-5555',
+    },
+    shipping: {
+      first_name: 'John',
+      last_name: 'Doe',
+      address_1: '969 Market',
+      address_2: '',
+      city: 'San Francisco',
+      state: 'CA',
+      postcode: '94103',
+      country: 'US',
+    },
+    line_items: [
+      {
+        product_id: 58,
+        quantity: 2,
+      },
+      {
+        product_id: 59,
+        quantity: 1,
+      },
+    ],
+    shipping_lines: [
+      {
+        method_id: 'flat_rate',
+        method_title: 'Flat Rate',
+        total: '10.00',
+      },
+    ],
+  }
 
   return (
     <>
@@ -30,10 +74,11 @@ const CartPage: NextPage<CartPageProps> = () => {
               {item.name}
               {item.quantity}
             </p>
-            <img src={item.image} />
+            {/* <img src={item.image} /> */}
           </React.Fragment>
         )
       })}
+      <button>Create Order</button>
     </>
   )
 }

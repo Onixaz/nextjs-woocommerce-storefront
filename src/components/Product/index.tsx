@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import axios from 'axios'
-import Product from '../../types/product'
+//import Product from '../../types/product'
 import { CartContext } from '../../context/cart'
 
 import {
@@ -13,17 +13,23 @@ import {
   SalePrice,
   AddToCartBtn,
 } from './ProductElements'
+import Link from 'next/link'
+
+interface Product {
+  name: string
+  slug?: string
+  id: number
+  images: Array<{
+    src: string
+    alt: string
+  }>
+  price: string
+  regular_price: string
+  sale_price: string
+}
 
 interface ProductItemProps {
   product: Product
-}
-
-interface ProductProperties {
-  id: number
-  name: string
-  total: number
-  image: string
-  quantity: number
 }
 
 const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
@@ -60,12 +66,18 @@ const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
   return (
     <ProductCard>
       <ProductImgWrapper>
-        <Img src={product.images[0].src} alt={product.images[0].alt} />
+        {product.images[0].src !== null ? (
+          <Img src={product.images[0].src} alt={product.images[0].alt} />
+        ) : null}
+
         <AddToCartBtn onClick={() => addToCart(product, cart.key)} disabled={isUpdating}>
           Add To Cart
         </AddToCartBtn>
       </ProductImgWrapper>
-      <ProductName>{product.name}</ProductName>
+      <Link href={`/products/${product.slug}`}>
+        <ProductName>{product.name}</ProductName>
+      </Link>
+
       <PriceWrapper>
         {product.sale_price?.length === 0 ? (
           <RegularPrice isOnSale={false}>
