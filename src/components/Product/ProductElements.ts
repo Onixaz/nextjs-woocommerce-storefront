@@ -70,10 +70,11 @@ export const RegularPrice = styled.p<{ isOnSale: boolean }>`
   opacity: ${({ isOnSale }) => (isOnSale ? `0.5` : `0.9`)};
 `
 export const SalePrice = styled.p`
-  color: ${({ theme }) => theme.primaryGreen};
+  color: ${({ theme }) => theme.primaryText};
   font-weight: bold;
   font-size: calc(1rem + 0.1vw);
   margin: 0 0.25rem;
+  opacity: 0.9;
 `
 export const AddToCartIcon = styled(RiShoppingCart2Fill)`
   font-size: calc(1.5rem + 0.1vw);

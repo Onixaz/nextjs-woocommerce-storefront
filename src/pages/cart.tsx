@@ -54,8 +54,8 @@ interface CartPageProps {}
 const CartPage: NextPage<CartPageProps> = () => {
   const [cart] = useContext(CartContext)
 
-  const createOrder = (data: any) => {
-    return fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/api/orders/create`, {
+  const createOrder = async (data: any) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/api/orders/create`, {
       method: 'POST',
 
       headers: {
@@ -63,8 +63,8 @@ const CartPage: NextPage<CartPageProps> = () => {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
+    const order = await res.json()
+    console.log(order)
   }
 
   return (

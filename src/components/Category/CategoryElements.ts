@@ -25,5 +25,5 @@ export const CategoryImgWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
-  padding: 0.5rem;
+  padding: 0.75rem;
 `

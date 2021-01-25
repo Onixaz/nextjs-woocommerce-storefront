@@ -21,42 +21,12 @@ interface ProductItemProps {
 const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
 
-  const addToCart = (product: Product, key: string) => {
-    setIsUpdating((prev: boolean) => !prev)
-    axios({
-      url: `https://elementor.local/wp-json/cocart/v1/add-item?cart_key=${key}`,
-      method: 'POST',
-
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      data: {
-        product_id: product.id.toString(),
-        quantity: 1,
-        return_cart: true,
-        //adding image for cart page
-        cart_item_data: { image: product.images[0].src },
-      },
-    })
-      .then((response) => {
-        const newCart = { ...cart }
-        const remoteCartItems = Object.values(response.data)
-
-        console.log(remoteCartItems)
-        newCart.items = remoteCartItems
-        setCart(newCart)
-        setIsUpdating((prev: boolean) => !prev)
-      })
-      .catch((error) => {
-        console.log(error)
-        setIsUpdating((prev: boolean) => !prev)
-      })
-  }
+  const addToCart = (product: Product, key: string) => {}
 
   return (
     <ProductCard>
       <ProductImgWrapper>
-        {product.images[0].src !== null ? (
+        {product.images !== undefined || product.images.length > 0 ? (
           <Img src={product.images[0].src} alt={product.images[0].alt} />
         ) : null}
 
