@@ -55,7 +55,7 @@ const CartPage: NextPage<CartPageProps> = () => {
   const [cart] = useContext(CartContext)
 
   const createOrder = (data: any) => {
-    return fetch('http://192.168.1.211:3000/api/orders/create', {
+    return fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/api/orders/create`, {
       method: 'POST',
 
       headers: {

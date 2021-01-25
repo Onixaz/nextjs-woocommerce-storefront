@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import { Product } from '../../../types'
 import React from 'react'
-import { fetcher, API_KEY, API_SECRET } from '../../utils/functions'
+import { fetcher } from '../../utils/functions'
 import { Params } from 'next/dist/next-server/server/router'
 
 interface ProductPageProps {
@@ -21,8 +21,8 @@ export default ProductPage
 export async function getStaticProps({ params: { slug } }: Params) {
   const productsRes = await fetcher(
     `https://elementor.local/wp-json/wc/v3/products?slug=${slug}`,
-    API_KEY,
-    API_SECRET,
+    process.env.WOO_CONSUMER_KEY!,
+    process.env.WOO_CONSUMER_SECRET!,
   )
 
   const found = await productsRes.json()
@@ -37,12 +37,15 @@ export async function getStaticProps({ params: { slug } }: Params) {
 export async function getStaticPaths() {
   const productsRes = await fetcher(
     `https://elementor.local/wp-json/wc/v3/products?per_page=30`,
-    API_KEY,
-    API_SECRET,
+    process.env.WOO_CONSUMER_KEY!,
+    process.env.WOO_CONSUMER_SECRET!,
   )
   const products = await productsRes.json()
+  const publishedProducts = products.filter((product: { [key: string]: string }) => {
+    return product.status === 'publish'
+  })
 
-  const paths = products.map((product: Product) => ({
+  const paths = publishedProducts.map((product: Product) => ({
     params: { slug: String(product.slug) },
   }))
 

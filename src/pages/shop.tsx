@@ -1,7 +1,7 @@
 import React from 'react'
 import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
-import { Container, Loader, FlexGrid, BasicGrid } from '../styles/utils'
+import { Container, BasicGrid } from '../styles/utils'
 import { fetcher } from '../utils/functions'
 import SingleProduct from '../components/Product'
 

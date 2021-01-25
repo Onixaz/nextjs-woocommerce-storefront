@@ -11,14 +11,14 @@ interface CustomAppProps extends AppProps {}
 const CustomApp: React.FC<CustomAppProps> = ({ Component, pageProps }) => {
   return (
     <>
-      <CartProvider>
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <CartProvider>
           <Layout>
             <Component {...pageProps} />
           </Layout>
-          <GlobalStyle />
-        </ThemeProvider>
-      </CartProvider>
+        </CartProvider>
+        <GlobalStyle />
+      </ThemeProvider>
     </>
   )
 }
