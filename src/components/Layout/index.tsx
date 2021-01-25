@@ -5,6 +5,7 @@ import Seo from '../Seo'
 import CookiesConsent from '../Cookies'
 
 import Navbar from '../Navbar'
+import Footer from '../Footer'
 
 interface LayoutProps {}
 
@@ -22,6 +23,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Navbar toggle={toggle} />
         <main>{children}</main>
         {/* <CookiesConsent /> */}
+        <Footer />
       </LayoutElement>
     </>
   )

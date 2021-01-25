@@ -60,9 +60,9 @@ const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
           <Img src={product.images[0].src} alt={product.images[0].alt} />
         ) : null}
 
-        <AddToCartBtn onClick={() => addToCart(product, cart.key)} disabled={isUpdating}>
+        {/* <AddToCartBtn onClick={() => addToCart(product, cart.key)} disabled={isUpdating}>
           Add To Cart
-        </AddToCartBtn>
+        </AddToCartBtn> */}
       </ProductImgWrapper>
       <Link href={`/products/${product.slug}`}>
         <ProductName>{product.name}</ProductName>

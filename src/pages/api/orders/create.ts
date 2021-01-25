@@ -12,13 +12,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       )
         .then((response) => response.json())
         .then((data) => {
-          res.setHeader('Content-Type', 'application/json')
           res.status(200).json({ message: data })
           resolve()
         })
         .catch((error) => {
-          res.json(error)
-          res.status(405).end()
+          res.status(500).json({ message: error })
           return resolve()
         })
     })

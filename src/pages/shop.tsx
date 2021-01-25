@@ -2,7 +2,7 @@ import React from 'react'
 import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
 import { Container, Loader, FlexGrid, BasicGrid } from '../styles/utils'
-import { fetcher, API_KEY, API_SECRET } from '../utils/functions'
+import { fetcher } from '../utils/functions'
 import SingleProduct from '../components/Product'
 
 interface ShopPageProps {
@@ -35,8 +35,15 @@ const ShopPage: NextPage<ShopPageProps> = ({ products }) => {
 export default ShopPage
 
 export async function getStaticProps() {
-  const res = await fetcher('https://elementor.local/wp-json/wc/v3/products', API_KEY, API_SECRET)
-  const products = await res.json()
+  const res = await fetcher(
+    `${process.env.WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
+    process.env.WOO_CONSUMER_KEY!,
+    process.env.WOO_CONSUMER_SECRET!,
+  )
+  let products = await res.json()
+  products = products.filter((item: { [key: string]: string }) => {
+    return item.status === 'publish'
+  })
 
   return {
     props: { products },

@@ -5,10 +5,7 @@ import SingleProduct from '../components/Product'
 import CustomHead from '../components/CustomHead'
 import Hero from '../components/Hero'
 import { BasicGrid, Container, SectionTitle } from '../styles/utils'
-import { fetcher, API_KEY, API_SECRET } from '../utils/functions'
-import getConfig from 'next/config'
-
-const { serverRuntimeConfig } = getConfig()
+import { fetcher } from '../utils/functions'
 
 interface IndexPageProps {
   categories: any
@@ -16,7 +13,6 @@ interface IndexPageProps {
 }
 
 const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
-  console.log(serverRuntimeConfig.consumerKey)
   return (
     <>
       <CustomHead
@@ -32,7 +28,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
             return <SingleCategory key={category.id} category={category} />
           })}
         </BasicGrid>
-        <SectionTitle>New In</SectionTitle>
+        <SectionTitle>Featured Products</SectionTitle>
         <BasicGrid lg={4} md={3} sm={2} xs={1}>
           {featured?.map((featured: any) => {
             return (
@@ -51,22 +47,27 @@ export default IndexPage
 
 export async function getStaticProps() {
   const categoriesRes = await fetcher(
-    'https://elementor.local/wp-json/wc/v3/products/categories',
-    API_KEY,
-    API_SECRET,
+    `${process.env.WOO_API_URL}/wp-json/wc/v3/products/categories`,
+    process.env.WOO_CONSUMER_KEY!,
+    process.env.WOO_CONSUMER_SECRET!,
   )
   let categories = await categoriesRes.json()
   categories = categories.filter((item: { [key: string]: string }) => {
     return item.name !== 'Uncategorized'
   })
   const productsRes = await fetcher(
-    'https://elementor.local/wp-json/wc/v3/products?per_page=30',
-    API_KEY,
-    API_SECRET,
+    `${process.env.WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
+    process.env.WOO_CONSUMER_KEY!,
+    process.env.WOO_CONSUMER_SECRET!,
   )
-  let featured = await productsRes.json()
-  featured = featured.filter((item: { [key: string]: boolean }) => {
-    return item.featured === true
+  const products = await productsRes.json()
+
+  const featured = products.filter((item: { [key: string]: boolean | string }) => {
+    if (item.featured === true && item.status === 'publish') {
+      return item.featured
+    } else {
+      return null
+    }
   })
 
   return {

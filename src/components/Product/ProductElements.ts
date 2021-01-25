@@ -32,16 +32,6 @@ export const ProductCard = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  &:hover {
-    ${AddToCartBtn} {
-      opacity: 1;
-      &:disabled {
-        opacity: 0.5;
-        cursor: wait;
-      }
-    }
-  }
 `
 
 export const ProductImgWrapper = styled.div`
@@ -96,8 +86,13 @@ export const AddToCartIcon = styled(RiShoppingCart2Fill)`
 export const ProductName = styled.a`
   font-size: calc(1rem + 0.1vw);
   align-self: auto;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
   color: ${({ theme }) => theme.primaryText};
+
+  &:hover {
+    color: ${({ theme }) => theme.primaryGreen};
+  }
 
   margin: 0 1rem;
 `

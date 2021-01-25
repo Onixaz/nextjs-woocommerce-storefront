@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
       <HeroBg>
         <HeroHeading>Welcome</HeroHeading>
         <HeroSubheading>
-          This is your unofficial WooCommerce Storefront theme made with React
+          This is your unofficial WooCommerce Storefront theme made with Next.js
         </HeroSubheading>
       </HeroBg>
     </HeroContainer>

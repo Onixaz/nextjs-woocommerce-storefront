@@ -12,7 +12,7 @@ export const CategoryName = styled.p`
   letter-spacing: 1px;
   opacity: 0.9;
   font-weight: 200;
-  padding: 1rem 0 0.2rem 0;
+  padding: 1rem 0;
 `
 export const CategoryCard = styled.div`
   display: flex;
