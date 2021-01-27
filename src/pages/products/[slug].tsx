@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import { Product } from '../../../types'
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { fetcher } from '../../utils/functions'
 import { Params } from 'next/dist/next-server/server/router'
 import { BasicGrid, Container } from '../../styles/Global/utils'
@@ -29,7 +29,7 @@ interface ProductPageProps {
 
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
-  const qty = useRef<number | any>(null)
+  const [qty, setQty] = useState(1)
 
   const handleAddToCart = (e: React.SyntheticEvent, item: Product, quantity: number) => {
     e.preventDefault()
@@ -94,11 +94,13 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
               dangerouslySetInnerHTML={{ __html: product.short_description }}
             ></ShortDescription>
             <AddToCartForm>
-              <InputField ref={qty} type="number" defaultValue="1" min="1"></InputField>
-              <AddToCartBtn
-                disabled={isUpdating}
-                onClick={(e) => handleAddToCart(e, product, qty.current.value)}
-              >
+              <InputField
+                onChange={(e) => setQty(parseInt(e.target.value))}
+                type="number"
+                defaultValue={qty}
+                min="1"
+              ></InputField>
+              <AddToCartBtn disabled={isUpdating} onClick={(e) => handleAddToCart(e, product, qty)}>
                 Add To Cart
               </AddToCartBtn>
             </AddToCartForm>

@@ -8,21 +8,14 @@ import { Container, Loader, SectionTitle } from '../styles/Global/utils'
 import {
   CartFormContainer,
   CartGrid,
-  Item,
-  Thumbnail,
-  ProductLink,
-  ItemDesc,
-  RemoveFromCartBtn,
-  QuantityForm,
-  InputField,
+  Desc,
   QuantityBlock,
-  UpdateCartItem,
   EmptyCart,
   CartTotals,
   CheckoutBtn,
-  UpdateText,
 } from '../styles/Individual/CartPageElements'
 
+import SingleCartItem from '../components/CartItem'
 interface CartPageProps {}
 
 const CartPage: NextPage<CartPageProps> = () => {
@@ -30,7 +23,7 @@ const CartPage: NextPage<CartPageProps> = () => {
   const [itemQty, setItemQty] = useState<any>({})
   const [isAnimating, setIsAnimating] = useState({})
 
-  const handleQty = (item: { [key: string]: string }, e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleQty = (e: React.ChangeEvent<HTMLInputElement>, item: { [key: string]: string }) => {
     const { value } = e.target
     setItemQty((prev: any) => ({
       ...prev,
@@ -38,13 +31,34 @@ const CartPage: NextPage<CartPageProps> = () => {
     }))
   }
 
-  const removeItem = (item: any) => {
-    console.log(`Removing ${item.product_name}`)
+  const removeItem = (item: { [key: string]: string }) => {
+    setIsUpdating((prev: boolean) => !prev)
+    fetch(`https://elementor.local/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
+      method: 'DELETE',
+      body: JSON.stringify({
+        cart_item_key: item.key,
+        return_cart: true,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const newCart = { ...cart }
+        const remoteCartItems = Object.values(data)
+        newCart.items = remoteCartItems
+        setCart(newCart)
+        setIsUpdating((prev: boolean) => !prev)
+      })
+      .catch((error) => {
+        console.log(error)
+        setIsUpdating((prev: boolean) => !prev)
+      })
   }
 
   const updateItem = (e: React.SyntheticEvent, item: { [key: string]: string }, quantity: any) => {
     e.preventDefault()
-
     setIsUpdating((prev: boolean) => !prev)
     setIsAnimating((prev: any) => ({
       ...prev,
@@ -65,8 +79,6 @@ const CartPage: NextPage<CartPageProps> = () => {
       .then((data) => {
         const newCart = { ...cart }
         const remoteCartItems = Object.values(data)
-        console.log('Got response')
-        console.log(remoteCartItems)
         newCart.items = remoteCartItems
         setCart(newCart)
         setIsUpdating((prev: boolean) => !prev)
@@ -77,6 +89,10 @@ const CartPage: NextPage<CartPageProps> = () => {
       })
       .catch((error) => {
         console.log(error)
+        setIsAnimating((prev: any) => ({
+          ...prev,
+          [item.product_id]: !prev[item.product_id],
+        }))
         setIsUpdating((prev: boolean) => !prev)
       })
   }
@@ -88,61 +104,26 @@ const CartPage: NextPage<CartPageProps> = () => {
           <>
             <SectionTitle>Cart</SectionTitle>
             <CartGrid>
-              <ItemDesc></ItemDesc>
-              <ItemDesc></ItemDesc>
-              <ItemDesc>Product</ItemDesc>
-              <ItemDesc>Price</ItemDesc>
-              <ItemDesc>
+              <Desc></Desc>
+              <Desc></Desc>
+              <Desc>Product</Desc>
+              <Desc>Price</Desc>
+              <Desc>
                 <QuantityBlock>Quantity</QuantityBlock>
-              </ItemDesc>
-              <ItemDesc>Subtotal</ItemDesc>
+              </Desc>
+              <Desc>Subtotal</Desc>
               {cart.items.map((item: any) => {
                 return (
-                  <React.Fragment key={item.product_id}>
-                    <Item>
-                      <RemoveFromCartBtn onClick={() => removeItem(item)} />
-                    </Item>
-                    <Item>
-                      <Thumbnail src={item.image} />
-                    </Item>
-                    <Item>
-                      <Link href={`/products/${item.slug}`}>
-                        <ProductLink>{item.product_name}</ProductLink>
-                      </Link>
-                    </Item>
-                    <Item>{item.product_price}</Item>
-                    <Item>
-                      <QuantityForm>
-                        <InputField
-                          type="number"
-                          onChange={(e) => handleQty(item, e)}
-                          defaultValue={item.quantity}
-                          min="1"
-                        ></InputField>
-                        <UpdateCartItem
-                          disabled={isUpdating}
-                          onClick={(e) => {
-                            updateItem(
-                              e,
-                              item,
-                              Object.values(itemQty)[
-                                Object.keys(itemQty).indexOf(item.product_id.toString())
-                              ],
-                            )
-                          }}
-                        >
-                          {Object.values(isAnimating)[
-                            Object.keys(isAnimating).indexOf(item.product_id.toString())
-                          ] ? (
-                            <Loader />
-                          ) : (
-                            <UpdateText>Update</UpdateText>
-                          )}
-                        </UpdateCartItem>
-                      </QuantityForm>
-                    </Item>
-                    <Item>{item.line_subtotal} $</Item>
-                  </React.Fragment>
+                  <SingleCartItem
+                    key={item.product_id}
+                    item={item}
+                    itemQty={itemQty}
+                    removeItem={removeItem}
+                    handleQty={handleQty}
+                    isAnimating={isAnimating}
+                    isUpdating={isUpdating}
+                    updateItem={updateItem}
+                  />
                 )
               })}
             </CartGrid>
