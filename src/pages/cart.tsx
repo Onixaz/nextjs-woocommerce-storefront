@@ -21,6 +21,15 @@ interface CartPageProps {}
 const CartPage: NextPage<CartPageProps> = () => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
   const [isAnimating, setIsAnimating] = useState({})
+  const [itemQty, setItemQty] = useState({})
+
+  const handleQty = (e: React.ChangeEvent<HTMLInputElement>, item: { [key: string]: string }) => {
+    const { value } = e.target
+    setItemQty((prev: any) => ({
+      ...prev,
+      [item.product_id]: parseInt(value),
+    }))
+  }
 
   const removeItem = (item: { [key: string]: string }) => {
     setIsUpdating((prev: boolean) => !prev)
