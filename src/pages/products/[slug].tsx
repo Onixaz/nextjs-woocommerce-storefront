@@ -3,7 +3,7 @@ import { Product } from '../../../types'
 import React, { useContext, useRef, useState } from 'react'
 import { fetcher } from '../../utils/functions'
 import { Params } from 'next/dist/next-server/server/router'
-import { BasicGrid, Container } from '../../styles/Global/utils'
+import { BasicGrid, Container, Loader } from '../../styles/Global/utils'
 import {
   PageWrapper,
   PriceWrapper,
@@ -101,7 +101,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
                 min="1"
               ></InputField>
               <AddToCartBtn disabled={isUpdating} onClick={(e) => handleAddToCart(e, product, qty)}>
-                Add To Cart
+                {isUpdating ? <Loader /> : <p>Add To Cart</p>}
               </AddToCartBtn>
             </AddToCartForm>
             <ProductCategory>

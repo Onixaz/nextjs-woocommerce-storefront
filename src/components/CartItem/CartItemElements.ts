@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { RiCloseCircleFill } from 'react-icons/ri'
 
 export const El = styled.li`
   padding: 0.5rem;
@@ -22,10 +21,20 @@ export const ProductLink = styled.a`
   cursor: pointer;
 `
 
-export const RemoveFromCartBtn = styled(RiCloseCircleFill)`
+export const RemoveFromCartBtn = styled.button`
   font-size: calc(1.5rem + 0.1vw);
+  border: none;
+  background: transparent;
+  background-color: transparent;
+  border-color: #333333;
+  color: #333333;
   cursor: pointer;
+
+  &:disabled {
+    opacity: 1;
+  }
 `
+
 export const QuantityForm = styled.form`
   margin: 2rem 0;
   display: flex;

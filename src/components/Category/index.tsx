@@ -9,9 +9,9 @@ const SingleCategory: React.FC<SingleCategoryProps> = ({ category }) => {
   return (
     <CategoryCard>
       <CategoryImgWrapper>
-        {category.image !== null ? (
+        {category.image !== null && (
           <CategoryImg src={category.image.src} alt={category.image.alt} />
-        ) : null}
+        )}
       </CategoryImgWrapper>
       <CategoryName>
         {category.name} ({category.count})

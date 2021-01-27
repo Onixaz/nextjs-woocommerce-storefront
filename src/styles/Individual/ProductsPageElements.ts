@@ -72,18 +72,19 @@ export const RegularPrice = styled.p<{ isOnSale: boolean }>`
 `
 export const AddToCartForm = styled.form`
   margin: 2rem 0;
+  display: flex;
+  flex-direction: row;
 `
 
 export const InputField = styled.input`
   padding: 0.5em;
   margin-right: 1rem;
-  max-width: 50px;
+  max-width: 60px;
   font-size: 1rem;
   text-align: center;
   background-color: #f2f2f2;
   color: #43454b;
   border: none;
-  box-sizing: border-box;
   font-weight: 400;
 
   &[type='number']::-webkit-inner-spin-button {
@@ -91,20 +92,24 @@ export const InputField = styled.input`
   }
 `
 export const AddToCartBtn = styled.button`
-  background-color: #333333;
-  border-color: #333333;
-  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  opacity: 1;
   padding: 0.5em 1.5em;
   text-decoration: none;
   font-weight: 600;
   text-shadow: none;
-  display: inline-block;
-  transition: all 0.2s ease-in-out;
 
-  &:disabled {
-    opacity: 0.7;
-  }
+  transition: all 0.2s ease-in-out;
+  background: #333333;
+  border-color: #333333;
+  color: #fff;
+  width: calc(120px + 0.2vw);
+  height: 41px;
+  //display: inline-block;
+  transition: all 0.2s ease-in-out;
 `
 
 export const ProductCategory = styled.p`

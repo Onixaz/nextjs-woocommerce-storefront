@@ -50,7 +50,6 @@ export const SectionTitle = styled.h2`
 
 export const Loader = styled.div`
   
-  
   border: 2px solid #f3f3f3;
   border-radius: 50%;
   border-top: 2px solid #3333;

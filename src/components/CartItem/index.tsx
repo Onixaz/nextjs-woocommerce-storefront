@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { RiCloseCircleFill } from 'react-icons/ri'
 import {
   El,
   RemoveFromCartBtn,
@@ -12,26 +13,78 @@ import {
 
 import { Loader } from '../../styles/Global/utils'
 import Link from 'next/link'
+import { CartContext } from '../../context/cart'
 interface CartItemProps {
   item: any
-  removeItem: (item: { [key: string]: string }) => void
-  updateItem: (e: React.SyntheticEvent, item: { [key: string]: string }, qty: any) => void
-  isAnimating: any
-  isUpdating: boolean
 }
 
-const SingleCartItem: React.FC<CartItemProps> = ({
-  item,
-  removeItem,
-  updateItem,
-  isAnimating,
-  isUpdating,
-}) => {
+const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
+  const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
+  const [isAnimating, setIsAnimating] = useState(false)
   const [qty, setQty] = useState(1)
+  const removeItem = (item: { [key: string]: string }) => {
+    setIsUpdating((prev: boolean) => !prev)
+    fetch(`https://elementor.local/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
+      method: 'DELETE',
+      body: JSON.stringify({
+        cart_item_key: item.key,
+        return_cart: true,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const newCart = { ...cart }
+        const remoteCartItems = Object.values(data)
+        newCart.items = remoteCartItems
+        setCart(newCart)
+        setIsUpdating((prev: boolean) => !prev)
+      })
+      .catch((error) => {
+        console.log(error)
+        setIsUpdating((prev: boolean) => !prev)
+      })
+  }
+
+  const updateItem = (e: React.SyntheticEvent, item: { [key: string]: string }, quantity: any) => {
+    e.preventDefault()
+    setIsUpdating((prev: boolean) => !prev)
+    setIsAnimating((prev: boolean) => !prev)
+    fetch(`https://elementor.local/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        cart_item_key: item.key,
+        quantity: quantity,
+        return_cart: true,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const newCart = { ...cart }
+        const remoteCartItems = Object.values(data)
+        newCart.items = remoteCartItems
+        setCart(newCart)
+        setIsUpdating((prev: boolean) => !prev)
+        setIsAnimating((prev: boolean) => !prev)
+      })
+      .catch((error) => {
+        console.log(error)
+        setIsAnimating((prev: boolean) => !prev)
+        setIsUpdating((prev: boolean) => !prev)
+      })
+  }
   return (
     <>
       <El>
-        <RemoveFromCartBtn onClick={() => removeItem(item)} />
+        <RemoveFromCartBtn disabled={isUpdating} onClick={() => removeItem(item)}>
+          {' '}
+          <RiCloseCircleFill />{' '}
+        </RemoveFromCartBtn>
       </El>
       <El>
         <Thumbnail src={item.image} />
@@ -56,13 +109,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({
               updateItem(e, item, qty)
             }}
           >
-            {Object.values(isAnimating)[
-              Object.keys(isAnimating).indexOf(item.product_id.toString())
-            ] ? (
-              <Loader />
-            ) : (
-              <UpdateText>Update</UpdateText>
-            )}
+            {isAnimating ? <Loader /> : <UpdateText>Update</UpdateText>}
           </UpdateCartItemBtn>
         </QuantityForm>
       </El>
