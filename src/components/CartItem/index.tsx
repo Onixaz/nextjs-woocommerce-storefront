@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   El,
   RemoveFromCartBtn,
   Thumbnail,
   QuantityForm,
   InputField,
-  UpdateCartItem,
+  UpdateCartItemBtn,
   ProductLink,
   UpdateText,
 } from './CartItemElements'
@@ -14,23 +14,20 @@ import { Loader } from '../../styles/Global/utils'
 import Link from 'next/link'
 interface CartItemProps {
   item: any
-  itemQty: number
   removeItem: (item: { [key: string]: string }) => void
-  handleQty: (e: React.ChangeEvent<HTMLInputElement>, item: { [key: string]: string }) => void
-  updateItem: (e: React.SyntheticEvent, item: { [key: string]: string }, itemQty: any) => void
+  updateItem: (e: React.SyntheticEvent, item: { [key: string]: string }, qty: any) => void
   isAnimating: any
   isUpdating: boolean
 }
 
 const SingleCartItem: React.FC<CartItemProps> = ({
   item,
-  itemQty,
   removeItem,
-  handleQty,
   updateItem,
   isAnimating,
   isUpdating,
 }) => {
+  const [qty, setQty] = useState(1)
   return (
     <>
       <El>
@@ -49,18 +46,14 @@ const SingleCartItem: React.FC<CartItemProps> = ({
         <QuantityForm>
           <InputField
             type="number"
-            onChange={(e) => handleQty(e, item)}
+            onChange={(e) => setQty(parseInt(e.target.value))}
             defaultValue={item.quantity}
             min="1"
           ></InputField>
-          <UpdateCartItem
+          <UpdateCartItemBtn
             disabled={isUpdating}
             onClick={(e) => {
-              updateItem(
-                e,
-                item,
-                Object.values(itemQty)[Object.keys(itemQty).indexOf(item.product_id.toString())],
-              )
+              updateItem(e, item, qty)
             }}
           >
             {Object.values(isAnimating)[
@@ -70,7 +63,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({
             ) : (
               <UpdateText>Update</UpdateText>
             )}
-          </UpdateCartItem>
+          </UpdateCartItemBtn>
         </QuantityForm>
       </El>
       <El>{item.line_subtotal} $</El>
