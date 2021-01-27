@@ -4,7 +4,7 @@ import Link from 'next/link'
 import CustomHead from '../components/CustomHead'
 import { CartContext } from '../context/cart'
 
-import { Container, SectionTitle } from '../styles/Global/utils'
+import { Container, Loader, SectionTitle } from '../styles/Global/utils'
 import {
   CartFormContainer,
   CartGrid,
@@ -20,67 +20,15 @@ import {
   EmptyCart,
   CartTotals,
   CheckoutBtn,
+  UpdateText,
 } from '../styles/Individual/CartPageElements'
-
-const dummyData = {
-  payment_method: 'cod',
-  payment_method_title: 'Cash on Delivery',
-  set_paid: false,
-  billing: {
-    first_name: 'John',
-    last_name: 'Doe',
-    address_1: '969 Market',
-    address_2: '',
-    city: 'San Francisco',
-    state: 'CA',
-    postcode: '94103',
-    country: 'US',
-    email: 'john.doe@example.com',
-    phone: '(555) 555-5555',
-  },
-  shipping: {
-    first_name: 'John',
-    last_name: 'Doe',
-    address_1: '969 Market',
-    address_2: '',
-    city: 'San Francisco',
-    state: 'CA',
-    postcode: '94103',
-    country: 'US',
-  },
-  line_items: [
-    {
-      product_id: 58,
-      quantity: 2,
-    },
-    {
-      product_id: 59,
-      quantity: 1,
-    },
-  ],
-  shipping_lines: [
-    {
-      method_id: 'flat_rate',
-      method_title: 'Flat Rate',
-      total: '10.00',
-    },
-  ],
-}
 
 interface CartPageProps {}
 
 const CartPage: NextPage<CartPageProps> = () => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
   const [itemQty, setItemQty] = useState<any>({})
-
-  useEffect(() => {
-    console.log(itemQty)
-  }, [itemQty])
-
-  const test = (e: any, item: any) => {
-    e.preventDefault()
-    console.log(itemQty[item])
-  }
+  const [isAnimating, setIsAnimating] = useState({})
 
   const handleQty = (item: { [key: string]: string }, e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
@@ -94,13 +42,14 @@ const CartPage: NextPage<CartPageProps> = () => {
     console.log(`Removing ${item.product_name}`)
   }
 
-  const updateItem = (
-    e: React.SyntheticEvent,
-    item: { [key: string]: string },
-    quantity: number,
-  ) => {
+  const updateItem = (e: React.SyntheticEvent, item: { [key: string]: string }, quantity: any) => {
     e.preventDefault()
+
     setIsUpdating((prev: boolean) => !prev)
+    setIsAnimating((prev: any) => ({
+      ...prev,
+      [item.product_id]: !prev[item.product_id],
+    }))
     fetch(`https://elementor.local/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
       method: 'POST',
       body: JSON.stringify({
@@ -121,27 +70,15 @@ const CartPage: NextPage<CartPageProps> = () => {
         newCart.items = remoteCartItems
         setCart(newCart)
         setIsUpdating((prev: boolean) => !prev)
+        setIsAnimating((prev: any) => ({
+          ...prev,
+          [item.product_id]: !prev[item.product_id],
+        }))
       })
       .catch((error) => {
         console.log(error)
         setIsUpdating((prev: boolean) => !prev)
       })
-  }
-
-  const createOrder = async (data: any) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/api/orders/create`, {
-      method: 'POST',
-
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-
-    const order = await res.json().catch((error) => console.log(error))
-    if (order) {
-      console.log(order)
-    }
   }
 
   return (
@@ -184,9 +121,23 @@ const CartPage: NextPage<CartPageProps> = () => {
                         ></InputField>
                         <UpdateCartItem
                           disabled={isUpdating}
-                          onClick={() => console.log(`Updating`)}
+                          onClick={(e) => {
+                            updateItem(
+                              e,
+                              item,
+                              Object.values(itemQty)[
+                                Object.keys(itemQty).indexOf(item.product_id.toString())
+                              ],
+                            )
+                          }}
                         >
-                          Update
+                          {Object.values(isAnimating)[
+                            Object.keys(isAnimating).indexOf(item.product_id.toString())
+                          ] ? (
+                            <Loader />
+                          ) : (
+                            <UpdateText>Update</UpdateText>
+                          )}
                         </UpdateCartItem>
                       </QuantityForm>
                     </Item>
@@ -202,7 +153,6 @@ const CartPage: NextPage<CartPageProps> = () => {
         ) : (
           <EmptyCart>Your cart is empty</EmptyCart>
         )}
-        <button onClick={() => createOrder(dummyData)}>Create order</button>
       </CartFormContainer>
     </Container>
   )

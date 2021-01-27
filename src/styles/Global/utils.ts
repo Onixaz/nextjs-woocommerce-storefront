@@ -38,19 +38,6 @@ export const BasicGrid = styled.div<{ lg: number; md: number; sm: number; xs: nu
   }
 `
 
-export const Loader = styled.h1`
-  color: ${({ theme }) => theme.primaryText};
-  letter-spacing: 1px;
-  position: absolute;
-  font-size: calc(1rem + 0.5vw);
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  overflow: hidden;
-  letter-spacing: 1px;
-  white-space: nowrap;
-`
-
 export const SectionTitle = styled.h2`
   display: flex;
   justify-content: center;
@@ -59,4 +46,30 @@ export const SectionTitle = styled.h2`
   text-align: center;
   padding: 1rem;
   margin: 1rem;
+`
+
+export const Loader = styled.div`
+  
+  
+  border: 2px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 2px solid #3333;
+  width: 16px;
+  height: 16px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+
+
+
 `

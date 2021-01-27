@@ -69,6 +69,8 @@ export const RemoveFromCartBtn = styled(RiCloseCircleFill)`
 `
 export const QuantityForm = styled.form`
   margin: 2rem 0;
+  display: flex;
+  flex-direction: row;
 `
 
 export const QuantityBlock = styled.div`
@@ -92,20 +94,23 @@ export const InputField = styled.input`
   }
 `
 export const UpdateCartItem = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #333333;
   border-color: #333333;
   color: #ffffff;
   cursor: pointer;
   padding: 0.5em 1.5em;
-  text-decoration: none;
-  font-weight: 600;
-
-  display: inline-block;
+  width: calc(75px + 0.2vw);
+  height: 41px;
+  //display: inline-block;
   transition: all 0.2s ease-in-out;
+`
 
-  &:disabled {
-    opacity: 0.7;
-  }
+export const UpdateText = styled.p`
+  font-weight: 600;
+  font-size: calc(0.75rem + 0.1vw);
 `
 
 export const CheckoutBtn = styled.button`
