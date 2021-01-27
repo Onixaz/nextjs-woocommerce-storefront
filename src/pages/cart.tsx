@@ -1,8 +1,26 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { NextPage } from 'next'
-import { useContext } from 'react'
+import Link from 'next/link'
 import CustomHead from '../components/CustomHead'
 import { CartContext } from '../context/cart'
+
+import { Container, SectionTitle } from '../styles/Global/utils'
+import {
+  CartFormContainer,
+  CartGrid,
+  Item,
+  Thumbnail,
+  ProductLink,
+  ItemDesc,
+  RemoveFromCartBtn,
+  QuantityForm,
+  InputField,
+  QuantityBlock,
+  UpdateCartItem,
+  EmptyCart,
+  CartTotals,
+  CheckoutBtn,
+} from '../styles/Individual/CartPageElements'
 
 const dummyData = {
   payment_method: 'cod',
@@ -52,7 +70,63 @@ const dummyData = {
 interface CartPageProps {}
 
 const CartPage: NextPage<CartPageProps> = () => {
-  const [cart] = useContext(CartContext)
+  const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
+  const [itemQty, setItemQty] = useState<any>({})
+
+  useEffect(() => {
+    console.log(itemQty)
+  }, [itemQty])
+
+  const test = (e: any, item: any) => {
+    e.preventDefault()
+    console.log(itemQty[item])
+  }
+
+  const handleQty = (item: { [key: string]: string }, e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+    setItemQty((prev: any) => ({
+      ...prev,
+      [item.product_id]: parseInt(value),
+    }))
+  }
+
+  const removeItem = (item: any) => {
+    console.log(`Removing ${item.product_name}`)
+  }
+
+  const updateItem = (
+    e: React.SyntheticEvent,
+    item: { [key: string]: string },
+    quantity: number,
+  ) => {
+    e.preventDefault()
+    setIsUpdating((prev: boolean) => !prev)
+    fetch(`https://elementor.local/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        cart_item_key: item.key,
+        quantity: quantity,
+        return_cart: true,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const newCart = { ...cart }
+        const remoteCartItems = Object.values(data)
+        console.log('Got response')
+        console.log(remoteCartItems)
+        newCart.items = remoteCartItems
+        setCart(newCart)
+        setIsUpdating((prev: boolean) => !prev)
+      })
+      .catch((error) => {
+        console.log(error)
+        setIsUpdating((prev: boolean) => !prev)
+      })
+  }
 
   const createOrder = async (data: any) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/api/orders/create`, {
@@ -63,28 +137,74 @@ const CartPage: NextPage<CartPageProps> = () => {
       },
       body: JSON.stringify(data),
     })
-    const order = await res.json()
-    console.log(order)
+
+    const order = await res.json().catch((error) => console.log(error))
+    if (order) {
+      console.log(order)
+    }
   }
 
   return (
-    <>
-      <CustomHead
-        title="About | Next.Js"
-        description="A starter for Next.Js with Styled-components and TS"
-      />
-
-      {cart.items.map((item: { [key: string]: string }) => {
-        return (
-          <React.Fragment key={item.product_id}>
-            <p>{item.product_name}</p>
-            <p>{item.quantity}</p>
-            <img src={item.image} />
-          </React.Fragment>
-        )
-      })}
-      <button onClick={() => createOrder(dummyData)}>Create Order</button>
-    </>
+    <Container>
+      <CartFormContainer>
+        {cart.items.length ? (
+          <>
+            <SectionTitle>Cart</SectionTitle>
+            <CartGrid>
+              <ItemDesc></ItemDesc>
+              <ItemDesc></ItemDesc>
+              <ItemDesc>Product</ItemDesc>
+              <ItemDesc>Price</ItemDesc>
+              <ItemDesc>
+                <QuantityBlock>Quantity</QuantityBlock>
+              </ItemDesc>
+              <ItemDesc>Subtotal</ItemDesc>
+              {cart.items.map((item: any) => {
+                return (
+                  <React.Fragment key={item.product_id}>
+                    <Item>
+                      <RemoveFromCartBtn onClick={() => removeItem(item)} />
+                    </Item>
+                    <Item>
+                      <Thumbnail src={item.image} />
+                    </Item>
+                    <Item>
+                      <Link href={`/products/${item.slug}`}>
+                        <ProductLink>{item.product_name}</ProductLink>
+                      </Link>
+                    </Item>
+                    <Item>{item.product_price}</Item>
+                    <Item>
+                      <QuantityForm>
+                        <InputField
+                          type="number"
+                          onChange={(e) => handleQty(item, e)}
+                          defaultValue={item.quantity}
+                          min="1"
+                        ></InputField>
+                        <UpdateCartItem
+                          disabled={isUpdating}
+                          onClick={() => console.log(`Updating`)}
+                        >
+                          Update
+                        </UpdateCartItem>
+                      </QuantityForm>
+                    </Item>
+                    <Item>{item.line_subtotal} $</Item>
+                  </React.Fragment>
+                )
+              })}
+            </CartGrid>
+            <CartTotals>
+              <CheckoutBtn>Proceed to checkout</CheckoutBtn>
+            </CartTotals>
+          </>
+        ) : (
+          <EmptyCart>Your cart is empty</EmptyCart>
+        )}
+        <button onClick={() => createOrder(dummyData)}>Create order</button>
+      </CartFormContainer>
+    </Container>
   )
 }
 

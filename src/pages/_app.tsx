@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
-import theme from '../styles/theme'
-import GlobalStyle from '../styles/Global'
+import theme from '../styles/Global/theme'
+import GlobalStyle from '../styles/Global/main'
 import Layout from '../components/Layout'
 
 import CartProvider from '../context/cart'

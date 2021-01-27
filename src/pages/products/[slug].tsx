@@ -3,7 +3,7 @@ import { Product } from '../../../types'
 import React, { useContext, useRef } from 'react'
 import { fetcher } from '../../utils/functions'
 import { Params } from 'next/dist/next-server/server/router'
-import { BasicGrid, Container } from '../../styles/utils'
+import { BasicGrid, Container } from '../../styles/Global/utils'
 import {
   PageWrapper,
   PriceWrapper,
@@ -20,7 +20,7 @@ import {
   LongDescription,
   ProductCategory,
   CategorySpan,
-} from '../../styles/ProductPage/ProductsPageElements'
+} from '../../styles/Individual/ProductsPageElements'
 import { CartContext } from '../../context/cart'
 
 interface ProductPageProps {
@@ -30,8 +30,6 @@ interface ProductPageProps {
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
   const qty = useRef<number | any>(null)
-
-  console.log(product)
 
   const handleAddToCart = (e: React.SyntheticEvent, item: Product, quantity: number) => {
     e.preventDefault()
@@ -45,7 +43,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
         quantity: quantity,
         return_cart: true,
         //adding image for cart page
-        cart_item_data: { image: item.images[0].src },
+        cart_item_data: { image: item.images[0].src, slug: item.slug },
       }),
       headers: {
         'Content-Type': 'application/json',

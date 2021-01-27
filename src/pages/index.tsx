@@ -4,7 +4,7 @@ import SingleCategory from '../components/Category'
 import SingleProduct from '../components/Product'
 import CustomHead from '../components/CustomHead'
 import Hero from '../components/Hero'
-import { BasicGrid, Container, SectionTitle } from '../styles/utils'
+import { BasicGrid, Container, SectionTitle } from '../styles/Global/utils'
 import { fetcher } from '../utils/functions'
 
 interface IndexPageProps {

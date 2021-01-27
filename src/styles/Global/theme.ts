@@ -4,7 +4,7 @@ const defaultTheme = {
   //text button colors
   primaryBlack: '#0d0d0d',
   secondaryBlack: '#898989',
-  primaryText: '#383a3a',
+  primaryText: '#4c4e4e',
   primaryWhite: '#fafafa',
   primaryGreen: '#93e065',
   secondaryGreen: '#98e26d',

@@ -1,31 +1,6 @@
 import styled from 'styled-components'
 import { RiShoppingCart2Fill } from 'react-icons/ri'
 
-export const AddToCartBtn = styled.button`
-  position: absolute;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  top: 83%;
-  left: 50%;
-  border: none;
-  border-radius: 30px;
-  color: ${({ theme }) => theme.primaryBlack};
-  opacity: 0;
-  object-fit: cover;
-  overflow: hidden;
-  letter-spacing: 1px;
-  white-space: nowrap;
-  font-weight: bold;
-  display: inline-block;
-  text-align: center;
-  min-width: 100px;
-  //border-radius: 10px;
-  font-size: calc(0.7rem + 0.3vw);
-  transform: translate(-50%, -50%);
-  padding: 1rem calc(0.5rem + 0.5vw);
-  background: ${({ theme }) => theme.primaryWhite};
-`
-
 export const ProductCard = styled.div`
   display: flex;
   position: relative;

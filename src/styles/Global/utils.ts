@@ -58,4 +58,5 @@ export const SectionTitle = styled.h2`
   font-weight: 200;
   text-align: center;
   padding: 1rem;
+  margin: 1rem;
 `
