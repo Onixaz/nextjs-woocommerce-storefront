@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
 import { CartContext } from '../context/cart'
-import { Container, SectionTitle } from '../styles/Global/utils'
+import { BasicContainer, SectionTitle } from '../styles/Global/utils'
 import {
   CartFormContainer,
   CartGrid,
@@ -14,13 +14,14 @@ import {
 } from '../styles/Individual/CartPageElements'
 
 import SingleCartItem from '../components/CartItem'
+import Link from 'next/link'
 interface CartPageProps {}
 
 const CartPage: NextPage<CartPageProps> = () => {
   const [cart] = useContext(CartContext)
 
   return (
-    <Container>
+    <BasicContainer>
       <CartFormContainer>
         {cart.items.length ? (
           <>
@@ -39,14 +40,16 @@ const CartPage: NextPage<CartPageProps> = () => {
               })}
             </CartGrid>
             <CartTotals>
-              <CheckoutBtn>Proceed to checkout</CheckoutBtn>
+              <Link href="/checkout" passHref>
+                <CheckoutBtn>Proceed to checkout</CheckoutBtn>
+              </Link>
             </CartTotals>
           </>
         ) : (
           <EmptyCart>Your cart is empty</EmptyCart>
         )}
       </CartFormContainer>
-    </Container>
+    </BasicContainer>
   )
 }
 

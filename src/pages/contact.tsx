@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
-import { Container, SectionTitle } from '../styles/Global/utils'
+import { BasicContainer, SectionTitle } from '../styles/Global/utils'
 
 interface ContactPageProps {}
 
@@ -16,9 +16,9 @@ const ContactPage: NextPage<ContactPageProps> = () => {
           title="About | Next.Js"
           description="A starter for Next.Js with Styled-components and TS"
         />
-        <Container>
+        <BasicContainer>
           <SectionTitle>Contact me!</SectionTitle>
-        </Container>
+        </BasicContainer>
       </>
     </>
   )

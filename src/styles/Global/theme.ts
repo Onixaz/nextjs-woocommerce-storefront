@@ -1,5 +1,5 @@
 const defaultTheme = {
-  lightMediumBg: '#ededed',
+  lightMediumBg: '#f2f2f2',
   lightWhiteBg: '#fff',
   //text button colors
   primaryBlack: '#0d0d0d',

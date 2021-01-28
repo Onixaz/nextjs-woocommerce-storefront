@@ -22,7 +22,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Sidebar isOpen={isOpen} toggle={toggle} />
         <Navbar toggle={toggle} />
         <main>{children}</main>
-        {/* <CookiesConsent /> */}
+        <CookiesConsent />
         <Footer />
       </LayoutElement>
     </>

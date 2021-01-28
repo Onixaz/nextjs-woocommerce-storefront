@@ -4,7 +4,7 @@ import SingleCategory from '../components/Category'
 import SingleProduct from '../components/Product'
 import CustomHead from '../components/CustomHead'
 import Hero from '../components/Hero'
-import { BasicGrid, Container, SectionTitle } from '../styles/Global/utils'
+import { BasicGrid, BasicContainer, SectionTitle } from '../styles/Global/utils'
 import { fetcher } from '../utils/functions'
 
 interface IndexPageProps {
@@ -21,7 +21,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
       />
       <Hero />
 
-      <Container id="Categories">
+      <BasicContainer id="Categories">
         <SectionTitle>Shop by Category</SectionTitle>
         <BasicGrid lg={3} md={3} sm={2} xs={1}>
           {categories?.map((category: any) => {
@@ -38,7 +38,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
             )
           })}
         </BasicGrid>
-      </Container>
+      </BasicContainer>
     </>
   )
 }

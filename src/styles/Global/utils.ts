@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.section`
+export const BasicContainer = styled.section`
   padding: 5rem 0;
   max-width: 1200px;
   width: 95%;
@@ -48,6 +48,14 @@ export const SectionTitle = styled.h2`
   margin: 1rem;
 `
 
+export const Subtitle = styled.h2`
+  font-size: calc(1.5rem + 0.1vw);
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 1rem;
+  margin: 1rem;
+`
+
 export const Loader = styled.div`
   
   border: 2px solid #f3f3f3;
@@ -55,15 +63,10 @@ export const Loader = styled.div`
   border-top: 2px solid #3333;
   width: 16px;
   height: 16px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 1s linear infinite;
 }
 
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
+
 
 @keyframes spin {
   0% { transform: rotate(0deg); }

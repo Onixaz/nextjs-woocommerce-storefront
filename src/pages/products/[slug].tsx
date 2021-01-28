@@ -3,7 +3,7 @@ import { Product } from '../../../types'
 import React, { useContext, useRef, useState } from 'react'
 import { fetcher } from '../../utils/functions'
 import { Params } from 'next/dist/next-server/server/router'
-import { BasicGrid, Container, Loader } from '../../styles/Global/utils'
+import { BasicGrid, BasicContainer, Loader } from '../../styles/Global/utils'
 import {
   PageWrapper,
   PriceWrapper,
@@ -66,7 +66,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
   }
 
   return (
-    <Container>
+    <BasicContainer>
       <PageWrapper>
         <BasicGrid lg={2} md={2} sm={1} xs={1}>
           <ProductImgWrapper>
@@ -113,7 +113,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
           dangerouslySetInnerHTML={{ __html: product.description }}
         ></LongDescription>
       </PageWrapper>
-    </Container>
+    </BasicContainer>
   )
 }
 

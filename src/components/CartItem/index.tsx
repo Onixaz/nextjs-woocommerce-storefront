@@ -21,7 +21,8 @@ interface CartItemProps {
 const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
   const [isAnimating, setIsAnimating] = useState(false)
-  const [qty, setQty] = useState(1)
+  const [qty, setQty] = useState(item.quantity)
+
   const removeItem = (item: { [key: string]: string }) => {
     setIsUpdating((prev: boolean) => !prev)
     fetch(`https://elementor.local/wp-json/cocart/v1/item?cart_key=${cart.key}`, {

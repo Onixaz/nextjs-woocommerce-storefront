@@ -1,7 +1,7 @@
 import React from 'react'
 import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
-import { Container, BasicGrid } from '../styles/Global/utils'
+import { BasicContainer, BasicGrid } from '../styles/Global/utils'
 import { fetcher } from '../utils/functions'
 import SingleProduct from '../components/Product'
 
@@ -17,7 +17,7 @@ const ShopPage: NextPage<ShopPageProps> = ({ products }) => {
         description="A starter for Next.Js with Styled-components and TS"
       />
 
-      <Container id="Products">
+      <BasicContainer id="Products">
         <BasicGrid lg={4} md={3} sm={2} xs={1}>
           {products.map((product: any) => {
             return (
@@ -27,7 +27,7 @@ const ShopPage: NextPage<ShopPageProps> = ({ products }) => {
             )
           })}
         </BasicGrid>
-      </Container>
+      </BasicContainer>
     </>
   )
 }

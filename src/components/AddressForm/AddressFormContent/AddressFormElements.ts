@@ -1,0 +1,37 @@
+import styled from 'styled-components'
+
+export const FieldWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+`
+export const NameBlock = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`
+
+export const BasicLabel = styled.label`
+  margin: 0.2rem 1rem;
+  font-size: calc(0.9rem + 0.1vw);
+`
+export const BasicInput = styled.input`
+  background: ${({ theme }) => theme.lightMediumBg};
+  margin: 0.1rem 1rem;
+  padding: 0.5rem;
+  font-size: calc(0.9rem + 0.1vw);
+  border: none;
+  outline: none;
+`
+export const CustomerNote = styled.textarea`
+  min-height: 150px;
+  margin: 0.1rem 1rem;
+  padding: 0.5rem;
+  font-size: calc(0.9rem + 0.1vw);
+  background: ${({ theme }) => theme.lightMediumBg};
+  border: none;
+  outline: none;
+  resize: none;
+`
