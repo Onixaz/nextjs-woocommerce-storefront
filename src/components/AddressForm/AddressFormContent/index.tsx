@@ -1,10 +1,11 @@
 import React from 'react'
 import {
-  NameBlock,
+  RowBlock,
   FieldWrapper,
   BasicLabel,
   BasicInput,
   CustomerNote,
+  ShippingBlock,
 } from './AddressFormElements'
 import CountryList from '../CountryList'
 import { Subtitle } from '../../../styles/Global/utils'
@@ -17,7 +18,7 @@ interface AddressFormProps {
 const AddressFormContent: React.FC<AddressFormProps> = ({ register, errors }) => {
   return (
     <>
-      <NameBlock>
+      <RowBlock>
         <FieldWrapper>
           <BasicLabel>First name</BasicLabel>
           <BasicInput name="first_name" ref={register({ required: true })} />
@@ -28,7 +29,7 @@ const AddressFormContent: React.FC<AddressFormProps> = ({ register, errors }) =>
           <BasicInput name="last_name" ref={register({ required: true })} />
           {errors.last_name && <span>This field is required</span>}
         </FieldWrapper>
-      </NameBlock>
+      </RowBlock>
 
       <FieldWrapper>
         <BasicLabel>Company (optional)</BasicLabel>
@@ -81,7 +82,10 @@ const AddressFormContent: React.FC<AddressFormProps> = ({ register, errors }) =>
         <BasicInput name="email" ref={register({ required: true })} />
         {errors.address_1 && <span>This field is required</span>}
       </FieldWrapper>
-
+      <ShippingBlock>
+        <BasicInput type="checkbox" readOnly checked />
+        <BasicLabel>Shipping addess same as billing addess</BasicLabel>
+      </ShippingBlock>
       <Subtitle>Additional Information</Subtitle>
       <FieldWrapper>
         <BasicLabel>Order notes (optional) </BasicLabel>

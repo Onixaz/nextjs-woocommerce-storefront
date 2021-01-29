@@ -13,13 +13,19 @@ export const fetcher = async (url: string, key: string, secret: string) => {
   })
 }
 
-export const poster = async (url: string, key: string, secret: string, data: object) => {
+export const poster = async (
+  url: string,
+  key: string,
+  secret: string,
+  data: object,
+  method: string,
+) => {
   return fetch(url, {
     headers: new Headers({
       Authorization: 'Basic ' + Buffer.from(`${key}:${secret}`).toString('base64'),
       'Content-Type': 'application/json; charset=utf-8',
     }),
-    method: 'POST',
+    method: method,
     body: JSON.stringify(data),
     credentials: 'include',
     mode: 'cors',

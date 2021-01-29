@@ -3,7 +3,6 @@ import { ThemeProvider } from 'styled-components'
 import theme from '../styles/Global/theme'
 import GlobalStyle from '../styles/Global/main'
 import Layout from '../components/Layout'
-
 import CartProvider from '../context/cart'
 
 interface CustomAppProps extends AppProps {}
