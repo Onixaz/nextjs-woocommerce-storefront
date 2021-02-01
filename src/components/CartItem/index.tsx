@@ -14,6 +14,7 @@ import {
 import { Loader } from '../../styles/Global/utils'
 import Link from 'next/link'
 import { CartContext } from '../../context/cart'
+import { cartUpdater } from '../../utils/functions'
 interface CartItemProps {
   item: any
 }
@@ -66,10 +67,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        const newCart = { ...cart }
-        const remoteCartItems = Object.values(data)
-        newCart.items = remoteCartItems
-        setCart(newCart)
+        setCart(() => cartUpdater(cart, data))
         setIsUpdating((prev: boolean) => !prev)
         setIsAnimating((prev: boolean) => !prev)
       })

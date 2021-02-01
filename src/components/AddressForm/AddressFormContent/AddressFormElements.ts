@@ -59,3 +59,9 @@ export const CustomerNote = styled.textarea`
   outline: none;
   resize: none;
 `
+
+export const ReqSpan = styled.span`
+  margin: 0.1rem 1rem;
+  padding: 0.5rem;
+  color: red;
+`

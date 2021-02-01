@@ -9,7 +9,6 @@ const CookiesConsent: React.FC<CookiesConsentProps> = () => {
     <>
       <CookieConsent
         buttonText="Yes!"
-        debug={true}
         style={{
           background: 'rgba(0,0,0,0.7)',
           padding: '0px',

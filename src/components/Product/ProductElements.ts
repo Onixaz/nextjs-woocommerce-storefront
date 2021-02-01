@@ -23,7 +23,7 @@ export const Img = styled.img`
   //position: absolute;
   object-fit: cover;
   transition: 0.5s all;
-  border-radius: 30px;
+  //border-radius: 30px;
   /* top: 0;
   left: 0; */
 `

@@ -28,11 +28,6 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   const [cart] = useContext(CartContext)
   const [scrollNav, setScrollNav] = useState(true)
 
-  const totalPrice = cart.items.reduce(
-    (acc: number, curr: { [key: string]: any }) => acc + curr.line_total,
-    0,
-  )
-
   const totalQuantity = cart.items.reduce(
     (acc: number, curr: { [key: string]: number }) => acc + curr.quantity,
     0,
@@ -91,8 +86,8 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
           </NavItem>
         </NavMenu>
         <NavIconHolder>
-          <TotalPrice hasItems={totalPrice > 0 ? true : false}>
-            Total: ${totalPrice.toFixed(2)}
+          <TotalPrice hasItems={cart.total > 0 ? true : false}>
+            Total: ${cart.total.toFixed(2)}
           </TotalPrice>
           <Link href="/cart" passHref>
             <ShoppingCartHolder>

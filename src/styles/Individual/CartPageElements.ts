@@ -60,7 +60,7 @@ export const QuantityBlock = styled.div`
 
 export const CheckoutBtn = styled.button`
   margin-top: 3rem;
-  font-size: calc(1.5rem + 0.1vw);
+  font-size: calc(1.2rem + 0.1vw);
   background-color: #333333;
   border-color: #333333;
   color: #ffffff;

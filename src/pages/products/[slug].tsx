@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
-import { Product } from '../../../types'
+import { Product } from '../../types'
 import React, { useContext, useRef, useState } from 'react'
-import { fetcher } from '../../utils/functions'
+import { fetcher, cartUpdater } from '../../utils/functions'
 import { Params } from 'next/dist/next-server/server/router'
 import { BasicGrid, BasicContainer, Loader } from '../../styles/Global/utils'
 import {
@@ -51,12 +51,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        const newCart = { ...cart }
-        const remoteCartItems = Object.values(data)
-
-        console.log(remoteCartItems)
-        newCart.items = remoteCartItems
-        setCart(newCart)
+        setCart(() => cartUpdater(cart, data))
         setIsUpdating((prev: boolean) => !prev)
       })
       .catch((error) => {

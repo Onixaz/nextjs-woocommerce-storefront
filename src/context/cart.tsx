@@ -10,10 +10,11 @@ interface Cart {
   key: string
   timestamp: number
   items: any
+  total: number
 }
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const [cart, setCart] = useState<Cart>({ items: [], key: '', timestamp: 0 })
+  const [cart, setCart] = useState<Cart>({ items: [], key: '', timestamp: 0, total: 0 })
   const [isUpdating, setIsUpdating] = useState(false)
 
   //to change cart expiration date on server

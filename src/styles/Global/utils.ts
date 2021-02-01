@@ -61,8 +61,8 @@ export const Loader = styled.div`
   border: 2px solid #f3f3f3;
   border-radius: 50%;
   border-top: 2px solid #3333;
-  width: 16px;
-  height: 16px;
+  width: 1.5em;
+  height: 1.5em;
   animation: spin 1s linear infinite;
 }
 

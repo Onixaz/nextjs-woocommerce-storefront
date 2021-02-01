@@ -16,7 +16,7 @@ export const HeroBg = styled.div`
   background: url('./hero.jpg');
   background-position: center;
   background-size: cover;
-  border-radius: 30px;
+  //border-radius: 30px;
 `
 
 export const HeroHeading = styled.h1`

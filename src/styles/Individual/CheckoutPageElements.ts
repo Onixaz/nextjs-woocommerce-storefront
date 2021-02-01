@@ -9,10 +9,8 @@ export const CheckoutPageMainWrapper = styled.form`
   position: relative;
   grid-template-areas:
     'address order'
-    'address order'
     'address payment'
-    'address payment'
-    '.......  checkout';
+    'address checkout';
 `
 
 export const AddressFormContentArea = styled.div`
@@ -24,13 +22,14 @@ export const AddressFormContentArea = styled.div`
 `
 export const OrderSummaryContentArea = styled.div`
   display: flex;
-  justify-content: center;
+  //justify-content: center;
   flex-direction: column;
   align-items: center;
   grid-area: order;
 `
 export const PaymentFormContentArea = styled.div`
   display: flex;
+  background: #fafafa;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -38,8 +37,40 @@ export const PaymentFormContentArea = styled.div`
 `
 
 export const PlaceOrderButton = styled.button`
-  padding: 0.5rem 1.5rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1.2rem + 0.1vw);
+  background-color: #333333;
+  border-color: #333333;
+  color: #ffffff;
+  cursor: pointer;
+  width: 90%;
+  margin: 1rem auto;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: all 0.2s ease-in-out;
+
+  &:disabled {
+    opacity: 0.7;
+  }
+`
+export const SubmitHolder = styled.div`
+  display: flex;
+  margin: 1rem auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 240px;
+  background: #fafafa;
+`
+export const PrivacyNotice = styled.p`
+  font-size: calc(0.8rem + 0.1vw);
+  line-height: 1.7;
   margin: 1rem;
-  font-size: calc(1.5rem + 0.1vw);
-  grid-area: checkout;
+  padding: 1rem;
+  color: ${({ theme }) => theme.primaryText};
 `

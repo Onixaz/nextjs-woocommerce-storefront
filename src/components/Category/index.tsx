@@ -1,6 +1,6 @@
 import React from 'react'
 import { CategoryImg, CategoryName, CategoryCard, CategoryImgWrapper } from './CategoryElements'
-import { Category } from '../../../types'
+import { Category } from '../../types'
 interface SingleCategoryProps {
   category: Category
 }
