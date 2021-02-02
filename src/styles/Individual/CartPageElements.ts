@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { RiCloseCircleFill } from 'react-icons/ri'
 
 export const CartFormContainer = styled.div`
   display: flex;
@@ -25,18 +24,6 @@ export const CartGrid = styled.ul`
 export const CartTotals = styled.div`
   display: flex;
   justify-content: flex-end;
-`
-
-export const Item = styled.li`
-  padding: 0.5rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 120px;
-  background: #fdfdfd;
-  //border: 1px solid #000;
 `
 
 export const Desc = styled.li`

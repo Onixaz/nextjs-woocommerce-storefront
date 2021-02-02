@@ -9,6 +9,7 @@ export const El = styled.li`
   width: 100%;
   height: 120px;
   background: #fdfdfd;
+
   //border: 1px solid #000;
 `
 export const Thumbnail = styled.img`
@@ -22,17 +23,12 @@ export const ProductLink = styled.a`
 `
 
 export const RemoveFromCartBtn = styled.button`
-  font-size: calc(1.5rem + 0.1vw);
+  //font-size: calc(1.5em + 0.1vw);
   border: none;
   background: transparent;
-  background-color: transparent;
-  border-color: #333333;
+  //border-color: #333333;
   color: #333333;
   cursor: pointer;
-
-  &:disabled {
-    opacity: 1;
-  }
 `
 
 export const QuantityForm = styled.form`

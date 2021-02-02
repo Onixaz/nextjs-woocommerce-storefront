@@ -1,18 +1,35 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../../context/cart'
-import { OrderSummaryContainer } from './OrderSummaryElements'
+import {
+  OrderSummaryContainer,
+  SummaryGrid,
+  SumItemDesc,
+  SumItemDescWhite,
+  SumItemName,
+  SumItemTotal,
+} from './OrderSummaryElements'
 
 const OrderSummaryContent = () => {
   const [cart] = useContext(CartContext)
   return (
     <OrderSummaryContainer>
-      <ul>
+      <SummaryGrid>
+        <SumItemDesc>Product</SumItemDesc>
+        <SumItemDesc>Subtotal</SumItemDesc>
         {cart.items.map((item: any) => (
-          <li>
-            {item.product_name} x {item.quantity} {item.line_total}
-          </li>
+          <>
+            <SumItemName>
+              {item.product_name} x {item.quantity}
+            </SumItemName>
+            <SumItemTotal>{item.line_total} $</SumItemTotal>
+          </>
         ))}
-      </ul>
+        <SumItemDesc>Subtotal</SumItemDesc>
+        {/*for design purposes duplicate this */}
+        <SumItemDescWhite>{cart.total} $</SumItemDescWhite>
+        <SumItemDesc>Total</SumItemDesc>
+        <SumItemDescWhite>{cart.total} $</SumItemDescWhite>
+      </SummaryGrid>
     </OrderSummaryContainer>
   )
 }

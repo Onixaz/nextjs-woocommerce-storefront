@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { NextPage } from 'next'
 import CustomHead from '../components/CustomHead'
 import { CartContext } from '../context/cart'

@@ -21,10 +21,12 @@ interface CartItemProps {
 
 const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
+  const [isRemoving, setIsRemoving] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
   const [qty, setQty] = useState(item.quantity)
 
   const removeItem = (item: { [key: string]: string }) => {
+    setIsRemoving((prev: boolean) => !prev)
     setIsUpdating((prev: boolean) => !prev)
     fetch(`https://elementor.local/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
       method: 'DELETE',
@@ -38,15 +40,14 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        const newCart = { ...cart }
-        const remoteCartItems = Object.values(data)
-        newCart.items = remoteCartItems
-        setCart(newCart)
+        setCart(() => cartUpdater(cart, data))
         setIsUpdating((prev: boolean) => !prev)
+        setIsRemoving((prev: boolean) => !prev)
       })
       .catch((error) => {
         console.log(error)
         setIsUpdating((prev: boolean) => !prev)
+        setIsRemoving((prev: boolean) => !prev)
       })
   }
 
@@ -81,8 +82,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
     <>
       <El>
         <RemoveFromCartBtn disabled={isUpdating} onClick={() => removeItem(item)}>
-          {' '}
-          <RiCloseCircleFill />{' '}
+          {isRemoving ? <Loader /> : <RiCloseCircleFill style={{ fontSize: '1.5rem' }} />}{' '}
         </RemoveFromCartBtn>
       </El>
       <El>

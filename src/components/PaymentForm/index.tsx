@@ -58,6 +58,7 @@ const PaymentFormContent: React.FC<PaymentFormContentProps> = ({ setIsReady }) =
           <CardElement options={cardElementOpts} onChange={handleCardDetailsChange} />
         </CardElementContainer>
       </StripePaymentsWrapper>
+      <p style={{ opacity: '0.6', letterSpacing: '1px' }}>Use 4242 4242 4242 4242 for testing</p>
     </PaymentFormContainer>
   )
 }

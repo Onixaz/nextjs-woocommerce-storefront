@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const CheckoutPageMainWrapper = styled.form`
   margin-top: 1rem;
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   max-width: 1000px;
   margin: 0 auto;
   grid-template-columns: 1fr 1fr;
@@ -16,14 +16,13 @@ export const CheckoutPageMainWrapper = styled.form`
 
 export const AddressFormContentArea = styled.div`
   display: flex;
-  justify-content: center;
+
   flex-direction: column;
   align-items: center;
   grid-area: address;
 `
 export const OrderSummaryContentArea = styled.div`
   display: flex;
-  //justify-content: center;
   flex-direction: column;
   align-items: center;
   grid-area: order;
