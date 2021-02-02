@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import axios from 'axios'
-
 export const CartContext = React.createContext<any | null>(null)
 
 interface CartProviderProps {}
@@ -13,6 +11,8 @@ interface Cart {
   total: number
 }
 
+const WOO_API_URL: string = process.env.NEXT_PUBLIC_WOO_API_URL!
+
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Cart>({ items: [], key: '', timestamp: 0, total: 0 })
   const [isUpdating, setIsUpdating] = useState(false)
@@ -22,16 +22,18 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   //however you still need to expire your local cart so the carts don't get out of sync
   const expireIn = 259200000 //3 days
 
-  const createCart = () => {
-    axios.get(`https://elementor.local/wp-json/cocart/v1/get-cart`).then((response) => {
-      const newCart = {
-        ...cart,
-        key: response.headers['x-cocart-api'],
-        timestamp: new Date().getTime(),
-      }
-      setCart(newCart)
-      localStorage.setItem('local_cart', JSON.stringify(newCart))
-    })
+  const createCart = async () => {
+    const res = await fetch(`https://elementor.local/wp-json/cocart/v1/get-cart`)
+
+    const cartKey = res.headers.get('x-cocart-api')
+    if (!cartKey) return
+    const newCart = {
+      ...cart,
+      key: cartKey,
+      timestamp: new Date().getTime(),
+    }
+    setCart(newCart)
+    localStorage.setItem('local_cart', JSON.stringify(newCart))
   }
 
   useEffect(() => {
