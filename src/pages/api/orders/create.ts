@@ -89,7 +89,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       //
     } catch (error) {
       console.log(error)
-      res.status(500).json({ message: 'Server error' })
+      res.status(500).json({ message: 'Ooops something went wrong. Please try again later!' })
     }
   } else {
     res.status(401).json({ message: 'Method not allowed' })

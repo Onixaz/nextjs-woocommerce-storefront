@@ -22,7 +22,7 @@ interface CheckoutPageProps {}
 
 const CheckoutPage: NextPage<CheckoutPageProps> = () => {
   const [cart] = useContext(CartContext)
-  const { register, handleSubmit, errors, trigger } = useForm()
+  const { register, handleSubmit, errors } = useForm()
   const [isProcessing, setIsProcessing] = useState(false)
   const [isReady, setIsReady] = useState(false)
   const [serverMsg, setServerMsg] = useState('')
@@ -84,7 +84,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
           <OrderSummaryContent />
         </OrderSummaryContentArea>
         <PaymentFormContentArea>
-          <Subtitle>Payment Form</Subtitle>
+          <Subtitle>Pay with credit card</Subtitle>
           <PaymentFormContent setIsReady={setIsReady} />
         </PaymentFormContentArea>
         <SubmitHolder>

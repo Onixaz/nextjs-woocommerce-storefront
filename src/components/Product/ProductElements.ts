@@ -60,14 +60,16 @@ export const AddToCartIcon = styled(RiShoppingCart2Fill)`
 `
 
 export const ProductName = styled.a`
-  font-size: calc(1rem + 0.1vw);
+  font-size: calc(1.2rem + 0.1vw);
+  padding-bottom: 0.25rem;
   align-self: auto;
-  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.5px;
+  transition: all 0.1s ease-in-out;
   cursor: pointer;
   color: ${({ theme }) => theme.primaryText};
 
   &:hover {
-    color: ${({ theme }) => theme.primaryGreen};
+    color: ${({ theme }) => theme.primaryPurple};
   }
 
   margin: 0 1rem;

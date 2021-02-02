@@ -15,28 +15,17 @@ export const NavLogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
-
-export const NavbarLogo = styled.img`
-  height: 80px;
-  width: 160px;
-  border-radius: 10px;
+  padding: 1rem;
 `
 
 export const LogoText = styled.a`
-  color: ${({ theme }) => theme.primaryGreen};
+  color: ${({ theme }) => theme.primaryPurple};
   cursor: pointer;
   font-size: calc(1.8rem + 0.1vw);
   letter-spacing: 2px;
   opacity: 0.95;
 
   font-weight: 600;
-  padding: 0 1rem 1rem 1rem;
-`
-
-export const TheDot = styled.span`
-  color: #3a90b1;
-  font-size: 3rem;
 `
 
 export const MobileIcon = styled.div`
@@ -87,30 +76,26 @@ export const NavBtnWrapper = styled.nav`
 
 export const NavIconHolder = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
+  flex-direction: row;
   position: relative;
   padding: 0 1rem;
   @media screen and (max-width: 768px) {
     display: none;
   }
 `
-export const ShoppingCartHolder = styled.div`
-  display: flex;
-  position: relative;
-`
 
 export const TotalPrice = styled.p<{ hasItems: boolean }>`
   display: ${({ hasItems }) => (hasItems ? '' : 'none')};
-
   font-size: 0.9rem;
   margin: 0 0.5rem;
   font-weight: 600;
-  position: absolute;
-  top: 50%;
-
-  right: 50%;
-  transform: translate(-100%, -50%);
   white-space: nowrap;
+`
+
+export const CartIconWrapper = styled.div`
+  position: relative;
 `
 
 export const CartBadge = styled.button<{ hasItems: boolean }>`
@@ -122,31 +107,24 @@ export const CartBadge = styled.button<{ hasItems: boolean }>`
   outline: none;
   border: none;
   position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-250%, -100%);
+  top: -15px;
+  left: 25px;
   z-index: 2;
   width: 30px;
   height: 30px;
 `
 export const CartIcon = styled(RiShoppingCart2Fill)`
   font-size: 2rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-300%, -50%);
+
   cursor: pointer;
   margin: 0 0.5rem;
-  flex: 1;
 `
 export const AccIcon = styled(MdAccountCircle)`
   font-size: 2rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-150%, -50%);
+  //position: absolute;
+
   cursor: pointer;
-  flex: 1;
+
   margin: 0 0.5rem;
 `
 
@@ -180,7 +158,7 @@ export const Nav = styled.nav<{ scrollNav: boolean }>`
 
     &:hover {
       transition: all 0.2s ease-in-out;
-      color: ${({ theme }) => theme.primaryGreen};
+      color: ${({ theme }) => theme.primaryPurple};
     }
   }
 

@@ -8,13 +8,12 @@ import {
   NavItem,
   LinkText,
   LogoText,
-  TheDot,
   NavIconHolder,
+  CartIconWrapper,
   CartIcon,
   CartBadge,
   AccIcon,
   TotalPrice,
-  ShoppingCartHolder,
 } from './NavbarElements'
 import { FaBars } from 'react-icons/fa'
 import Link from 'next/link'
@@ -55,9 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
       <NavbarContainer>
         <NavLogoWrapper>
           <Link href="/">
-            <LogoText>
-              Logo<TheDot>.</TheDot>lt
-            </LogoText>
+            <LogoText>Logo.lt</LogoText>
           </Link>
         </NavLogoWrapper>
         <MobileIcon onClick={toggle}>
@@ -90,12 +87,11 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
             Total: ${cart.total.toFixed(2)}
           </TotalPrice>
           <Link href="/cart" passHref>
-            <ShoppingCartHolder>
+            <CartIconWrapper>
               <CartBadge hasItems={totalQuantity > 0 ? true : false}>{totalQuantity}</CartBadge>
               <CartIcon onClick={openCart} />
-            </ShoppingCartHolder>
+            </CartIconWrapper>
           </Link>
-
           <AccIcon />
         </NavIconHolder>
       </NavbarContainer>

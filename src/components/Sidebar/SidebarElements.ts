@@ -90,7 +90,7 @@ export const SidebarLinkText = styled.a`
   color: #fff;
   cursor: pointer;
   &:hover {
-    color: ${({ theme }) => theme.primaryGreen};
+    color: ${({ theme }) => theme.primaryPurple};
     transition: 0.2s ease-in-out;
   }
 `

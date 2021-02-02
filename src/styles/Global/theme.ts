@@ -6,8 +6,7 @@ const defaultTheme = {
   secondaryBlack: '#898989',
   primaryText: '#4c4e4e',
   primaryWhite: '#fafafa',
-  primaryGreen: '#93e065',
-  secondaryGreen: '#98e26d',
+  primaryPurple: '#96588a',
 }
 
 export type ThemeType = typeof defaultTheme

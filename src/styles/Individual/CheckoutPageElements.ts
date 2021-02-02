@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const CheckoutPageMainWrapper = styled.form`
   margin-top: 1rem;
   display: grid;
+  grid-gap: 1rem;
   max-width: 1000px;
   margin: 0 auto;
   grid-template-columns: 1fr 1fr;
@@ -51,12 +52,7 @@ export const PlaceOrderButton = styled.button`
   padding: 0.5em 1.5em;
   text-decoration: none;
   font-weight: 600;
-
   transition: all 0.2s ease-in-out;
-
-  &:disabled {
-    opacity: 0.7;
-  }
 `
 export const SubmitHolder = styled.div`
   display: flex;
