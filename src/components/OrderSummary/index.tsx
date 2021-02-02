@@ -17,12 +17,12 @@ const OrderSummaryContent = () => {
         <SumItemDesc>Product</SumItemDesc>
         <SumItemDesc>Subtotal</SumItemDesc>
         {cart.items.map((item: any) => (
-          <>
+          <React.Fragment key={item.product_id}>
             <SumItemName>
               {item.product_name} x {item.quantity}
             </SumItemName>
             <SumItemTotal>{item.line_total} $</SumItemTotal>
-          </>
+          </React.Fragment>
         ))}
         <SumItemDesc>Subtotal</SumItemDesc>
         {/*for design purposes duplicate this */}
