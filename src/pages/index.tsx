@@ -6,10 +6,11 @@ import CustomHead from '../components/CustomHead'
 import Hero from '../components/Hero'
 import { BasicGrid, BasicContainer, SectionTitle } from '../styles/Global/utils'
 import { fetcher } from '../utils/functions'
+import { Category, Product } from '../types'
 
 interface IndexPageProps {
-  categories: any
-  featured: any
+  categories: Category[]
+  featured: Product[]
 }
 
 const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
@@ -24,13 +25,13 @@ const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
       <BasicContainer id="Categories">
         <SectionTitle>Shop by Category</SectionTitle>
         <BasicGrid lg={3} md={3} sm={2} xs={1}>
-          {categories?.map((category: any) => {
+          {categories?.map((category: Category) => {
             return <SingleCategory key={category.id} category={category} />
           })}
         </BasicGrid>
         <SectionTitle>Featured Products</SectionTitle>
         <BasicGrid lg={4} md={3} sm={2} xs={1}>
-          {featured?.map((featured: any) => {
+          {featured?.map((featured: Product) => {
             return (
               <React.Fragment key={featured.id}>
                 <SingleProduct product={featured} />
@@ -47,7 +48,7 @@ export default IndexPage
 
 export async function getStaticProps() {
   const categoriesRes = await fetcher(
-    `${process.env.WOO_API_URL}/wp-json/wc/v3/products/categories`,
+    `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products/categories`,
     process.env.WOO_CONSUMER_KEY!,
     process.env.WOO_CONSUMER_SECRET!,
   )
@@ -56,7 +57,7 @@ export async function getStaticProps() {
     return item.name !== 'Uncategorized'
   })
   const productsRes = await fetcher(
-    `${process.env.WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
+    `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
     process.env.WOO_CONSUMER_KEY!,
     process.env.WOO_CONSUMER_SECRET!,
   )

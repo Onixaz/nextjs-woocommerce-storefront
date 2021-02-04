@@ -4,9 +4,10 @@ import CustomHead from '../components/CustomHead'
 import { BasicContainer, BasicGrid } from '../styles/Global/utils'
 import { fetcher } from '../utils/functions'
 import SingleProduct from '../components/Product'
+import { Product } from '../types/index'
 
 interface ShopPageProps {
-  products: any
+  products: Product[]
 }
 
 const ShopPage: NextPage<ShopPageProps> = ({ products }) => {
@@ -36,7 +37,7 @@ export default ShopPage
 
 export async function getStaticProps() {
   const res = await fetcher(
-    `${process.env.WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
+    `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
     process.env.WOO_CONSUMER_KEY!,
     process.env.WOO_CONSUMER_SECRET!,
   )

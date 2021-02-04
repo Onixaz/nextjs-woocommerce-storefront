@@ -65,9 +65,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
       <PageWrapper>
         <BasicGrid lg={2} md={2} sm={1} xs={1}>
           <ProductImgWrapper>
-            {product.images !== undefined || product.images.length > 0 ? (
+            {product.images !== undefined && (
               <Img src={product.images[0].src} alt={product.images[0].alt} />
-            ) : null}
+            )}
           </ProductImgWrapper>
           <ProductInfoWrapper>
             <ProductName>{product.name}</ProductName>
@@ -116,7 +116,7 @@ export default ProductPage
 
 export async function getStaticProps({ params: { slug } }: Params) {
   const productsRes = await fetcher(
-    `${process.env.WOO_API_URL}/wp-json/wc/v3/products?slug=${slug}`,
+    `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products?slug=${slug}`,
     process.env.WOO_CONSUMER_KEY!,
     process.env.WOO_CONSUMER_SECRET!,
   )
@@ -132,7 +132,7 @@ export async function getStaticProps({ params: { slug } }: Params) {
 
 export async function getStaticPaths() {
   const productsRes = await fetcher(
-    `${process.env.WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
+    `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
     process.env.WOO_CONSUMER_KEY!,
     process.env.WOO_CONSUMER_SECRET!,
   )

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { CartItem } from '../types'
 
 export const CartContext = React.createContext<any | null>(null)
 
@@ -7,11 +8,9 @@ interface CartProviderProps {}
 interface Cart {
   key: string
   timestamp: number
-  items: any
+  items: CartItem[]
   total: number
 }
-
-const WOO_API_URL: string = process.env.NEXT_PUBLIC_WOO_API_URL!
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Cart>({ items: [], key: '', timestamp: 0, total: 0 })
@@ -20,7 +19,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   //to change cart expiration date on server
   //https://github.com/co-cart/co-cart/search?q=cocart_cart_expiring+in%3Afile&type=Code
   //however you still need to expire your local cart so the carts don't get out of sync
-  const expireIn = 259200000 //3 days
+  const expireIn: number = 259200000 //3 days
 
   const createCart = async () => {
     const res = await fetch(`https://elementor.local/wp-json/cocart/v1/get-cart`)

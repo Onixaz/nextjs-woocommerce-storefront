@@ -16,7 +16,7 @@ interface AddressFormProps {
   errors: any
 }
 
-const AddressFormContent: React.FC<AddressFormProps> = ({ register, errors }) => {
+const CheckoutAddressForm: React.FC<AddressFormProps> = ({ register, errors }) => {
   return (
     <>
       <RowBlock>
@@ -108,4 +108,4 @@ const AddressFormContent: React.FC<AddressFormProps> = ({ register, errors }) =>
   )
 }
 
-export default AddressFormContent
+export default CheckoutAddressForm

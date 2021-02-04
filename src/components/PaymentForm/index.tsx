@@ -13,7 +13,7 @@ interface PaymentFormContentProps {
   setIsReady: React.ComponentState
 }
 
-const PaymentFormContent: React.FC<PaymentFormContentProps> = ({ setIsReady }) => {
+const PaymentForm: React.FC<PaymentFormContentProps> = ({ setIsReady }) => {
   const handleCardDetailsChange = (ev: any) => {
     ev.complete ? setIsReady(true) : setIsReady(false)
   }
@@ -62,4 +62,4 @@ const PaymentFormContent: React.FC<PaymentFormContentProps> = ({ setIsReady }) =
     </PaymentFormContainer>
   )
 }
-export default PaymentFormContent
+export default PaymentForm

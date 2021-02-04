@@ -9,7 +9,9 @@ import {
   SumItemTotal,
 } from './OrderSummaryElements'
 
-const OrderSummaryContent = () => {
+interface OrderSummaryProps {}
+
+const OrderSummary: React.FC<OrderSummaryProps> = () => {
   const [cart] = useContext(CartContext)
   return (
     <OrderSummaryContainer>

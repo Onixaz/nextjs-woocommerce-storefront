@@ -15,8 +15,9 @@ import { Loader } from '../../styles/Global/utils'
 import Link from 'next/link'
 import { CartContext } from '../../context/cart'
 import { cartUpdater } from '../../utils/functions'
+import { CartItem } from '../../types'
 interface CartItemProps {
-  item: any
+  item: CartItem
 }
 
 const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
@@ -25,7 +26,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
   const [isAnimating, setIsAnimating] = useState(false)
   const [qty, setQty] = useState(item.quantity)
 
-  const removeItem = (item: { [key: string]: string }) => {
+  const removeItem = (item: CartItem) => {
     setIsRemoving((prev: boolean) => !prev)
     setIsUpdating((prev: boolean) => !prev)
     fetch(`https://elementor.local/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
@@ -51,7 +52,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
       })
   }
 
-  const updateItem = (e: React.SyntheticEvent, item: { [key: string]: string }, quantity: any) => {
+  const updateItem = (e: React.SyntheticEvent, item: CartItem, quantity: any) => {
     e.preventDefault()
     setIsUpdating((prev: boolean) => !prev)
     setIsAnimating((prev: boolean) => !prev)
@@ -112,7 +113,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
           </UpdateCartItemBtn>
         </QuantityForm>
       </El>
-      <El>{item.line_subtotal} $</El>
+      <El>{item.line_total} $</El>
     </>
   )
 }

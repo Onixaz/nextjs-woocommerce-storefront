@@ -10,10 +10,10 @@ import {
   SubmitHolder,
   PrivacyNotice,
 } from '../styles/Individual/CheckoutPageElements'
-import AddressFormContent from '../components/AddressForm/AddressFormContent'
-import PaymentFormContent from '../components/PaymentForm'
+import CheckoutAddressForm from '../components/AddressForm/AddressFormContent'
+import PaymentForm from '../components/PaymentForm'
 import { BasicContainer, Loader, SectionTitle, Subtitle } from '../styles/Global/utils'
-import OrderSummaryContent from '../components/OrderSummary'
+import OrderSummary from '../components/OrderSummary'
 import { CartContext } from '../context/cart'
 import { NextPage } from 'next'
 import { createOrder } from '../utils/functions'
@@ -77,15 +77,15 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
       <CheckoutPageMainWrapper onSubmit={handleSubmit(onSubmit)}>
         <AddressFormContentArea>
           <Subtitle>Billing details</Subtitle>
-          <AddressFormContent register={register} errors={errors} />
+          <CheckoutAddressForm register={register} errors={errors} />
         </AddressFormContentArea>
         <OrderSummaryContentArea>
           <Subtitle>Order Summary</Subtitle>
-          <OrderSummaryContent />
+          <OrderSummary />
         </OrderSummaryContentArea>
         <PaymentFormContentArea>
           <Subtitle>Pay with credit card</Subtitle>
-          <PaymentFormContent setIsReady={setIsReady} />
+          <PaymentForm setIsReady={setIsReady} />
         </PaymentFormContentArea>
         <SubmitHolder>
           <PrivacyNotice>
