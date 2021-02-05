@@ -16,7 +16,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const createCart = async () => {
     try {
-      const res = await fetch(`https://paju.tech/wp-json/cocart/v1/get-cart`)
+      const res = await fetch(`${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/get-cart`)
 
       const cartKey = res.headers.get('x-cocart-api')
       if (!cartKey) return

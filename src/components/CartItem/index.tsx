@@ -29,7 +29,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
   const removeItem = (item: CartItem) => {
     setIsRemoving((prev: boolean) => !prev)
     setIsUpdating((prev: boolean) => !prev)
-    fetch(`https://elementor.local/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
+    fetch(`${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
       method: 'DELETE',
       body: JSON.stringify({
         cart_item_key: item.key,
@@ -56,7 +56,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
     e.preventDefault()
     setIsUpdating((prev: boolean) => !prev)
     setIsAnimating((prev: boolean) => !prev)
-    fetch(`https://elementor.local/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
+    fetch(`${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
       method: 'POST',
       body: JSON.stringify({
         cart_item_key: item.key,

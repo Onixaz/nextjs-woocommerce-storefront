@@ -36,19 +36,22 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
     //lazy form validation :)
     quantity = quantity > 0 ? quantity : 1
     setIsUpdating((prev: boolean) => !prev)
-    fetch(`https://elementor.local/wp-json/cocart/v1/add-item?cart_key=${cart.key}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        product_id: item.id.toString(),
-        quantity: quantity,
-        return_cart: true,
-        //adding image for cart page
-        cart_item_data: { image: item.images[0].src, slug: item.slug },
-      }),
-      headers: {
-        'Content-Type': 'application/json',
+    fetch(
+      `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/add-item?cart_key=${cart.key}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          product_id: item.id.toString(),
+          quantity: quantity,
+          return_cart: true,
+          //adding image for cart page
+          cart_item_data: { image: item.images[0].src, slug: item.slug },
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       },
-    })
+    )
       .then((response) => response.json())
       .then((data) => {
         setCart(() => cartUpdater(cart, data))

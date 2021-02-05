@@ -14,6 +14,7 @@ interface IndexPageProps {
 }
 
 const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
+  console.log(featured)
   return (
     <>
       <CustomHead
@@ -24,6 +25,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
 
       <BasicContainer id="Categories">
         <SectionTitle>Shop by Category</SectionTitle>
+
         <BasicGrid lg={3} md={3} sm={2} xs={1}>
           {categories?.map((category: Category) => {
             return <SingleCategory key={category.id} category={category} />
@@ -56,6 +58,7 @@ export async function getStaticProps() {
   categories = categories.filter((item: { [key: string]: string }) => {
     return item.name !== 'Uncategorized'
   })
+
   const productsRes = await fetcher(
     `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
     process.env.WOO_CONSUMER_KEY!,
@@ -64,7 +67,7 @@ export async function getStaticProps() {
   const products = await productsRes.json()
 
   const featured = products.filter((item: { [key: string]: boolean | string }) => {
-    if (item.featured === true && item.status === 'publish') {
+    if (item.featured === true && item.status === 'publish' && item.type === 'simple') {
       return item.featured
     } else {
       return null

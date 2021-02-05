@@ -58,7 +58,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       }
 
       const woo_response = await poster(
-        'https://elementor.local/wp-json/wc/v3/orders',
+        `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/orders`,
         process.env.WOO_CONSUMER_KEY!,
         process.env.WOO_CONSUMER_SECRET!,
         wooBody,

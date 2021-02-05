@@ -41,9 +41,10 @@ export async function getStaticProps() {
     process.env.WOO_CONSUMER_KEY!,
     process.env.WOO_CONSUMER_SECRET!,
   )
+  //TODO: implement variable products
   let products = await res.json()
   products = products.filter((item: { [key: string]: string }) => {
-    return item.status === 'publish'
+    return item.status === 'publish' && item.type === 'simple'
   })
 
   return {
