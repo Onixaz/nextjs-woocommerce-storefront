@@ -14,7 +14,6 @@ interface IndexPageProps {
 }
 
 const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
-  console.log(featured)
   return (
     <>
       <CustomHead

@@ -12,6 +12,15 @@ export const CheckoutPageMainWrapper = styled.form`
     'address order'
     'address payment'
     'address checkout';
+
+  @media screen and (max-width: 992px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'order'
+      'address'
+      'payment'
+      'checkout';
+  }
 `
 
 export const AddressFormContentArea = styled.div`

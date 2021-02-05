@@ -1,32 +1,4 @@
 import styled from 'styled-components'
-import { RiShoppingCart2Fill } from 'react-icons/ri'
-
-export const ProductCard = styled.div`
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`
-
-export const ProductImgWrapper = styled.div`
-  height: 300px;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-`
-
-export const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  padding: 0.75rem;
-  //position: absolute;
-  object-fit: cover;
-  transition: 0.5s all;
-  //border-radius: 30px;
-  /* top: 0;
-  left: 0; */
-`
 
 export const PriceWrapper = styled.div`
   display: flex;
@@ -51,26 +23,48 @@ export const SalePrice = styled.p`
   margin: 0 0.25rem;
   opacity: 0.9;
 `
-export const AddToCartIcon = styled(RiShoppingCart2Fill)`
-  font-size: calc(1.5rem + 0.1vw);
-  align-self: auto;
-  color: ${({ theme }) => theme.primaryText};
-  cursor: pointer;
-  margin: 0 0.25rem;
-`
 
-export const ProductName = styled.a`
-  font-size: calc(1.2rem + 0.1vw);
+export const ProductName = styled.p`
+  font-size: calc(1rem + 0.2vw);
   padding-bottom: 0.25rem;
   align-self: auto;
   letter-spacing: 0.5px;
   transition: all 0.1s ease-in-out;
-  cursor: pointer;
   color: ${({ theme }) => theme.primaryText};
+  margin: 0 1rem;
+`
+
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s, visibility 0.25s ease-in;
+`
+export const ProductImgWrapper = styled.div`
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+  transform-origin: 0 0;
 
   &:hover {
-    color: ${({ theme }) => theme.primaryPurple};
+    ${Img} {
+      transform: scale(1.1);
+    }
   }
+`
 
-  margin: 0 1rem;
+export const ProductCard = styled.div`
+  display: flex;
+  padding: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &:hover {
+    cursor: pointer;
+
+    ${ProductName} {
+      color: ${({ theme }) => theme.primaryPurple};
+    }
+  }
 `

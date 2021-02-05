@@ -22,6 +22,7 @@ export const FlexGrid = styled.div`
 
 export const BasicGrid = styled.div<{ lg: number; md: number; sm: number; xs: number }>`
   display: grid;
+
   grid-template-columns: ${({ lg }) => `repeat(${lg}, 1fr)`};
   width: 100%;
   height: 80%;

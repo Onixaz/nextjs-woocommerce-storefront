@@ -6,11 +6,13 @@ import { BasicContainer, SectionTitle } from '../styles/Global/utils'
 import {
   CartFormContainer,
   CartGrid,
-  Desc,
-  QuantityBlock,
   EmptyCart,
   CartTotals,
   CheckoutBtn,
+  CartLiFirstCol,
+  CartLiSecondCol,
+  Descriptor,
+  DescriptionRow,
 } from '../styles/Individual/CartPageElements'
 
 import SingleCartItem from '../components/CartItem'
@@ -27,17 +29,25 @@ const CartPage: NextPage<CartPageProps> = () => {
           <>
             <SectionTitle>Cart</SectionTitle>
             <CartGrid>
-              <Desc></Desc>
-              <Desc></Desc>
-              <Desc>Product</Desc>
-              <Desc>Price</Desc>
-              <Desc>
-                <QuantityBlock>Quantity</QuantityBlock>
-              </Desc>
-              <Desc>Subtotal</Desc>
-              {cart.items.map((item: any) => {
-                return <SingleCartItem key={item.product_id} item={item} />
-              })}
+              <CartLiFirstCol>
+                {cart.items.map((item: any) => {
+                  return (
+                    <DescriptionRow key={item.product_id.toString()}>
+                      <Descriptor></Descriptor>
+                      <Descriptor></Descriptor>
+                      <Descriptor>Product</Descriptor>
+                      <Descriptor>Price</Descriptor>
+                      <Descriptor>Quantity</Descriptor>
+                      <Descriptor>Subtotal</Descriptor>
+                    </DescriptionRow>
+                  )
+                })}
+              </CartLiFirstCol>
+              <CartLiSecondCol>
+                {cart.items.map((item: any) => {
+                  return <SingleCartItem key={item.product_id} item={item} />
+                })}
+              </CartLiSecondCol>
             </CartGrid>
             <CartTotals>
               <Link href="/checkout" passHref>

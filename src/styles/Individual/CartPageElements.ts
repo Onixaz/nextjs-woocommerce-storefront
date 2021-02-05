@@ -8,7 +8,6 @@ export const CartFormContainer = styled.div`
   max-width: 840px;
   margin: 0 auto;
   width: 100%;
-
   min-height: 50vh;
 `
 
@@ -17,18 +16,49 @@ export const EmptyCart = styled.h2`
   font-weight: 200;
   letter-spacing: 1px;
 `
-export const CartGrid = styled.ul`
+export const CartGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  position: relative;
+  grid-template-columns: 1fr;
+  width: 90%;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 export const CartTotals = styled.div`
   display: flex;
   justify-content: flex-end;
 `
 
-export const Desc = styled.li`
-  background: #f0f0f0;
-  padding: 0.5rem;
+export const CartLiFirstCol = styled.div`
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+`
+
+export const CartLiSecondCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`
+
+export const DescriptionRow = styled.div`
+  @media screen and (max-width: 768px) {
+    margin: 1rem 0;
+
+    display: flex;
+    flex-direction: column;
+  }
+`
+
+export const Descriptor = styled.div`
+  background: #fafafa;
+
   font-size: calc(1rem + 0.1vw);
   font-weight: bolder;
   color: ${({ theme }) => theme.primaryText};
@@ -38,7 +68,7 @@ export const Desc = styled.li`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 80px;
+  height: 120px;
 `
 
 export const QuantityBlock = styled.div`

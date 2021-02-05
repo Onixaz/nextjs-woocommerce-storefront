@@ -1,25 +1,29 @@
 import styled from 'styled-components'
+import { RiCloseCircleFill } from 'react-icons/ri'
 
-export const El = styled.li`
-  padding: 0.5rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 120px;
-  background: #fdfdfd;
-
-  //border: 1px solid #000;
-`
 export const Thumbnail = styled.img`
+  padding: 1rem 0.5rem;
   width: 100%;
   height: 100%;
+  max-width: 100px;
+
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    height: 160px;
+    max-width: 160px;
+    left: 50%;
+    transform: translate(-50%, -25%);
+  }
 `
 
 export const ProductLink = styled.a`
   text-decoration: underline;
   cursor: pointer;
+`
+
+export const CartItemProductSubtotal = styled.p`
+  font-weight: bolder;
+  font-size: calc(1rem + 0.1vw);
 `
 
 export const RemoveFromCartBtn = styled.button`
@@ -29,6 +33,20 @@ export const RemoveFromCartBtn = styled.button`
   //border-color: #333333;
   color: #333333;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    right: 0;
+    transform: translate(50%, -150%);
+  }
+`
+
+export const RemoveIcon = styled(RiCloseCircleFill)`
+  font-size: calc(1.5rem + 0.1vw);
+
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+  }
 `
 
 export const QuantityForm = styled.form`
@@ -71,4 +89,39 @@ export const UpdateCartItemBtn = styled.button`
 export const UpdateText = styled.p`
   font-weight: 600;
   font-size: calc(0.75rem + 0.1vw);
+`
+export const CartEl = styled.div`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  background: #fafafa;
+
+  //border: 1px solid #000;
+`
+
+export const CartRow = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+`
+export const RemovingLoader = styled.div`
+  border: 2px solid #333333;
+  border-radius: 50%;
+  border-top: 2px solid #3333;
+  width: 1.5em;
+  height: 1.5em;
+  animation: spin 1s linear infinite;
+
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    right: -8px;
+    top: -68px;
+  }
 `

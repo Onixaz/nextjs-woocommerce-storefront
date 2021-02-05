@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
-import { RiCloseCircleFill } from 'react-icons/ri'
+
 import {
-  El,
+  CartRow,
+  CartEl,
   RemoveFromCartBtn,
   Thumbnail,
   QuantityForm,
@@ -9,6 +10,9 @@ import {
   UpdateCartItemBtn,
   ProductLink,
   UpdateText,
+  RemoveIcon,
+  RemovingLoader,
+  CartItemProductSubtotal,
 } from './CartItemElements'
 
 import { Loader } from '../../styles/Global/utils'
@@ -81,39 +85,43 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
   }
   return (
     <>
-      <El>
-        <RemoveFromCartBtn disabled={isUpdating} onClick={() => removeItem(item)}>
-          {isRemoving ? <Loader /> : <RiCloseCircleFill style={{ fontSize: '1.5rem' }} />}{' '}
-        </RemoveFromCartBtn>
-      </El>
-      <El>
-        <Thumbnail src={item.image} />
-      </El>
-      <El>
-        <Link href={`/products/${item.slug}`}>
-          <ProductLink>{item.product_name}</ProductLink>
-        </Link>
-      </El>
-      <El>{item.product_price}</El>
-      <El>
-        <QuantityForm>
-          <InputField
-            type="number"
-            onChange={(e) => setQty(parseInt(e.target.value))}
-            defaultValue={item.quantity}
-            min="1"
-          ></InputField>
-          <UpdateCartItemBtn
-            disabled={isUpdating}
-            onClick={(e) => {
-              updateItem(e, item, qty)
-            }}
-          >
-            {isAnimating ? <Loader /> : <UpdateText>Update</UpdateText>}
-          </UpdateCartItemBtn>
-        </QuantityForm>
-      </El>
-      <El>{item.line_total} $</El>
+      <CartRow>
+        <CartEl>
+          <RemoveFromCartBtn disabled={isUpdating} onClick={() => removeItem(item)}>
+            {isRemoving ? <RemovingLoader /> : <RemoveIcon />}{' '}
+          </RemoveFromCartBtn>
+        </CartEl>
+        <CartEl>
+          <Thumbnail src={item.image} />
+        </CartEl>
+        <CartEl>
+          <Link href={`/products/${item.slug}`}>
+            <ProductLink>{item.product_name}</ProductLink>
+          </Link>
+        </CartEl>
+        <CartEl>{item.product_price}</CartEl>
+        <CartEl>
+          <QuantityForm>
+            <InputField
+              type="number"
+              onChange={(e) => setQty(parseInt(e.target.value))}
+              defaultValue={item.quantity}
+              min="1"
+            ></InputField>
+            <UpdateCartItemBtn
+              disabled={isUpdating}
+              onClick={(e) => {
+                updateItem(e, item, qty)
+              }}
+            >
+              {isAnimating ? <Loader /> : <UpdateText>Update</UpdateText>}
+            </UpdateCartItemBtn>
+          </QuantityForm>
+        </CartEl>
+        <CartEl>
+          <CartItemProductSubtotal>{item.line_total} $</CartItemProductSubtotal>
+        </CartEl>
+      </CartRow>
     </>
   )
 }
