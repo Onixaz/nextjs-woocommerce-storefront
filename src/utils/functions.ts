@@ -39,7 +39,7 @@ export const poster = async (
 }
 
 export const createOrder = async (items: any, customer: any, payment: any) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/api/orders/create`, {
+  const res = await fetch(`/api/orders/create`, {
     method: 'POST',
 
     headers: {

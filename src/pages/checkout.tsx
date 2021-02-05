@@ -9,6 +9,7 @@ import {
   PaymentFormContentArea,
   SubmitHolder,
   PrivacyNotice,
+  ServerMessage,
 } from '../styles/Individual/CheckoutPageElements'
 import CheckoutAddressForm from '../components/AddressForm/AddressFormContent'
 import PaymentForm from '../components/PaymentForm'
@@ -94,7 +95,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
           <PlaceOrderButton disabled={isProcessing} type="submit">
             {isProcessing ? <Loader /> : 'Place Order'}
           </PlaceOrderButton>
-          <h3>{serverMsg}</h3>
+          <ServerMessage>{serverMsg}</ServerMessage>
         </SubmitHolder>
       </CheckoutPageMainWrapper>
     </BasicContainer>

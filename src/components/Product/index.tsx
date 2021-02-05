@@ -19,7 +19,7 @@ const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
   return (
     <ProductCard>
       <ProductImgWrapper>
-        {product.images !== undefined || product.images.length > 0 ? (
+        {product.images && product.images.length > 0 ? (
           <Img src={product.images[0].src} alt={product.images[0].alt} />
         ) : null}
       </ProductImgWrapper>

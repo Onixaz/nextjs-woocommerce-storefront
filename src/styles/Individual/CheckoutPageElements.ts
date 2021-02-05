@@ -59,7 +59,7 @@ export const SubmitHolder = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 240px;
+
   background: #fafafa;
 `
 export const PrivacyNotice = styled.p`
@@ -67,5 +67,12 @@ export const PrivacyNotice = styled.p`
   line-height: 1.7;
   margin: 1rem;
   padding: 1rem;
+  color: ${({ theme }) => theme.primaryText};
+`
+export const ServerMessage = styled.p`
+  font-size: calc(1.2rem + 0.1vw);
+  font-weight: 200;
+  padding: 1rem;
+  letter-spacing: 1px;
   color: ${({ theme }) => theme.primaryText};
 `
