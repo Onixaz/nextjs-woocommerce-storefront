@@ -30,58 +30,67 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
   const [isAnimating, setIsAnimating] = useState(false)
   const [qty, setQty] = useState(item.quantity)
 
-  const removeItem = (item: CartItem) => {
+  const removeItem = async (item: CartItem) => {
     setIsRemoving((prev: boolean) => !prev)
     setIsUpdating((prev: boolean) => !prev)
-    fetch(`${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
-      method: 'DELETE',
-      body: JSON.stringify({
-        cart_item_key: item.key,
-        return_cart: true,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setCart(() => cartUpdater(cart, data))
-        setIsUpdating((prev: boolean) => !prev)
-        setIsRemoving((prev: boolean) => !prev)
-      })
-      .catch((error) => {
-        console.log(error)
-        setIsUpdating((prev: boolean) => !prev)
-        setIsRemoving((prev: boolean) => !prev)
-      })
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`,
+        {
+          method: 'DELETE',
+          body: JSON.stringify({
+            cart_item_key: item.key,
+            return_cart: true,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+
+      const data = await res.json()
+
+      setIsUpdating((prev: boolean) => !prev)
+      setIsRemoving((prev: boolean) => !prev)
+      setCart(() => cartUpdater(cart, data))
+    } catch (error) {
+      console.log(error)
+      setIsUpdating((prev: boolean) => !prev)
+      setIsRemoving((prev: boolean) => !prev)
+    }
   }
 
-  const updateItem = (e: React.SyntheticEvent, item: CartItem, quantity: any) => {
+  const updateItem = async (e: React.SyntheticEvent, item: CartItem, quantity: any) => {
     e.preventDefault()
     setIsUpdating((prev: boolean) => !prev)
     setIsAnimating((prev: boolean) => !prev)
-    fetch(`${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        cart_item_key: item.key,
-        quantity: quantity,
-        return_cart: true,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setCart(() => cartUpdater(cart, data))
-        setIsUpdating((prev: boolean) => !prev)
-        setIsAnimating((prev: boolean) => !prev)
-      })
-      .catch((error) => {
-        console.log(error)
-        setIsAnimating((prev: boolean) => !prev)
-        setIsUpdating((prev: boolean) => !prev)
-      })
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            cart_item_key: item.key,
+            quantity: quantity,
+            return_cart: true,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+
+      const data = await res.json()
+
+      setIsUpdating((prev: boolean) => !prev)
+
+      setIsAnimating((prev: boolean) => !prev)
+      setCart(() => cartUpdater(cart, data))
+    } catch (error) {
+      console.log(error)
+      setIsAnimating((prev: boolean) => !prev)
+      setIsUpdating((prev: boolean) => !prev)
+    }
   }
   return (
     <>

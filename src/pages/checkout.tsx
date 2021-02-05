@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import React, { useContext, useState } from 'react'
+import { useStripe, useElements } from '@stripe/react-stripe-js'
 import { useForm } from 'react-hook-form'
 import {
   CheckoutPageMainWrapper,
@@ -13,10 +13,13 @@ import {
 } from '../styles/Individual/CheckoutPageElements'
 import CheckoutAddressForm from '../components/AddressForm/AddressFormContent'
 import PaymentForm from '../components/PaymentForm'
-import { BasicContainer, Loader, SectionTitle, Subtitle } from '../styles/Global/utils'
 import OrderSummary from '../components/OrderSummary'
+import CustomHead from '../components/CustomHead'
+import { BasicContainer, Loader, SectionTitle, Subtitle } from '../styles/Global/utils'
+
 import { CartContext } from '../context/cart'
 import { NextPage } from 'next'
+
 import { createOrder } from '../utils/functions'
 import { CartItem, Cart } from '../types'
 
@@ -72,33 +75,39 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
   }
 
   return (
-    <BasicContainer>
-      <SectionTitle>Checkout</SectionTitle>
-      <CheckoutPageMainWrapper onSubmit={handleSubmit(onSubmit)}>
-        <AddressFormContentArea>
-          <Subtitle>Billing details</Subtitle>
-          <CheckoutAddressForm register={register} errors={errors} />
-        </AddressFormContentArea>
-        <OrderSummaryContentArea>
-          <Subtitle>Order Summary</Subtitle>
-          <OrderSummary />
-        </OrderSummaryContentArea>
-        <PaymentFormContentArea>
-          <Subtitle>Pay with credit card</Subtitle>
-          <PaymentForm isReady={isReady} setIsReady={setIsReady} />
-        </PaymentFormContentArea>
-        <SubmitHolder>
-          <PrivacyNotice>
-            Your personal data will be used to process your order, support your experience
-            throughout this website, and for other purposes described in our privacy policy.
-          </PrivacyNotice>
-          <PlaceOrderButton disabled={isProcessing} type="submit">
-            {isProcessing ? <Loader /> : 'Place Order'}
-          </PlaceOrderButton>
-          <ServerMessage>{serverMsg}</ServerMessage>
-        </SubmitHolder>
-      </CheckoutPageMainWrapper>
-    </BasicContainer>
+    <>
+      <CustomHead
+        title="Unofficial starter | Next.Js"
+        description="A starter for Next.Js with Styled-components and TS"
+      />
+      <BasicContainer>
+        <SectionTitle>Checkout</SectionTitle>
+        <CheckoutPageMainWrapper onSubmit={handleSubmit(onSubmit)}>
+          <AddressFormContentArea>
+            <Subtitle>Billing details</Subtitle>
+            <CheckoutAddressForm register={register} errors={errors} />
+          </AddressFormContentArea>
+          <OrderSummaryContentArea>
+            <Subtitle>Order Summary</Subtitle>
+            <OrderSummary />
+          </OrderSummaryContentArea>
+          <PaymentFormContentArea>
+            <Subtitle>Pay with credit card</Subtitle>
+            <PaymentForm isReady={isReady} setIsReady={setIsReady} />
+          </PaymentFormContentArea>
+          <SubmitHolder>
+            <PrivacyNotice>
+              Your personal data will be used to process your order, support your experience
+              throughout this website, and for other purposes described in our privacy policy.
+            </PrivacyNotice>
+            <PlaceOrderButton disabled={isProcessing} type="submit">
+              {isProcessing ? <Loader /> : 'Place Order'}
+            </PlaceOrderButton>
+            <ServerMessage>{serverMsg}</ServerMessage>
+          </SubmitHolder>
+        </CheckoutPageMainWrapper>
+      </BasicContainer>
+    </>
   )
 }
 

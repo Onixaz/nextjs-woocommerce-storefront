@@ -12,7 +12,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   //to change cart expiration date on server
   //https://github.com/co-cart/co-cart/search?q=cocart_cart_expiring+in%3Afile&type=Code
   //however you still need to expire your local cart so the carts don't get out of sync
-  const expireIn: number = 259200000 //3 days
+  const expireIn = 259200000 //3 days
 
   const createCart = async () => {
     try {
