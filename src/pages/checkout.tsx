@@ -56,7 +56,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
       if (!paymentMethodResult) return
 
       const paymentObj = {
-        amount: cart.total,
+        total: cart.total,
         payment_method: paymentMethodResult.paymentMethod!.id,
       }
 

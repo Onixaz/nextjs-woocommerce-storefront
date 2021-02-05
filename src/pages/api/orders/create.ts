@@ -22,7 +22,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
           phone,
           customer_note,
         },
-        payment: { amount, payment_method },
+        payment: { total, payment_method },
       } = req.body
 
       //const requestBody = {}
@@ -67,10 +67,12 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
       const order = await woo_response.json()
 
-      if (amount === parseFloat(order.total)) {
+      if (total === parseFloat(order.total)) {
+        const amount = Math.round(total.toFixed(2) * 100)
+
         const paymentIntent = await stripe.paymentIntents.create({
           payment_method,
-          amount: amount * 100,
+          amount,
           currency: 'usd',
           confirm: true,
           confirmation_method: 'manual',
