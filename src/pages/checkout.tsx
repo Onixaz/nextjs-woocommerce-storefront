@@ -43,7 +43,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
     }
 
     const itemsObj = cart.items.map((item: CartItem) => {
-      itemsObj.push({ product_id: item.product_id, quantity: item.quantity })
+      return { product_id: item.product_id, quantity: item.quantity }
     })
 
     try {
