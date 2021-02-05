@@ -11,6 +11,10 @@ export const RowBlock = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
 `
 
 export const ShippingBlock = styled.div`
