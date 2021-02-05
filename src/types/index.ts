@@ -25,12 +25,19 @@ export interface Category {
 }
 
 export interface CartItem {
+  key?: string
+  product_id?: number
+  quantity?: number
+  product_price?: string
+  product_name?: string
+  image?: string
+  slug?: string
+  line_total?: number
+}
+
+export interface Cart {
   key: string
-  product_id: number
-  quantity: number
-  product_price: string
-  product_name: string
-  image: string
-  slug: string
-  line_total: number
+  timestamp: number
+  items: CartItem[]
+  total: number
 }

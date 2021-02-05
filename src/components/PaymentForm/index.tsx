@@ -3,7 +3,7 @@ import { CardElement } from '@stripe/react-stripe-js'
 import {
   PaymentFormContainer,
   CardElementContainer,
-  CreditCardOption,
+  Info,
   StripePaymentsWrapper,
   CreditImg,
   ImgHolder,
@@ -11,9 +11,10 @@ import {
 
 interface PaymentFormContentProps {
   setIsReady: React.ComponentState
+  isReady: React.ComponentState
 }
 
-const PaymentForm: React.FC<PaymentFormContentProps> = ({ setIsReady }) => {
+const PaymentForm: React.FC<PaymentFormContentProps> = ({ setIsReady, isReady }) => {
   const handleCardDetailsChange = (ev: any) => {
     ev.complete ? setIsReady(true) : setIsReady(false)
   }
@@ -58,7 +59,7 @@ const PaymentForm: React.FC<PaymentFormContentProps> = ({ setIsReady }) => {
           <CardElement options={cardElementOpts} onChange={handleCardDetailsChange} />
         </CardElementContainer>
       </StripePaymentsWrapper>
-      <p style={{ opacity: '0.6', letterSpacing: '1px' }}>Use 4242 4242 4242 4242 for testing</p>
+      {!isReady && <Info>Fill in the card details. Use 4242 4242 4242 4242 for testing.</Info>}
     </PaymentFormContainer>
   )
 }

@@ -17,6 +17,7 @@ import OrderSummary from '../components/OrderSummary'
 import { CartContext } from '../context/cart'
 import { NextPage } from 'next'
 import { createOrder } from '../utils/functions'
+import { CartItem, Cart } from '../types'
 
 interface CheckoutPageProps {}
 
@@ -30,7 +31,6 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
   const stripe = useStripe()
   const elements = useElements()
 
-  //Submit order function
   const onSubmit = async (customerObj: { [key: string]: string }) => {
     if (!stripe || !elements || !cart.items.length || cart.total === 0) return
 
@@ -42,8 +42,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
       return
     }
 
-    const itemsObj: any = []
-    cart.items.map((item: { [key: string]: string }) => {
+    const itemsObj = cart.items.map((item: CartItem) => {
       itemsObj.push({ product_id: item.product_id, quantity: item.quantity })
     })
 
@@ -58,7 +57,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
 
       const paymentObj = {
         amount: cart.total,
-        payment_method: paymentMethodResult.paymentMethod?.id,
+        payment_method: paymentMethodResult.paymentMethod!.id,
       }
 
       const { message } = await createOrder(itemsObj, customerObj, paymentObj)
@@ -85,7 +84,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
         </OrderSummaryContentArea>
         <PaymentFormContentArea>
           <Subtitle>Pay with credit card</Subtitle>
-          <PaymentForm setIsReady={setIsReady} />
+          <PaymentForm isReady={isReady} setIsReady={setIsReady} />
         </PaymentFormContentArea>
         <SubmitHolder>
           <PrivacyNotice>

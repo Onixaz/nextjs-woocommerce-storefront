@@ -16,15 +16,17 @@ export const StripePaymentsWrapper = styled.div`
   width: 80%;
   margin: 1rem;
 `
-export const CreditCardOption = styled.p`
+export const Info = styled.p`
   font-weight: 400;
-  //max-width: 340px;
-  font-size: calc(0.8rem + 0.1vw);
+
+  max-width: 340px;
+  font-size: calc(0.9rem + 0.1vw);
   letter-spacing: 0.5px;
   padding: 1rem;
 
   color: ${({ theme }) => theme.primaryText};
 `
+
 export const CardElementContainer = styled.div`
   height: 50px;
   margin: 1rem;
@@ -40,6 +42,7 @@ export const CardElementContainer = styled.div`
     padding: 15px;
   }
 `
+
 export const ImgHolder = styled.span`
   display: flex;
   align-items: center;

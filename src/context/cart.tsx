@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { CartItem } from '../types'
+import { Cart } from '../types'
 
 export const CartContext = React.createContext<any | null>(null)
 
 interface CartProviderProps {}
-
-interface Cart {
-  key: string
-  timestamp: number
-  items: CartItem[]
-  total: number
-}
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Cart>({ items: [], key: '', timestamp: 0, total: 0 })
@@ -22,28 +15,29 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const expireIn: number = 259200000 //3 days
 
   const createCart = async () => {
-    const res = await fetch(`https://elementor.local/wp-json/cocart/v1/get-cart`)
+    try {
+      const res = await fetch(`https://paju.tech/wp-json/cocart/v1/get-cart`)
 
-    const cartKey = res.headers.get('x-cocart-api')
-    if (!cartKey) return
-    const newCart = {
-      ...cart,
-      key: cartKey,
-      timestamp: new Date().getTime(),
+      const cartKey = res.headers.get('x-cocart-api')
+      if (!cartKey) return
+      const newCart = {
+        ...cart,
+        key: cartKey,
+        timestamp: new Date().getTime(),
+      }
+      setCart(newCart)
+      localStorage.setItem('local_cart', JSON.stringify(newCart))
+    } catch (error) {
+      console.error(error)
     }
-    setCart(newCart)
-    localStorage.setItem('local_cart', JSON.stringify(newCart))
   }
 
   useEffect(() => {
     const localCart = localStorage.getItem('local_cart')
 
-    if (localCart === null) {
+    if (!localCart) {
       createCart()
-    } else if (
-      localCart !== null &&
-      new Date().getTime() - JSON.parse(localCart).timestamp > expireIn
-    ) {
+    } else if (!localCart && new Date().getTime() - JSON.parse(localCart).timestamp > expireIn) {
       createCart()
     } else {
       setCart(JSON.parse(localCart))
