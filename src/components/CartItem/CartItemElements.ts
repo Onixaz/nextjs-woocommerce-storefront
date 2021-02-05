@@ -23,7 +23,8 @@ export const ProductLink = styled.a`
 
 export const CartItemProductSubtotal = styled.p`
   font-weight: bolder;
-  font-size: calc(1rem + 0.1vw);
+  font-size: calc(0.95rem + 0.1vw);
+  color: ${({ theme }) => theme.primaryText};
 `
 
 export const RemoveFromCartBtn = styled.button`

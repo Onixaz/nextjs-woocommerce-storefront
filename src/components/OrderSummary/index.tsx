@@ -23,14 +23,14 @@ const OrderSummary: React.FC<OrderSummaryProps> = () => {
             <SumItemName>
               {item.product_name} x {item.quantity}
             </SumItemName>
-            <SumItemTotal>{item.line_total} $</SumItemTotal>
+            <SumItemTotal>${item.line_total.toFixed(2)}</SumItemTotal>
           </React.Fragment>
         ))}
         <SumItemDesc>Subtotal</SumItemDesc>
         {/*for design purposes duplicate this */}
-        <SumItemDescWhite>{cart.total} $</SumItemDescWhite>
+        <SumItemDescWhite>${cart.total.toFixed(2)}</SumItemDescWhite>
         <SumItemDesc>Total</SumItemDesc>
-        <SumItemDescWhite>{cart.total} $</SumItemDescWhite>
+        <SumItemDescWhite>${cart.total.toFixed(2)}</SumItemDescWhite>
       </SummaryGrid>
     </OrderSummaryContainer>
   )

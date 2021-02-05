@@ -119,7 +119,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
           </QuantityForm>
         </CartEl>
         <CartEl>
-          <CartItemProductSubtotal>{item.line_total} $</CartItemProductSubtotal>
+          <CartItemProductSubtotal>${item.line_total?.toFixed(2)}</CartItemProductSubtotal>
         </CartEl>
       </CartRow>
     </>
