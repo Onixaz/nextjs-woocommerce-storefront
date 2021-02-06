@@ -8,7 +8,9 @@ import {
   SidebarMenu,
   SidebarLinkWrapper,
   SidebarLinkText,
+  SidebarIconHolder,
 } from './SidebarElements'
+import NavigationIcons from '../NavIcons'
 
 interface SidebarProps {
   toggle: () => void
@@ -45,6 +47,9 @@ const Sidebar: React.FC<SidebarProps> = ({ toggle, isOpen }) => {
           </SidebarLinkWrapper>
         </SidebarMenu>
       </SidebarWrapper>
+      <SidebarIconHolder>
+        <NavigationIcons scrollNav={false} isMobile={true} />
+      </SidebarIconHolder>
     </SidebarContainer>
   )
 }

@@ -4,7 +4,7 @@ import { FaTimes } from 'react-icons/fa'
 export const SidebarContainer = styled.aside<{ isOpen: boolean }>`
   position: fixed;
   z-index: 999;
-
+  overflow: hidden;
   width: 100%;
   height: 100%;
   background: #0d0d0d;
@@ -34,6 +34,7 @@ export const Icon = styled.div`
 export const SidebarWrapper = styled.div`
   margin-top: 3rem;
   color: #fff;
+  position: relative;
 `
 
 export const SideBtnWrap = styled.div`
@@ -81,11 +82,11 @@ export const SidebarLinkWrapper = styled.button`
   justify-content: center;
 `
 export const SidebarLinkText = styled.a`
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   letter-spacing: 1.1px;
   text-decoration: none;
   list-style: none;
-  text-transform: uppercase;
+
   transition: 0.2s ease-in-out;
   color: #fff;
   cursor: pointer;
@@ -93,4 +94,14 @@ export const SidebarLinkText = styled.a`
     color: ${({ theme }) => theme.primaryPurple};
     transition: 0.2s ease-in-out;
   }
+`
+export const SidebarIconHolder = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 15%;
+  left: 50%;
+  border-bottom: 1px solid #fff;
+  transform: translate(-50%, -50%);
 `

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Nav,
   NavbarContainer,
@@ -8,29 +8,17 @@ import {
   NavItem,
   LinkText,
   LogoText,
-  NavIconHolder,
-  CartIconWrapper,
-  CartIcon,
-  CartBadge,
-  AccIcon,
-  TotalPrice,
 } from './NavbarElements'
 import { FaBars } from 'react-icons/fa'
 import Link from 'next/link'
-import { CartContext } from '../../context/cart'
+import NavigationIcons from '../NavIcons'
 
 interface NavbarProps {
   toggle: () => void
 }
 
 const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
-  const [cart] = useContext(CartContext)
   const [scrollNav, setScrollNav] = useState(true)
-
-  const totalQuantity = cart.items.reduce(
-    (acc: number, curr: { [key: string]: number }) => acc + curr.quantity,
-    0,
-  )
 
   const changeNav = () => {
     if (window.scrollY < 40) {
@@ -38,9 +26,6 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
     } else {
       setScrollNav(false)
     }
-  }
-  const openCart = () => {
-    console.log(cart)
   }
 
   useEffect(() => {
@@ -82,18 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
             </Link>
           </NavItem>
         </NavMenu>
-        <NavIconHolder>
-          <TotalPrice hasItems={cart.total > 0 ? true : false}>
-            Total: ${cart.total.toFixed(2)}
-          </TotalPrice>
-          <Link href="/cart" passHref>
-            <CartIconWrapper>
-              <CartBadge hasItems={totalQuantity > 0 ? true : false}>{totalQuantity}</CartBadge>
-              <CartIcon onClick={openCart} />
-            </CartIconWrapper>
-          </Link>
-          <AccIcon />
-        </NavIconHolder>
+        <NavigationIcons scrollNav={scrollNav} isMobile={false} />
       </NavbarContainer>
     </Nav>
   )

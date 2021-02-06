@@ -11,8 +11,6 @@ export const cartUpdater = (cart: Cart, data: Response) => {
   return newCart
 }
 
-//acc + curr.line_total!, 0
-
 export const fetcher = async (url: string, key: string, secret: string) => {
   return fetch(url, {
     headers: new Headers({

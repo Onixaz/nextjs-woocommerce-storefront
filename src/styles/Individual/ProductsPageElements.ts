@@ -10,6 +10,10 @@ export const PageWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
   min-height: 50vh;
+
+  @media screen and (max-width: 768px) {
+    padding-top: 2rem;
+  }
 `
 
 export const ProductImgWrapper = styled.div`
@@ -22,6 +26,7 @@ export const ProductImgWrapper = styled.div`
 export const Img = styled.img`
   width: 100%;
   height: 100%;
+
   padding: 0.75rem;
   //position: absolute;
   object-fit: cover;
@@ -34,13 +39,28 @@ export const ProductInfoWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 1rem;
-  margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+  }
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
+`
+
+export const ProductInfoWrapperCol = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 1rem;
 `
 
 export const ProductName = styled.h2`
   font-size: calc(2rem + 0.1vw);
   font-weight: 200;
   letter-spacing: 1px;
+  padding-top: 2rem;
 `
 export const PriceWrapper = styled.div`
   display: flex;
@@ -59,7 +79,13 @@ export const ShortDescription = styled.div`
 `
 export const LongDescription = styled.div`
   font-size: calc(1rem + 0.1vw);
+  margin-top: 1rem;
   padding: 1rem;
+
+  @media screen and (max-width: 768px) {
+    max-width: 480px;
+    margin: 0 auto;
+  }
 `
 
 export const RegularPrice = styled.p<{ isOnSale: boolean }>`
@@ -114,6 +140,7 @@ export const AddToCartBtn = styled.button`
 
 export const ProductCategory = styled.p`
   font-size: calc(0.8rem + 0.1vw);
+  margin-top: 2rem;
   letter-spacing: 1px;
 `
 export const CategorySpan = styled.span`

@@ -20,6 +20,7 @@ import {
   LongDescription,
   ProductCategory,
   CategorySpan,
+  ProductInfoWrapperCol,
 } from '../../styles/Individual/ProductsPageElements'
 import { CartContext } from '../../context/cart'
 
@@ -73,38 +74,45 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
             )}
           </ProductImgWrapper>
           <ProductInfoWrapper>
-            <ProductName>{product.name}</ProductName>
-            <PriceWrapper>
-              {product.sale_price?.length === 0 ? (
-                <RegularPrice isOnSale={false}>
-                  ${parseFloat(product.regular_price).toFixed(2)}
-                </RegularPrice>
-              ) : (
-                <>
-                  <RegularPrice isOnSale={true}>
+            <ProductInfoWrapperCol>
+              <ProductName>{product.name}</ProductName>
+              <PriceWrapper>
+                {product.sale_price?.length === 0 ? (
+                  <RegularPrice isOnSale={false}>
                     ${parseFloat(product.regular_price).toFixed(2)}
                   </RegularPrice>
-                  <SalePrice>${parseFloat(product.sale_price).toFixed(2)}</SalePrice>
-                </>
-              )}
-            </PriceWrapper>
-            <ShortDescription
-              dangerouslySetInnerHTML={{ __html: product.short_description }}
-            ></ShortDescription>
-            <AddToCartForm>
-              <InputField
-                onChange={(e) => setQty(parseInt(e.target.value))}
-                type="number"
-                defaultValue={qty}
-                min="1"
-              ></InputField>
-              <AddToCartBtn disabled={isUpdating} onClick={(e) => handleAddToCart(e, product, qty)}>
-                {isUpdating ? <Loader /> : <p>Add To Cart</p>}
-              </AddToCartBtn>
-            </AddToCartForm>
-            <ProductCategory>
-              Categories: <CategorySpan>{product.categories[0].name}</CategorySpan>
-            </ProductCategory>
+                ) : (
+                  <>
+                    <RegularPrice isOnSale={true}>
+                      ${parseFloat(product.regular_price).toFixed(2)}
+                    </RegularPrice>
+                    <SalePrice>${parseFloat(product.sale_price).toFixed(2)}</SalePrice>
+                  </>
+                )}
+              </PriceWrapper>
+              <ShortDescription
+                dangerouslySetInnerHTML={{ __html: product.short_description }}
+              ></ShortDescription>
+            </ProductInfoWrapperCol>
+            <ProductInfoWrapperCol>
+              <AddToCartForm>
+                <InputField
+                  onChange={(e) => setQty(parseInt(e.target.value))}
+                  type="number"
+                  defaultValue={qty}
+                  min="1"
+                ></InputField>
+                <AddToCartBtn
+                  disabled={isUpdating}
+                  onClick={(e) => handleAddToCart(e, product, qty)}
+                >
+                  {isUpdating ? <Loader /> : <p>Add To Cart</p>}
+                </AddToCartBtn>
+              </AddToCartForm>
+              <ProductCategory>
+                Categories: <CategorySpan>{product.categories[0].name}</CategorySpan>
+              </ProductCategory>
+            </ProductInfoWrapperCol>
           </ProductInfoWrapper>
         </BasicGrid>
         <LongDescription
