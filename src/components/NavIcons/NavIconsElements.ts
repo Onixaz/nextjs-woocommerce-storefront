@@ -6,8 +6,9 @@ export const TotalPrice = styled.p<{ hasItems: boolean }>`
   display: ${({ hasItems }) => (hasItems ? '' : 'none')};
   font-size: 0.9rem;
   margin: 0 0.25rem;
-  font-weight: 600;
   white-space: nowrap;
+  letter-spacing: 1.1px;
+  font-weight: 400;
 `
 
 export const CartIconWrapper = styled.div`
@@ -23,7 +24,6 @@ export const CartBadge = styled.button<{ hasItems: boolean }>`
   outline: none;
   border: none;
   position: absolute;
-  top: -15px;
   left: 25px;
   z-index: 2;
   width: 30px;
@@ -52,9 +52,6 @@ export const NavIconHolder = styled.div<{ scrollNav: boolean; isMobile: boolean 
   ${TotalPrice} {
     color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryText : theme.primaryWhite)};
     font-size: ${({ isMobile }) => (isMobile ? '1.2rem' : '0.9rem')};
-    letter-spacing: 1.1px;
-
-    font-weight: 400;
   }
 
   ${CartIcon} {
@@ -63,8 +60,7 @@ export const NavIconHolder = styled.div<{ scrollNav: boolean; isMobile: boolean 
   }
 
   ${CartBadge} {
-    top: -5px;
-    left: 25px;
+    top: ${({ isMobile }) => (isMobile ? '-5px' : '-15px')};
   }
   ${AccIcon} {
     color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryText : theme.primaryWhite)};
