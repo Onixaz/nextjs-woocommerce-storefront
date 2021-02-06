@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useStripe, useElements } from '@stripe/react-stripe-js'
 import { useForm } from 'react-hook-form'
 import {
@@ -16,24 +16,28 @@ import PaymentForm from '../components/PaymentForm'
 import OrderSummary from '../components/OrderSummary'
 import CustomHead from '../components/CustomHead'
 import { BasicContainer, Loader, SectionTitle, Subtitle } from '../styles/Global/utils'
-
+import { useRouter } from 'next/router'
 import { CartContext } from '../context/cart'
 import { NextPage } from 'next'
 
-import { createOrder } from '../utils/functions'
-import { CartItem, Cart } from '../types'
+import { clearCart, createOrder } from '../utils/functions'
+import { CartItem } from '../types'
 
 interface CheckoutPageProps {}
 
 const CheckoutPage: NextPage<CheckoutPageProps> = () => {
-  const [cart] = useContext(CartContext)
+  const [cart, setCart] = useContext(CartContext)
   const { register, handleSubmit, errors } = useForm()
   const [isProcessing, setIsProcessing] = useState(false)
   const [isReady, setIsReady] = useState(false)
   const [serverMsg, setServerMsg] = useState('')
-
+  const router = useRouter()
   const stripe = useStripe()
   const elements = useElements()
+
+  useEffect(() => {
+    router.prefetch('success')
+  }, [])
 
   const onSubmit = async (customerObj: { [key: string]: string }) => {
     if (!stripe || !elements || !cart.items.length || cart.total === 0) return
@@ -49,10 +53,9 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
     const itemsObj = cart.items.map((item: CartItem) => {
       return { product_id: item.product_id, quantity: item.quantity }
     })
-
+    const freshCart = { items: [], key: cart.key, timestamp: new Date().getTime(), total: 0 }
     try {
       setIsProcessing(true)
-
       const paymentMethodResult = await stripe.createPaymentMethod({
         type: 'card',
         card: cardElement,
@@ -63,12 +66,19 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
         total: cart.total,
         payment_method: paymentMethodResult.paymentMethod!.id,
       }
-
       const { message } = await createOrder(itemsObj, customerObj, paymentObj)
 
-      setServerMsg(message)
+      setCart(freshCart)
+      clearCart(cart.key)
       setIsProcessing(false)
+      if (message === 'Success') {
+        router.push('success')
+      } else {
+        setServerMsg('Sorry something went wrong. Please try again later...')
+      }
     } catch (error) {
+      setServerMsg('Sorry something went wrong. Please try again later...')
+      setCart(freshCart)
       setIsProcessing(false)
       console.log(error)
     }

@@ -106,7 +106,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
                   disabled={isUpdating}
                   onClick={(e) => handleAddToCart(e, product, qty)}
                 >
-                  {isUpdating ? <Loader /> : <p>Add To Cart</p>}
+                  {isUpdating ? <Loader /> : 'Add To Cart'}
                 </AddToCartBtn>
               </AddToCartForm>
               <ProductCategory>

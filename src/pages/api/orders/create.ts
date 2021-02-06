@@ -79,7 +79,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         })
 
         if (paymentIntent.status === 'succeeded') {
-          res.status(200).json({ message: 'Thank you for your order!' })
+          res.status(200).json({ message: 'Success' })
+
           poster(
             `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/orders/${order.id}`,
             process.env.WOO_CONSUMER_KEY!,
@@ -88,16 +89,16 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             'PUT',
           )
         } else {
-          res.status(400).json({ message: 'There was a problem confirming your order!' })
+          res.status(400).json({ message: 'Failure' })
         }
       } else {
-        res.status(400).json({ message: order.message })
+        res.status(400).json({ message: 'Failure' })
       }
 
       //
     } catch (error) {
       console.log(error)
-      res.status(500).json({ message: 'Ooops something went wrong. Please try again later!' })
+      res.status(500).json({ message: 'Failure' })
     }
   } else {
     res.status(401).json({ message: 'Method not allowed' })

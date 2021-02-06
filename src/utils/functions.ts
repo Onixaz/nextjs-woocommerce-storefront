@@ -1,5 +1,11 @@
 import { Cart, CartItem } from '../types'
 
+export const clearCart = async (key: string) => {
+  fetch(`${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/clear?cart_key=${key}`, {
+    method: 'POST',
+  })
+}
+
 export const cartUpdater = (cart: Cart, data: Response) => {
   const newCart = { ...cart }
   newCart.items = Object.values(data)
