@@ -11,7 +11,7 @@ import {
 } from './SidebarElements'
 
 interface SidebarProps {
-  toggle: any
+  toggle: () => void
   isOpen: boolean
 }
 

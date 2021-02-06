@@ -23,43 +23,49 @@ const CartPage: NextPage<CartPageProps> = () => {
   const [cart] = useContext(CartContext)
 
   return (
-    <BasicContainer>
-      <CartFormContainer>
-        {cart.items.length > 0 ? (
-          <>
-            <SectionTitle>Cart</SectionTitle>
-            <CartGrid>
-              <CartLiFirstCol>
-                {cart.items.map((item: any) => {
-                  return (
-                    <DescriptionRow key={item.product_id.toString()}>
-                      <Descriptor></Descriptor>
-                      <Descriptor></Descriptor>
-                      <Descriptor>Product</Descriptor>
-                      <Descriptor>Price</Descriptor>
-                      <Descriptor>Quantity</Descriptor>
-                      <Descriptor>Subtotal</Descriptor>
-                    </DescriptionRow>
-                  )
-                })}
-              </CartLiFirstCol>
-              <CartLiSecondCol>
-                {cart.items.map((item: any) => {
-                  return <SingleCartItem key={item.product_id} item={item} />
-                })}
-              </CartLiSecondCol>
-            </CartGrid>
-            <CartTotals>
-              <Link href="/checkout" passHref>
-                <CheckoutBtn>Proceed to checkout</CheckoutBtn>
-              </Link>
-            </CartTotals>
-          </>
-        ) : (
-          <EmptyCart>Your cart is empty</EmptyCart>
-        )}
-      </CartFormContainer>
-    </BasicContainer>
+    <>
+      <CustomHead
+        title="Cart | Next.Js"
+        description="A starter for Next.Js with Styled-components and TS"
+      />
+      <BasicContainer>
+        <CartFormContainer>
+          {cart.items.length > 0 ? (
+            <>
+              <SectionTitle>Cart</SectionTitle>
+              <CartGrid>
+                <CartLiFirstCol>
+                  {cart.items.map((item: any) => {
+                    return (
+                      <DescriptionRow key={item.product_id.toString()}>
+                        <Descriptor></Descriptor>
+                        <Descriptor></Descriptor>
+                        <Descriptor>Product</Descriptor>
+                        <Descriptor>Price</Descriptor>
+                        <Descriptor>Quantity</Descriptor>
+                        <Descriptor>Subtotal</Descriptor>
+                      </DescriptionRow>
+                    )
+                  })}
+                </CartLiFirstCol>
+                <CartLiSecondCol>
+                  {cart.items.map((item: any) => {
+                    return <SingleCartItem key={item.product_id} item={item} />
+                  })}
+                </CartLiSecondCol>
+              </CartGrid>
+              <CartTotals>
+                <Link href="/checkout" passHref>
+                  <CheckoutBtn>Proceed to checkout</CheckoutBtn>
+                </Link>
+              </CartTotals>
+            </>
+          ) : (
+            <EmptyCart>Your cart is empty</EmptyCart>
+          )}
+        </CartFormContainer>
+      </BasicContainer>
+    </>
   )
 }
 

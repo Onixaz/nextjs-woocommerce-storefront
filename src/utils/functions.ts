@@ -1,12 +1,17 @@
-export const cartUpdater = (cart: any, data: any) => {
+import { Cart, CartItem } from '../types'
+
+export const cartUpdater = (cart: Cart, data: Response) => {
   const newCart = { ...cart }
   newCart.items = Object.values(data)
+
   newCart.total = newCart.items.reduce(
-    (acc: number, curr: { [key: string]: any }) => acc + curr.line_total,
+    (acc: number, curr: CartItem) => (curr.line_total ? acc + curr.line_total : 0),
     0,
   )
   return newCart
 }
+
+//acc + curr.line_total!, 0
 
 export const fetcher = async (url: string, key: string, secret: string) => {
   return fetch(url, {
