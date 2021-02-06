@@ -29,7 +29,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
       const wooBody = {
         payment_method: `CC`,
-        payment_method_title: 'Pay with credit card',
+        payment_method_title: 'Stripe',
         set_paid: false,
         billing: {
           first_name,
@@ -80,7 +80,13 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
         if (paymentIntent.status === 'succeeded') {
           res.status(200).json({ message: 'Thank you for your order!' })
-          //update order to paid on Woo
+          poster(
+            `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/orders/${order.id}`,
+            process.env.WOO_CONSUMER_KEY!,
+            process.env.WOO_CONSUMER_SECRET!,
+            { set_paid: true, transaction_id: paymentIntent.id },
+            'PUT',
+          )
         } else {
           res.status(400).json({ message: 'There was a problem confirming your order!' })
         }
