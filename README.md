@@ -1,5 +1,7 @@
 # Next.js WooCommerce Storefront Theme 
-Using Next.js, TypeScript and Styled-components. 
+Using Next.js, TypeScript and Styled-components.
+
+![demo](https://im3.ezgif.com/tmp/ezgif-3-c6826f582392.gif)
 
 ## The Goal
 
@@ -14,6 +16,7 @@ The idea behind this repo was to showcase the power of Next.js by building a fro
 
 
 ## Demo
+
 
 
 Live demo: https://nextjs-woo-storefront.netlify.app/
