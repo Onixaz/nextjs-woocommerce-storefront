@@ -28,8 +28,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       //const requestBody = {}
 
       const wooBody = {
-        payment_method: `CC`,
-        payment_method_title: 'Stripe',
+        payment_method: `Credit Card`,
+        payment_method_title: 'Credit Card',
         set_paid: false,
         billing: {
           first_name,
@@ -57,7 +57,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         customer_note,
       }
 
-      const woo_response = await poster(
+      const wooResponse = await poster(
         `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/orders`,
         process.env.WOO_CONSUMER_KEY!,
         process.env.WOO_CONSUMER_SECRET!,
@@ -65,7 +65,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         'POST',
       )
 
-      const order = await woo_response.json()
+      const order = await wooResponse.json()
 
       if (total === parseFloat(order.total)) {
         const amount = Math.round(total.toFixed(2) * 100)

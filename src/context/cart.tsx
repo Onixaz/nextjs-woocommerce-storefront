@@ -16,6 +16,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const createCart = async () => {
     try {
+      setIsUpdating((prev: boolean) => !prev)
       const res = await fetch(`${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/get-cart`)
 
       const cartKey = res.headers.get('x-cocart-api')
@@ -27,7 +28,9 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       }
       setCart(newCart)
       localStorage.setItem('local_cart', JSON.stringify(newCart))
+      setIsUpdating((prev: boolean) => !prev)
     } catch (error) {
+      setIsUpdating((prev: boolean) => !prev)
       console.error(error)
     }
   }
