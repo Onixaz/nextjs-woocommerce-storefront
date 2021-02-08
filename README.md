@@ -1,14 +1,14 @@
 # nextjs-woocommerce-storefront
 Using Next.js, typescript and styled-components. 
 
-##The Goal
+## The Goal
 
 
-##Features
+## Features
 
 
-##How to use
+## How to use
 
-##Todo
+##  Todo
 
 
