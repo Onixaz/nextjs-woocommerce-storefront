@@ -8,7 +8,7 @@ The idea behind this repo was to showcase the power of Next.js by building a fro
 ## Features
 * WooCommerce Storefront theme inspired responsive design.
 * Static generation using getStaticProps and getStaticPaths.
-* WooCommerce REST APi abstraction using Next's API routes.
+* WooCommerce REST API abstraction using Next's API routes.
 * Cart system using CoCart plugin.
 * Checkout system using Stripe as a payment method example.
 
