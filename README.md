@@ -7,10 +7,10 @@ The idea behind this repo was to showcase the power of Next.js by building a fro
 
 ## Features
 
-Static generation using getStaticProps and getStaticPaths.
-WooCommerce REST APi abstraction using Next's API routes.
-Cart system using CoCart plugin.
-Checkout system using Stripe as a payment method example.
+* Static generation using getStaticProps and getStaticPaths.
+* WooCommerce REST APi abstraction using Next's API routes.
+* Cart system using CoCart plugin.
+* Checkout system using Stripe as a payment method example.
 
 
 
@@ -18,8 +18,8 @@ Checkout system using Stripe as a payment method example.
 ## How to use
 
 Install required plugins:
-WooCommerce (obviously)
-[Cocart Lite](https://wordpress.org/plugins/cart-rest-api-for-woocommerce) 
+* WooCommerce (obviously)
+* [Cocart Lite](https://wordpress.org/plugins/cart-rest-api-for-woocommerce) 
 
 Change Permalinks to "Post Name (Settings -> Permalinks).
 Generate Consumer Key and Secret for REST API with Read/Write permissions (WooCommerce -> Settings -> Advanced -> REST API). This authentication method requires HTTPS. 
