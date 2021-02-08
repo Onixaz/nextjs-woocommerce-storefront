@@ -35,11 +35,13 @@ Create .env.local file in the root of the project.
 It should consist of 
 
 
-``` NEXT_PUBLIC_WOO_API_URL=your-wordpress-api-url
+``` 
+NEXT_PUBLIC_WOO_API_URL=your-wordpress-api-url
 WOO_CONSUMER_KEY=your-generated-consumer-key
 WOO_CONSUMER_SECRET=your-generated-consumer-secret
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=stripe-publishable-key
 STRIPE_SECRET_KEY=stripe-publishable-key
+
 ```
 
 Finally npm run dev.
