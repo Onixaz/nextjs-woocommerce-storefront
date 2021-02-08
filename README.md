@@ -46,16 +46,17 @@ You'll need to import some products. For testing you can use sample data from Wo
 In case you're not getting a x-cocart-api key, allow all cross origin headers using [https://github.com/co-cart/co-cart-tweaks](https://github.com/co-cart/co-cart-tweaks)
 
 ##  Todo
-Client side fetching for dynamic data like prices / account page. 
-Pages for categories
-Variable products
-Shipping options
-User registration
-Coupons system
-Blog / About/Contact Pages
-More payment methods
-Code cleanup / refactor
-Tests
+
+* Client side fetching for dynamic data like prices / account page. 
+* Pages for categories
+* Variable products
+* Shipping options
+* User registration
+* Coupons system
+* Blog / About/Contact Pages
+* More payment methods
+* Code cleanup / refactor
+* Tests
 
 ##### Contributions are welcome
 
