@@ -13,6 +13,10 @@ The idea behind this repo was to showcase the power of Next.js by building a fro
 * Checkout system using Stripe as a payment method example.
 
 
+## Demo
+
+
+Live demo: https://nextjs-woo-storefront.netlify.app/
 
 
 ## How to use
