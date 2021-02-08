@@ -3,7 +3,7 @@ Using Next.js, TypeScript and Styled-components.
 
 #### *Under development*
 
-![demo](https://im3.ezgif.com/tmp/ezgif-3-c6826f582392.gif)
+![demo](https://github.com/Onixaz/nextjs-woocommerce-storefront/blob/main/public/demo.gif)
 
 
 
