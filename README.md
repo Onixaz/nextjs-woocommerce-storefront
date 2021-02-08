@@ -22,15 +22,15 @@ Install required plugins:
 * [Cocart Lite](https://wordpress.org/plugins/cart-rest-api-for-woocommerce) 
 
 Change Permalinks to "Post Name (Settings -> Permalinks).
-Generate Consumer Key and Secret for REST API with Read/Write permissions (WooCommerce -> Settings -> Advanced -> REST API). This authentication method requires HTTPS. 
+Generate Consumer Key and Secret for REST API with Read/Write permissions (WooCommerce -> Settings -> Advanced -> REST API). **This authentication method requires HTTPS.** 
 
 You'll need to import some products. For testing you can use sample data from Woo https://docs.woocommerce.com/document/importing-woocommerce-sample-data/ just like I did.
 
 To test in-app payments you'll need to register a Stripe account for the publishable key and secret. (https://stripe.com/docs/keys) 
 
-Next clone this repo, cd into it and npm install.
+**Next clone this repo, cd into it and npm install.**
 
-Create .env.local file in the root of the project. 
+Create **.env.local** file in the root of the project. 
 
 It should consist of 
 
@@ -44,9 +44,9 @@ STRIPE_SECRET_KEY=stripe-publishable-key
 
 ```
 
-Finally npm run dev.
+Finally **npm run dev.**
 
-Note: In case you're not getting a x-cocart-api key, allow all cross origin headers using [https://github.com/co-cart/co-cart-tweaks](https://github.com/co-cart/co-cart-tweaks)
+Note: In case you're not getting a **x-cocart-api key**, allow all cross origin headers using [https://github.com/co-cart/co-cart-tweaks](https://github.com/co-cart/co-cart-tweaks)
 
 ##  Todo
 
@@ -61,6 +61,6 @@ Note: In case you're not getting a x-cocart-api key, allow all cross origin head
 * Code cleanup / refactor
 * Tests
 
-##### Contributions are welcome
+#### Contributions are welcome
 
 MIT License
