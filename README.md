@@ -1,11 +1,19 @@
 # Next.js WooCommerce Storefront Theme 
 Using Next.js, TypeScript and Styled-components.
 
+#### *Under development*
+
 ![demo](https://im3.ezgif.com/tmp/ezgif-3-c6826f582392.gif)
+
+
+
 
 ## The Goal
 
-The idea behind this repo was to showcase the power of Next.js by building a frontend for WooCommerce using nothing but Woo's REST API only. This means truly headless Woo without any redirects for checkouts etc. I also wanted to create a reusable base for the development of Wordpress/WooCommerce themes using React with server-side rendering. 
+The idea behind this repo was to showcase the power of Next.js by building a frontend for WooCommerce using nothing but Woo's REST API only. This means truly headless Woo without any redirects for checkouts etc. I also wanted to create a reusable base for the development of Wordpress/WooCommerce themes using React with server-side rendering.
+
+
+
 
 ## Features
 * WooCommerce Storefront theme inspired responsive design.
