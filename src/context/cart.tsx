@@ -38,9 +38,11 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   useEffect(() => {
     const localCart = localStorage.getItem('local_cart')
 
-    if (!localCart) {
-      createCart()
-    } else if (!localCart && new Date().getTime() - JSON.parse(localCart).timestamp > expireIn) {
+    if (
+      !localCart ||
+      (!localCart && new Date().getTime() - JSON.parse(localCart).timestamp > expireIn) ||
+      !JSON.parse(localCart).key
+    ) {
       createCart()
     } else {
       setCart(JSON.parse(localCart))
@@ -53,7 +55,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }, [cart])
 
   return (
-    <CartContext.Provider value={[cart, setCart, isUpdating, setIsUpdating]}>
+    <CartContext.Provider value={[cart, setCart, isUpdating, setIsUpdating, createCart]}>
       {children}
     </CartContext.Provider>
   )

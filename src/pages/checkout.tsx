@@ -26,7 +26,7 @@ import { CartItem } from '../types'
 interface CheckoutPageProps {}
 
 const CheckoutPage: NextPage<CheckoutPageProps> = () => {
-  const [cart, setCart] = useContext(CartContext)
+  const [cart, createCart] = useContext(CartContext)
   const { register, handleSubmit, errors } = useForm()
   const [isProcessing, setIsProcessing] = useState(false)
   const [isReady, setIsReady] = useState(false)
@@ -53,7 +53,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
     const itemsObj = cart.items.map((item: CartItem) => {
       return { product_id: item.product_id, quantity: item.quantity }
     })
-    const freshCart = { items: [], key: cart.key, timestamp: new Date().getTime(), total: 0 }
+
     try {
       setIsProcessing(true)
       const paymentMethodResult = await stripe.createPaymentMethod({
@@ -68,8 +68,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
       }
       const { message } = await createOrder(itemsObj, customerObj, paymentObj)
 
-      setCart(freshCart)
-      clearCart(cart.key)
+      createCart()
       setIsProcessing(false)
       if (message === 'Success') {
         router.push('success')
@@ -78,7 +77,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
       }
     } catch (error) {
       setServerMsg('Sorry something went wrong. Please try again later...')
-      setCart(freshCart)
+      createCart()
       setIsProcessing(false)
       console.log(error)
     }
