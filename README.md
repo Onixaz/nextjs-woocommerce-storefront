@@ -62,7 +62,7 @@ STRIPE_SECRET_KEY=stripe-publishable-key
 
 Finally **npm run dev.**
 
-Note: In case you're not getting a **x-cocart-api key**, allow all cross origin headers using [https://github.com/co-cart/co-cart-tweaks](https://github.com/co-cart/co-cart-tweaks)
+Note: In case you're not getting the **x-cocart-api key** (which is stored in local storage) from a Wordpress response headers, allow all cross origin headers using [https://github.com/co-cart/co-cart-tweaks](https://github.com/co-cart/co-cart-tweaks)
 
 ##  Todo
 
