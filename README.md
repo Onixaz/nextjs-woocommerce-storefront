@@ -32,11 +32,12 @@ Live demo: https://nextjs-woo-storefront.netlify.app/
 
 ## How to use
 
-Install required plugins:
+Install required plugins on your Wordpress:
 * WooCommerce (obviously)
 * [Cocart Lite](https://wordpress.org/plugins/cart-rest-api-for-woocommerce) 
 
 Change Permalinks to "Post Name (Settings -> Permalinks).
+
 Generate Consumer Key and Secret for REST API with Read/Write permissions (WooCommerce -> Settings -> Advanced -> REST API). **This authentication method requires HTTPS.** 
 
 You'll need to import some products. For testing you can use sample data from Woo https://docs.woocommerce.com/document/importing-woocommerce-sample-data/ just like I did.
@@ -51,7 +52,7 @@ It should consist of
 
 
 ``` 
-NEXT_PUBLIC_WOO_API_URL=your-wordpress-api-url
+NEXT_PUBLIC_WOO_API_URL=https://example.com
 WOO_CONSUMER_KEY=your-generated-consumer-key
 WOO_CONSUMER_SECRET=your-generated-consumer-secret
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=stripe-publishable-key
