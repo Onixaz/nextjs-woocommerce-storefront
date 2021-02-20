@@ -50,22 +50,18 @@ export default IndexPage
 export async function getStaticProps() {
   const categoriesRes = await fetcher(
     `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products/categories`,
-    process.env.WOO_CONSUMER_KEY!,
-    process.env.WOO_CONSUMER_SECRET!,
   )
   let categories = await categoriesRes.json()
-  categories = categories.filter((item: { [key: string]: string }) => {
+  categories = categories.filter((item: Product) => {
     return item.name !== 'Uncategorized'
   })
 
   const productsRes = await fetcher(
     `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
-    process.env.WOO_CONSUMER_KEY!,
-    process.env.WOO_CONSUMER_SECRET!,
   )
   const products = await productsRes.json()
 
-  const featured = products.filter((item: { [key: string]: boolean | string }) => {
+  const featured = products.filter((item: Product) => {
     if (item.featured === true && item.status === 'publish' && item.type === 'simple') {
       return item.featured
     } else {

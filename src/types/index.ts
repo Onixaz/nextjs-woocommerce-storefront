@@ -2,6 +2,9 @@ export interface Product {
   name: string
   slug?: string
   id: number
+  featured: boolean
+  type: string
+  status: string
   images: Array<{
     src: string
     alt: string

@@ -32,36 +32,39 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
   const [qty, setQty] = useState(1)
 
-  const handleAddToCart = (e: React.SyntheticEvent, item: Product, quantity: number) => {
+  const handleAddToCart = async (e: React.SyntheticEvent, item: Product, quantity: number) => {
     e.preventDefault()
     //lazy form validation :)
     quantity = quantity > 0 ? quantity : 1
+
     setIsUpdating((prev: boolean) => !prev)
-    fetch(
-      `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/add-item?cart_key=${cart.key}`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          product_id: item.id.toString(),
-          quantity: quantity,
-          return_cart: true,
-          //adding image for cart page
-          cart_item_data: { image: item.images[0].src, slug: item.slug },
-        }),
-        headers: {
-          'Content-Type': 'application/json',
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/add-item?cart_key=${cart.key}`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            product_id: item.id.toString(),
+            quantity: quantity,
+            return_cart: true,
+            //adding image for cart page
+            cart_item_data: { image: item.images[0].src, slug: item.slug },
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-      },
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setCart(() => cartUpdater(cart, data))
-        setIsUpdating((prev: boolean) => !prev)
-      })
-      .catch((error) => {
-        console.log(error)
-        setIsUpdating((prev: boolean) => !prev)
-      })
+      )
+
+      const data = await res.json()
+
+      setCart(() => cartUpdater(cart, data))
+      setIsUpdating((prev: boolean) => !prev)
+    } catch (error) {
+      console.log(error)
+      setIsUpdating((prev: boolean) => !prev)
+    }
   }
 
   return (
@@ -128,8 +131,6 @@ export default ProductPage
 export async function getStaticProps({ params: { slug } }: Params) {
   const productsRes = await fetcher(
     `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products?slug=${slug}`,
-    process.env.WOO_CONSUMER_KEY!,
-    process.env.WOO_CONSUMER_SECRET!,
   )
 
   const found = await productsRes.json()
@@ -144,8 +145,6 @@ export async function getStaticProps({ params: { slug } }: Params) {
 export async function getStaticPaths() {
   const productsRes = await fetcher(
     `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
-    process.env.WOO_CONSUMER_KEY!,
-    process.env.WOO_CONSUMER_SECRET!,
   )
   const products = await productsRes.json()
   const publishedProducts = products.filter((product: { [key: string]: string }) => {
