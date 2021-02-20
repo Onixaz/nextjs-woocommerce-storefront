@@ -17,10 +17,14 @@ export const cartUpdater = (cart: Cart, data: Response) => {
   return newCart
 }
 
-export const fetcher = async (url: string, key: string, secret: string) => {
+export const fetcher = async (url: string) => {
   return fetch(url, {
     headers: new Headers({
-      Authorization: 'Basic ' + Buffer.from(`${key}:${secret}`).toString('base64'),
+      Authorization:
+        'Basic ' +
+        Buffer.from(
+          `${process.env.WOO_CONSUMER_KEY!}:${process.env.WOO_CONSUMER_SECRET!}`,
+        ).toString('base64'),
       'Content-Type': 'application/json; charset=utf-8',
     }),
     credentials: 'include',
@@ -28,16 +32,14 @@ export const fetcher = async (url: string, key: string, secret: string) => {
   })
 }
 
-export const poster = async (
-  url: string,
-  key: string,
-  secret: string,
-  data: object,
-  method: string,
-) => {
+export const poster = async (url: string, data: object, method: string) => {
   return fetch(url, {
     headers: new Headers({
-      Authorization: 'Basic ' + Buffer.from(`${key}:${secret}`).toString('base64'),
+      Authorization:
+        'Basic ' +
+        Buffer.from(
+          `${process.env.WOO_CONSUMER_KEY!}:${process.env.WOO_CONSUMER_SECRET!}`,
+        ).toString('base64'),
       'Content-Type': 'application/json; charset=utf-8',
     }),
     method: method,

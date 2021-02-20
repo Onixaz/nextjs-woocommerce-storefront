@@ -59,8 +59,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
       const wooResponse = await poster(
         `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/orders`,
-        process.env.WOO_CONSUMER_KEY!,
-        process.env.WOO_CONSUMER_SECRET!,
         wooBody,
         'POST',
       )
@@ -83,8 +81,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
           poster(
             `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/orders/${order.id}`,
-            process.env.WOO_CONSUMER_KEY!,
-            process.env.WOO_CONSUMER_SECRET!,
+
             { set_paid: true, transaction_id: paymentIntent.id },
             'PUT',
           )
