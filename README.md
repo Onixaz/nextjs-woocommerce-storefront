@@ -34,12 +34,12 @@ Live demo: https://nextjs-woo-storefront.netlify.app/
 
 Install required plugins on your Wordpress:
 * [WooCommerce](https://wordpress.org/plugins/woocommerce/) (obviously)
+* [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
 * [Cocart Lite](https://wordpress.org/plugins/cart-rest-api-for-woocommerce)
 * [Password Reset with Code for WordPress REST API](https://wordpress.org/plugins/bdvs-password-reset/) (to be implemented)
 
-Change Permalinks to "Post Name (Settings -> Permalinks).
+Change Permalinks to "Post Name (Settings -> Permalinks). Also make sure your "JWT Authentication for WP REST API" plugin is configured correctly. 
 
-Generate Consumer Key and Secret for REST API with Read/Write permissions (WooCommerce -> Settings -> Advanced -> REST API). **This authentication method requires HTTPS.** 
 
 You'll need to import some products. For testing you can use sample data from Woo https://docs.woocommerce.com/document/importing-woocommerce-sample-data/ just like I did.
 
@@ -54,12 +54,14 @@ It should consist of
 
 ``` 
 NEXT_PUBLIC_WOO_API_URL=https://example.com
-WOO_CONSUMER_KEY=your-generated-consumer-key
-WOO_CONSUMER_SECRET=your-generated-consumer-secret
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=stripe-publishable-key
-STRIPE_SECRET_KEY=stripe-publishable-key
+WP_ADMIN_NAME=your-admin-name
+WP_ADMIN_PASS=your-admin-password
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your-stripe-publishable-key
+STRIPE_SECRET_KEY=your-stripe-secret-key
 
 ```
+
+Note that NEXT_PUBLIC_WOO_API_URL and NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY should have NEXT_PUBLIC prefix, since these variables need to be exposed to the browser. 
 
 Finally **npm run dev.**
 
