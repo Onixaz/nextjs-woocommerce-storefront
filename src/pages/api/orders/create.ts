@@ -57,11 +57,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         customer_note,
       }
 
-      const wooResponse = await poster(
-        `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/orders`,
-        wooBody,
-        'POST',
-      )
+      const wooResponse = await poster(`/wp-json/wc/v3/orders`, wooBody, 'POST')
 
       const order = await wooResponse.json()
 
@@ -80,7 +76,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
           res.status(200).json({ message: 'Success' })
 
           poster(
-            `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/orders/${order.id}`,
+            `/wp-json/wc/v3/orders/${order.id}`,
 
             { set_paid: true, transaction_id: paymentIntent.id },
             'PUT',

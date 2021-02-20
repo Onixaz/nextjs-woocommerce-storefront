@@ -18,7 +18,7 @@ The idea behind this repo was to showcase the power of Next.js by building a fro
 ## Features
 * WooCommerce Storefront theme inspired responsive design.
 * Static generation using getStaticProps and getStaticPaths.
-* WooCommerce REST API abstraction using Next's API routes.
+* WooCommerce REST API abstraction using Next's API routes (serverless functions).
 * Cart system using CoCart plugin.
 * Checkout system using Stripe as a payment method example.
 
@@ -33,8 +33,9 @@ Live demo: https://nextjs-woo-storefront.netlify.app/
 ## How to use
 
 Install required plugins on your Wordpress:
-* WooCommerce (obviously)
-* [Cocart Lite](https://wordpress.org/plugins/cart-rest-api-for-woocommerce) 
+* [WooCommerce](https://wordpress.org/plugins/woocommerce/) (obviously)
+* [Cocart Lite](https://wordpress.org/plugins/cart-rest-api-for-woocommerce)
+* [Password Reset with Code for WordPress REST API](https://wordpress.org/plugins/bdvs-password-reset/) (to be implemented)
 
 Change Permalinks to "Post Name (Settings -> Permalinks).
 

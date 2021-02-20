@@ -1,5 +1,20 @@
 import { Cart, CartItem } from '../types'
 
+export const authenticate = async (username: string, password: string) => {
+  const req = await fetch(process.env.NEXT_PUBLIC_WOO_API_URL + `/wp-json/jwt-auth/v1/token`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  })
+
+  return await req.json()
+}
+
 export const clearCart = async (key: string) => {
   fetch(`${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/clear?cart_key=${key}`, {
     method: 'POST',
@@ -18,30 +33,27 @@ export const cartUpdater = (cart: Cart, data: Response) => {
 }
 
 export const fetcher = async (url: string) => {
-  return fetch(url, {
-    headers: new Headers({
-      Authorization:
-        'Basic ' +
-        Buffer.from(
-          `${process.env.WOO_CONSUMER_KEY!}:${process.env.WOO_CONSUMER_SECRET!}`,
-        ).toString('base64'),
+  const { token } = await authenticate(process.env.WP_ADMIN_NAME!, process.env.WP_ADMIN_PASS!)
+
+  return fetch(process.env.NEXT_PUBLIC_WOO_API_URL + url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+
       'Content-Type': 'application/json; charset=utf-8',
-    }),
+    },
     credentials: 'include',
     mode: 'cors',
   })
 }
 
 export const poster = async (url: string, data: object, method: string) => {
-  return fetch(url, {
-    headers: new Headers({
-      Authorization:
-        'Basic ' +
-        Buffer.from(
-          `${process.env.WOO_CONSUMER_KEY!}:${process.env.WOO_CONSUMER_SECRET!}`,
-        ).toString('base64'),
+  const { token } = await authenticate(process.env.WP_ADMIN_NAME!, process.env.WP_ADMIN_PASS!)
+  return fetch(process.env.NEXT_PUBLIC_WOO_API_URL + url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+
       'Content-Type': 'application/json; charset=utf-8',
-    }),
+    },
     method: method,
     body: JSON.stringify(data),
     credentials: 'include',

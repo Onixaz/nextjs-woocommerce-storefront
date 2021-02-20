@@ -48,17 +48,13 @@ const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
 export default IndexPage
 
 export async function getStaticProps() {
-  const categoriesRes = await fetcher(
-    `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products/categories`,
-  )
+  const categoriesRes = await fetcher(`/wp-json/wc/v3/products/categories`)
   let categories = await categoriesRes.json()
   categories = categories.filter((item: Product) => {
     return item.name !== 'Uncategorized'
   })
 
-  const productsRes = await fetcher(
-    `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/wc/v3/products?per_page=30`,
-  )
+  const productsRes = await fetcher(`/wp-json/wc/v3/products?per_page=30`)
   const products = await productsRes.json()
 
   const featured = products.filter((item: Product) => {
