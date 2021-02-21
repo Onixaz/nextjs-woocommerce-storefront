@@ -54,14 +54,15 @@ It should consist of
 
 ``` 
 NEXT_PUBLIC_WOO_API_URL=https://example.com
-WP_ADMIN_NAME=your-admin-name
-WP_ADMIN_PASS=your-admin-password
+WP_JWT_AUTH_SECRET_KEY=your-random-secret
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your-stripe-publishable-key
 STRIPE_SECRET_KEY=your-stripe-secret-key
 
 ```
 
 Note that NEXT_PUBLIC_WOO_API_URL and NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY should have NEXT_PUBLIC prefix, since these variables need to be exposed to the browser. 
+
+WP_JWT_AUTH_SECRET_KEY which will be used to sign jwt should match the one you define in wp-config.php when configuring "JWT Authentication for WP REST API" plugin.
 
 Finally **npm run dev.**
 

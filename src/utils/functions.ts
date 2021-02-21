@@ -1,18 +1,18 @@
 import { Cart, CartItem } from '../types'
+import jwt from 'jsonwebtoken'
 
-export const authenticate = async (username: string, password: string) => {
-  const req = await fetch(process.env.NEXT_PUBLIC_WOO_API_URL + `/wp-json/jwt-auth/v1/token`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+export const generateToken = async (salt: string) => {
+  const payload = {
+    iss: process.env.NEXT_PUBLIC_WOO_API_URL,
+    data: {
+      user: {
+        id: '1',
+      },
     },
-    body: JSON.stringify({
-      username,
-      password,
-    }),
-  })
+  }
 
-  return await req.json()
+  const token = jwt.sign(payload, salt)
+  return token
 }
 
 export const clearCart = async (key: string) => {
@@ -33,7 +33,7 @@ export const cartUpdater = (cart: Cart, data: Response) => {
 }
 
 export const fetcher = async (url: string) => {
-  const { token } = await authenticate(process.env.WP_ADMIN_NAME!, process.env.WP_ADMIN_PASS!)
+  const token = await generateToken(process.env.WP_JWT_AUTH_SECRET_KEY!)
 
   return fetch(process.env.NEXT_PUBLIC_WOO_API_URL + url, {
     headers: {
@@ -47,7 +47,7 @@ export const fetcher = async (url: string) => {
 }
 
 export const poster = async (url: string, data: object, method: string) => {
-  const { token } = await authenticate(process.env.WP_ADMIN_NAME!, process.env.WP_ADMIN_PASS!)
+  const token = await generateToken(process.env.WP_JWT_AUTH_SECRET_KEY!)
   return fetch(process.env.NEXT_PUBLIC_WOO_API_URL + url, {
     headers: {
       Authorization: `Bearer ${token}`,

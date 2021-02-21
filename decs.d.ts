@@ -1,1 +1,1 @@
-declare module 'react-lazyload'
+declare module 'cors'

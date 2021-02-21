@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-blog",
+  "name": "nextjs-woocommerce-storefront",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -28,7 +28,9 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.11.0",
+    "cors": "^2.8.5",
     "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
     "next": "^10.0.5",
     "react": "^16.13.1",
     "react-cookie-consent": "^6.2.1",
@@ -40,6 +42,7 @@
     "swr": "^0.4.0"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "^14.14.20",
     "@types/react": "^16.14.2",
     "@types/styled-components": "^5.1.7",
