@@ -35,7 +35,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
     setIsUpdating((prev: boolean) => !prev)
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`,
+        `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`,
         {
           method: 'DELETE',
           body: JSON.stringify({
@@ -66,7 +66,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
     setIsAnimating((prev: boolean) => !prev)
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`,
+        `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`,
         {
           method: 'POST',
           body: JSON.stringify({

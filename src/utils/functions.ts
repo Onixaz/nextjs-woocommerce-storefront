@@ -1,9 +1,9 @@
 import { Cart, CartItem } from '../types'
 import jwt from 'jsonwebtoken'
 
-export const generateToken = async (salt: string) => {
+export const generateToken = async (key: string) => {
   const payload = {
-    iss: process.env.NEXT_PUBLIC_WOO_API_URL,
+    iss: process.env.NEXT_PUBLIC_WP_API_URL,
     data: {
       user: {
         id: '1',
@@ -11,12 +11,11 @@ export const generateToken = async (salt: string) => {
     },
   }
 
-  const token = jwt.sign(payload, salt)
-  return token
+  return jwt.sign(payload, key)
 }
 
 export const clearCart = async (key: string) => {
-  fetch(`${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/clear?cart_key=${key}`, {
+  fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/clear?cart_key=${key}`, {
     method: 'POST',
   })
 }
@@ -24,18 +23,21 @@ export const clearCart = async (key: string) => {
 export const cartUpdater = (cart: Cart, data: Response) => {
   const newCart = { ...cart }
   newCart.items = Object.values(data)
-
-  newCart.total = newCart.items.reduce(
-    (acc: number, curr: CartItem) => (curr.line_total ? acc + curr.line_total : 0),
-    0,
-  )
+  if (newCart.items.length > 0) {
+    newCart.total = newCart.items.reduce(
+      (acc: number, curr: CartItem) => (curr.line_total ? acc + curr.line_total : 0),
+      0,
+    )
+  } else {
+    newCart.total = 0
+  }
   return newCart
 }
 
 export const fetcher = async (url: string) => {
   const token = await generateToken(process.env.WP_JWT_AUTH_SECRET_KEY!)
 
-  return fetch(process.env.NEXT_PUBLIC_WOO_API_URL + url, {
+  return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
     headers: {
       Authorization: `Bearer ${token}`,
 
@@ -48,7 +50,7 @@ export const fetcher = async (url: string) => {
 
 export const poster = async (url: string, data: object, method: string) => {
   const token = await generateToken(process.env.WP_JWT_AUTH_SECRET_KEY!)
-  return fetch(process.env.NEXT_PUBLIC_WOO_API_URL + url, {
+  return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
     headers: {
       Authorization: `Bearer ${token}`,
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { Cart } from '../types'
 
 export const CartContext = React.createContext<any | null>(null)
@@ -6,18 +6,19 @@ export const CartContext = React.createContext<any | null>(null)
 interface CartProviderProps {}
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const [cart, setCart] = useState<Cart>({ items: [], key: '', timestamp: 0, total: 0 })
+  const initialCart = { items: [], key: '', timestamp: 0, total: 0 }
+  const [cart, setCart] = useState<Cart>(initialCart)
   const [isUpdating, setIsUpdating] = useState(false)
 
   //to change cart expiration date on server
   //https://github.com/co-cart/co-cart/search?q=cocart_cart_expiring+in%3Afile&type=Code
   //however you still need to expire your local cart so the carts don't get out of sync
-  const expireIn = 259200000 //3 days
+  const expireIn = 259200000 //3 days example
 
   const createCart = async () => {
     try {
       setIsUpdating((prev: boolean) => !prev)
-      const res = await fetch(`${process.env.NEXT_PUBLIC_WOO_API_URL}/wp-json/cocart/v1/get-cart`)
+      const res = await fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/get-cart`)
 
       const cartKey = res.headers.get('x-cocart-api')
       if (!cartKey) return
@@ -28,6 +29,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       }
       setCart(newCart)
       localStorage.setItem('local_cart', JSON.stringify(newCart))
+
       setIsUpdating((prev: boolean) => !prev)
     } catch (error) {
       setIsUpdating((prev: boolean) => !prev)
@@ -40,7 +42,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     if (
       !localCart ||
-      (!localCart && new Date().getTime() - JSON.parse(localCart).timestamp > expireIn) ||
+      (localCart && new Date().getTime() - JSON.parse(localCart).timestamp > expireIn) ||
       !JSON.parse(localCart).key
     ) {
       createCart()
@@ -51,11 +53,15 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   useEffect(() => {
     //updating local cart everytime changes are made  to remote cart
-    localStorage.setItem('local_cart', JSON.stringify(cart))
+    if (cart.key) {
+      localStorage.setItem('local_cart', JSON.stringify(cart))
+    } else {
+      createCart()
+    }
   }, [cart])
 
   return (
-    <CartContext.Provider value={[cart, setCart, isUpdating, setIsUpdating, createCart]}>
+    <CartContext.Provider value={[cart, setCart, isUpdating, setIsUpdating, initialCart]}>
       {children}
     </CartContext.Provider>
   )

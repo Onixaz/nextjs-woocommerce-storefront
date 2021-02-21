@@ -30,7 +30,7 @@ const CartPage: NextPage<CartPageProps> = () => {
       />
       <BasicContainer>
         <CartFormContainer>
-          {cart.items.length > 0 ? (
+          {cart.items && cart.items.length > 0 ? (
             <>
               <SectionTitle>Cart</SectionTitle>
               <CartGrid>

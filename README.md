@@ -10,7 +10,7 @@ Using Next.js, TypeScript and Styled-components.
 
 ## The Goal
 
-The idea behind this repo was to showcase the power of Next.js by building a frontend for WooCommerce using nothing but Woo's REST API only. This means truly headless Woo without any redirects for checkouts etc. I also wanted to create a reusable base for the development of Wordpress/WooCommerce themes using React with server-side rendering.
+The idea behind this repo was to showcase the power of Next.js by building a frontend for WooCommerce using nothing but Woo's REST API only. This means truly headless and secure WooCommerce without any redirects to checkouts etc. I also wanted to create a reusable base for the development of Wordpress/WooCommerce themes using React with server-side rendering.
 
 
 
@@ -53,16 +53,16 @@ It should consist of
 
 
 ``` 
-NEXT_PUBLIC_WOO_API_URL=https://example.com
+NEXT_PUBLIC_WP_API_URL=https://example.com
 WP_JWT_AUTH_SECRET_KEY=your-random-secret
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your-stripe-publishable-key
 STRIPE_SECRET_KEY=your-stripe-secret-key
 
 ```
 
-Note that NEXT_PUBLIC_WOO_API_URL and NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY should have NEXT_PUBLIC prefix, since these variables need to be exposed to the browser. 
+Note that NEXT_PUBLIC_WP_API_URL and NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY should have NEXT_PUBLIC prefix, since these variables need to be exposed to the browser. 
 
-WP_JWT_AUTH_SECRET_KEY which will be used to sign jwt should match the one you define in wp-config.php when configuring "JWT Authentication for WP REST API" plugin.
+WP_JWT_AUTH_SECRET_KEY which will be used to sign jwt should match the one you define in **wp-config.php** when configuring "JWT Authentication for WP REST API" plugin.
 
 Finally **npm run dev.**
 
@@ -70,16 +70,15 @@ Note: In case you're not getting the **x-cocart-api key** (which is stored in lo
 
 ##  Todo
 
-* Client side fetching for dynamic data like prices / account page. 
+* Client side fetching for dynamic data like prices / account page.
+* User registration 
 * Pages for categories
 * Variable products
 * Shipping options
-* User registration
 * Coupons system
-* Blog / About/Contact Pages
+* Blog/About/Contact Pages
 * More payment methods
-* Code cleanup / refactor
-* Tests
+
 
 #### Contributions are welcome
 
