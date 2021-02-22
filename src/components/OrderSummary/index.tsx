@@ -18,7 +18,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = () => {
       <SummaryGrid>
         <SumItemDesc>Product</SumItemDesc>
         <SumItemDesc>Subtotal</SumItemDesc>
-        {cart.items && cart.items > 0
+        {cart && cart.items > 0
           ? cart.items.map((item: any) => (
               <React.Fragment key={item.product_id}>
                 <SumItemName>
@@ -30,9 +30,9 @@ const OrderSummary: React.FC<OrderSummaryProps> = () => {
           : null}
         <SumItemDesc>Subtotal</SumItemDesc>
         {/*for design purposes duplicate this */}
-        <SumItemDescWhite>${cart.total ? cart.total.toFixed(2) : 0}</SumItemDescWhite>
+        <SumItemDescWhite>${cart && cart.total ? cart.total.toFixed(2) : 0}</SumItemDescWhite>
         <SumItemDesc>Total</SumItemDesc>
-        <SumItemDescWhite>${cart.total ? cart.total.toFixed(2) : 0}</SumItemDescWhite>
+        <SumItemDescWhite>${cart && cart.total ? cart.total.toFixed(2) : 0}</SumItemDescWhite>
       </SummaryGrid>
     </OrderSummaryContainer>
   )

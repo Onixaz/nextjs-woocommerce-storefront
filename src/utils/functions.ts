@@ -14,6 +14,21 @@ export const generateToken = async (key: string) => {
   return jwt.sign(payload, key)
 }
 
+export const initCart = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/get-cart`)
+
+  const cartKey = res.headers.get('x-cocart-api')
+  if (!cartKey) return
+  const newCart = {
+    items: [],
+    key: cartKey,
+    timestamp: new Date().getTime(),
+    total: 0,
+  }
+
+  return newCart
+}
+
 export const clearCart = async (key: string) => {
   fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/clear?cart_key=${key}`, {
     method: 'POST',

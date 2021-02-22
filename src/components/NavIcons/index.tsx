@@ -18,15 +18,15 @@ interface NavigationIconsProps {
 const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }) => {
   const [cart] = useContext(CartContext)
   const totalQuantity =
-    cart.items && cart.items.length > 0
+    cart && cart.items.length > 0
       ? cart.items.reduce((acc: number, curr: { [key: string]: number }) => acc + curr.quantity, 0)
       : 0
 
-  const cartTotal = cart.total && cart.total > 0 ? cart.total.toFixed(2) : 0
+  const cartTotal = cart && cart.total > 0 ? cart.total.toFixed(2) : 0
 
   return (
     <NavIconHolder scrollNav={scrollNav} isMobile={isMobile}>
-      <TotalPrice hasItems={cart.total > 0 ? true : false}>Total: ${cartTotal}</TotalPrice>
+      <TotalPrice hasItems={cart && cart.total > 0 ? true : false}>Total: ${cartTotal}</TotalPrice>
       <Link href="/cart" passHref>
         <CartIconWrapper>
           <CartBadge hasItems={totalQuantity > 0 ? true : false}>{totalQuantity}</CartBadge>

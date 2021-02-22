@@ -20,13 +20,13 @@ import { useRouter } from 'next/router'
 import { CartContext } from '../context/cart'
 import { NextPage } from 'next'
 
-import { clearCart, createOrder } from '../utils/functions'
+import { createOrder, initCart } from '../utils/functions'
 import { CartItem } from '../types'
 
 interface CheckoutPageProps {}
 
 const CheckoutPage: NextPage<CheckoutPageProps> = () => {
-  const [cart, setCart, initialCart] = useContext(CartContext)
+  const [cart, setCart] = useContext(CartContext)
   const { register, handleSubmit, errors } = useForm()
   const [isProcessing, setIsProcessing] = useState(false)
   const [isReady, setIsReady] = useState(false)
@@ -34,10 +34,6 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
   const router = useRouter()
   const stripe = useStripe()
   const elements = useElements()
-
-  useEffect(() => {
-    router.prefetch('success')
-  }, [])
 
   const onSubmit = async (customerObj: { [key: string]: string }) => {
     if (!stripe || !elements || !cart.items.length || cart.total === 0) return
@@ -68,18 +64,17 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
       }
       const { message } = await createOrder(itemsObj, customerObj, paymentObj)
 
-      clearCart(cart.key)
+      const newCart = await initCart()
+      setCart(newCart)
       setIsProcessing(false)
       if (message === 'Success') {
-        setCart(initialCart)
         router.push('success')
       } else {
-        setCart(initialCart)
         setServerMsg('Sorry something went wrong. Please try again later...')
       }
     } catch (error) {
       setServerMsg('Sorry something went wrong. Please try again later...')
-      setCart(initialCart)
+
       setIsProcessing(false)
       console.log(error)
     }
