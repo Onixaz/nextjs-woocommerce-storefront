@@ -1,4 +1,5 @@
-import { Cart, CartItem } from '../types'
+import { Cart, CartItem, Customer } from '../types'
+import { PaymentMethod } from '@stripe/stripe-js'
 import jwt from 'jsonwebtoken'
 
 export const generateToken = async (key: string) => {
@@ -78,14 +79,19 @@ export const poster = async (url: string, data: object, method: string) => {
   })
 }
 
-export const createOrder = async (items: any, customer: any, payment: any) => {
+export const createOrder = async (
+  items: CartItem[],
+  customer: Customer,
+  total: number,
+  payment: string,
+) => {
   const res = await fetch(`/api/orders/create`, {
     method: 'POST',
 
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ items, customer, payment }),
+    body: JSON.stringify({ items, customer, total, payment }),
   })
   const json = await res.json()
   return json

@@ -7,14 +7,6 @@ const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY!}`, { apiVersion: '20
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
-      const {
-        items,
-        customer: { customer_note },
-        payment: { total, payment_method },
-      } = req.body
-
-      //const requestBody = {}
-
       const wooBody = {
         payment_method: `Credit Card`,
         payment_method_title: 'Credit Card',
@@ -25,19 +17,19 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         shipping: {
           ...req.body.customer,
         },
-        line_items: items,
-        customer_note,
+        line_items: req.body.items,
+        customer_note: req.body.customer.customer_note,
       }
 
       const wooResponse = await poster(`/wp-json/wc/v3/orders`, wooBody, 'POST')
 
       const order = await wooResponse.json()
 
-      if (total === parseFloat(order.total)) {
-        const amount = Math.round(total.toFixed(2) * 100)
+      if (req.body.total === parseFloat(order.total)) {
+        const amount = Math.round(req.body.total.toFixed(2) * 100)
 
         const paymentIntent = await stripe.paymentIntents.create({
-          payment_method,
+          payment_method: req.body.payment,
           amount,
           currency: 'usd',
           confirm: true,

@@ -21,9 +21,11 @@ import { CartContext } from '../context/cart'
 import { NextPage } from 'next'
 
 import { createOrder, initCart } from '../utils/functions'
-import { CartItem } from '../types'
+import { CartItem, Customer } from '../types'
 
 interface CheckoutPageProps {}
+
+const paymentOption = 'Stripe' //example
 
 const CheckoutPage: NextPage<CheckoutPageProps> = () => {
   const [cart, setCart] = useContext(CartContext)
@@ -35,34 +37,38 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
   const stripe = useStripe()
   const elements = useElements()
 
-  const onSubmit = async (customerObj: { [key: string]: string }) => {
-    if (!stripe || !elements || !cart.items.length || cart.total === 0) return
-
-    const cardElement = elements.getElement('card')
-    if (!cardElement) return
-
-    if (!isReady) {
-      cardElement.focus()
-      return
-    }
+  const onSubmit = async (customerObj: Customer) => {
+    if (!cart.items.length || cart.total === 0) return
 
     const itemsObj = cart.items.map((item: CartItem) => {
       return { product_id: item.product_id, quantity: item.quantity }
     })
 
     try {
+      //TODO: Add more payment methods (Paypal e.g)
       setIsProcessing(true)
+      if (!stripe || !elements) return
+
+      const cardElement = elements.getElement('card')
+      if (!cardElement) return
+
+      if (!isReady) {
+        cardElement.focus()
+        return
+      }
+
       const stripeRes = await stripe.createPaymentMethod({
         type: 'card',
         card: cardElement,
       })
-      if (!stripeRes) return
+      if (!stripeRes.paymentMethod?.id) return
 
-      const paymentObj = {
-        total: cart.total,
-        payment_method: stripeRes.paymentMethod?.id,
-      }
-      const { message } = await createOrder(itemsObj, customerObj, paymentObj)
+      const { message } = await createOrder(
+        itemsObj,
+        customerObj,
+        cart.total,
+        stripeRes.paymentMethod.id,
+      )
 
       const newCart = await initCart()
       setCart(newCart)
