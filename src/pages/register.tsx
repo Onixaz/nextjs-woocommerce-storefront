@@ -1,21 +1,23 @@
 import { NextPage } from 'next'
+import AuthForm from '../components/AuthForm'
 import CustomHead from '../components/CustomHead'
 import { BasicContainer, SectionTitle } from '../styles/Global/utils'
 
 interface ContactPageProps {}
 
-const ContactPage: NextPage<ContactPageProps> = () => {
+const RegisterPage: NextPage<ContactPageProps> = () => {
   return (
     <>
       <CustomHead
-        title="About | Next.Js"
+        title="Register| Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />
       <BasicContainer>
-        <SectionTitle>Contact me!</SectionTitle>
+        <SectionTitle>Register!</SectionTitle>
+        <AuthForm />
       </BasicContainer>
     </>
   )
 }
 
-export default ContactPage
+export default RegisterPage

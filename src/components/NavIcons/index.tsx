@@ -16,6 +16,7 @@ interface NavigationIconsProps {
 }
 
 const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }) => {
+  const isAuthenticated = false //TODO Auth context
   const [cart] = useContext(CartContext)
   const totalQuantity =
     cart && cart.items.length > 0
@@ -33,7 +34,9 @@ const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }
           <CartIcon />
         </CartIconWrapper>
       </Link>
-      <AccIcon />
+      <Link href={isAuthenticated ? '/account' : '/login'} passHref>
+        <AccIcon />
+      </Link>
     </NavIconHolder>
   )
 }

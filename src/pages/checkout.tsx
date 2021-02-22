@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import { useStripe, useElements } from '@stripe/react-stripe-js'
 import { useForm } from 'react-hook-form'
 import {
@@ -56,11 +56,11 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
         type: 'card',
         card: cardElement,
       })
-      if (!stripeRes || !stripeRes.paymentMethod) return
+      if (!stripeRes) return
 
       const paymentObj = {
         total: cart.total,
-        payment_method: stripeRes.paymentMethod.id,
+        payment_method: stripeRes.paymentMethod?.id,
       }
       const { message } = await createOrder(itemsObj, customerObj, paymentObj)
 

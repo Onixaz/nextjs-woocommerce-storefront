@@ -11,7 +11,7 @@ export const generateToken = async (key: string) => {
     },
   }
 
-  return jwt.sign(payload, key)
+  return jwt.sign(payload, key, { expiresIn: '1h' })
 }
 
 export const initCart = async () => {
