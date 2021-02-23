@@ -25,8 +25,6 @@ import { CartItem, Customer } from '../types'
 
 interface CheckoutPageProps {}
 
-const paymentOption = 'Stripe' //example
-
 const CheckoutPage: NextPage<CheckoutPageProps> = () => {
   const [cart, setCart] = useContext(CartContext)
   const { register, handleSubmit, errors } = useForm()
@@ -46,7 +44,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
 
     try {
       //TODO: Add more payment methods (Paypal e.g)
-      setIsProcessing(true)
+
       if (!stripe || !elements) return
 
       const cardElement = elements.getElement('card')
@@ -56,7 +54,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
         cardElement.focus()
         return
       }
-
+      setIsProcessing(true)
       const stripeRes = await stripe.createPaymentMethod({
         type: 'card',
         card: cardElement,
