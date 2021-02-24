@@ -30,7 +30,8 @@ interface ProductPageProps {
 
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
-  const [qty, setQty] = useState(1)
+
+  const qtyRef = useRef<HTMLInputElement | null>(null)
 
   const handleAddToCart = async (e: React.SyntheticEvent, item: Product, quantity: number) => {
     e.preventDefault()
@@ -99,15 +100,10 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
             </ProductInfoWrapperCol>
             <ProductInfoWrapperCol>
               <AddToCartForm>
-                <InputField
-                  onChange={(e) => setQty(parseInt(e.target.value))}
-                  type="number"
-                  defaultValue={qty}
-                  min="1"
-                ></InputField>
+                <InputField type="number" defaultValue="1" min="1" ref={qtyRef}></InputField>
                 <AddToCartBtn
                   disabled={isUpdating}
-                  onClick={(e) => handleAddToCart(e, product, qty)}
+                  onClick={(e) => handleAddToCart(e, product, parseInt(qtyRef.current!.value))}
                 >
                   {isUpdating ? <Loader /> : 'Add To Cart'}
                 </AddToCartBtn>

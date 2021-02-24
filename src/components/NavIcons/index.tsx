@@ -34,8 +34,10 @@ const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }
           <CartIcon />
         </CartIconWrapper>
       </Link>
-      <Link href={isAuthenticated ? '/account' : '/login'} passHref>
-        <AccIcon />
+      <Link href={isAuthenticated ? '/account' : '/login'}>
+        <div>
+          <AccIcon />
+        </div>
       </Link>
     </NavIconHolder>
   )

@@ -60,22 +60,23 @@ STRIPE_SECRET_KEY=your-stripe-secret-key
 
 ```
 
-Note that NEXT_PUBLIC_WP_API_URL and NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY should have NEXT_PUBLIC prefix, since these variables need to be exposed to the browser. 
+Notice that **NEXT_PUBLIC_WP_API_URL** and **NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY** should have **NEXT_PUBLIC** prefix, since these variables need to be exposed to the browser. 
 
-WP_JWT_AUTH_SECRET_KEY which will be used to sign jwt should match the one you define in **wp-config.php** when configuring "JWT Authentication for WP REST API" plugin.
+**WP_JWT_AUTH_SECRET_KEY** which will be used to sign jwt should match the one you define in **wp-config.php** when configuring "JWT Authentication for WP REST API" plugin.
 
 Finally **npm run dev.**
 
-Note: In case you're not getting the **x-cocart-api key** (which is stored in local storage) from a Wordpress response headers, allow all cross origin headers using [https://github.com/co-cart/co-cart-tweaks](https://github.com/co-cart/co-cart-tweaks)
+Note: In case you're not getting the **x-cocart-api key** when calling CoCart endpoint from a response header, allow cross origin headers using [https://github.com/co-cart/co-cart-tweaks](https://github.com/co-cart/co-cart-tweaks)
 
 ##  Todo
 
 * Client side fetching for dynamic data like prices / account page.
-* User registration 
+* User registration and password reset functionality
 * Pages for categories
 * Variable products
 * Shipping options
 * Coupons system
+* Search
 * Blog/About/Contact Pages
 * More payment methods
 

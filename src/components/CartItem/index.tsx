@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 
 import {
   CartRow,
@@ -28,7 +28,8 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
   const [isRemoving, setIsRemoving] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
-  const [qty, setQty] = useState(item.quantity)
+
+  const qty = useRef<HTMLInputElement | null>(null)
 
   const removeItem = async (item: CartItem) => {
     setIsRemoving((prev: boolean) => !prev)
@@ -113,14 +114,15 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
           <QuantityForm>
             <InputField
               type="number"
-              onChange={(e) => setQty(parseInt(e.target.value))}
+              //onChange={(e) => setQty(parseInt(e.target.value))}
               defaultValue={item.quantity}
               min="1"
+              ref={qty}
             ></InputField>
             <UpdateCartItemBtn
               disabled={isUpdating}
               onClick={(e) => {
-                updateItem(e, item, qty)
+                updateItem(e, item, parseInt(qty.current!.value))
               }}
             >
               {isAnimating ? <Loader /> : <UpdateText>Update</UpdateText>}
