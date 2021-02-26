@@ -8,6 +8,7 @@ import {
   NavIconHolder,
 } from './NavIconsElements'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { CartContext } from '../../context/cart'
 
 interface NavigationIconsProps {
@@ -17,6 +18,7 @@ interface NavigationIconsProps {
 
 const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }) => {
   const isAuthenticated = false //TODO Auth context
+  const router = useRouter()
   const [cart] = useContext(CartContext)
   const totalQuantity =
     cart && cart.items.length > 0
@@ -34,11 +36,8 @@ const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }
           <CartIcon />
         </CartIconWrapper>
       </Link>
-      <Link href={isAuthenticated ? '/account' : '/login'}>
-        <div>
-          <AccIcon />
-        </div>
-      </Link>
+
+      <AccIcon onClick={() => router.push(isAuthenticated ? '/account' : '/login')} />
     </NavIconHolder>
   )
 }

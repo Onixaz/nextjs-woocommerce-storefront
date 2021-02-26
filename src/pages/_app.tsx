@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app'
+import { Provider as AuthProvider } from 'next-auth/client'
 import { ThemeProvider } from 'styled-components'
 import theme from '../styles/Global/theme'
 import GlobalStyle from '../styles/Global/main'
@@ -14,14 +15,16 @@ interface CustomAppProps extends AppProps {}
 const CustomApp: React.FC<CustomAppProps> = ({ Component, pageProps }) => {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <CartProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </CartProvider>
-        <GlobalStyle />
-      </ThemeProvider>
+      <AuthProvider session={pageProps.session}>
+        <ThemeProvider theme={theme}>
+          <CartProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </CartProvider>
+          <GlobalStyle />
+        </ThemeProvider>
+      </AuthProvider>
     </>
   )
 }
