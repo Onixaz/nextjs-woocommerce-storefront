@@ -1,7 +1,7 @@
-import NextAuth, { User } from 'next-auth'
-import Providers from 'next-auth/providers'
-
 import { NextApiRequest, NextApiResponse } from 'next'
+import NextAuth, { User } from 'next-auth'
+
+import Providers from 'next-auth/providers'
 import { poster } from '../../../utils/functions'
 
 const options = {
@@ -40,13 +40,13 @@ const options = {
       },
     }),
   ],
-  //database: process.env.DATABASE_URL,
+
   session: {
     jwt: true,
     maxAge: 60 * 60 * 24 * 7, //7 days (same as jwt from wp)
   },
   jwt: {
-    secret: process.env.NODE_JWT_AUTH_SECRET_KEY,
+    secret: process.env.NEXTAUTH_SECRET_KEY,
   },
   //https://stackoverflow.com/questions/64576733/where-and-how-to-change-session-user-object-after-signing-in
   callbacks: {
