@@ -1,22 +1,23 @@
-import React, { useContext, useEffect } from 'react'
-import { NextPage } from 'next'
-import CustomHead from '../components/CustomHead'
-import { CartContext } from '../context/cart'
 import { BasicContainer, SectionTitle } from '../styles/Global/utils'
 import {
   CartFormContainer,
   CartGrid,
-  EmptyCart,
-  CartTotals,
-  CheckoutBtn,
   CartLiFirstCol,
   CartLiSecondCol,
-  Descriptor,
+  CartTotals,
+  CheckoutBtn,
   DescriptionRow,
+  Descriptor,
+  EmptyCart,
 } from '../styles/Individual/CartPageElements'
+import React, { useContext } from 'react'
 
-import SingleCartItem from '../components/CartItem'
+import { CartContext } from '../context/cart'
+import CustomHead from '../components/CustomHead'
 import Link from 'next/link'
+import { NextPage } from 'next'
+import SingleCartItem from '../components/CartItem'
+
 interface CartPageProps {}
 
 const CartPage: NextPage<CartPageProps> = () => {

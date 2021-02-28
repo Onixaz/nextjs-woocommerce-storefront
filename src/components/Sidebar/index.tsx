@@ -1,16 +1,17 @@
-import React from 'react'
-import Link from 'next/link'
 import {
-  SidebarContainer,
   ClosedIcon,
   Icon,
-  SidebarWrapper,
-  SidebarMenu,
-  SidebarLinkWrapper,
-  SidebarLinkText,
+  SidebarContainer,
   SidebarIconHolder,
+  SidebarLinkText,
+  SidebarLinkWrapper,
+  SidebarMenu,
+  SidebarWrapper,
 } from './SidebarElements'
+
+import Link from 'next/link'
 import NavigationIcons from '../NavIcons'
+import React from 'react'
 
 interface SidebarProps {
   toggle: () => void

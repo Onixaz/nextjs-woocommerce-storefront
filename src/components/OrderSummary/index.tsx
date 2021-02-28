@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
-import { CartContext } from '../../context/cart'
 import {
   OrderSummaryContainer,
-  SummaryGrid,
   SumItemDesc,
   SumItemDescWhite,
   SumItemName,
   SumItemTotal,
+  SummaryGrid,
 } from './OrderSummaryElements'
+import React, { useContext } from 'react'
+
+import { CartContext } from '../../context/cart'
 
 interface OrderSummaryProps {}
 

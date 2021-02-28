@@ -10,6 +10,7 @@ import {
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { CartContext } from '../../context/cart'
+import { useSession } from 'next-auth/client'
 
 interface NavigationIconsProps {
   scrollNav: boolean
@@ -17,7 +18,7 @@ interface NavigationIconsProps {
 }
 
 const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }) => {
-  const isAuthenticated = false //TODO Auth context
+  const session = useSession()
   const router = useRouter()
   const [cart] = useContext(CartContext)
   const totalQuantity =
@@ -37,7 +38,7 @@ const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }
         </CartIconWrapper>
       </Link>
 
-      <AccIcon onClick={() => router.push(isAuthenticated ? '/account' : '/login')} />
+      <AccIcon onClick={() => router.push(session ? '/account' : '/login')} />
     </NavIconHolder>
   )
 }

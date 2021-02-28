@@ -1,7 +1,8 @@
-import { NextPage } from 'next'
+import { BasicContainer, SectionTitle } from '../styles/Global/utils'
+
 import AuthForm from '../components/AuthForm'
 import CustomHead from '../components/CustomHead'
-import { BasicContainer, SectionTitle } from '../styles/Global/utils'
+import { NextPage } from 'next'
 
 interface ContactPageProps {}
 

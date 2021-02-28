@@ -1,25 +1,25 @@
-import React, { useContext, useState, useRef } from 'react'
-
 import {
-  CartRow,
   CartEl,
-  RemoveFromCartBtn,
-  Thumbnail,
-  QuantityForm,
+  CartItemProductSubtotal,
+  CartRow,
   InputField,
-  UpdateCartItemBtn,
   ProductLink,
-  UpdateText,
+  QuantityForm,
+  RemoveFromCartBtn,
   RemoveIcon,
   RemovingLoader,
-  CartItemProductSubtotal,
+  Thumbnail,
+  UpdateCartItemBtn,
+  UpdateText,
 } from './CartItemElements'
+import React, { useContext, useRef, useState } from 'react'
+import { cartUpdater, initCart } from '../../utils/functions'
 
-import { Loader } from '../../styles/Global/utils'
-import Link from 'next/link'
 import { CartContext } from '../../context/cart'
-import { cartUpdater } from '../../utils/functions'
 import { CartItem } from '../../types'
+import Link from 'next/link'
+import { Loader } from '../../styles/Global/utils'
+
 interface CartItemProps {
   item: CartItem
 }
@@ -55,7 +55,8 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
       setIsRemoving((prev: boolean) => !prev)
       setCart(() => cartUpdater(cart, data))
     } catch (error) {
-      console.log(error)
+      const newCart = await initCart()
+      setCart(newCart)
       setIsUpdating((prev: boolean) => !prev)
       setIsRemoving((prev: boolean) => !prev)
     }
@@ -84,11 +85,12 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
       const data = await res.json()
 
       setIsUpdating((prev: boolean) => !prev)
-
       setIsAnimating((prev: boolean) => !prev)
       setCart(() => cartUpdater(cart, data))
     } catch (error) {
       console.log(error)
+      const newCart = await initCart()
+      setCart(newCart)
       setIsAnimating((prev: boolean) => !prev)
       setIsUpdating((prev: boolean) => !prev)
     }

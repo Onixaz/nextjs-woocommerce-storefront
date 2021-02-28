@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { NextPage } from 'next'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import Router from 'next/router'
-import Link from 'next/link'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { signIn, signOut, useSession } from 'next-auth/client'
+
+import { BasicContainer } from '../styles/Global/utils'
 import CustomHead from '../components/CustomHead'
-import { BasicContainer, SectionTitle } from '../styles/Global/utils'
+import { NextPage } from 'next'
 
 interface LoginPageProps {}
 

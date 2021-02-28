@@ -1,8 +1,8 @@
+import { BasicContainer, SectionTitle } from '../styles/Global/utils'
+
+import CustomHead from '../components/CustomHead'
 import { NextPage } from 'next'
 import React from 'react'
-import CustomHead from '../components/CustomHead'
-
-import { BasicContainer, SectionTitle } from '../styles/Global/utils'
 
 const SuccessPage: NextPage = () => {
   return (

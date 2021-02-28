@@ -1,11 +1,13 @@
 import { NextPage } from 'next'
-import Link from 'next/link'
+import { useSession } from 'next-auth/client'
 import CustomHead from '../components/CustomHead'
 import { BasicContainer, SectionTitle } from '../styles/Global/utils'
 
 interface AccountPageProps {}
 
 const AccountPage: NextPage<AccountPageProps> = () => {
+  const [session]: any = useSession()
+
   return (
     <>
       <CustomHead
@@ -13,7 +15,11 @@ const AccountPage: NextPage<AccountPageProps> = () => {
         description="A starter for Next.Js with Styled-components and TS"
       />
       <BasicContainer>
-        <SectionTitle>Account Page!</SectionTitle>
+        {session ? (
+          <SectionTitle>Welcome {session.user.username}!</SectionTitle>
+        ) : (
+          <SectionTitle>Account Page!</SectionTitle>
+        )}
       </BasicContainer>
     </>
   )

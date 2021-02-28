@@ -1,10 +1,11 @@
-import React from 'react'
-import { NextPage } from 'next'
-import CustomHead from '../components/CustomHead'
 import { BasicContainer, BasicGrid } from '../styles/Global/utils'
-import { fetcher } from '../utils/functions'
-import SingleProduct from '../components/Product'
+
+import CustomHead from '../components/CustomHead'
+import { NextPage } from 'next'
 import { Product } from '../types/index'
+import React from 'react'
+import SingleProduct from '../components/Product'
+import { fetcher } from '../utils/functions'
 
 interface ShopPageProps {
   products: Product[]

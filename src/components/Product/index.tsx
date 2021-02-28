@@ -1,15 +1,16 @@
-import React from 'react'
-import { Product } from '../../types'
 import {
+  Img,
+  PriceWrapper,
   ProductCard,
   ProductImgWrapper,
-  Img,
   ProductName,
-  PriceWrapper,
   RegularPrice,
   SalePrice,
 } from './ProductElements'
+
 import Link from 'next/link'
+import { Product } from '../../types'
+import React from 'react'
 
 interface ProductItemProps {
   product: Product

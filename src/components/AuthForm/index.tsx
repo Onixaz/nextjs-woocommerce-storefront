@@ -9,6 +9,7 @@ type FormValues = {
 
 const AuthForm: React.FC = () => {
   const { register, handleSubmit, errors } = useForm()
+
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const req = await fetch('/api/users/create', {
       method: 'POST',
