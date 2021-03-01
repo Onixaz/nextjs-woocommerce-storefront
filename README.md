@@ -17,10 +17,10 @@ The idea behind this repo was to showcase the power of Next.js by building a fro
 
 ## Features
 * WooCommerce Storefront theme inspired responsive design.
-* Static generation using getStaticProps and getStaticPaths.
+* Static page generation using getStaticProps and getStaticPaths.
 * WooCommerce REST API abstraction using Next's API routes (serverless functions).
 * Cart system using CoCart plugin.
-* User authorization / authentication using NextAuth.js 
+* Customer registration and authentication using NextAuth.js. 
 * Checkout system using Stripe as a payment method example.
 
 
@@ -39,7 +39,7 @@ Install required plugins on your Wordpress:
 * [Cocart Lite](https://wordpress.org/plugins/cart-rest-api-for-woocommerce)
 * [Password Reset with Code for WordPress REST API](https://wordpress.org/plugins/bdvs-password-reset/) (to be implemented)
 
-Change Permalinks to "Post Name (Settings -> Permalinks). Also make sure your "JWT Authentication for WP REST API" plugin is configured correctly. 
+Change Permalinks to **Post Name (Settings -> Permalinks).** Also make sure your **JWT Authentication for WP REST API** plugin is configured correctly. 
 
 
 You'll need to import some products. For testing you can use sample data from Woo https://docs.woocommerce.com/document/importing-woocommerce-sample-data/ just like I did.
@@ -79,6 +79,7 @@ Note: In case you're not getting the **x-cocart-api key** when calling CoCart en
 * Shipping options
 * Coupons system
 * Search
+* Pagination
 * Blog/About/Contact Pages
 * More payment methods
 
