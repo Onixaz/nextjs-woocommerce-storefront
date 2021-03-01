@@ -50,15 +50,15 @@ export default IndexPage
 
 export async function getStaticProps() {
   const categoriesRes = await fetcher(`/wp-json/wc/v3/products/categories`)
-  let categories = await categoriesRes.json()
+  const unfilteredCategories = await categoriesRes.json()
 
-  categories = categories.filter((item: Product) => {
+  const categories = unfilteredCategories.filter((item: Product) => {
     return item.name !== 'Uncategorized'
   })
 
   const productsRes = await fetcher(`/wp-json/wc/v3/products?per_page=30`)
   const products = await productsRes.json()
-  if (!products) return
+
   const featured = products.filter((item: Product) => {
     if (item.featured === true && item.status === 'publish' && item.type === 'simple') {
       return item.featured
