@@ -15,7 +15,6 @@ const LoginPage: NextPage<LoginPageProps> = () => {
         description="A starter for Next.Js with Styled-components and TS"
       />
       <BasicContainer>
-        <SectionTitle>Log in to your account !</SectionTitle>
         <AuthForm isRegister={false} />
       </BasicContainer>
     </>

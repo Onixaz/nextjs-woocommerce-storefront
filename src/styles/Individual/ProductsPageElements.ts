@@ -28,10 +28,9 @@ export const Img = styled.img`
   height: 100%;
 
   padding: 0.75rem;
-  //position: absolute;
+
   object-fit: cover;
   transition: 0.5s all;
-  //border-radius: 30px;
 `
 
 export const ProductInfoWrapper = styled.div`

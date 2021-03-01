@@ -14,7 +14,6 @@ const RegisterPage: NextPage<ContactPageProps> = () => {
         description="A starter for Next.Js with Styled-components and TS"
       />
       <BasicContainer>
-        <SectionTitle>Register as a new customer!</SectionTitle>
         <AuthForm isRegister={true} />
       </BasicContainer>
     </>

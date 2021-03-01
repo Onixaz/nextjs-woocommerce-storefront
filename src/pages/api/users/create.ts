@@ -2,14 +2,13 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { poster } from '../../../utils/functions'
 
-// Initialize middleware
-
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Method not allowed' })
 
   try {
     const wooReq = await poster('/wp-json/wc/v3/customers', { ...req.body }, 'POST')
     const wooRes = await wooReq.json()
+
     if (wooRes.code === 'registration-error-email-exists') {
       return res
         .status(400)
