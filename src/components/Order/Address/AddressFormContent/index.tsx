@@ -9,7 +9,7 @@ import {
   ReqSpan,
 } from './AddressFormElements'
 import CountryList from '../CountryList'
-import { Subtitle } from '../../../styles/Global/utils'
+import { Subtitle } from '../../../../styles/Global/utils'
 
 interface AddressFormProps {
   register: any

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import CookiesConsent from '../../Cookies'
+import CookiesConsent from '../Cookies'
 import { Elements } from '@stripe/react-stripe-js'
 import Footer from '../Footer'
 import LayoutElement from './LayoutElements'

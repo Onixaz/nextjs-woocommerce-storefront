@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CheckoutPageMainWrapper = styled.form`
+export const CheckoutPageContentWrapper = styled.form`
   margin-top: 1rem;
   display: grid;
   grid-gap: 2rem;
@@ -23,20 +23,20 @@ export const CheckoutPageMainWrapper = styled.form`
   }
 `
 
-export const AddressFormContentArea = styled.div`
+export const CheckoutPageAddress = styled.div`
   display: flex;
 
   flex-direction: column;
   align-items: center;
   grid-area: address;
 `
-export const OrderSummaryContentArea = styled.div`
+export const CheckoutPageOrder = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   grid-area: order;
 `
-export const PaymentFormContentArea = styled.div`
+export const CheckoutPagePayment = styled.div`
   display: flex;
   background: #fafafa;
   justify-content: center;
@@ -45,7 +45,7 @@ export const PaymentFormContentArea = styled.div`
   grid-area: payment;
 `
 
-export const PlaceOrderButton = styled.button`
+export const CheckoutPagePlaceOrderBtn = styled.button`
   height: 60px;
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@ export const PlaceOrderButton = styled.button`
   font-weight: 600;
   transition: all 0.2s ease-in-out;
 `
-export const SubmitHolder = styled.div`
+export const CheckoutPageSubmitHolder = styled.div`
   display: flex;
   margin: 1rem auto;
   justify-content: center;
@@ -71,14 +71,14 @@ export const SubmitHolder = styled.div`
 
   background: #fafafa;
 `
-export const PrivacyNotice = styled.p`
+export const CheckoutPagePrivacyNotice = styled.p`
   font-size: calc(0.8rem + 0.1vw);
   line-height: 1.7;
   margin: 1rem;
   padding: 1rem;
   color: ${({ theme }) => theme.primaryText};
 `
-export const ServerMessage = styled.p`
+export const CheckoutPageServerMessage = styled.p`
   font-size: calc(1.2rem + 0.1vw);
   font-weight: 200;
   padding: 1rem;

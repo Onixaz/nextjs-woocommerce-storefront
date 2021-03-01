@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const PageWrapper = styled.div`
+export const ProductPageContentWrapper = styled.div`
   display: flex;
   padding-top: 5rem;
   justify-content: center;
@@ -16,14 +16,14 @@ export const PageWrapper = styled.div`
   }
 `
 
-export const ProductImgWrapper = styled.div`
+export const ProductPageImgWrapper = styled.div`
   height: 440px;
   width: 100%;
   overflow: hidden;
   position: relative;
 `
 
-export const Img = styled.img`
+export const ProductPageImg = styled.img`
   width: 100%;
   height: 100%;
 
@@ -33,7 +33,7 @@ export const Img = styled.img`
   transition: 0.5s all;
 `
 
-export const ProductInfoWrapper = styled.div`
+export const ProductPageInfoWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -48,35 +48,35 @@ export const ProductInfoWrapper = styled.div`
   }
 `
 
-export const ProductInfoWrapperCol = styled.div`
+export const ProductPageInfoWrapperCol = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin: 0 1rem;
 `
 
-export const ProductName = styled.h2`
+export const ProductPageName = styled.h2`
   font-size: calc(2rem + 0.1vw);
   font-weight: 200;
   letter-spacing: 1px;
   padding-top: 2rem;
 `
-export const PriceWrapper = styled.div`
+export const ProductPagePriceWrapper = styled.div`
   display: flex;
   align-items: center;
 `
-export const SalePrice = styled.p`
+export const ProductPageSalePrice = styled.p`
   margin: 0.5rem;
   font-size: calc(1.5rem + 0.1vw);
   opacity: 0.9;
   font-weight: bolder;
 `
 
-export const ShortDescription = styled.div`
+export const ProductPageShortDescription = styled.div`
   padding: 0.5rem 0;
   font-size: calc(1.2rem + 0.1vw);
 `
-export const LongDescription = styled.div`
+export const ProductPageLongDescription = styled.div`
   font-size: calc(1rem + 0.1vw);
   margin-top: 1rem;
   padding: 1rem;
@@ -87,7 +87,7 @@ export const LongDescription = styled.div`
   }
 `
 
-export const RegularPrice = styled.p<{ isOnSale: boolean }>`
+export const ProductPageRegularPrice = styled.p<{ isOnSale: boolean }>`
   color: ${({ theme }) => theme.primaryText};
   text-decoration: ${({ isOnSale }) => (isOnSale ? `line-through` : `none`)};
   font-weight: bolder;
@@ -95,13 +95,13 @@ export const RegularPrice = styled.p<{ isOnSale: boolean }>`
   margin: 0 0.25rem;
   opacity: ${({ isOnSale }) => (isOnSale ? `0.5` : `0.9`)};
 `
-export const AddToCartForm = styled.form`
+export const ProductPageAddToCartForm = styled.form`
   margin: 2rem 0;
   display: flex;
   flex-direction: row;
 `
 
-export const InputField = styled.input`
+export const ProductPageInputField = styled.input`
   padding: 0.5em;
   margin-right: 1rem;
   max-width: 60px;
@@ -116,7 +116,7 @@ export const InputField = styled.input`
     opacity: 1;
   }
 `
-export const AddToCartBtn = styled.button`
+export const ProductPageAddToCartBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,11 +137,11 @@ export const AddToCartBtn = styled.button`
   transition: all 0.2s ease-in-out;
 `
 
-export const ProductCategory = styled.p`
+export const ProductPageCategory = styled.p`
   font-size: calc(0.8rem + 0.1vw);
   margin-top: 2rem;
   letter-spacing: 1px;
 `
-export const CategorySpan = styled.span`
+export const ProductPageCategorySpan = styled.span`
   text-decoration: underline;
 `

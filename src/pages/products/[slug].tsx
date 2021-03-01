@@ -1,123 +1,19 @@
 import { NextPage } from 'next'
 import { Product } from '../../types'
-import React, { useContext, useRef, useState } from 'react'
-import { fetcher, cartUpdater } from '../../utils/functions'
+import React from 'react'
+import { fetcher } from '../../utils/functions'
 import { Params } from 'next/dist/next-server/server/router'
-import { BasicGrid, BasicContainer, Loader } from '../../styles/Global/utils'
-import {
-  PageWrapper,
-  PriceWrapper,
-  RegularPrice,
-  SalePrice,
-  ProductImgWrapper,
-  Img,
-  ProductName,
-  ProductInfoWrapper,
-  ShortDescription,
-  AddToCartForm,
-  InputField,
-  AddToCartBtn,
-  LongDescription,
-  ProductCategory,
-  CategorySpan,
-  ProductInfoWrapperCol,
-} from '../../styles/Individual/ProductsPageElements'
-import { CartContext } from '../../context/cart'
+import { BasicContainer } from '../../styles/Global/utils'
+import ProductPageContent from '../../components/Product/ProductPageContent'
 
 interface ProductPageProps {
   product: Product
 }
 
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
-  const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
-
-  const qtyRef = useRef<HTMLInputElement | null>(null)
-
-  const handleAddToCart = async (e: React.SyntheticEvent, item: Product, quantity: number) => {
-    e.preventDefault()
-    //lazy form validation :)
-    quantity = quantity > 0 ? quantity : 1
-
-    setIsUpdating((prev: boolean) => !prev)
-
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/add-item?cart_key=${cart.key}`,
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            product_id: item.id.toString(),
-            quantity: quantity,
-            return_cart: true,
-            //adding image for cart page
-            cart_item_data: { image: item.images[0].src, slug: item.slug },
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      )
-
-      const data = await res.json()
-
-      setCart(() => cartUpdater(cart, data))
-      setIsUpdating((prev: boolean) => !prev)
-    } catch (error) {
-      console.log(error)
-      setIsUpdating((prev: boolean) => !prev)
-    }
-  }
-
   return (
     <BasicContainer>
-      <PageWrapper>
-        <BasicGrid lg={2} md={2} sm={1} xs={1}>
-          <ProductImgWrapper>
-            {product.images !== undefined && (
-              <Img src={product.images[0].src} alt={product.images[0].alt} />
-            )}
-          </ProductImgWrapper>
-          <ProductInfoWrapper>
-            <ProductInfoWrapperCol>
-              <ProductName>{product.name}</ProductName>
-              <PriceWrapper>
-                {product.sale_price?.length === 0 ? (
-                  <RegularPrice isOnSale={false}>
-                    ${parseFloat(product.regular_price).toFixed(2)}
-                  </RegularPrice>
-                ) : (
-                  <>
-                    <RegularPrice isOnSale={true}>
-                      ${parseFloat(product.regular_price).toFixed(2)}
-                    </RegularPrice>
-                    <SalePrice>${parseFloat(product.sale_price).toFixed(2)}</SalePrice>
-                  </>
-                )}
-              </PriceWrapper>
-              <ShortDescription
-                dangerouslySetInnerHTML={{ __html: product.short_description }}
-              ></ShortDescription>
-            </ProductInfoWrapperCol>
-            <ProductInfoWrapperCol>
-              <AddToCartForm>
-                <InputField type="number" defaultValue="1" min="1" ref={qtyRef}></InputField>
-                <AddToCartBtn
-                  disabled={isUpdating}
-                  onClick={(e) => handleAddToCart(e, product, parseInt(qtyRef.current!.value))}
-                >
-                  {isUpdating ? <Loader /> : 'Add To Cart'}
-                </AddToCartBtn>
-              </AddToCartForm>
-              <ProductCategory>
-                Categories: <CategorySpan>{product.categories[0].name}</CategorySpan>
-              </ProductCategory>
-            </ProductInfoWrapperCol>
-          </ProductInfoWrapper>
-        </BasicGrid>
-        <LongDescription
-          dangerouslySetInnerHTML={{ __html: product.description }}
-        ></LongDescription>
-      </PageWrapper>
+      <ProductPageContent product={product} />
     </BasicContainer>
   )
 }
@@ -126,7 +22,6 @@ export default ProductPage
 
 export async function getStaticProps({ params: { slug } }: Params) {
   const productsRes = await fetcher(`/wp-json/wc/v3/products?slug=${slug}`)
-
   const found = await productsRes.json()
 
   return {

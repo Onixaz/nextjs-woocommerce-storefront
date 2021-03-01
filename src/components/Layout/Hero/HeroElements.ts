@@ -29,7 +29,7 @@ export const HeroHeading = styled.h1`
   transform: translate(-50%, -50%);
 `
 
-export const HeroSubheading = styled.h4`
+export const HeroSubheading = styled.h2`
   text-align: center;
   padding-top: 1rem;
   font-size: calc(0.75rem + 0.6vw);

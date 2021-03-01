@@ -19,7 +19,7 @@ const AccountPage: NextPage<AccountPageProps> = () => {
   return (
     <>
       <PageTitle
-        title="Login | Next.Js"
+        title="My Account | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />
       <BasicContainer>
