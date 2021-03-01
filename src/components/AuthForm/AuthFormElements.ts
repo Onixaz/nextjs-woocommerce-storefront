@@ -1,7 +1,11 @@
-import styled from 'styled-components'
+import styled, { ThemeConsumer } from 'styled-components'
 
 export const AuthFormWrapper = styled.form`
   max-width: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin: 0 auto;
 `
 
@@ -53,4 +57,41 @@ export const AuthFormError = styled.span`
 export const AuthFormLabel = styled.label`
   margin: 0.2rem 1rem;
   font-size: calc(0.9rem + 0.1vw);
+`
+
+export const AuthFormSubmitBtn = styled.button`
+  margin: 3rem auto;
+  min-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1rem + 0.1vw);
+  background-color: #333333;
+  border-color: #333333;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: all 0.2s ease-in-out;
+`
+export const AuthFormResponse = styled.p`
+  margin: 0.1rem 1rem;
+  padding: 0.5rem;
+  color: red;
+`
+
+export const AuthFormMessage = styled.p`
+  cursor: pointer;
+  margin: 0 auto;
+  max-width: 400px;
+  font-size: calc(1rem + 0.1vw);
+  letter-spacing: 1px;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: ${({ theme }) => theme.primaryPurple};
+  }
 `

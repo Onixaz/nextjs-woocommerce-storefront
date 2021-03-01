@@ -18,8 +18,8 @@ const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
   return (
     <>
       <CustomHead
-        title="Unofficial starter | Next.Js"
-        description="A starter for Next.Js with Styled-components and TS"
+        title="Woo Storefront | Next.Js"
+        description="Unofficial WooCommerce Storefront theme made with Next.Js and Styled-components"
       />
       <Hero />
 

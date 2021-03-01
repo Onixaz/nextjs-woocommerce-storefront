@@ -4,10 +4,16 @@ import {
   AuthFormFieldWrapper,
   AuthFormError,
   AuthFormWrapper,
+  AuthFormSubmitBtn,
+  AuthFormResponse,
+  AuthFormMessage,
 } from './AuthFormElements'
 import { SubmitHandler, useForm } from 'react-hook-form'
-
-import React, { useRef } from 'react'
+import { signIn } from 'next-auth/client'
+import React, { useRef, useState } from 'react'
+import { useRouter } from 'next/router'
+import { Loader } from '../../styles/Global/utils'
+import Link from 'next/link'
 
 interface AuthFormProps {
   isRegister: boolean
@@ -23,27 +29,67 @@ interface FormValues {
 
 const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
   const { register, handleSubmit, errors, watch } = useForm()
+  const [isSubmiting, setIsSubmiting] = useState(false)
+  const [response, setResponse] = useState('')
+  const router = useRouter()
   const password = useRef({})
   password.current = watch('password', '')
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    if (isRegister) {
-      const { username, first_name, last_name, password } = data
-      const req = await fetch('/api/users/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, first_name, last_name, password }),
-      })
-      const res = await req.json()
-    } else {
+    try {
+      setIsSubmiting((prev: boolean) => !prev)
+      if (isRegister) {
+        const req = await fetch('/api/users/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        })
+        const status = req.status
+        const { message } = await req.json()
+        if (status === 200) {
+          await signIn('credentials', {
+            redirect: false,
+            ...data,
+          })
+          router.push('account')
+        } else {
+          setResponse(message)
+        }
+      } else {
+        const response: any = await signIn('credentials', {
+          redirect: false,
+          ...data,
+        })
+        if (response.ok === true) {
+          router.push('account')
+        } else {
+          setResponse('Wrong username or password')
+        }
+      }
+      setIsSubmiting((prev: boolean) => !prev)
+    } catch (error) {
+      setIsSubmiting((prev: boolean) => !prev)
+      console.log(error)
     }
   }
   return (
     <AuthFormWrapper onSubmit={handleSubmit(onSubmit)}>
+      {!isRegister && (
+        <Link href="/register" passHref>
+          <AuthFormMessage>Don't have an account?</AuthFormMessage>
+        </Link>
+      )}
+
       <AuthFormFieldWrapper>
         <AuthFormLabel>Username</AuthFormLabel>
-        <AuthFormInput name="username" ref={register({ required: true })} />
-        {errors.username && <AuthFormError>This field is required</AuthFormError>}
+        <AuthFormInput
+          name="username"
+          ref={register({
+            required: 'This field is required',
+            pattern: { value: /^[a-zA-Z0-9_.-]*$/, message: 'Special characters are not allowed.' },
+          })}
+        />
+        {errors.username && <AuthFormError>{errors.username.message}</AuthFormError>}
       </AuthFormFieldWrapper>
       {isRegister && (
         <>
@@ -87,7 +133,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
             },
           })}
         />
-        {errors.passwordRepeat && <AuthFormError>{errors.passwordRepeat.message}</AuthFormError>}
+        {errors.password && <AuthFormError>{errors.password.message}</AuthFormError>}
       </AuthFormFieldWrapper>
 
       {isRegister && (
@@ -105,7 +151,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
         </AuthFormFieldWrapper>
       )}
 
-      <button type="submit">Submit</button>
+      <AuthFormSubmitBtn disabled={isSubmiting} type="submit">
+        {isSubmiting ? <Loader /> : isRegister ? 'Register' : 'Login'}
+      </AuthFormSubmitBtn>
+      <AuthFormResponse>{response}</AuthFormResponse>
     </AuthFormWrapper>
   )
 }
