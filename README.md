@@ -20,6 +20,7 @@ The idea behind this repo was to showcase the power of Next.js by building a fro
 * Static generation using getStaticProps and getStaticPaths.
 * WooCommerce REST API abstraction using Next's API routes (serverless functions).
 * Cart system using CoCart plugin.
+* User authorization / authentication using NextAuth.js 
 * Checkout system using Stripe as a payment method example.
 
 

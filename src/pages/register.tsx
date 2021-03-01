@@ -15,7 +15,7 @@ const RegisterPage: NextPage<ContactPageProps> = () => {
       />
       <BasicContainer>
         <SectionTitle>Register!</SectionTitle>
-        <AuthForm />
+        <AuthForm isRegister={true} />
       </BasicContainer>
     </>
   )

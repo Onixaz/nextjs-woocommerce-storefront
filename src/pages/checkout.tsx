@@ -59,7 +59,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
         type: 'card',
         card: cardElement,
       })
-      if (!stripeRes.paymentMethod?.id) return
+      if (!stripeRes.paymentMethod?.id) throw new Error(`Can't connect to Stripe...`)
 
       const { message } = await createOrder(
         itemsObj,
@@ -77,10 +77,11 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
         setServerMsg('Sorry something went wrong. Please try again later...')
       }
     } catch (error) {
-      setServerMsg('Sorry something went wrong. Please try again later...')
-
-      setIsProcessing(false)
       console.log(error)
+      setServerMsg('Sorry something went wrong. Please try again later...')
+      const newCart = await initCart()
+      setCart(newCart)
+      setIsProcessing(false)
     }
   }
 

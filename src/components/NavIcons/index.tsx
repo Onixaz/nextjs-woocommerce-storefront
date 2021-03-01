@@ -18,7 +18,7 @@ interface NavigationIconsProps {
 }
 
 const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }) => {
-  const session = useSession()
+  const [session] = useSession()
   const router = useRouter()
   const [cart] = useContext(CartContext)
   const totalQuantity =

@@ -19,7 +19,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     try {
       setIsUpdating((prev: boolean) => !prev)
       const newCart = await initCart()
-
+      if (!newCart) throw new Error(`Can't set remote cart. Check the CoCart url`)
       setCart(newCart!)
       localStorage.setItem('local_cart', JSON.stringify(newCart))
       setIsUpdating((prev: boolean) => !prev)

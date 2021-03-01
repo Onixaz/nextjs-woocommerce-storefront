@@ -39,7 +39,7 @@ export interface CartItem {
 }
 
 export interface Cart {
-  key: string
+  key: string | null
   timestamp: number
   items: CartItem[]
   total: number
