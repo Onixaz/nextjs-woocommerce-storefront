@@ -1,15 +1,15 @@
-import { BasicContainer, SectionTitle } from '../styles/Global/utils'
-
-import AuthForm from '../components/AuthForm'
-import CustomHead from '../components/CustomHead'
+import { BasicContainer } from '../styles/Global/utils'
+import AuthForm from '../components/Auth/AuthForm'
 import { NextPage } from 'next'
+import React from 'react'
+import PageTitle from '../components/Layout/Head/PageTitle'
 
 interface ContactPageProps {}
 
 const RegisterPage: NextPage<ContactPageProps> = () => {
   return (
     <>
-      <CustomHead
+      <PageTitle
         title="Register| Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />

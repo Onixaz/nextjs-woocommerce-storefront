@@ -6,10 +6,10 @@ import {
   ProductName,
   RegularPrice,
   SalePrice,
-} from './ProductElements'
+} from './ProductCardElements'
 
 import Link from 'next/link'
-import { Product } from '../../types'
+import { Product } from '../../../types'
 import React from 'react'
 
 interface ProductItemProps {

@@ -3,7 +3,7 @@ import { Provider as AuthProvider } from 'next-auth/client'
 import { ThemeProvider } from 'styled-components'
 import theme from '../styles/Global/theme'
 import GlobalStyle from '../styles/Global/main'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/Base'
 import CartProvider from '../context/cart'
 
 //node-fetch self signed cert fix for getStaticProps

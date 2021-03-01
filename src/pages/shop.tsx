@@ -1,11 +1,10 @@
 import { BasicContainer, BasicGrid } from '../styles/Global/utils'
-
-import CustomHead from '../components/CustomHead'
 import { NextPage } from 'next'
 import { Product } from '../types/index'
 import React from 'react'
-import SingleProduct from '../components/Product'
+import SingleProduct from '../components/Product/ProductCard'
 import { fetcher } from '../utils/functions'
+import PageTitle from '../components/Layout/Head/PageTitle'
 
 interface ShopPageProps {
   products: Product[]
@@ -14,7 +13,7 @@ interface ShopPageProps {
 const ShopPage: NextPage<ShopPageProps> = ({ products }) => {
   return (
     <>
-      <CustomHead
+      <PageTitle
         title="Shop | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />

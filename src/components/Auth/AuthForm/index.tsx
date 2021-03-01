@@ -12,7 +12,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { signIn } from 'next-auth/client'
 import React, { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Loader, SectionTitle } from '../../styles/Global/utils'
+import { Loader, SectionTitle } from '../../../styles/Global/utils'
 import Link from 'next/link'
 
 interface AuthFormProps {

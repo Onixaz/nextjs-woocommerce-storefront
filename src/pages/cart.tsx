@@ -13,10 +13,10 @@ import {
 import React, { useContext } from 'react'
 
 import { CartContext } from '../context/cart'
-import CustomHead from '../components/CustomHead'
 import Link from 'next/link'
 import { NextPage } from 'next'
-import SingleCartItem from '../components/CartItem'
+import SingleCartItem from '../components/Cart/CartItem'
+import PageTitle from '../components/Layout/Head/PageTitle'
 
 interface CartPageProps {}
 
@@ -25,7 +25,7 @@ const CartPage: NextPage<CartPageProps> = () => {
 
   return (
     <>
-      <CustomHead
+      <PageTitle
         title="Cart | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />

@@ -9,7 +9,7 @@ import {
 } from './NavIconsElements'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { CartContext } from '../../context/cart'
+import { CartContext } from '../../../../context/cart'
 import { useSession } from 'next-auth/client'
 
 interface NavigationIconsProps {

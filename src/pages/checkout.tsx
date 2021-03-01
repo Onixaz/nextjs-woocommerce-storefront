@@ -11,10 +11,9 @@ import {
   PrivacyNotice,
   ServerMessage,
 } from '../styles/Individual/CheckoutPageElements'
-import CheckoutAddressForm from '../components/AddressForm/AddressFormContent'
-import PaymentForm from '../components/PaymentForm'
-import OrderSummary from '../components/OrderSummary'
-import CustomHead from '../components/CustomHead'
+import CheckoutAddressForm from '../components/Address/AddressFormContent'
+import PaymentForm from '../components/Payment/PaymentForm'
+import OrderSummary from '../components/Order/OrderSummary'
 import { BasicContainer, Loader, SectionTitle, Subtitle } from '../styles/Global/utils'
 import { useRouter } from 'next/router'
 import { CartContext } from '../context/cart'
@@ -22,6 +21,7 @@ import { NextPage } from 'next'
 
 import { createOrder, initCart } from '../utils/functions'
 import { CartItem, Customer } from '../types'
+import PageTitle from '../components/Layout/Head/PageTitle'
 
 interface CheckoutPageProps {}
 
@@ -87,7 +87,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
 
   return (
     <>
-      <CustomHead
+      <PageTitle
         title="Unofficial starter | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />

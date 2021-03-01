@@ -13,12 +13,12 @@ import {
   UpdateText,
 } from './CartItemElements'
 import React, { useContext, useRef, useState } from 'react'
-import { cartUpdater, initCart } from '../../utils/functions'
+import { cartUpdater, initCart } from '../../../utils/functions'
 
-import { CartContext } from '../../context/cart'
-import { CartItem } from '../../types'
+import { CartContext } from '../../../context/cart'
+import { CartItem } from '../../../types'
 import Link from 'next/link'
-import { Loader } from '../../styles/Global/utils'
+import { Loader } from '../../../styles/Global/utils'
 
 interface CartItemProps {
   item: CartItem

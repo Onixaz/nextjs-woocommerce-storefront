@@ -1,7 +1,8 @@
 import { NextPage } from 'next'
 import { signOut, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
-import CustomHead from '../components/CustomHead'
+import React from 'react'
+import PageTitle from '../components/Layout/Head/PageTitle'
 import { BasicContainer, SectionTitle } from '../styles/Global/utils'
 
 interface AccountPageProps {}
@@ -17,7 +18,7 @@ const AccountPage: NextPage<AccountPageProps> = () => {
 
   return (
     <>
-      <CustomHead
+      <PageTitle
         title="Login | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />

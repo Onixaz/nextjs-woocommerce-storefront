@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
-import CookiesConsent from '../Cookies'
+import CookiesConsent from '../../Cookies'
 import { Elements } from '@stripe/react-stripe-js'
 import Footer from '../Footer'
 import LayoutElement from './LayoutElements'
-import Navbar from '../Navbar'
-import Seo from '../Seo'
-import Sidebar from '../Sidebar'
+import Navbar from '../Navigation/Navbar'
+import Seo from '../Head/Seo'
+import Sidebar from '../Navigation/Sidebar'
 import { loadStripe } from '@stripe/stripe-js'
 
 interface LayoutProps {}

@@ -1,13 +1,13 @@
 import { BasicContainer, SectionTitle } from '../styles/Global/utils'
 
-import CustomHead from '../components/CustomHead'
 import { NextPage } from 'next'
 import React from 'react'
+import PageTitle from '../components/Layout/Head/PageTitle'
 
 const SuccessPage: NextPage = () => {
   return (
     <>
-      <CustomHead
+      <PageTitle
         title="Success | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />

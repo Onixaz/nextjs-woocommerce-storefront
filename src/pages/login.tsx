@@ -1,16 +1,16 @@
 import React from 'react'
 
-import { BasicContainer, SectionTitle } from '../styles/Global/utils'
-import CustomHead from '../components/CustomHead'
+import { BasicContainer } from '../styles/Global/utils'
 import { NextPage } from 'next'
-import AuthForm from '../components/AuthForm'
+import AuthForm from '../components/Auth/AuthForm'
+import PageTitle from '../components/Layout/Head/PageTitle'
 
 interface LoginPageProps {}
 
 const LoginPage: NextPage<LoginPageProps> = () => {
   return (
     <>
-      <CustomHead
+      <PageTitle
         title="Login | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />

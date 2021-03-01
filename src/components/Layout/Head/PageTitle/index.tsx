@@ -6,7 +6,7 @@ interface CustomHeadProps {
   description: string
 }
 
-const CustomHead: React.FC<CustomHeadProps> = ({ title, description }) => {
+const PageTitle: React.FC<CustomHeadProps> = ({ title, description }) => {
   return (
     <Head>
       <title>{title}</title>
@@ -15,4 +15,4 @@ const CustomHead: React.FC<CustomHeadProps> = ({ title, description }) => {
   )
 }
 
-export default CustomHead
+export default PageTitle

@@ -8,7 +8,7 @@ import {
 } from './OrderSummaryElements'
 import React, { useContext } from 'react'
 
-import { CartContext } from '../../context/cart'
+import { CartContext } from '../../../context/cart'
 
 interface OrderSummaryProps {}
 

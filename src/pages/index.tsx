@@ -1,13 +1,12 @@
 import { BasicContainer, BasicGrid, SectionTitle } from '../styles/Global/utils'
 import { Category, Product } from '../types'
-
-import CustomHead from '../components/CustomHead'
-import Hero from '../components/Hero'
+import Hero from '../components/Layout/Hero'
 import { NextPage } from 'next'
 import React from 'react'
 import SingleCategory from '../components/Category'
-import SingleProduct from '../components/Product'
+import SingleProduct from '../components/Product/ProductCard'
 import { fetcher } from '../utils/functions'
+import PageTitle from '../components/Layout/Head/PageTitle'
 
 interface IndexPageProps {
   categories: Category[]
@@ -17,7 +16,7 @@ interface IndexPageProps {
 const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
   return (
     <>
-      <CustomHead
+      <PageTitle
         title="Woo Storefront | Next.Js"
         description="Unofficial WooCommerce Storefront theme made with Next.Js and Styled-components"
       />
