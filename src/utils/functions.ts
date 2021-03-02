@@ -52,7 +52,7 @@ export const cartUpdater = (cart: Cart, data: Response) => {
 
 export const fetcher = async (url: string) => {
   const token = await generateToken(process.env.WP_JWT_AUTH_SECRET_KEY!)
-  //const token = "dsadsadasdsa"
+
   return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -66,6 +66,7 @@ export const fetcher = async (url: string) => {
 
 export const poster = async (url: string, data: object, method: string) => {
   const token = await generateToken(process.env.WP_JWT_AUTH_SECRET_KEY!)
+
   return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
     headers: {
       Authorization: `Bearer ${token}`,

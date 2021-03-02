@@ -3,11 +3,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   })
   module.exports = withBundleAnalyzer({})
 
-const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
+// const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
 
-module.exports = {
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    config.plugins.push(new DuplicatePackageCheckerPlugin())
-    return config
-  },
-}
+// module.exports = {
+//   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+//     config.plugins.push(new DuplicatePackageCheckerPlugin())
+//     return config
+//   },
+// }

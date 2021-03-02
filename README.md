@@ -74,6 +74,7 @@ Note: In case you're not getting the **x-cocart-api key** when calling CoCart en
 
 * Client side fetching for dynamic data like prices / account page.
 * User registration and password reset functionality
+* Image optimization
 * Pages for categories
 * Variable products
 * Shipping options
