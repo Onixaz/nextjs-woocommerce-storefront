@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx --fix",
-    "postbuild": "next-sitemap --config next-sitemap.config.js"
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "husky": {
     "hooks": {
@@ -26,13 +29,14 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@next/bundle-analyzer": "^10.0.7",
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.11.0",
-    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "next": "^10.0.5",
-    "next-auth": "^3.5.1",
+    "next-auth": "^3.6.1",
     "react": "^16.13.1",
     "react-cookie-consent": "^6.2.1",
     "react-dom": "^16.13.1",
@@ -51,6 +55,7 @@
     "@typescript-eslint/eslint-plugin": "^3.6.1",
     "@typescript-eslint/parser": "^3.6.1",
     "babel-plugin-styled-components": "^1.12.0",
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.3.1",

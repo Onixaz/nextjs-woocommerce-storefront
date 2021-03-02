@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.pajustudio.net
+
+# Sitemaps
+Sitemap: https://www.pajustudio.net/sitemap.xml
