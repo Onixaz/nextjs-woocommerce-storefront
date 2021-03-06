@@ -55,6 +55,7 @@ It should consist of
 
 ``` 
 NEXT_PUBLIC_WP_API_URL=https://example.com
+NEXTAUTH_URL=http://localhost:3000 // change to actual production url
 WP_JWT_AUTH_SECRET_KEY=your-random-secret
 NEXTAUTH_SECRET_KEY=your-another-random-secret
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your-stripe-publishable-key
