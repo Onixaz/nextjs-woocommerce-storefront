@@ -5,14 +5,46 @@ import jwt from 'jsonwebtoken'
 export const generateToken = () => {
   const payload = {
     iss: `${process.env.NEXT_PUBLIC_WP_API_URL}`,
+    iat: Math.floor(Date.now() / 1000) - 30,
     data: {
       user: {
         id: '1',
       },
     },
   }
+  const token = jwt.sign(payload, `${process.env.WP_JWT_AUTH_SECRET_KEY!}`)
+  console.log(token)
+  return token
+}
 
-  return jwt.sign(payload, `${process.env.WP_JWT_AUTH_SECRET_KEY!}`)
+export const fetcher = async (url: string) => {
+  const token = generateToken()
+
+  return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+    credentials: 'include',
+    mode: 'cors',
+  })
+}
+
+export const poster = async (url: string, data: object, method: string) => {
+  const token = generateToken()
+
+  return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+    method: method,
+    body: JSON.stringify(data),
+    credentials: 'include',
+    mode: 'cors',
+  })
 }
 
 export const initCart = async () => {
@@ -48,36 +80,6 @@ export const cartUpdater = (cart: Cart, data: Response) => {
     newCart.total = 0
   }
   return newCart
-}
-
-export const fetcher = async (url: string) => {
-  const token = generateToken()
-  console.log(token)
-  return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-
-      'Content-Type': 'application/json; charset=utf-8',
-    },
-    credentials: 'include',
-    mode: 'cors',
-  })
-}
-
-export const poster = async (url: string, data: object, method: string) => {
-  const token = generateToken()
-
-  return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-
-      'Content-Type': 'application/json; charset=utf-8',
-    },
-    method: method,
-    body: JSON.stringify(data),
-    credentials: 'include',
-    mode: 'cors',
-  })
 }
 
 export const createOrder = async (
