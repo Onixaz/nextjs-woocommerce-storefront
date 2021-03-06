@@ -12,7 +12,7 @@ export const generateToken = async () => {
     },
   }
 
-  return jwt.sign(payload, `${process.env.WP_JWT_AUTH_SECRET_KEY!}`, { expiresIn: '1h' })
+  return jwt.sign(payload, `${process.env.WP_JWT_AUTH_SECRET_KEY!}`)
 }
 
 export const initCart = async () => {
