@@ -13,7 +13,7 @@ export const generateToken = () => {
     },
   }
 
-  return jwt.sign(payload, `${process.env.WP_JWT_AUTH_SECRET!}`)
+  return jwt.sign(payload, `${process.env.WP_JWT_AUTH_SECRET_KEY!}`, { expiresIn: 60 })
 }
 
 export const fetcher = async (url: string) => {
