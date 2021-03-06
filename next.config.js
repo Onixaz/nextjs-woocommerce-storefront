@@ -3,7 +3,3 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   })
   module.exports = withBundleAnalyzer({})
 
-  module.exports = {
-    // Target must be serverless
-    target: "serverless",
-  };
