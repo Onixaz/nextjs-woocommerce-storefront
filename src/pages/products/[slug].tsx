@@ -28,7 +28,7 @@ export async function getStaticProps({ params: { slug } }: Params) {
 export async function getStaticPaths() {
   const productsRes = await fetcher(`/wp-json/wc/v3/products?per_page=30`)
   const products = await productsRes.json()
-  console.log(products.status)
+  console.log(products)
   const publishedProducts = products.filter((product: { [key: string]: string }) => {
     return product.status === 'publish'
   })

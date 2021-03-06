@@ -2,7 +2,7 @@ import { Cart, CartItem, Customer } from '../types'
 
 import jwt from 'jsonwebtoken'
 
-export const generateToken = async () => {
+export const generateToken = () => {
   const payload = {
     iss: `${process.env.NEXT_PUBLIC_WP_API_URL}`,
     data: {
@@ -51,7 +51,7 @@ export const cartUpdater = (cart: Cart, data: Response) => {
 }
 
 export const fetcher = async (url: string) => {
-  const token = await generateToken()
+  const token = generateToken()
   console.log(token)
   return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
     headers: {
@@ -65,7 +65,7 @@ export const fetcher = async (url: string) => {
 }
 
 export const poster = async (url: string, data: object, method: string) => {
-  const token = await generateToken()
+  const token = generateToken()
 
   return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
     headers: {
