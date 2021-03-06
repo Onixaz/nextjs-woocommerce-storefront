@@ -75,7 +75,7 @@ Note: In case you're not getting the **x-cocart-api key** when calling CoCart en
 
 ## Deployment
 
-You can easily deploy on [Netlify](https://www.netlify.com) using [Next.js Build Plugin](https://github.com/netlify/netlify-plugin-nextjs). You can use [direct in-app installation link](direct in-app installation link), no further configuration is needed. 
+You can easily deploy on [Netlify](https://www.netlify.com) using [Next.js Build Plugin](https://github.com/netlify/netlify-plugin-nextjs). You can use [direct in-app installation link](http://app.netlify.com/plugins/@netlify/plugin-nextjs/install), no further configuration is needed. 
 
 Just make sure you set your env variables. For more details refer to [https://www.netlify.com/blog/2020/12/10/environment-variables-in-next.js-and-netlify/](https://www.netlify.com/blog/2020/12/10/environment-variables-in-next.js-and-netlify/).
 
