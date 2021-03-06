@@ -1,7 +1,7 @@
-import { BasicContainer, SectionTitle } from '../styles/Global/utils'
+import { BasicContainer, SectionTitle } from '../styles/utils'
 
 import { NextPage } from 'next'
-import PageTitle from '../components/Layout/Head/PageTitle'
+import PageTitle from '../components/PageTitle'
 
 interface ContactPageProps {}
 

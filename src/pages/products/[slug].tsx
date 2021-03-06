@@ -1,21 +1,15 @@
 import { NextPage } from 'next'
 import { Product } from '../../types'
-import React from 'react'
 import { fetcher } from '../../utils/functions'
 import { Params } from 'next/dist/next-server/server/router'
-import { BasicContainer } from '../../styles/Global/utils'
-import ProductPageContent from '../../components/Product/ProductPageContent'
+import ProductPageContainer from '../../containers/Product'
 
 interface ProductPageProps {
   product: Product
 }
 
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
-  return (
-    <BasicContainer>
-      <ProductPageContent product={product} />
-    </BasicContainer>
-  )
+  return <ProductPageContainer product={product} />
 }
 
 export default ProductPage

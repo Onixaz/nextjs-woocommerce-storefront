@@ -1,12 +1,4 @@
-import {
-  Img,
-  PriceWrapper,
-  ProductCard,
-  ProductImgWrapper,
-  ProductName,
-  RegularPrice,
-  SalePrice,
-} from './ProductCardElements'
+import * as ProductCardStyles from './styled'
 
 import Link from 'next/link'
 import { Product } from '../../../types'
@@ -19,30 +11,32 @@ interface ProductItemProps {
 const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
   return (
     <Link href={`/products/${product.slug}`}>
-      <ProductCard>
-        <ProductImgWrapper>
+      <ProductCardStyles.Wrapper>
+        <ProductCardStyles.ImgWrapper>
           {product.images && product.images.length > 0 ? (
-            <Img src={product.images[0].src} alt={product.images[0].alt} />
+            <ProductCardStyles.Img src={product.images[0].src} alt={product.images[0].alt} />
           ) : null}
-        </ProductImgWrapper>
+        </ProductCardStyles.ImgWrapper>
 
-        <ProductName>{product.name}</ProductName>
+        <ProductCardStyles.Name>{product.name}</ProductCardStyles.Name>
 
-        <PriceWrapper>
+        <ProductCardStyles.PriceWrapper>
           {product.sale_price?.length === 0 ? (
-            <RegularPrice isOnSale={false}>
+            <ProductCardStyles.RegularPrice isOnSale={false}>
               ${parseFloat(product.regular_price).toFixed(2)}
-            </RegularPrice>
+            </ProductCardStyles.RegularPrice>
           ) : (
             <>
-              <RegularPrice isOnSale={true}>
+              <ProductCardStyles.RegularPrice isOnSale={true}>
                 ${parseFloat(product.regular_price).toFixed(2)}
-              </RegularPrice>
-              <SalePrice>${parseFloat(product.sale_price).toFixed(2)}</SalePrice>
+              </ProductCardStyles.RegularPrice>
+              <ProductCardStyles.SalePrice>
+                ${parseFloat(product.sale_price).toFixed(2)}
+              </ProductCardStyles.SalePrice>
             </>
           )}
-        </PriceWrapper>
-      </ProductCard>
+        </ProductCardStyles.PriceWrapper>
+      </ProductCardStyles.Wrapper>
     </Link>
   )
 }

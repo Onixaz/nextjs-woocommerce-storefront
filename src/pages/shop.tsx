@@ -1,10 +1,10 @@
-import { BasicContainer, BasicGrid } from '../styles/Global/utils'
+import { BasicContainer, BasicGrid } from '../styles/utils'
 import { NextPage } from 'next'
 import { Product } from '../types/index'
 import React from 'react'
 import SingleProduct from '../components/Product/ProductCard'
 import { fetcher } from '../utils/functions'
-import PageTitle from '../components/Layout/Head/PageTitle'
+import PageTitle from '../components/PageTitle'
 
 interface ShopPageProps {
   products: Product[]

@@ -1,12 +1,12 @@
-import { BasicContainer, BasicGrid, SectionTitle } from '../styles/Global/utils'
+import { BasicContainer, BasicGrid, SectionTitle } from '../styles/utils'
 import { Category, Product } from '../types'
-import Hero from '../components/Layout/Hero'
+import Hero from '../components/Hero'
 import { NextPage } from 'next'
 import React from 'react'
 import SingleCategory from '../components/Category'
 import SingleProduct from '../components/Product/ProductCard'
 import { fetcher } from '../utils/functions'
-import PageTitle from '../components/Layout/Head/PageTitle'
+import PageTitle from '../components/PageTitle'
 
 interface IndexPageProps {
   categories: Category[]

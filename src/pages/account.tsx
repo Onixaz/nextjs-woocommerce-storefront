@@ -2,8 +2,8 @@ import { NextPage } from 'next'
 import { signOut, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import React from 'react'
-import PageTitle from '../components/Layout/Head/PageTitle'
-import { BasicContainer, SectionTitle } from '../styles/Global/utils'
+import PageTitle from '../components/PageTitle'
+import { BasicContainer, SectionTitle } from '../styles/utils'
 
 interface AccountPageProps {}
 

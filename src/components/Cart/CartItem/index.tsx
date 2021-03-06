@@ -1,24 +1,10 @@
-import {
-  CartEl,
-  CartItemProductSubtotal,
-  CartRow,
-  InputField,
-  ProductLink,
-  QuantityForm,
-  RemoveFromCartBtn,
-  RemoveIcon,
-  RemovingLoader,
-  Thumbnail,
-  UpdateCartItemBtn,
-  UpdateText,
-} from './CartItemElements'
+import * as CartItemStyles from './styled'
 import React, { useContext, useRef, useState } from 'react'
 import { cartUpdater, initCart } from '../../../utils/functions'
-
 import { CartContext } from '../../../context/cart'
 import { CartItem } from '../../../types'
 import Link from 'next/link'
-import { Loader } from '../../../styles/Global/utils'
+import { Loader } from '../../../styles/utils'
 
 interface CartItemProps {
   item: CartItem
@@ -29,11 +15,11 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
   const [isRemoving, setIsRemoving] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
 
-  const qty = useRef<HTMLInputElement | null>(null)
+  const quantityRef = useRef<HTMLInputElement | null>(null)
 
   const removeItem = async (item: CartItem) => {
-    setIsRemoving((prev: boolean) => !prev)
-    setIsUpdating((prev: boolean) => !prev)
+    setIsRemoving(true)
+    setIsUpdating(true)
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`,
@@ -51,21 +37,21 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
 
       const data = await res.json()
 
-      setIsUpdating((prev: boolean) => !prev)
-      setIsRemoving((prev: boolean) => !prev)
+      setIsUpdating(false)
+      setIsRemoving(false)
       setCart(() => cartUpdater(cart, data))
     } catch (error) {
       const newCart = await initCart()
       setCart(newCart)
-      setIsUpdating((prev: boolean) => !prev)
-      setIsRemoving((prev: boolean) => !prev)
+      setIsUpdating(false)
+      setIsRemoving(false)
     }
   }
 
   const updateItem = async (e: React.SyntheticEvent, item: CartItem, quantity: any) => {
     e.preventDefault()
-    setIsUpdating((prev: boolean) => !prev)
-    setIsAnimating((prev: boolean) => !prev)
+    setIsUpdating(true)
+    setIsAnimating(true)
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/item?cart_key=${cart.key}`,
@@ -84,59 +70,65 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
 
       const data = await res.json()
 
-      setIsUpdating((prev: boolean) => !prev)
-      setIsAnimating((prev: boolean) => !prev)
+      setIsUpdating(false)
+      setIsAnimating(false)
       setCart(() => cartUpdater(cart, data))
     } catch (error) {
       console.log(error)
       const newCart = await initCart()
       setCart(newCart)
-      setIsAnimating((prev: boolean) => !prev)
-      setIsUpdating((prev: boolean) => !prev)
+      setIsAnimating(false)
+      setIsUpdating(false)
     }
   }
+
   return (
     <>
-      <CartRow>
-        <CartEl>
-          <RemoveFromCartBtn disabled={isUpdating} onClick={() => removeItem(item)}>
-            {isRemoving ? <RemovingLoader /> : <RemoveIcon />}{' '}
-          </RemoveFromCartBtn>
-        </CartEl>
-        <CartEl>
-          <Thumbnail src={item.image} />
-        </CartEl>
-        <CartEl>
+      <CartItemStyles.CartRow>
+        <CartItemStyles.CartEl>
+          <CartItemStyles.RemoveFromCartBtn disabled={isUpdating} onClick={() => removeItem(item)}>
+            {isRemoving ? <CartItemStyles.RemovingLoader /> : <CartItemStyles.RemoveIcon />}{' '}
+          </CartItemStyles.RemoveFromCartBtn>
+        </CartItemStyles.CartEl>
+        <CartItemStyles.CartEl>
+          <CartItemStyles.Thumbnail src={item.image} alt={item.slug} />
+        </CartItemStyles.CartEl>
+        <CartItemStyles.CartEl>
           <Link href={`/products/${item.slug}`}>
-            <ProductLink>{item.product_name}</ProductLink>
+            <CartItemStyles.ProductLink>{item.product_name}</CartItemStyles.ProductLink>
           </Link>
-        </CartEl>
-        <CartEl>{item.product_price}</CartEl>
-        <CartEl>
-          <QuantityForm>
-            <InputField
+        </CartItemStyles.CartEl>
+        <CartItemStyles.CartEl>{item.product_price}</CartItemStyles.CartEl>
+        <CartItemStyles.CartEl>
+          <CartItemStyles.QuantityForm>
+            <CartItemStyles.InputField
               type="number"
-              //onChange={(e) => setQty(parseInt(e.target.value))}
               defaultValue={item.quantity}
               min="1"
-              ref={qty}
-            ></InputField>
-            <UpdateCartItemBtn
+              ref={quantityRef}
+            ></CartItemStyles.InputField>
+            <CartItemStyles.UpdateCartItemBtn
               disabled={isUpdating}
               onClick={(e) => {
-                updateItem(e, item, parseInt(qty.current!.value))
+                updateItem(e, item, parseInt(quantityRef.current!.value))
               }}
             >
-              {isAnimating ? <Loader /> : <UpdateText>Update</UpdateText>}
-            </UpdateCartItemBtn>
-          </QuantityForm>
-        </CartEl>
-        <CartEl>
-          <CartItemProductSubtotal>${item.line_total?.toFixed(2)}</CartItemProductSubtotal>
-        </CartEl>
-      </CartRow>
+              {isAnimating ? (
+                <Loader />
+              ) : (
+                <CartItemStyles.UpdateText>Update</CartItemStyles.UpdateText>
+              )}
+            </CartItemStyles.UpdateCartItemBtn>
+          </CartItemStyles.QuantityForm>
+        </CartItemStyles.CartEl>
+        <CartItemStyles.CartEl>
+          <CartItemStyles.ProductSubtotal>
+            ${item.line_total?.toFixed(2)}
+          </CartItemStyles.ProductSubtotal>
+        </CartItemStyles.CartEl>
+      </CartItemStyles.CartRow>
     </>
   )
 }
 
-export default SingleCartItem
+export default React.memo(SingleCartItem)
