@@ -16,7 +16,9 @@ export default ProductPage
 
 export async function getStaticProps({ params: { slug } }: Params) {
   const productsRes = await fetcher(`/wp-json/wc/v3/products?slug=${slug}`)
+
   const found = await productsRes.json()
+  console.log(found)
 
   return {
     props: {

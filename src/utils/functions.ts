@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 export const generateToken = () => {
   const payload = {
     iss: `${process.env.NEXT_PUBLIC_WP_API_URL}`,
-    iat: Math.floor(Date.now() / 1000) - 30,
+
     data: {
       user: {
         id: '1',
