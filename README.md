@@ -19,6 +19,7 @@ The idea behind this repo was to showcase the power of Next.js by building a fro
 * WooCommerce Storefront theme inspired responsive design.
 * Static page generation using getStaticProps and getStaticPaths.
 * WooCommerce REST API abstraction using Next's API routes (serverless functions).
+* JWT based authentication for data fetching / endpoint protection.
 * Cart system using CoCart plugin.
 * Customer registration and authentication using NextAuth.js. 
 * Checkout system using Stripe as a payment method example.
@@ -71,17 +72,26 @@ Finally **npm run dev.**
 
 Note: In case you're not getting the **x-cocart-api key** when calling CoCart endpoint from a response header, allow cross origin headers using [https://github.com/co-cart/co-cart-tweaks](https://github.com/co-cart/co-cart-tweaks)
 
+
+## Deployment
+
+You can easily deploy on [Netlify](https://www.netlify.com) using [Next.js Build Plugin](https://github.com/netlify/netlify-plugin-nextjs). You can use [direct in-app installation link](direct in-app installation link), no further configuration is needed. 
+
+Just make sure you set your env variables. For more details refer to [https://www.netlify.com/blog/2020/12/10/environment-variables-in-next.js-and-netlify/](https://www.netlify.com/blog/2020/12/10/environment-variables-in-next.js-and-netlify/).
+
 ##  Todo
 
 * ~~User registration and login functionality.~~
 * Client side fetching for dynamic data like prices / user page (details, orders, addresses etc.).
 * Image optimization
 * Pages for categories
-* Variable products
 * Shipping options
 * Blog/About/Contact Pages
 * Search
 * Coupons system
+* Product reviews
+* Variable products
+* Related products
 * More payment methods
 
 
