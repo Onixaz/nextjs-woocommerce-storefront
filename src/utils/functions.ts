@@ -12,9 +12,8 @@ export const generateToken = () => {
       },
     },
   }
-  const token = jwt.sign(payload, `${process.env.WP_JWT_AUTH_SECRET_KEY!}`)
-  console.log(token)
-  return token
+
+  return jwt.sign(payload, `${process.env.WP_JWT_AUTH_SECRET!}`)
 }
 
 export const fetcher = async (url: string) => {
@@ -24,7 +23,7 @@ export const fetcher = async (url: string) => {
     headers: {
       Authorization: `Bearer ${token}`,
 
-      'Content-Type': 'application/json; charset=utf-8',
+      'Content-Type': 'application/json',
     },
     credentials: 'include',
     mode: 'cors',
@@ -38,7 +37,7 @@ export const poster = async (url: string, data: object, method: string) => {
     headers: {
       Authorization: `Bearer ${token}`,
 
-      'Content-Type': 'application/json; charset=utf-8',
+      'Content-Type': 'application/json',
     },
     method: method,
     body: JSON.stringify(data),
