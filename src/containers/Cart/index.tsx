@@ -15,7 +15,7 @@ const CartPageContainer: NextPage<CartPageProps> = () => {
   return (
     <BasicContainer>
       <CartPageStyles.Wrapper>
-        {cart.items && cart.items.length > 0 ? (
+        {cart.items && cart.total > 0 ? (
           <>
             <SectionTitle>Cart</SectionTitle>
             <CartGrid items={cart.items} />

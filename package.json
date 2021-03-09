@@ -54,7 +54,7 @@
     "@typescript-eslint/eslint-plugin": "^3.6.1",
     "@typescript-eslint/parser": "^3.6.1",
     "babel-plugin-styled-components": "^1.12.0",
-    "duplicate-package-checker-webpack-plugin": "^3.0.0",
+   
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.3.1",

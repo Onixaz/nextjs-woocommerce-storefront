@@ -1,15 +1,22 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import Stripe from 'stripe'
-import { Customer } from '../../../types'
+import { CartItem, Customer } from '../../../types'
 import { poster } from '../../../utils/functions'
+
+interface OrderDetails {
+  customer: Customer
+  items: CartItem[]
+  payment: string
+  total: number
+}
 
 const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY!}`, { apiVersion: '2020-08-27' })
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Method not allowed' })
 
-  const { customer, items, payment, total } = req.body
+  const { customer, items, payment, total }: OrderDetails = req.body
 
   if (!customer || !items || !payment || !total)
     return res.status(400).json({ message: 'Bad request' })
