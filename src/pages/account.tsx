@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import AccountContainer from '../containers/Account'
+//import AccountPageContainer from '../containers/Account'
 import PageTitle from '../components/PageTitle'
 import { BasicContainer } from '../styles/utils'
 
@@ -12,9 +12,7 @@ const AccountPage: NextPage<AboutPageProps> = () => {
         title="My account | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />
-      <BasicContainer>
-        <AccountContainer />
-      </BasicContainer>
+      <BasicContainer>{/* <AccountPageContainer /> */}</BasicContainer>
     </>
   )
 }
