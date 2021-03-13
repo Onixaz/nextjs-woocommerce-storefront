@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import PageTitle from '../components/PageTitle'
 import AccountPageContainer from '../containers/Account'
 
-import { BasicContainer, SectionTitle } from '../styles/utils'
+import { BasicContainer } from '../styles/utils'
 
 interface AboutPageProps {}
 
