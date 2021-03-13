@@ -48,17 +48,14 @@ export const poster = async (url: string, data: object, method: string) => {
 
 export const initCart = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/get-cart`)
-
   const cartKey = res.headers.get('x-cocart-api')
 
-  const newCart = {
+  return {
     items: [],
     key: cartKey,
     timestamp: new Date().getTime(),
     total: 0,
   }
-
-  return newCart
 }
 
 export const clearCart = async (key: string) => {
@@ -95,6 +92,6 @@ export const createOrder = async (
     },
     body: JSON.stringify({ items, customer, total, payment }),
   })
-  const json = await res.json()
-  return json
+
+  return await res.json()
 }

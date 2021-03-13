@@ -1,5 +1,3 @@
-import { BasicContainer } from '../styles/utils'
-import AuthForm from '../components/AuthForm'
 import { NextPage } from 'next'
 import React from 'react'
 import PageTitle from '../components/PageTitle'

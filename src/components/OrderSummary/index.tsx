@@ -1,7 +1,5 @@
 import * as OrderSummaryStyles from './styled'
-import React, { useContext } from 'react'
-
-import { CartContext } from '../../context/cart'
+import React from 'react'
 import { CartItem } from '../../types'
 
 interface OrderSummaryProps {

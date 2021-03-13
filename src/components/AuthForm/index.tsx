@@ -46,11 +46,11 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
           setResponse(message)
         }
       } else {
-        const response: any = await signIn('credentials', {
+        const user: any = await signIn('credentials', {
           redirect: false,
           ...data,
         })
-        if (response.ok === true) {
+        if (user.ok === true) {
           router.push('account')
         } else {
           setResponse('Wrong username or password')

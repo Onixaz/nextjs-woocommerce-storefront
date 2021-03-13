@@ -32,10 +32,10 @@ const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
         </BasicGrid>
         <SectionTitle>Featured Products</SectionTitle>
         <BasicGrid lg={4} md={3} sm={2} xs={1}>
-          {featured?.map((featured: Product) => {
+          {featured?.map((product: Product) => {
             return (
-              <React.Fragment key={featured.id}>
-                <SingleProduct product={featured} />
+              <React.Fragment key={product.id}>
+                <SingleProduct product={product} />
               </React.Fragment>
             )
           })}

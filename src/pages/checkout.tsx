@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import PageTitle from '../components/PageTitle'
-import CheckoutPageContent from '../containers/Checkout'
+import CheckoutPageContainer from '../containers/Checkout'
 
 interface CheckoutPageProps {}
 
@@ -12,7 +12,7 @@ const CheckoutPage: NextPage<CheckoutPageProps> = () => {
         description="A starter for Next.Js with Styled-components and TS"
       />
 
-      <CheckoutPageContent />
+      <CheckoutPageContainer />
     </>
   )
 }
