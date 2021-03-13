@@ -56,9 +56,7 @@ export const SumItemTotal = styled.li`
   max-width: 160px;
   margin: 0 auto;
   font-size: calc(0.9rem + 0.1vw);
-
   color: ${({ theme }) => theme.primaryText};
-  //opacity: 0.8;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -77,9 +75,9 @@ export const SumItemName = styled.li`
   max-width: 160px;
   margin: 0 auto;
   font-size: calc(0.9rem + 0.1vw);
-  //font-weight: bolder;
+  white-space: nowrap;
   color: ${({ theme }) => theme.primaryText};
-  //opacity: 0.8;
+
   text-align: center;
   display: flex;
   justify-content: center;

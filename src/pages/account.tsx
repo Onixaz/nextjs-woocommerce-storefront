@@ -1,36 +1,20 @@
 import { NextPage } from 'next'
-import { signOut, useSession } from 'next-auth/client'
-import { useRouter } from 'next/router'
-import React from 'react'
 import PageTitle from '../components/PageTitle'
+import AccountPageContainer from '../containers/Account'
+
 import { BasicContainer, SectionTitle } from '../styles/utils'
 
-interface AccountPageProps {}
+interface AboutPageProps {}
 
-const AccountPage: NextPage<AccountPageProps> = () => {
-  const [session]: any = useSession()
-  const router = useRouter()
-
-  const handleLogout = (options: any) => async () => {
-    await signOut(options)
-    router.push('login')
-  }
-
+const AccountPage: NextPage<AboutPageProps> = () => {
   return (
     <>
       <PageTitle
-        title="My Account | Next.Js"
+        title="My account | Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />
       <BasicContainer>
-        {session ? (
-          <>
-            <SectionTitle>Welcome {session.user.username}!</SectionTitle>
-            <button onClick={handleLogout({ redirect: false })}>Sign Out</button>
-          </>
-        ) : (
-          <SectionTitle>Account Page!</SectionTitle>
-        )}
+        <AccountPageContainer />
       </BasicContainer>
     </>
   )

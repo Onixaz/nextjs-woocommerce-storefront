@@ -3,6 +3,7 @@ import AuthForm from '../components/AuthForm'
 import { NextPage } from 'next'
 import React from 'react'
 import PageTitle from '../components/PageTitle'
+import RegisterPageContainer from '../containers/Register'
 
 interface ContactPageProps {}
 
@@ -13,9 +14,7 @@ const RegisterPage: NextPage<ContactPageProps> = () => {
         title="Register| Next.Js"
         description="A starter for Next.Js with Styled-components and TS"
       />
-      <BasicContainer>
-        <AuthForm isRegister={true} />
-      </BasicContainer>
+      <RegisterPageContainer />
     </>
   )
 }

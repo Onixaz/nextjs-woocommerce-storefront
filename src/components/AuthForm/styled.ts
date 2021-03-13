@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.form`
+  //padding-top: 5rem;
   max-width: 520px;
   display: flex;
   justify-content: center;
@@ -94,4 +95,10 @@ export const Message = styled.p`
   &:hover {
     color: ${({ theme }) => theme.primaryPurple};
   }
+`
+export const Subtitle = styled.h2`
+  margin: -1rem auto 1rem auto;
+  font-size: calc(1.5rem + 0.1vw);
+  font-weight: 200;
+  text-align: center;
 `

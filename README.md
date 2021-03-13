@@ -18,7 +18,7 @@ The idea behind this repo was to showcase the power of Next.js by building a fro
 ## Features
 * WooCommerce Storefront theme inspired responsive design.
 * Static page generation using getStaticProps and getStaticPaths.
-* WooCommerce REST API abstraction using Next's API routes (serverless functions).
+* WooCommerce REST API abstraction using Next's API routes.
 * JWT based authentication for data fetching / endpoint protection.
 * Cart system using CoCart plugin.
 * Customer registration and authentication using NextAuth.js. 
@@ -91,6 +91,7 @@ Just make sure you set your env variables. For more details refer to [https://ww
 * Coupons system
 * Product reviews
 * Variable products
+* Wishlist
 * Related products
 * More payment methods
 

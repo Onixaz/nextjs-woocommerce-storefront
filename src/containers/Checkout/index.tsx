@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useStripe, useElements } from '@stripe/react-stripe-js'
 import { useForm } from 'react-hook-form'
-
 import * as CheckoutPageStyles from './styled'
 import AddressForm from '../../components/AddressForm'
 import StripePayment from '../../components/StripePayment'
@@ -34,13 +33,9 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
       })
 
       //TODO: Add more payment methods (Paypal e.g)
-
       if (!stripe || !elements) throw new Error(`Stripe not initialized...`)
-
       const cardElement = elements.getElement('card')
-
       if (!cardElement) throw new Error(`No card element`)
-
       if (!isReady) {
         cardElement.focus()
         return
@@ -86,7 +81,7 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
         </CheckoutPageStyles.Address>
         <CheckoutPageStyles.Order>
           <Subtitle>Order Summary</Subtitle>
-          <OrderSummary />
+          <OrderSummary items={cart.items} total={cart.total} />
         </CheckoutPageStyles.Order>
         <CheckoutPageStyles.Payment>
           <Subtitle>Pay with credit card</Subtitle>

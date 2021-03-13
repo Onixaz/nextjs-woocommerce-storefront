@@ -11,11 +11,10 @@ interface NavigationIconsProps {
 }
 
 const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }) => {
-  const [session] = useSession()
   const router = useRouter()
   const [cart] = useContext(CartContext)
   const totalQuantity =
-    cart && cart.items.length > 0
+    cart && cart.items.length > 0 && cart.total > 0
       ? cart.items.reduce((acc: number, curr: { [key: string]: number }) => acc + curr.quantity, 0)
       : 0
 
@@ -35,7 +34,7 @@ const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }
         </NavIconStyles.CartIconWrapper>
       </Link>
 
-      <NavIconStyles.AccIcon onClick={() => router.push(session ? '/account' : '/login')} />
+      <NavIconStyles.AccIcon onClick={() => router.push('/account')} />
     </NavIconStyles.IconHolder>
   )
 }

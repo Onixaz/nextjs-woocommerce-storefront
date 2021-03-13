@@ -42,7 +42,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
             redirect: false,
             ...data,
           })
-          router.push('account')
         } else {
           setResponse(message)
         }
@@ -65,14 +64,11 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
   }
   return (
     <AuthFormStyles.Wrapper onSubmit={handleSubmit(onSubmit)}>
-      <SectionTitle>
-        {isRegister ? 'Register as a new customer!' : 'Log in to your account !'}
-      </SectionTitle>
-      {!isRegister && (
-        <Link href="/register" passHref>
-          <AuthFormStyles.Message>Don't have an account?</AuthFormStyles.Message>
-        </Link>
-      )}
+      {!isRegister && <SectionTitle>My account</SectionTitle>}
+
+      <AuthFormStyles.Subtitle>
+        {isRegister ? 'Register as a new customer!' : 'Login'}
+      </AuthFormStyles.Subtitle>
 
       <AuthFormStyles.FieldWrapper>
         <AuthFormStyles.Label>Username</AuthFormStyles.Label>
@@ -155,6 +151,11 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
         {submiting ? <Loader /> : isRegister ? 'Register' : 'Login'}
       </AuthFormStyles.SubmitBtn>
       <AuthFormStyles.Response>{response}</AuthFormStyles.Response>
+      {!isRegister && (
+        <Link href="/register" passHref>
+          <AuthFormStyles.Message>Don't have an account?</AuthFormStyles.Message>
+        </Link>
+      )}
     </AuthFormStyles.Wrapper>
   )
 }
