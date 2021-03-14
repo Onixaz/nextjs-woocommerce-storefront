@@ -61,16 +61,6 @@ export const Name = styled.h2`
   letter-spacing: 1px;
   padding-top: 2rem;
 `
-export const PriceWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`
-export const SalePrice = styled.p`
-  margin: 0.5rem;
-  font-size: calc(1.5rem + 0.1vw);
-  opacity: 0.9;
-  font-weight: bolder;
-`
 
 export const ShortDescription = styled.div`
   padding: 0.5rem 0;
@@ -87,14 +77,6 @@ export const LongDescription = styled.div`
   }
 `
 
-export const RegularPrice = styled.p<{ isOnSale: boolean }>`
-  color: ${({ theme }) => theme.primaryText};
-  text-decoration: ${({ isOnSale }) => (isOnSale ? `line-through` : `none`)};
-  font-weight: bolder;
-  font-size: ${({ isOnSale }) => (isOnSale ? `calc(1.2rem +  0.1vw)` : `calc(1.5rem +  0.1vw)`)};
-  margin: 0 0.25rem;
-  opacity: ${({ isOnSale }) => (isOnSale ? `0.5` : `0.9`)};
-`
 export const AddToCartForm = styled.form`
   margin: 2rem 0;
   display: flex;

@@ -3,6 +3,7 @@ import React from 'react'
 import { BasicGrid, BasicContainer } from '../../styles/utils'
 import * as ProductPageStyles from './styled'
 import AddToCartForm from '../../components/Product/AddToCartForm'
+import ProductPrice from '../../components/Product/ProductPrice'
 
 interface ProductPageContentProps {
   product: Product
@@ -14,29 +15,14 @@ const ProductPageContainer: React.FC<ProductPageContentProps> = ({ product }) =>
       <ProductPageStyles.ContentWrapper>
         <BasicGrid lg={2} md={2} sm={1} xs={1}>
           <ProductPageStyles.ImgWrapper>
-            {product.images !== undefined && (
+            {product.images && (
               <ProductPageStyles.Img src={product.images[0].src} alt={product.images[0].alt} />
             )}
           </ProductPageStyles.ImgWrapper>
           <ProductPageStyles.InfoWrapper>
             <ProductPageStyles.InfoWrapperCol>
               <ProductPageStyles.Name>{product.name}</ProductPageStyles.Name>
-              <ProductPageStyles.PriceWrapper>
-                {product.sale_price?.length === 0 ? (
-                  <ProductPageStyles.RegularPrice isOnSale={false}>
-                    ${parseFloat(product.regular_price).toFixed(2)}
-                  </ProductPageStyles.RegularPrice>
-                ) : (
-                  <>
-                    <ProductPageStyles.RegularPrice isOnSale={true}>
-                      ${parseFloat(product.regular_price).toFixed(2)}
-                    </ProductPageStyles.RegularPrice>
-                    <ProductPageStyles.SalePrice>
-                      ${parseFloat(product.sale_price).toFixed(2)}
-                    </ProductPageStyles.SalePrice>
-                  </>
-                )}
-              </ProductPageStyles.PriceWrapper>
+              <ProductPrice product={product} center={false} size={1.3} />
               <ProductPageStyles.ShortDescription
                 dangerouslySetInnerHTML={{ __html: product.short_description }}
               ></ProductPageStyles.ShortDescription>

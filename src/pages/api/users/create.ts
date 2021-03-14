@@ -12,10 +12,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     if (wooRes.code === 'registration-error-email-exists') {
       return res
         .status(400)
-        .json({ message: 'An account is already registered with your email address.' })
+        .json({ message: 'An account is already registered with this email address.' })
     } else if (wooRes.code === 'registration-error-username-exists') {
       return res.status(400).json({
-        message: 'An account is already registered with that username. Please choose another.',
+        message: 'An account is already registered with this username. Please choose another.',
       })
     } else {
       console.log(wooRes)

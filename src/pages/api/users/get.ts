@@ -8,7 +8,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (!session) return res.status(401).json({ message: 'Access denied' })
   console.log(session)
 
-  const token: any = jwt.verify(session.user.key, process.env.WP_JWT_AUTH_SECRET_KEY!)
+  const token: any = jwt.verify(session.user.key, process.env.WP_JWT_AUTH_SECRET_KEY!, {
+    ignoreNotBefore: true,
+  })
   if (!token) return res.status(401).json({ message: 'Access denied' })
 
   const response = await fetcher(`/wp-json/wc/v3/customers/${token.data.user.id}`)

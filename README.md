@@ -82,17 +82,19 @@ Just make sure you set your env variables. For more details refer to [https://ww
 ##  Todo
 
 * ~~User registration and login functionality.~~
-* Client side fetching for dynamic data like prices / user page (details, orders, addresses etc.).
-* Image optimization
+* ~~Dynamic prices using SWR (client side data fetching).~~
+* User dashboard(orders, wishlist, addresses)
 * Pages for categories
 * Shipping options
-* Blog/About/Contact Pages
-* Search
+* Blog page
+* Contact page
+* Related products
+* Image optimization
+* Variable products
 * Coupons system
 * Product reviews
-* Variable products
-* Wishlist
-* Related products
+* User password reset
+* Search
 * More payment methods
 
 

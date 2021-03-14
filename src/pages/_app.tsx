@@ -1,7 +1,8 @@
 import { AppProps } from 'next/app'
+import theme from '../styles/theme'
 import { Provider as AuthProvider } from 'next-auth/client'
 import { ThemeProvider } from 'styled-components'
-import theme from '../styles/theme'
+import { SWRConfig } from 'swr'
 import GlobalStyle from '../styles/main'
 import Layout from '../containers/Main'
 import CartProvider from '../context/cart'
@@ -17,11 +18,13 @@ const CustomApp: React.FC<CustomAppProps> = ({ Component, pageProps }) => {
     <>
       <AuthProvider session={pageProps.session}>
         <ThemeProvider theme={theme}>
-          <CartProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </CartProvider>
+          <SWRConfig value={{ fetcher: (url: string) => fetch(url).then((r) => r.json()) }}>
+            <CartProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </CartProvider>
+          </SWRConfig>
           <GlobalStyle />
         </ThemeProvider>
       </AuthProvider>

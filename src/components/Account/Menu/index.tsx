@@ -25,9 +25,6 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ setView }) => {
         <AccountMenuStyles.LinkText onClick={() => setView('addresses')}>
           Addresses
         </AccountMenuStyles.LinkText>
-        <AccountMenuStyles.LinkText onClick={() => setView('details')}>
-          Account details
-        </AccountMenuStyles.LinkText>
         <AccountMenuStyles.LinkText onClick={handleLogout({ redirect: false })}>
           Logout
         </AccountMenuStyles.LinkText>

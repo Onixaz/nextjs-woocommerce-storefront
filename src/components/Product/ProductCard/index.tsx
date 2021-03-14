@@ -3,6 +3,7 @@ import * as ProductCardStyles from './styled'
 import Link from 'next/link'
 import { Product } from '../../../types'
 import React from 'react'
+import ProductPrice from '../ProductPrice'
 
 interface ProductItemProps {
   product: Product
@@ -20,22 +21,7 @@ const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
 
         <ProductCardStyles.Name>{product.name}</ProductCardStyles.Name>
 
-        <ProductCardStyles.PriceWrapper>
-          {product.sale_price?.length === 0 ? (
-            <ProductCardStyles.RegularPrice isOnSale={false}>
-              ${parseFloat(product.regular_price).toFixed(2)}
-            </ProductCardStyles.RegularPrice>
-          ) : (
-            <>
-              <ProductCardStyles.RegularPrice isOnSale={true}>
-                ${parseFloat(product.regular_price).toFixed(2)}
-              </ProductCardStyles.RegularPrice>
-              <ProductCardStyles.SalePrice>
-                ${parseFloat(product.sale_price).toFixed(2)}
-              </ProductCardStyles.SalePrice>
-            </>
-          )}
-        </ProductCardStyles.PriceWrapper>
+        <ProductPrice product={product} center={true} size={1} />
       </ProductCardStyles.Wrapper>
     </Link>
   )

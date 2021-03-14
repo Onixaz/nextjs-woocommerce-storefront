@@ -11,7 +11,6 @@ const AccountGrid: React.FC = () => {
     orders: <p>orders</p>,
     wishlist: <p>wishlist</p>,
     addresses: <p>addresses</p>,
-    details: <p>details</p>,
   })
 
   return (

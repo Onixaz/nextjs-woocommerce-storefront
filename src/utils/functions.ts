@@ -1,5 +1,4 @@
 import { Cart, CartItem, Customer } from '../types'
-
 import jwt from 'jsonwebtoken'
 
 export const generateToken = () => {
