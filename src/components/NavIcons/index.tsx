@@ -3,7 +3,6 @@ import * as NavIconStyles from './styled'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { CartContext } from '../../context/cart'
-import { useSession } from 'next-auth/client'
 
 interface NavigationIconsProps {
   scrollNav: boolean

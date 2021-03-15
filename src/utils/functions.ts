@@ -92,5 +92,5 @@ export const createOrder = async (
     body: JSON.stringify({ items, customer, total, payment }),
   })
 
-  return await res.json()
+  return res.json()
 }

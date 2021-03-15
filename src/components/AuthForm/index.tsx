@@ -26,6 +26,8 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
   const password = useRef({})
   password.current = watch('password', '')
 
+  const btnText = isRegister ? 'Register' : 'Login'
+
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       setSubmiting(true)
@@ -148,7 +150,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
       )}
 
       <AuthFormStyles.SubmitBtn disabled={submiting} type="submit">
-        {submiting ? <Loader /> : isRegister ? 'Register' : 'Login'}
+        {submiting ? <Loader /> : btnText}
       </AuthFormStyles.SubmitBtn>
       <AuthFormStyles.Response>{response}</AuthFormStyles.Response>
       {!isRegister && (

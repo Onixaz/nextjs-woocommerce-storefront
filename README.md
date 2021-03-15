@@ -73,6 +73,8 @@ Finally **npm run dev.**
 Note: In case you're not getting the **x-cocart-api key** when calling CoCart endpoint from a response header, allow cross origin headers using [https://github.com/co-cart/co-cart-tweaks](https://github.com/co-cart/co-cart-tweaks)
 
 
+
+
 ## Deployment
 
 You can easily deploy on [Netlify](https://www.netlify.com) using [Next.js Build Plugin](https://github.com/netlify/netlify-plugin-nextjs). You can use [direct in-app installation link](http://app.netlify.com/plugins/@netlify/plugin-nextjs/install), no further configuration is needed. 
@@ -88,8 +90,8 @@ Just make sure you set your env variables. For more details refer to [https://ww
 * Blog page
 * Contact page
 * Related products
-* Products pagination
 * User dashboard (orders, addresses, password reset)
+* Products pagination
 * Image optimization
 * Filters
 * Variable products

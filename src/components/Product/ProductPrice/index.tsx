@@ -13,27 +13,27 @@ interface ProductPriceProps {
 const ProductPrice: React.FC<ProductPriceProps> = ({ product, center, size }) => {
   const { data } = useSwr(`/api/products/retrieve`)
 
-  const prices = data?.filter((item: Product) => {
+  const filteredProduct = data?.filter((item: Product) => {
     return item.id === product.id
   })
 
   return (
     <>
-      {!prices ? (
+      {!filteredProduct ? (
         <Loader />
       ) : (
         <ProductPriceStyles.Wrapper center={center}>
-          {prices[0]?.sale_price?.length === 0 ? (
+          {!filteredProduct[0].sale_price ? (
             <ProductPriceStyles.Regular isOnSale={false} size={size}>
-              ${parseFloat(prices[0].regular_price).toFixed(2)}
+              ${parseFloat(filteredProduct[0].regular_price).toFixed(2)}
             </ProductPriceStyles.Regular>
           ) : (
             <>
               <ProductPriceStyles.Regular isOnSale={true} size={size}>
-                ${parseFloat(prices[0].regular_price).toFixed(2)}
+                ${parseFloat(filteredProduct[0].regular_price).toFixed(2)}
               </ProductPriceStyles.Regular>
               <ProductPriceStyles.Sale size={size}>
-                ${parseFloat(prices[0].sale_price).toFixed(2)}
+                ${parseFloat(filteredProduct[0].sale_price).toFixed(2)}
               </ProductPriceStyles.Sale>
             </>
           )}

@@ -1,6 +1,4 @@
 import styled from 'styled-components'
-import { RiShoppingCart2Fill } from 'react-icons/ri'
-import { MdAccountCircle } from 'react-icons/md'
 
 export const LinkText = styled.a`
   cursor: pointer;

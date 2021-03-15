@@ -17,7 +17,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
 
   const quantityRef = useRef<HTMLInputElement | null>(null)
 
-  const removeItem = async (item: CartItem) => {
+  const removeItem = async (cartItem: CartItem) => {
     setIsRemoving(true)
     setIsUpdating(true)
     try {
@@ -26,7 +26,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
         {
           method: 'DELETE',
           body: JSON.stringify({
-            cart_item_key: item.key,
+            cart_item_key: cartItem.key,
             return_cart: true,
           }),
           headers: {
@@ -48,7 +48,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
     }
   }
 
-  const updateItem = async (e: React.SyntheticEvent, item: CartItem, quantity: any) => {
+  const updateItem = async (e: React.SyntheticEvent, cartItem: CartItem, quantity: number) => {
     e.preventDefault()
     setIsUpdating(true)
     setIsAnimating(true)
@@ -58,8 +58,8 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
         {
           method: 'POST',
           body: JSON.stringify({
-            cart_item_key: item.key,
-            quantity: quantity,
+            cart_item_key: cartItem.key,
+            quantity,
             return_cart: true,
           }),
           headers: {
