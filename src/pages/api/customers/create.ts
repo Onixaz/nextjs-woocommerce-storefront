@@ -18,7 +18,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         message: 'An account is already registered with this username. Please choose another.',
       })
     } else {
-      console.log(wooRes)
       return res.status(200).json({ message: `Success` })
     }
   } catch (error) {

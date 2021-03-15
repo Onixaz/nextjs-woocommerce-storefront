@@ -11,7 +11,7 @@ interface ProductPriceProps {
 }
 
 const ProductPrice: React.FC<ProductPriceProps> = ({ product, center, size }) => {
-  const { data } = useSwr(`/api/products/get`)
+  const { data } = useSwr(`/api/products/retrieve`)
 
   const prices = data?.filter((item: Product) => {
     return item.id === product.id

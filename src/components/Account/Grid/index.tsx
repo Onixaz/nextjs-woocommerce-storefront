@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import AccountMenu from '../Menu'
 import * as AccGridStyles from './styled'
 import AccountDashboard from '../Dashboard'
+import AccountOrders from '../Orders'
 
 const AccountGrid: React.FC = () => {
   const [view, setView] = useState('dashboard')
 
   const renderView = (): { [key: string]: React.ReactElement } => ({
     dashboard: <AccountDashboard />,
-    orders: <p>orders</p>,
+    orders: <AccountOrders />,
     wishlist: <p>wishlist</p>,
     addresses: <p>addresses</p>,
   })

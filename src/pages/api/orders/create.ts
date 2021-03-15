@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-
+import jwt from 'jsonwebtoken'
+import { getSession } from 'next-auth/client'
 import Stripe from 'stripe'
 import { CartItem, Customer } from '../../../types'
 import { poster } from '../../../utils/functions'
@@ -15,6 +16,11 @@ const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY!}`, { apiVersion: '20
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Method not allowed' })
+  let user: any
+  const session: any = await getSession({ req })
+  if (session) {
+    user = jwt.verify(session.user.key, process.env.WP_JWT_AUTH_SECRET_KEY!)
+  }
 
   const { customer, items, payment, total }: OrderDetails = req.body
 
@@ -34,6 +40,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       },
       line_items: items,
       customer_note: customer.customer_note,
+      customer_id: user ? user.data.user.id : 0,
     }
 
     const wooResponse = await poster(`/wp-json/wc/v3/orders`, wooBody, 'POST')

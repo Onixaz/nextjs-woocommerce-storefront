@@ -58,3 +58,10 @@ export interface Customer {
   phone?: string
   customer_note?: string
 }
+
+export interface Order {
+  id: number
+  status: string
+  total: string
+  date_created: string
+}

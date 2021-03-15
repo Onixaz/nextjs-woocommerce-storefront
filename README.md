@@ -10,19 +10,19 @@ Using Next.js, TypeScript and Styled-components.
 
 ## The Goal
 
-The idea behind this repo was to showcase the power of Next.js by building a frontend for WooCommerce using nothing but Woo's REST API only. This means truly headless and secure WooCommerce without any redirects to checkouts etc. I also wanted to create a reusable base for the development of Wordpress/WooCommerce themes using React with server-side rendering.
-
+The idea behind this repo was to showcase the power of [Next.js](https://nextjs.org/) by building a frontend for [WooCommerce](https://woocommerce.com/) using nothing but [Woo's REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/) only. This means truly headless and secure WooCommerce without any redirects to checkouts etc. In a true [Jamstack](https://jamstack.org/) fashion.
 
 
 
 ## Features
 * WooCommerce Storefront theme inspired responsive design.
-* Static page generation using getStaticProps and getStaticPaths.
-* WooCommerce REST API abstraction using Next's API routes.
+* Static page generation using getStaticProps and getStaticPaths for SEO and performance.
+* Client side fetching of dynamic data like prices / account details using [SWR](https://swr.vercel.app/).
+* WooCommerce REST API abstraction using [Next's API routes](https://nextjs.org/docs/api-routes/introduction).
 * JWT based authentication for data fetching / endpoint protection.
-* Cart system using CoCart plugin.
-* Customer registration and authentication using NextAuth.js. 
-* Checkout system using Stripe as a payment method example.
+* Cart system using [CoCart](https://wordpress.org/plugins/cart-rest-api-for-woocommerce) plugin.
+* Customer registration and authentication using [NextAuth.js](https://next-auth.js.org/). 
+* Checkout system using [Stripe](https://stripe.com/) as a payment method example.
 
 
 ## Demo
@@ -83,19 +83,22 @@ Just make sure you set your env variables. For more details refer to [https://ww
 
 * ~~User registration and login functionality.~~
 * ~~Dynamic prices using SWR (client side data fetching).~~
-* User dashboard(orders, wishlist, addresses)
-* Pages for categories
 * Shipping options
+* Pages for categories
 * Blog page
 * Contact page
 * Related products
+* Products pagination
+* User dashboard (orders, addresses, password reset)
 * Image optimization
+* Filters
 * Variable products
 * Coupons system
 * Product reviews
-* User password reset
+* Wishlist
 * Search
 * More payment methods
+
 
 
 #### Contributions are welcome
