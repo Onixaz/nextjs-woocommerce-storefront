@@ -1,9 +1,11 @@
 # Next.js WooCommerce Storefront Theme 
 Using Next.js, TypeScript and Styled-components.
 
-#### *Under development*
+
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Onixaz_nextjs-woocommerce-storefront)](https://sonarcloud.io/dashboard?id=Onixaz_nextjs-woocommerce-storefront)
+
+#### *WIP*
 
 ![demo](https://github.com/Onixaz/nextjs-woocommerce-storefront/blob/main/public/demo.gif)
 
@@ -31,7 +33,7 @@ The idea behind this repo was to showcase the power of [Next.js](https://nextjs.
 
 
 
-Live demo: https://nextjs-woo-storefront.netlify.app/
+Live demo: https://nextjs-woocommerce.netlify.app
 
 
 ## How to use
