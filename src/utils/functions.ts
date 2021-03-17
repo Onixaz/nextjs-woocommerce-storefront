@@ -1,7 +1,9 @@
 import { Cart, CartItem, Customer } from '../types'
 import jwt from 'jsonwebtoken'
+import { NextApiRequest, NextApiResponse } from 'next'
+import { getSession } from 'next-auth/client'
 
-export const generateToken = () => {
+export const authorizeAdmin = () => {
   const payload = {
     iss: `${process.env.NEXT_PUBLIC_WP_API_URL}`,
 
@@ -16,7 +18,7 @@ export const generateToken = () => {
 }
 
 export const fetcher = async (url: string) => {
-  const token = generateToken()
+  const token = authorizeAdmin()
 
   return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
     headers: {
@@ -30,7 +32,7 @@ export const fetcher = async (url: string) => {
 }
 
 export const poster = async (url: string, data: object, method: string) => {
-  const token = generateToken()
+  const token = authorizeAdmin()
 
   return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
     headers: {
@@ -93,4 +95,20 @@ export const createOrder = async (
   })
 
   return res.json()
+}
+
+export const authorizeUser = async (req: NextApiRequest) => {
+  try {
+    const session: any = await getSession({ req })
+    if (!session) return null
+
+    const key: any = jwt.verify(session.user.key, process.env.WP_JWT_AUTH_SECRET_KEY!, {
+      algorithms: ['HS256'],
+      ignoreNotBefore: true,
+    })
+
+    return key
+  } catch (error) {
+    return null
+  }
 }
