@@ -3,6 +3,8 @@ Using Next.js, TypeScript and Styled-components.
 
 #### *Under development*
 
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Onixaz_nextjs-woocommerce-storefront)](https://sonarcloud.io/dashboard?id=Onixaz_nextjs-woocommerce-storefront)
+
 ![demo](https://github.com/Onixaz/nextjs-woocommerce-storefront/blob/main/public/demo.gif)
 
 
@@ -89,19 +91,16 @@ Just make sure you set your env variables. For more details refer to [https://ww
 * User specific cart
 * Pages for categories
 * Blog page
-* Contact page
 * Related products
 * User dashboard (orders, addresses, password reset)
 * Products pagination
 * Image optimization
 * Filters
-* Variable products
 * Coupons system
 * Product reviews
 * Wishlist
 * Search
 * More payment methods
-
 
 
 #### Contributions are welcome
