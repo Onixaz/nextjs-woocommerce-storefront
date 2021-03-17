@@ -1,6 +1,6 @@
 import * as OrderSummaryStyles from './styled'
 import React from 'react'
-import { CartItem } from '../../types'
+import { CartItem } from '../../../types'
 
 interface OrderSummaryProps {
   items: CartItem[]
@@ -25,10 +25,15 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ items, total }) => {
             </React.Fragment>
           ))}
         <OrderSummaryStyles.SumItemDesc>Subtotal</OrderSummaryStyles.SumItemDesc>
-        {/*for design purposes duplicate this */}
         <OrderSummaryStyles.SumItemDescWhite>
           ${total.toFixed(2)}
         </OrderSummaryStyles.SumItemDescWhite>
+
+        {/* <OrderSummaryStyles.SumItemDesc>Shipping</OrderSummaryStyles.SumItemDesc>
+        <OrderSummaryStyles.SumItemDescWhite>
+          ${total.toFixed(2)}
+        </OrderSummaryStyles.SumItemDescWhite> */}
+
         <OrderSummaryStyles.SumItemDesc>Total</OrderSummaryStyles.SumItemDesc>
         <OrderSummaryStyles.SumItemDescWhite>
           ${total.toFixed(2)}

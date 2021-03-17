@@ -4,6 +4,7 @@ import { Order } from '../../../types'
 
 const AccountOrders: React.FC = () => {
   const { data } = useSWR('/api/orders/retrieve')
+
   return (
     <div>
       <ul>

@@ -23,7 +23,7 @@ export const SumItemDesc = styled.li`
   font-size: calc(1rem + 0.1vw);
   font-weight: bolder;
   color: ${({ theme }) => theme.primaryText};
-  //opacity: 0.9;
+
   text-align: center;
   display: flex;
   justify-content: center;

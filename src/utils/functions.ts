@@ -48,7 +48,7 @@ export const poster = async (url: string, data: object, method: string) => {
 export const initCart = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/get-cart`)
   const cartKey = res.headers.get('x-cocart-api')
-
+  console.log(await res.json())
   return {
     items: [],
     key: cartKey,

@@ -36,6 +36,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ register, errors }) => {
       <AddressFormStyles.FieldWrapper>
         <AddressFormStyles.Label>Country</AddressFormStyles.Label>
         <select
+          onChange={(e) => console.log(e.target.value)}
           style={{ margin: '0.25rem 1rem', padding: '0.5rem', fontSize: 'calc(0.9rem + 0.1vw)' }}
           name="country"
           ref={register}

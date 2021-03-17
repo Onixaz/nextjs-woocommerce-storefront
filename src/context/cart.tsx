@@ -45,6 +45,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   useEffect(() => {
     //updating local cart everytime changes are made  to remote cart
+
     localStorage.setItem('local_cart', JSON.stringify(cart))
   }, [cart])
 
