@@ -52,10 +52,12 @@ const StripePayment: React.FC<PaymentFormContentProps> = ({ setIsReady, isReady 
           <CardElement options={cardElementOpts} onChange={handleCardDetailsChange} />
         </StripePaymentStyles.CardElementWrapper>
       </StripePaymentStyles.Wrapper>
-      {!isReady && (
+      {!isReady ? (
         <StripePaymentStyles.Info>
           Fill in the card details. Use 4242 4242 4242 4242 for testing.
         </StripePaymentStyles.Info>
+      ) : (
+        <StripePaymentStyles.Info>Great, you can place your order now!</StripePaymentStyles.Info>
       )}
     </StripePaymentStyles.Container>
   )

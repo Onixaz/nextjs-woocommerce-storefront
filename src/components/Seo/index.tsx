@@ -25,6 +25,12 @@ const Seo: React.FC<CustomHeadProps> = () => {
       <meta name="keywords" content={baseInfo.keywords} />
       {/* prefech products if using client side fetching (product prices/ images) */}
       {/* <link rel="preload" href="/api/products/retrieve" as="fetch" crossOrigin="anonymous"></link> */}
+      <link
+        rel="preload"
+        href={`${process.env.NEXTAUTH_URL}/api/shipping/retrieve`}
+        as="fetch"
+        crossOrigin="anonymous"
+      />
     </Head>
   )
 }

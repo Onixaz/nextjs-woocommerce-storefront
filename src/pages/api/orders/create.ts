@@ -2,14 +2,14 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken'
 import { getSession } from 'next-auth/client'
 import Stripe from 'stripe'
-import { CartItem, Customer } from '../../../types'
+import { Cart, Customer } from '../../../types'
 import { poster } from '../../../utils/functions'
 
 interface OrderDetails {
   customer: Customer
-  items: CartItem[]
   payment: string
-  total: number
+  cart: Cart
+  shipping: string
 }
 
 const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY!}`, { apiVersion: '2020-08-27' })
@@ -22,10 +22,19 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     user = jwt.verify(session.user.key, process.env.WP_JWT_AUTH_SECRET_KEY!)
   }
 
-  const { customer, items, payment, total }: OrderDetails = req.body
+  const { customer, payment, cart }: OrderDetails = req.body
+  const line_items = cart.items
 
-  if (!customer || !items || !payment || !total)
-    return res.status(400).json({ message: 'Bad request' })
+  if (!customer || !payment! || !cart) return res.status(400).json({ message: 'Bad request' })
+
+  const shippingRes = await fetch(`${process.env.NEXTAUTH_URL}/api/shipping/retrieve`)
+  const shippingJSON = await shippingRes.json()
+
+  const userShipping = shippingJSON.filter((item: any) => {
+    return item.method === customer.shipping!
+  })
+
+  console.log(userShipping[0])
 
   try {
     const wooBody = {
@@ -38,17 +47,26 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       shipping: {
         ...customer,
       },
-      line_items: items,
+      line_items,
       customer_note: customer.customer_note,
       customer_id: user ? user.data.user.id : 0,
+      shipping_lines: [
+        {
+          method_id: userShipping[0].method,
+          method_title: userShipping[0].title,
+          total: String(userShipping[0].cost),
+        },
+      ],
     }
 
     const wooResponse = await poster(`/wp-json/wc/v3/orders`, wooBody, 'POST')
-
     const order = await wooResponse.json()
 
-    if (req.body.total === parseFloat(order.total)) {
-      const amount = Math.round(req.body.total.toFixed(2) * 100)
+    if (cart.total + userShipping[0].cost === parseFloat(order.total)) {
+      const amount = Math.round(
+        parseFloat(cart.total.toFixed(2) + userShipping[0].cost.toFixed(2)) * 100,
+      )
+      console.log(amount)
 
       const paymentIntent = await stripe.paymentIntents.create({
         payment_method: payment,

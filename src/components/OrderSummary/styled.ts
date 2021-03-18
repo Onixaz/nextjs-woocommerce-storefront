@@ -10,13 +10,13 @@ export const Wrapper = styled.div`
   width: 100%;
 `
 
-export const SummaryGrid = styled.ul`
+export const Grid = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
 `
 
-export const SumItemDesc = styled.li`
+export const DescriptionTall = styled.li`
   background: #f0f0f0;
   letter-spacing: 2px;
   padding: 0.25rem 0.5rem;
@@ -32,11 +32,11 @@ export const SumItemDesc = styled.li`
   height: 75px;
 `
 
-export const SumItemDescWhite = styled.li`
+export const DescriptionWhite = styled.li<{ shipping: boolean }>`
   background: #fff;
   letter-spacing: 2px;
   padding: 0.25rem 0.5rem;
-  font-size: calc(1rem + 0.1vw);
+  font-size: ${({ shipping }) => (shipping ? `calc(0.8rem + 0.1vw)` : `calc(1rem + 0.1vw)`)};
   font-weight: bolder;
   color: ${({ theme }) => theme.primaryText};
   //opacity: 0.9;
@@ -47,7 +47,7 @@ export const SumItemDescWhite = styled.li`
   width: 100%;
   height: 75px;
 `
-export const SumItemTotal = styled.li`
+export const ItemTotal = styled.li`
   padding: 0.25rem 0.5rem;
   justify-content: center;
   display: flex;
@@ -65,7 +65,7 @@ export const SumItemTotal = styled.li`
   height: 75px;
 `
 
-export const SumItemName = styled.li`
+export const ItemName = styled.li`
   padding: 0.25rem 0.5rem;
   font-weight: 500;
   justify-content: center;
@@ -84,4 +84,55 @@ export const SumItemName = styled.li`
   align-items: center;
   width: 100%;
   height: 75px;
+`
+
+export const DescriptionLow = styled.li`
+  background: #f0f0f0;
+  letter-spacing: 2px;
+  padding: 0.25rem 0.5rem;
+  font-size: calc(1rem + 0.1vw);
+  font-weight: bolder;
+  color: ${({ theme }) => theme.primaryText};
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`
+
+export const ShippingWrapper = styled.li`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  width: 100%;
+  margin: 0 auto;
+`
+
+export const Values = styled.div`
+  display: flex;
+  background: #fff;
+  flex-direction: column;
+`
+
+export const Method = styled.div`
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  align-items: center;
+`
+
+export const Label = styled.label`
+  background: #fff;
+  letter-spacing: 2px;
+  padding: 0.25rem 0.5rem;
+  font-size: calc(1rem + 0.1vw);
+  text-align: center;
+  color: ${({ theme }) => theme.primaryText};
+`
+
+export const Error = styled.span`
+  margin: 0.1rem 1rem;
+  padding: 0.5rem;
+  color: red;
 `

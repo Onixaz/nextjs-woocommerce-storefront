@@ -1,16 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import { useStripe, useElements } from '@stripe/react-stripe-js'
 import { useForm } from 'react-hook-form'
 import * as CheckoutPageStyles from './styled'
 import AddressForm from '../../components/AddressForm'
 import StripePayment from '../../components/StripePayment'
-import OrderSummary from '../../components/Order/Summary'
+import OrderSummary from '../../components/OrderSummary'
 import { BasicContainer, Loader, Subtitle } from '../../styles/utils'
-import { useRouter } from 'next/router'
 import { CartContext } from '../../context/cart'
 import { NextPage } from 'next'
 import { createOrder, initCart } from '../../utils/functions'
-import { CartItem, Customer } from '../../types'
+import { Customer } from '../../types'
+import { useRouter } from 'next/router'
 
 interface CheckoutPageContainerProps {}
 
@@ -18,48 +18,52 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
   const [cart, setCart] = useContext(CartContext)
   const { register, handleSubmit, errors } = useForm()
   const [isProcessing, setIsProcessing] = useState(false)
+
   const [isReady, setIsReady] = useState(false)
   const [serverMsg, setServerMsg] = useState('')
-  const router = useRouter()
   const stripe = useStripe()
   const elements = useElements()
+  const router = useRouter()
 
-  const onSubmit = async (customerObj: Customer) => {
+  const onSubmit = async (customer: Customer) => {
     try {
-      if (!cart.items.length || cart.total === 0) return
+      if (!cart.items) return
+      setIsProcessing(true)
+      let payment: any
 
-      const itemsObj = cart.items.map((item: CartItem) => {
-        return { product_id: item.product_id, quantity: item.quantity }
-      })
+      console.log(customer)
 
       //TODO: Add more payment methods (Paypal e.g)
+      //Stripe block
       if (!stripe || !elements) throw new Error(`Stripe not initialized...`)
+
       const cardElement = elements.getElement('card')
       if (!cardElement) throw new Error(`No card element`)
+
       if (!isReady) {
         cardElement.focus()
         return
       }
 
-      setIsProcessing(true)
       const stripeRes = await stripe.createPaymentMethod({
         type: 'card',
         card: cardElement,
       })
       if (!stripeRes.paymentMethod?.id) throw new Error(`Can't connect to Stripe...`)
 
-      const { message } = await createOrder(
-        itemsObj,
-        customerObj,
-        cart.total,
-        stripeRes.paymentMethod.id,
-      )
+      payment = stripeRes.paymentMethod.id
+      // end of stripe block
+
+      const { message } = await createOrder(customer, payment, cart)
 
       const newCart = await initCart()
       setCart(newCart)
       setIsProcessing(false)
       if (message === 'Success') {
-        router.push('success')
+        setServerMsg('Thank you for your order. Check your email for details!')
+        setTimeout(() => {
+          router.push('/')
+        }, 5000)
       } else {
         setServerMsg('Sorry something went wrong. Please try again later...')
       }
@@ -80,8 +84,8 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
           <AddressForm register={register} errors={errors} />
         </CheckoutPageStyles.Address>
         <CheckoutPageStyles.Order>
-          <Subtitle>Order Summary</Subtitle>
-          <OrderSummary items={cart.items} total={cart.total} />
+          <Subtitle>Your order</Subtitle>
+          <OrderSummary register={register} errors={errors} />
         </CheckoutPageStyles.Order>
         <CheckoutPageStyles.Payment>
           <Subtitle>Pay with credit card</Subtitle>

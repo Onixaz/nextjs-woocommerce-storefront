@@ -57,6 +57,7 @@ export interface Customer {
   email?: string
   phone?: string
   customer_note?: string
+  shipping?: string
 }
 
 export interface Order {

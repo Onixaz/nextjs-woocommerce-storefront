@@ -17,6 +17,22 @@ export const authorizeAdmin = () => {
   return jwt.sign(payload, `${process.env.WP_JWT_AUTH_SECRET_KEY!}`, { expiresIn: 60 })
 }
 
+export const authorizeUser = async (req: NextApiRequest) => {
+  try {
+    const session: any = await getSession({ req })
+    if (!session) return null
+
+    const key: any = jwt.verify(session.user.key, process.env.WP_JWT_AUTH_SECRET_KEY!, {
+      algorithms: ['HS256'],
+      ignoreNotBefore: true,
+    })
+
+    return key
+  } catch (error) {
+    return null
+  }
+}
+
 export const fetcher = async (url: string) => {
   const token = authorizeAdmin()
 
@@ -50,7 +66,7 @@ export const poster = async (url: string, data: object, method: string) => {
 export const initCart = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/get-cart`)
   const cartKey = res.headers.get('x-cocart-api')
-  console.log(await res.json())
+
   return {
     items: [],
     key: cartKey,
@@ -59,11 +75,11 @@ export const initCart = async () => {
   }
 }
 
-export const clearCart = async (key: string) => {
-  fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/clear?cart_key=${key}`, {
-    method: 'POST',
-  })
-}
+// export const clearCart = async (key: string) => {
+//   fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/clear?cart_key=${key}`, {
+//     method: 'POST',
+//   })
+// }
 
 export const cartUpdater = (cart: Cart, data: Response) => {
   const newCart = { ...cart }
@@ -79,36 +95,15 @@ export const cartUpdater = (cart: Cart, data: Response) => {
   return newCart
 }
 
-export const createOrder = async (
-  items: CartItem[],
-  customer: Customer,
-  total: number,
-  payment: string,
-) => {
+export const createOrder = async (customer: Customer, payment: string, cart: Cart) => {
   const res = await fetch(`/api/orders/create`, {
     method: 'POST',
 
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ items, customer, total, payment }),
+    body: JSON.stringify({ customer, payment, cart }),
   })
 
   return res.json()
-}
-
-export const authorizeUser = async (req: NextApiRequest) => {
-  try {
-    const session: any = await getSession({ req })
-    if (!session) return null
-
-    const key: any = jwt.verify(session.user.key, process.env.WP_JWT_AUTH_SECRET_KEY!, {
-      algorithms: ['HS256'],
-      ignoreNotBefore: true,
-    })
-
-    return key
-  } catch (error) {
-    return null
-  }
 }
