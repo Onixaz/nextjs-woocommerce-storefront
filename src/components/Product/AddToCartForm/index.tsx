@@ -3,7 +3,8 @@ import { Loader } from '../../../styles/utils'
 import { CartContext } from '../../../context/cart'
 import { Product } from '../../../types'
 import * as AddToCartFormStyles from './styled'
-import { cartUpdater } from '../../../utils/functions'
+import { updateCart } from '../../../utils/functions'
+import useSWR from 'swr'
 
 interface UpdateCartButtonProps {
   product: Product
@@ -26,7 +27,7 @@ const AddToCartForm: React.FC<UpdateCartButtonProps> = ({ product }) => {
         {
           method: 'POST',
           body: JSON.stringify({
-            product_id: item.id.toString(),
+            product_id: String(item.id),
             quantity: quantity,
             return_cart: true,
             //adding image for cart page
@@ -40,7 +41,7 @@ const AddToCartForm: React.FC<UpdateCartButtonProps> = ({ product }) => {
 
       const data = await res.json()
 
-      setCart(() => cartUpdater(cart, data))
+      setCart(() => updateCart(cart, data))
       setIsUpdating(false)
     } catch (error) {
       console.log(error)

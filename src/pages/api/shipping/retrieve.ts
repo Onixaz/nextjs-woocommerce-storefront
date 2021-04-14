@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { fetcher } from '../../../utils/functions'
+import jwt from 'jsonwebtoken'
 
 interface Shipping {
   id: number
@@ -20,7 +21,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       id: item.id,
       title: item.title,
       method: item.method_id,
-      cost: item.settings.cost.value ? parseFloat(item.settings.cost.value) : 0,
+      cost: jwt.sign(
+        String(item.settings.cost.value ? parseFloat(item.settings.cost.value) : 0),
+        process.env.NEXTAUTH_SECRET_KEY!,
+      ),
       enabled: item.enabled,
     }
   })

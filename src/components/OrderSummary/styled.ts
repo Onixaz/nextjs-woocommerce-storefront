@@ -32,11 +32,12 @@ export const DescriptionTall = styled.li`
   height: 75px;
 `
 
-export const DescriptionWhite = styled.li<{ shipping: boolean }>`
+export const DescriptionWhite = styled.li<{ shippingOptions: boolean }>`
   background: #fff;
   letter-spacing: 2px;
   padding: 0.25rem 0.5rem;
-  font-size: ${({ shipping }) => (shipping ? `calc(0.8rem + 0.1vw)` : `calc(1rem + 0.1vw)`)};
+  font-size: ${({ shippingOptions }) =>
+    shippingOptions ? `calc(0.8rem + 0.1vw)` : `calc(1rem + 0.1vw)`};
   font-weight: bolder;
   color: ${({ theme }) => theme.primaryText};
   //opacity: 0.9;
@@ -125,8 +126,7 @@ export const Method = styled.div`
 export const Label = styled.label`
   background: #fff;
   letter-spacing: 2px;
-  padding: 0.25rem 0.5rem;
-  font-size: calc(1rem + 0.1vw);
+  padding: 0.2rem 0.25rem;
   text-align: center;
   color: ${({ theme }) => theme.primaryText};
 `
@@ -135,4 +135,34 @@ export const Error = styled.span`
   margin: 0.1rem 1rem;
   padding: 0.5rem;
   color: red;
+`
+
+export const Radio = styled.input`
+  &:after {
+    width: 15px;
+    height: 15px;
+    top: -2px;
+    left: -1px;
+    border-radius: 15px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+  }
+
+  &:checked:after {
+    width: 15px;
+    height: 15px;
+    top: -2px;
+    left: -1px;
+    border-radius: 15px;
+    position: relative;
+    background-color: ${({ theme }) => theme.primaryPurple};
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+  }
 `

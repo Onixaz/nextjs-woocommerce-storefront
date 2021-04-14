@@ -1,12 +1,10 @@
 import { BasicContainer, SectionTitle } from '../../styles/utils'
 import * as CartPageStyles from './styled'
-
 import React, { useContext } from 'react'
 import { CartContext } from '../../context/cart'
 import { NextPage } from 'next'
-
 import CartGrid from '../../components/Cart/CartGrid'
-
+import Link from 'next/link'
 interface CartPageProps {}
 
 const CartPageContainer: NextPage<CartPageProps> = () => {
@@ -15,10 +13,13 @@ const CartPageContainer: NextPage<CartPageProps> = () => {
   return (
     <BasicContainer>
       <CartPageStyles.Wrapper>
-        {cart.items && cart.total > 0 ? (
+        {cart.items.length > 0 ? (
           <>
             <SectionTitle>Cart</SectionTitle>
             <CartGrid items={cart.items} />
+            <Link href="/checkout" passHref>
+              <CartPageStyles.CheckoutBtn>Proceed to Checkout</CartPageStyles.CheckoutBtn>
+            </Link>
           </>
         ) : (
           <CartPageStyles.EmptyCart>Your cart is empty</CartPageStyles.EmptyCart>

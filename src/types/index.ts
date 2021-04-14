@@ -29,8 +29,8 @@ export interface Category {
 
 export interface CartItem {
   key?: string
-  product_id?: number
-  quantity?: number
+  product_id: number
+  quantity: number
   product_price?: string
   product_name?: string
   image?: string
@@ -42,7 +42,6 @@ export interface Cart {
   key: string | null
   timestamp: number
   items: CartItem[]
-  total: number
 }
 
 export interface Customer {

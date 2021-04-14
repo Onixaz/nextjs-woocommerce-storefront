@@ -1,10 +1,11 @@
 import * as CartItemStyles from './styled'
 import React, { useContext, useRef, useState } from 'react'
-import { cartUpdater, initCart } from '../../../utils/functions'
+import { getSingleProduct, initCart, updateCart } from '../../../utils/functions'
 import { CartContext } from '../../../context/cart'
 import { CartItem } from '../../../types'
 import Link from 'next/link'
 import { Loader } from '../../../styles/utils'
+import useSWR from 'swr'
 
 interface CartItemProps {
   item: CartItem
@@ -14,6 +15,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
   const [isRemoving, setIsRemoving] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
+  const { data } = useSWR('/api/products/retrieve')
 
   const quantityRef = useRef<HTMLInputElement | null>(null)
 
@@ -39,7 +41,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
 
       setIsUpdating(false)
       setIsRemoving(false)
-      setCart(() => cartUpdater(cart, data))
+      setCart(() => updateCart(cart, data))
     } catch (error) {
       const newCart = await initCart()
       setCart(newCart)
@@ -72,7 +74,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
 
       setIsUpdating(false)
       setIsAnimating(false)
-      setCart(() => cartUpdater(cart, data))
+      setCart(() => updateCart(cart, data))
     } catch (error) {
       console.log(error)
       const newCart = await initCart()
@@ -81,6 +83,14 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
       setIsUpdating(false)
     }
   }
+
+  if (!data) {
+    return <Loader />
+  }
+
+  const { sale_price, regular_price } = getSingleProduct(item.product_id!, data)
+  const itemPrice = sale_price ? sale_price : regular_price
+  const itemTotal = itemPrice * item.quantity
 
   return (
     <>
@@ -98,7 +108,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
             <CartItemStyles.ProductLink>{item.product_name}</CartItemStyles.ProductLink>
           </Link>
         </CartItemStyles.CartEl>
-        <CartItemStyles.CartEl>{item.product_price}</CartItemStyles.CartEl>
+        <CartItemStyles.CartEl>${parseFloat(itemPrice).toFixed(2)}</CartItemStyles.CartEl>
         <CartItemStyles.CartEl>
           <CartItemStyles.QuantityForm>
             <CartItemStyles.InputField
@@ -122,9 +132,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
           </CartItemStyles.QuantityForm>
         </CartItemStyles.CartEl>
         <CartItemStyles.CartEl>
-          <CartItemStyles.ProductSubtotal>
-            ${item.line_total?.toFixed(2)}
-          </CartItemStyles.ProductSubtotal>
+          <CartItemStyles.ProductSubtotal>${itemTotal.toFixed(2)}</CartItemStyles.ProductSubtotal>
         </CartItemStyles.CartEl>
       </CartItemStyles.CartRow>
     </>

@@ -3,6 +3,7 @@ import * as NavIconStyles from './styled'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { CartContext } from '../../context/cart'
+import CartTotal from '../Cart/CartTotal'
 
 interface NavigationIconsProps {
   scrollNav: boolean
@@ -12,18 +13,19 @@ interface NavigationIconsProps {
 const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }) => {
   const router = useRouter()
   const [cart] = useContext(CartContext)
+
   const totalQuantity =
-    cart && cart.items.length > 0 && cart.total > 0
+    cart.items.length > 0
       ? cart.items.reduce((acc: number, curr: { [key: string]: number }) => acc + curr.quantity, 0)
       : 0
 
-  const cartTotal = cart && cart.total > 0 ? cart.total.toFixed(2) : 0
-
   return (
     <NavIconStyles.IconHolder scrollNav={scrollNav} isMobile={isMobile}>
-      <NavIconStyles.TotalPrice hasItems={cart && cart.total > 0 ? true : false}>
-        Total: ${cartTotal}
-      </NavIconStyles.TotalPrice>
+      <NavIconStyles.Total hasItems={cart.items.length > 0 ? true : false}>
+        Total:
+        <CartTotal cart={cart} />
+      </NavIconStyles.Total>
+
       <Link href="/cart" passHref>
         <NavIconStyles.CartIconWrapper>
           <NavIconStyles.CartBadge hasItems={totalQuantity > 0 ? true : false}>

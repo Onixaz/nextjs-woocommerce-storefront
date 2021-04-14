@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useStripe, useElements } from '@stripe/react-stripe-js'
 import { useForm } from 'react-hook-form'
 import * as CheckoutPageStyles from './styled'
@@ -11,6 +11,7 @@ import { NextPage } from 'next'
 import { createOrder, initCart } from '../../utils/functions'
 import { Customer } from '../../types'
 import { useRouter } from 'next/router'
+import useSWR from 'swr'
 
 interface CheckoutPageContainerProps {}
 
@@ -18,7 +19,6 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
   const [cart, setCart] = useContext(CartContext)
   const { register, handleSubmit, errors } = useForm()
   const [isProcessing, setIsProcessing] = useState(false)
-
   const [isReady, setIsReady] = useState(false)
   const [serverMsg, setServerMsg] = useState('')
   const stripe = useStripe()
@@ -27,11 +27,10 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
 
   const onSubmit = async (customer: Customer) => {
     try {
-      if (!cart.items) return
+      if (!cart || !cart.items) return
       setIsProcessing(true)
-      let payment: any
 
-      console.log(customer)
+      let payment: any
 
       //TODO: Add more payment methods (Paypal e.g)
       //Stripe block
@@ -55,7 +54,7 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
       // end of stripe block
 
       const { message } = await createOrder(customer, payment, cart)
-
+      console.log(message)
       const newCart = await initCart()
       setCart(newCart)
       setIsProcessing(false)
@@ -85,7 +84,7 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
         </CheckoutPageStyles.Address>
         <CheckoutPageStyles.Order>
           <Subtitle>Your order</Subtitle>
-          <OrderSummary register={register} errors={errors} />
+          <OrderSummary register={register} cart={cart} errors={errors} />
         </CheckoutPageStyles.Order>
         <CheckoutPageStyles.Payment>
           <Subtitle>Pay with credit card</Subtitle>

@@ -1,18 +1,24 @@
 import * as OrderSummaryStyles from './styled'
 import React, { useContext, useState } from 'react'
-import { CartItem } from '../../types'
+import { Cart, CartItem } from '../../types'
 import useSWR from 'swr'
 import { CartContext } from '../../context/cart'
+import { Loader } from '../../styles/utils'
+import CartTotal from '../Cart/CartTotal'
 
 interface OrderSummaryProps {
   register: any
   errors: any
+  cart: Cart
 }
 
-const OrderSummary: React.FC<OrderSummaryProps> = ({ register, errors }) => {
+const OrderSummary: React.FC<OrderSummaryProps> = ({ register, errors, cart }) => {
   const { data } = useSWR('/api/shipping/retrieve')
   const [shippingCost, setShippingCost] = useState(0)
-  const [cart] = useContext(CartContext)
+
+  if (!data) {
+    return <Loader />
+  }
 
   return (
     <OrderSummaryStyles.Wrapper>
@@ -31,42 +37,48 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ register, errors }) => {
             </React.Fragment>
           ))}
         <OrderSummaryStyles.DescriptionTall>Subtotal</OrderSummaryStyles.DescriptionTall>
-        <OrderSummaryStyles.DescriptionWhite shipping={false}>
-          ${cart.total.toFixed(2)}
+        <OrderSummaryStyles.DescriptionWhite shippingOptions={false}>
+          <CartTotal cart={cart} />
         </OrderSummaryStyles.DescriptionWhite>
 
         <OrderSummaryStyles.DescriptionLow>Shipping</OrderSummaryStyles.DescriptionLow>
-        <OrderSummaryStyles.DescriptionWhite shipping={true}>
+        <OrderSummaryStyles.DescriptionWhite shippingOptions={true}>
           <OrderSummaryStyles.Values>
-            {data?.map((item: any) => {
+            {data?.map((shipping: any) => {
+              const decodedCost = JSON.parse(window.atob(shipping.cost.split('.')[1]))
+
               return (
-                <OrderSummaryStyles.Method key={item.id}>
-                  <input
+                <OrderSummaryStyles.Method key={shipping.id}>
+                  <OrderSummaryStyles.Radio
                     ref={register({ required: true })}
                     onChange={() => {
-                      setShippingCost(item.cost)
+                      setShippingCost(decodedCost)
                     }}
                     type="radio"
                     name="shipping"
-                    value={item.method}
+                    value={JSON.stringify({
+                      cost: shipping.cost,
+                      method_id: shipping.method,
+                      method_title: shipping.title,
+                    })}
                   />
-                  <label htmlFor="shipping">
-                    {item.title} {item.cost > 0 ? ' - $' + item.cost : ''}
-                  </label>
+
+                  <OrderSummaryStyles.Label htmlFor="shipping">
+                    {shipping.title} {decodedCost > 0 ? ' - $' + decodedCost : ' - Free'}
+                  </OrderSummaryStyles.Label>
                 </OrderSummaryStyles.Method>
               )
             })}
           </OrderSummaryStyles.Values>
-          {/* {errors.shipping ?? <OrderSummaryStyles.Error> Please select a shipping method </OrderSummaryStyles.Error>} */}
         </OrderSummaryStyles.DescriptionWhite>
 
         <OrderSummaryStyles.DescriptionTall>Total</OrderSummaryStyles.DescriptionTall>
-        <OrderSummaryStyles.DescriptionWhite shipping={false}>
-          ${(shippingCost + cart.total).toFixed(2)}
+        <OrderSummaryStyles.DescriptionWhite shippingOptions={false}>
+          <CartTotal cart={cart} adds={shippingCost} />
         </OrderSummaryStyles.DescriptionWhite>
       </OrderSummaryStyles.Grid>
       {errors.shipping ? (
-        <OrderSummaryStyles.Error>Please select shipping method</OrderSummaryStyles.Error>
+        <OrderSummaryStyles.Error>Please select a shipping method</OrderSummaryStyles.Error>
       ) : (
         ''
       )}

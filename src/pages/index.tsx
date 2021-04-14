@@ -54,18 +54,19 @@ export async function getStaticProps() {
   const categories = unfilteredCategories.filter((item: Product) => {
     return item.name !== 'Uncategorized'
   })
-  //Product query is capped to 100 per page.
-  //Adjustment to WP code are needed to change it in case the shop has more than 100 products
-  const productsRes = await fetcher(`/wp-json/wc/v3/products?per_page=100`)
-  const products = await productsRes.json()
 
-  const featured = products.filter((item: Product) => {
-    if (item.featured === true && item.status === 'publish' && item.type === 'simple') {
-      return item.featured
-    } else {
-      return null
-    }
-  })
+  const productsRes = await fetcher(
+    `/wp-json/wc/v3/products?per_page=4&status=publish&type=simple&featured=true`,
+  )
+  const featured = await productsRes.json()
+
+  // const featured = products.filter((item: Product) => {
+  //   if (item.featured === true && item.status === 'publish' && item.type === 'simple') {
+  //     return item.featured
+  //   } else {
+  //     return null
+  //   }
+  // })
 
   return {
     props: { categories, featured },

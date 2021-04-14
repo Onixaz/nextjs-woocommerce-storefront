@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as ProductPriceStyles from './styled'
-import useSwr from 'swr'
+import useSwr, { mutate } from 'swr'
 import { Product } from '../../../types'
 import { Loader } from '../../../styles/utils'
+import { getSingleProduct } from '../../../utils/functions'
 
 interface ProductPriceProps {
   product: Product
@@ -13,33 +14,29 @@ interface ProductPriceProps {
 const ProductPrice: React.FC<ProductPriceProps> = ({ product, center, size }) => {
   const { data } = useSwr(`/api/products/retrieve`)
 
-  const filteredProduct = data?.filter((item: Product) => {
-    return item.id === product.id
-  })
+  if (!data) {
+    return <Loader />
+  }
+
+  const { sale_price, regular_price } = getSingleProduct(product.id, data)
 
   return (
-    <>
-      {!filteredProduct ? (
-        <Loader />
+    <ProductPriceStyles.Wrapper center={center}>
+      {!sale_price ? (
+        <ProductPriceStyles.Regular isOnSale={false} size={size}>
+          ${parseFloat(regular_price).toFixed(2)}
+        </ProductPriceStyles.Regular>
       ) : (
-        <ProductPriceStyles.Wrapper center={center}>
-          {!filteredProduct[0].sale_price ? (
-            <ProductPriceStyles.Regular isOnSale={false} size={size}>
-              ${parseFloat(filteredProduct[0].regular_price).toFixed(2)}
-            </ProductPriceStyles.Regular>
-          ) : (
-            <>
-              <ProductPriceStyles.Regular isOnSale={true} size={size}>
-                ${parseFloat(filteredProduct[0].regular_price).toFixed(2)}
-              </ProductPriceStyles.Regular>
-              <ProductPriceStyles.Sale size={size}>
-                ${parseFloat(filteredProduct[0].sale_price).toFixed(2)}
-              </ProductPriceStyles.Sale>
-            </>
-          )}
-        </ProductPriceStyles.Wrapper>
+        <>
+          <ProductPriceStyles.Regular isOnSale={true} size={size}>
+            ${parseFloat(regular_price).toFixed(2)}
+          </ProductPriceStyles.Regular>
+          <ProductPriceStyles.Sale size={size}>
+            ${parseFloat(sale_price).toFixed(2)}
+          </ProductPriceStyles.Sale>
+        </>
       )}
-    </>
+    </ProductPriceStyles.Wrapper>
   )
 }
 

@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import * as CartGridStyles from './styled'
 import Link from 'next/link'
 import SingleCartItem from '../../../components/Cart/CartItem'
 import { CartItem } from '../../../types'
+import { useRouter } from 'next/router'
+import { cartUpdater, getCart } from '../../../utils/functions'
+import { CartContext } from '../../../context/cart'
 
 interface CartGridProps {
   items: CartItem[]
@@ -32,11 +35,6 @@ const CartGrid: React.FC<CartGridProps> = ({ items }) => {
           })}
         </CartGridStyles.SecondCol>
       </CartGridStyles.Wrapper>
-      <CartGridStyles.Totals>
-        <Link href="/checkout" passHref>
-          <CartGridStyles.CheckoutBtn>Proceed to checkout</CartGridStyles.CheckoutBtn>
-        </Link>
-      </CartGridStyles.Totals>
     </>
   )
 }

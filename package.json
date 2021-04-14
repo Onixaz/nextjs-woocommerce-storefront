@@ -9,7 +9,6 @@
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx --fix",
     "postbuild": "next-sitemap --config next-sitemap.config.js"
-    
   },
   "husky": {
     "hooks": {
@@ -30,7 +29,6 @@
     "@next/bundle-analyzer": "^10.0.7",
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.11.0",
-  
     "jsonwebtoken": "8.5.1",
     "next": "^10.0.5",
     "next-auth": "^3.6.1",
@@ -52,7 +50,6 @@
     "@typescript-eslint/eslint-plugin": "^3.6.1",
     "@typescript-eslint/parser": "^3.6.1",
     "babel-plugin-styled-components": "^1.12.0",
-   
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.3.1",

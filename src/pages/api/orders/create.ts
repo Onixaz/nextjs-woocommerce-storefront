@@ -9,34 +9,29 @@ interface OrderDetails {
   customer: Customer
   payment: string
   cart: Cart
-  shipping: string
 }
 
 const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY!}`, { apiVersion: '2020-08-27' })
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Method not allowed' })
-  let user: any
-  const session: any = await getSession({ req })
-  if (session) {
-    user = jwt.verify(session.user.key, process.env.WP_JWT_AUTH_SECRET_KEY!)
-  }
 
   const { customer, payment, cart }: OrderDetails = req.body
-  const line_items = cart.items
-
   if (!customer || !payment! || !cart) return res.status(400).json({ message: 'Bad request' })
 
-  const shippingRes = await fetch(`${process.env.NEXTAUTH_URL}/api/shipping/retrieve`)
-  const shippingJSON = await shippingRes.json()
-
-  const userShipping = shippingJSON.filter((item: any) => {
-    return item.method === customer.shipping!
-  })
-
-  console.log(userShipping[0])
-
   try {
+    const line_items = cart.items
+    const { method_id, method_title, cost } = JSON.parse(customer.shipping!)
+
+    let user: any
+    const session: any = await getSession({ req })
+
+    if (session) {
+      user = jwt.verify(session.user.key, process.env.WP_JWT_AUTH_SECRET_KEY!)
+    }
+
+    const total = jwt.verify(cost, process.env.NEXTAUTH_SECRET_KEY!)
+
     const wooBody = {
       payment_method: `Credit Card`,
       payment_method_title: 'Credit Card',
@@ -52,9 +47,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       customer_id: user ? user.data.user.id : 0,
       shipping_lines: [
         {
-          method_id: userShipping[0].method,
-          method_title: userShipping[0].title,
-          total: String(userShipping[0].cost),
+          method_id,
+          method_title,
+          total,
         },
       ],
     }
@@ -62,39 +57,30 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     const wooResponse = await poster(`/wp-json/wc/v3/orders`, wooBody, 'POST')
     const order = await wooResponse.json()
 
-    if (cart.total + userShipping[0].cost === parseFloat(order.total)) {
-      const amount = Math.round(
-        parseFloat(cart.total.toFixed(2) + userShipping[0].cost.toFixed(2)) * 100,
+    const amount = Math.round(parseFloat(order.total) * 100)
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      payment_method: payment,
+      amount,
+      currency: 'usd',
+      confirm: true,
+      confirmation_method: 'manual',
+    })
+
+    if (paymentIntent.status === 'succeeded') {
+      res.status(200).json({ message: 'Success' })
+
+      poster(
+        `/wp-json/wc/v3/orders/${order.id}`,
+
+        { set_paid: true, transaction_id: paymentIntent.id },
+        'PUT',
       )
-      console.log(amount)
-
-      const paymentIntent = await stripe.paymentIntents.create({
-        payment_method: payment,
-        amount,
-        currency: 'usd',
-        confirm: true,
-        confirmation_method: 'manual',
-      })
-
-      if (paymentIntent.status === 'succeeded') {
-        res.status(200).json({ message: 'Success' })
-
-        poster(
-          `/wp-json/wc/v3/orders/${order.id}`,
-
-          { set_paid: true, transaction_id: paymentIntent.id },
-          'PUT',
-        )
-      } else {
-        res.status(400).json({ message: 'Failure in processing the payment' })
-      }
     } else {
-      res.status(400).json({ message: 'Failure in processing the order' })
+      res.status(400).json({ message: 'Failure in processing the payment' })
     }
-
-    //
   } catch (error) {
-    console.log(error)
+    console.error(error)
     res.status(500).json({ message: 'Server error' })
   }
 }

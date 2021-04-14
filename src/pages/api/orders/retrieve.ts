@@ -8,6 +8,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (!key) return res.status(401).json({ message: 'Access denied' })
 
   const response = await fetcher(`/wp-json/wc/v3/orders?customer=${key.data.user.id}`)
+  const data = await response.json()
 
-  return res.status(200).send(await response.json())
+  return res.status(200).send(data)
 }

@@ -2,11 +2,9 @@ import styled from 'styled-components'
 import { RiShoppingCart2Fill } from 'react-icons/ri'
 import { MdAccountCircle } from 'react-icons/md'
 
-export const TotalPrice = styled.p<{ hasItems: boolean }>`
-  display: ${({ hasItems }) => (hasItems ? '' : 'none')};
-  font-size: 0.9rem;
-  margin: 0 0.25rem;
-  white-space: nowrap;
+export const Total = styled.span<{ hasItems: boolean }>`
+  display: ${({ hasItems }) => (hasItems ? 'flex' : 'none')};
+  flex-direction: row;
   letter-spacing: 1.1px;
   font-weight: 400;
 `
@@ -49,7 +47,7 @@ export const IconHolder = styled.div<{ scrollNav: boolean; isMobile: boolean }>`
   @media screen and (max-width: 768px) {
     display: ${({ isMobile }) => (isMobile ? 'flex' : 'none')};
   }
-  ${TotalPrice} {
+  ${Total} {
     color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryText : theme.primaryWhite)};
     font-size: ${({ isMobile }) => (isMobile ? '1.2rem' : '0.9rem')};
   }

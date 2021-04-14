@@ -1,6 +1,6 @@
-import { Cart, CartItem, Customer } from '../types'
+import { Cart, Customer, Product } from '../types'
 import jwt from 'jsonwebtoken'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest } from 'next'
 import { getSession } from 'next-auth/client'
 
 export const authorizeAdmin = () => {
@@ -71,34 +71,27 @@ export const initCart = async () => {
     items: [],
     key: cartKey,
     timestamp: new Date().getTime(),
-    total: 0,
   }
 }
 
-// export const clearCart = async (key: string) => {
-//   fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/clear?cart_key=${key}`, {
-//     method: 'POST',
-//   })
-// }
+export const getSingleProduct = (productId: number, data: any) => {
+  const product = data.find((item: Product) => {
+    return item.id === productId
+  })
 
-export const cartUpdater = (cart: Cart, data: Response) => {
+  return product
+}
+
+export const updateCart = (cart: Cart, data: Response) => {
   const newCart = { ...cart }
   newCart.items = Object.values(data)
-  if (newCart.items.length > 0) {
-    newCart.total = newCart.items.reduce(
-      (acc: number, curr: CartItem) => (curr.line_total ? acc + curr.line_total : 0),
-      0,
-    )
-  } else {
-    newCart.total = 0
-  }
+
   return newCart
 }
 
 export const createOrder = async (customer: Customer, payment: string, cart: Cart) => {
   const res = await fetch(`/api/orders/create`, {
     method: 'POST',
-
     headers: {
       'Content-Type': 'application/json',
     },
