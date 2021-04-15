@@ -90,12 +90,11 @@ Just make sure you set your env variables. For more details refer to [https://ww
 * ~~User registration and login functionality.~~
 * ~~Dynamic prices using SWR (client side data fetching).~~
 * ~~Shipping options.~~
+* ~~Products pagination.~~
 * User specific cart.
+* User dashboard (orders, addresses, password reset).
 * Pages for categories.
 * Blog page.
-* Related products.
-* User dashboard (orders, addresses, password reset).
-* Products pagination.
 * Image optimization.
 * Filters.
 * Coupons system.

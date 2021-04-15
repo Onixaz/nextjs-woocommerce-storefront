@@ -27,24 +27,40 @@ const ShopPageContainer: NextPage<ShopPageProps> = ({ products }) => {
       />
 
       <BasicContainer id="Products">
-        <BasicGrid lg={4} md={3} sm={2} xs={1}>
-          {currentProducts.map((product: any) => {
-            return <SingleProduct key={product.id} product={product} />
-          })}
-        </BasicGrid>
         <ShopPageStyles.PagesList>
+          <ShopPageStyles.Page
+            onClick={() => setCurrentPage(currentPage - 1)}
+            active={false}
+            visible={currentPage === 1 ? false : true}
+          >
+            {'<'}
+          </ShopPageStyles.Page>
+
           {Array.from({ length: numberOfPages }, (_, index) => {
             return (
               <ShopPageStyles.Page
                 key={index}
-                active={index + 1 === currentPage ? true : false}
                 onClick={() => setCurrentPage(index + 1)}
+                active={index + 1 === currentPage ? true : false}
+                visible={true}
               >
                 {index + 1}
               </ShopPageStyles.Page>
             )
           })}
+          <ShopPageStyles.Page
+            onClick={() => setCurrentPage(currentPage + 1)}
+            active={false}
+            visible={currentPage === numberOfPages ? false : true}
+          >
+            {'>'}
+          </ShopPageStyles.Page>
         </ShopPageStyles.PagesList>
+        <BasicGrid lg={4} md={3} sm={2} xs={1}>
+          {currentProducts.map((product: any) => {
+            return <SingleProduct key={product.id} product={product} />
+          })}
+        </BasicGrid>
       </BasicContainer>
     </>
   )

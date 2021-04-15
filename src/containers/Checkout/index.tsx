@@ -27,7 +27,7 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
 
   const onSubmit = async (customer: Customer) => {
     try {
-      if (!cart || !cart.items) return
+      if (!cart || cart.items.length === 0) return
       setIsProcessing(true)
 
       let payment: any

@@ -46,7 +46,6 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ register, errors, cart }) =
           <OrderSummaryStyles.Values>
             {data?.map((shipping: any) => {
               const decodedCost = JSON.parse(window.atob(shipping.cost.split('.')[1]))
-
               return (
                 <OrderSummaryStyles.Method key={shipping.id}>
                   <OrderSummaryStyles.Radio
