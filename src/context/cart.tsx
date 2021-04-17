@@ -30,16 +30,17 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   useEffect(() => {
-    const localCart = localStorage.getItem('local_cart')
+    //TODO add cart to user session
+    const userCart = localStorage.getItem('local_cart')
 
     if (
-      !localCart ||
-      (localCart && new Date().getTime() - JSON.parse(localCart).timestamp > expireIn) ||
-      !JSON.parse(localCart).key
+      !userCart ||
+      (userCart && new Date().getTime() - JSON.parse(userCart).timestamp > expireIn) ||
+      !JSON.parse(userCart).key
     ) {
       createCart()
     } else {
-      setCart(JSON.parse(localCart))
+      setCart(JSON.parse(userCart))
     }
   }, [])
 

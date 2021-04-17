@@ -2,16 +2,9 @@ import React from 'react'
 import { CardElement } from '@stripe/react-stripe-js'
 import * as StripePaymentStyles from './styled'
 
-interface PaymentFormContentProps {
-  setIsReady: React.ComponentState
-  isReady: React.ComponentState
-}
+interface PaymentFormContentProps {}
 
-const StripePayment: React.FC<PaymentFormContentProps> = ({ setIsReady, isReady }) => {
-  const handleCardDetailsChange = (ev: any) => {
-    ev.complete ? setIsReady(true) : setIsReady(false)
-  }
-
+const StripePayment: React.FC<PaymentFormContentProps> = () => {
   const iframeStyles = {
     base: {
       color: '#4c4e4',
@@ -49,16 +42,12 @@ const StripePayment: React.FC<PaymentFormContentProps> = ({ setIsReady, isReady 
         </StripePaymentStyles.ImgHolder>
 
         <StripePaymentStyles.CardElementWrapper>
-          <CardElement options={cardElementOpts} onChange={handleCardDetailsChange} />
+          <CardElement options={cardElementOpts} />
         </StripePaymentStyles.CardElementWrapper>
       </StripePaymentStyles.Wrapper>
-      {!isReady ? (
-        <StripePaymentStyles.Info>
-          Fill in the card details. Use 4242 4242 4242 4242 for testing.
-        </StripePaymentStyles.Info>
-      ) : (
-        <StripePaymentStyles.Info>Great, you can place your order now!</StripePaymentStyles.Info>
-      )}
+      <StripePaymentStyles.Info>
+        Fill in the card details. Use 4242 4242 4242 4242 for testing.
+      </StripePaymentStyles.Info>
     </StripePaymentStyles.Container>
   )
 }

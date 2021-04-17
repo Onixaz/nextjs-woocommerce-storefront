@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import * as NavIconStyles from './styled'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { CartContext } from '../../context/cart'
 import CartTotal from '../Cart/CartTotal'
 
@@ -11,17 +10,22 @@ interface NavigationIconsProps {
 }
 
 const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }) => {
-  const router = useRouter()
   const [cart] = useContext(CartContext)
 
-  const totalQuantity =
-    cart.items.length > 0
-      ? cart.items.reduce((acc: number, curr: { [key: string]: number }) => acc + curr.quantity, 0)
-      : 0
+  const totalQuantity = useMemo(() => {
+    if (cart.items.length > 0) {
+      return cart.items.reduce(
+        (acc: number, curr: { [key: string]: number }) => acc + curr.quantity,
+        0,
+      )
+    } else {
+      return 0
+    }
+  }, [cart])
 
   return (
     <NavIconStyles.IconHolder scrollNav={scrollNav} isMobile={isMobile}>
-      <NavIconStyles.Total hasItems={cart.items.length > 0 ? true : false}>
+      <NavIconStyles.Total hasItems={totalQuantity > 0 ? true : false}>
         Total:
         <CartTotal cart={cart} />
       </NavIconStyles.Total>
@@ -34,8 +38,11 @@ const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }
           <NavIconStyles.CartIcon />
         </NavIconStyles.CartIconWrapper>
       </Link>
-
-      <NavIconStyles.AccIcon onClick={() => router.push('/account')} />
+      <Link href="/account">
+        <React.Fragment>
+          <NavIconStyles.AccIcon />
+        </React.Fragment>
+      </Link>
     </NavIconStyles.IconHolder>
   )
 }

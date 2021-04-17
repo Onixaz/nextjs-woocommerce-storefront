@@ -30,4 +30,4 @@ const CartTotal: React.FC<CartTotalProps> = ({ cart, adds }) => {
   )
 }
 
-export default CartTotal
+export default React.memo(CartTotal)

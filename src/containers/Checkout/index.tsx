@@ -11,47 +11,44 @@ import { NextPage } from 'next'
 import { createOrder, initCart } from '../../utils/functions'
 import { Customer } from '../../types'
 import { useRouter } from 'next/router'
-import useSWR from 'swr'
 
 interface CheckoutPageContainerProps {}
 
 const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
+  const [chosenPaymentMethod, setChosenPaymentMethod] = useState('stripe')
   const [cart, setCart] = useContext(CartContext)
   const { register, handleSubmit, errors } = useForm()
   const [isProcessing, setIsProcessing] = useState(false)
-  const [isReady, setIsReady] = useState(false)
   const [serverMsg, setServerMsg] = useState('')
   const stripe = useStripe()
   const elements = useElements()
-  const router = useRouter()
 
   const onSubmit = async (customer: Customer) => {
     try {
-      if (!cart || cart.items.length === 0) return
-      setIsProcessing(true)
+      if (!cart || cart.items.length === 0 || !stripe || !elements) return
 
+      setIsProcessing(true)
       let payment: any
 
       //TODO: Add more payment methods (Paypal e.g)
-      //Stripe block
-      if (!stripe || !elements) throw new Error(`Stripe not initialized...`)
 
-      const cardElement = elements.getElement('card')
-      if (!cardElement) throw new Error(`No card element`)
+      if (chosenPaymentMethod === 'stripe') {
+        const cardElement = elements.getElement('card')
 
-      if (!isReady) {
-        cardElement.focus()
-        return
+        const stripeRes = await stripe.createPaymentMethod({
+          type: 'card',
+          card: cardElement!,
+        })
+
+        payment = stripeRes.paymentMethod?.id
       }
 
-      const stripeRes = await stripe.createPaymentMethod({
-        type: 'card',
-        card: cardElement,
-      })
-      if (!stripeRes.paymentMethod?.id) throw new Error(`Can't connect to Stripe...`)
-
-      payment = stripeRes.paymentMethod.id
       // end of stripe block
+
+      if (!payment) {
+        setIsProcessing(false)
+        return
+      }
 
       const { message } = await createOrder(customer, payment, cart)
       console.log(message)
@@ -60,9 +57,6 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
       setIsProcessing(false)
       if (message === 'Success') {
         setServerMsg('Thank you for your order. Check your email for details!')
-        setTimeout(() => {
-          router.push('/')
-        }, 5000)
       } else {
         setServerMsg('Sorry something went wrong. Please try again later...')
       }
@@ -88,7 +82,7 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
         </CheckoutPageStyles.Order>
         <CheckoutPageStyles.Payment>
           <Subtitle>Pay with credit card</Subtitle>
-          <StripePayment isReady={isReady} setIsReady={setIsReady} />
+          <StripePayment />
         </CheckoutPageStyles.Payment>
         <CheckoutPageStyles.SubmitHolder>
           <CheckoutPageStyles.PrivacyNotice>
