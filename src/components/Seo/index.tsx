@@ -23,7 +23,6 @@ const Seo: React.FC<CustomHeadProps> = () => {
       <meta property="og:site_name" content={baseInfo.name} />
       <meta name="author" content={baseInfo.author} />
       <meta name="keywords" content={baseInfo.keywords} />
-      <link rel="preload" href="/api/shipping/retrieve" as="fetch" crossOrigin="anonymous" />
     </Head>
   )
 }
