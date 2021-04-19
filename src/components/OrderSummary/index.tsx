@@ -38,7 +38,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ register, errors, cart }) =
           ))}
         <OrderSummaryStyles.DescriptionTall>Subtotal</OrderSummaryStyles.DescriptionTall>
         <OrderSummaryStyles.DescriptionWhite shippingOptions={false}>
-          <CartTotal cart={cart} />
+          <CartTotal />
         </OrderSummaryStyles.DescriptionWhite>
 
         <OrderSummaryStyles.DescriptionLow>Shipping</OrderSummaryStyles.DescriptionLow>
@@ -73,7 +73,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ register, errors, cart }) =
 
         <OrderSummaryStyles.DescriptionTall>Total</OrderSummaryStyles.DescriptionTall>
         <OrderSummaryStyles.DescriptionWhite shippingOptions={false}>
-          <CartTotal cart={cart} adds={shippingCost} />
+          <CartTotal adds={shippingCost} />
         </OrderSummaryStyles.DescriptionWhite>
       </OrderSummaryStyles.Grid>
       {errors.shipping ? (
