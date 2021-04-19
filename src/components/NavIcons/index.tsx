@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { CartContext } from '../../context/cart'
 import CartTotal from '../Cart/CartTotal'
+import { useSession } from 'next-auth/client'
 
 interface NavigationIconsProps {
   scrollNav: boolean
@@ -13,6 +14,7 @@ interface NavigationIconsProps {
 const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }) => {
   const [cart] = useContext(CartContext)
   const router = useRouter()
+  const [session] = useSession()
 
   const totalQuantity = useMemo(() => {
     if (cart.items.length > 0) {
@@ -29,7 +31,7 @@ const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }
     <NavIconStyles.IconHolder scrollNav={scrollNav} isMobile={isMobile}>
       <NavIconStyles.Total hasItems={totalQuantity > 0 ? true : false}>
         Total:
-        <CartTotal cart={cart} />
+        <CartTotal />
       </NavIconStyles.Total>
 
       <Link href="/cart" passHref>
@@ -41,7 +43,7 @@ const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }
         </NavIconStyles.CartIconWrapper>
       </Link>
 
-      <NavIconStyles.AccIcon onClick={() => router.push('/account')} />
+      <NavIconStyles.AccIcon onClick={() => router.push(session ? '/account' : '/login')} />
     </NavIconStyles.IconHolder>
   )
 }

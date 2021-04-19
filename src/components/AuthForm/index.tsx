@@ -1,10 +1,12 @@
 import * as AuthFormStyles from './styled'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { signIn } from 'next-auth/client'
-import React, { useRef, useState } from 'react'
+import React, { SetStateAction, useContext, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Loader, SectionTitle } from '../../styles/utils'
 import Link from 'next/link'
+import { CartContext } from '../../context/cart'
+import { Cart } from '../../types'
 
 interface AuthFormProps {
   isRegister: boolean
@@ -16,14 +18,16 @@ interface FormValues {
   email: string
   password: string
   passwordRepeat: string
+  cartString: string
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
   const { register, handleSubmit, errors, watch } = useForm()
   const [submiting, setSubmiting] = useState(false)
   const [response, setResponse] = useState('')
-  const router = useRouter()
+  const [cart] = useContext(CartContext)
   const password = useRef({})
+  const router = useRouter()
   password.current = watch('password', '')
 
   const btnText = isRegister ? 'Register' : 'Login'
@@ -31,19 +35,24 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       setSubmiting(true)
+      const cartString = JSON.stringify(cart)
+      data = { ...data, cartString }
       if (isRegister) {
-        const req = await fetch('/api/users/create', {
+        const req = await fetch('/api/customers/create', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         })
         const status = req.status
         const { message } = await req.json()
+
         if (status === 200) {
           await signIn('credentials', {
             redirect: false,
             ...data,
           })
+
+          router.push('account')
         } else {
           setResponse(message)
         }
@@ -52,13 +61,14 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
           redirect: false,
           ...data,
         })
+
         if (user.ok === true) {
           router.push('account')
         } else {
           setResponse('Wrong username or password')
         }
+        setSubmiting(false)
       }
-      setSubmiting(false)
     } catch (error) {
       setSubmiting(false)
       console.log(error)

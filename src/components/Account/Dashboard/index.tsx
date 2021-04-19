@@ -4,9 +4,6 @@ import useSWR from 'swr'
 
 const AccountDashboard: React.FC = () => {
   const [session]: any = useSession()
-  //const {data} = useSWR('/api/shipping/retrieve')
-  //const { data } = useSWR('/api/customers/retrieve')
-  //console.log(data)
 
   return (
     <div>

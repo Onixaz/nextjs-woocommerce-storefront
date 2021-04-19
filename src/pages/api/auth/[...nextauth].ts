@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import NextAuth from 'next-auth'
-
+import jwt from 'jsonwebtoken'
 import Providers from 'next-auth/providers'
 import { poster } from '../../../utils/functions'
 
@@ -22,15 +22,28 @@ const options = {
       authorize: async (credentials) => {
         try {
           //get user from wp
-          const { username, password } = credentials
-          const req = await poster('/wp-json/jwt-auth/v1/token', { username, password }, 'POST')
-          const res = await req.json()
+          const { username, password, cartString } = credentials
+          const authReq = await poster('/wp-json/jwt-auth/v1/token', { username, password }, 'POST')
+          const authRes = await authReq.json()
 
-          if (res && res.token) {
-            const user = { username: res.user_display_name, key: res.token }
+          if (authRes && authRes.token) {
+            const userId: any = jwt.decode(authRes.token)
+            const cart = JSON.parse(cartString)
+            const cartReq = await poster(
+              `/wp-json/wc/v3/customers/${userId!.data.user.id}`,
+              { meta_data: cart.items.length === 0 ? null : [{ key: 'cart', value: cart.key }] },
+              'PUT',
+            )
+            const cartRes = await cartReq.json()
+
+            const user = {
+              username: authRes.user_display_name,
+              key: authRes.token,
+              cart: cartRes.meta_data.find((x: any) => x.key === 'cart').value,
+            }
             return user
           } else {
-            console.log(res)
+            console.log(authRes)
             return null
           }
         } catch (error) {

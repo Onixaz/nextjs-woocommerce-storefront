@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Cart } from '../types'
-import { initCart } from '../utils/functions'
+import { getCart, initCart } from '../utils/functions'
+import { useSession } from 'next-auth/client'
 
 export const CartContext = React.createContext<any | null>(null)
 
@@ -9,44 +10,63 @@ interface CartProviderProps {}
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Cart>({ items: [], key: '', timestamp: 0 })
   const [isUpdating, setIsUpdating] = useState(false)
+  const [session]: any = useSession()
 
   //to change cart expiration date on server
   //https://github.com/co-cart/co-cart/search?q=cocart_cart_expiring+in%3Afile&type=Code
   //however you still need to expire your local cart so the carts don't get out of sync
+
   const expireIn = 259200000 //3 days example
 
-  const createCart = async () => {
-    try {
-      setIsUpdating(true)
-      const newCart = await initCart()
-      if (!newCart) throw new Error(`Can't set remote cart. Check the CoCart url`)
-      setCart(newCart!)
-      localStorage.setItem('local_cart', JSON.stringify(newCart))
-      setIsUpdating(false)
-    } catch (error) {
-      setIsUpdating(false)
-      console.error(error)
+  const createUserCart = async (cartKey: string) => {
+    setIsUpdating(true)
+    const newCart = await getCart(cartKey)
+    setCart(newCart!)
+    localStorage.setItem('local_cart', JSON.stringify(newCart))
+    setIsUpdating(false)
+  }
+
+  const createGuestCart = async () => {
+    setIsUpdating(true)
+    const newCart = await initCart()
+    setCart(newCart!)
+    localStorage.setItem('local_cart', JSON.stringify(newCart))
+    setIsUpdating(false)
+  }
+
+  const checkForLocalCart = (expirity: number) => {
+    const cartFromLocalStoragge = localStorage.getItem('local_cart')
+    if (
+      !cartFromLocalStoragge ||
+      new Date().getTime() - JSON.parse(cartFromLocalStoragge).timestamp > expirity ||
+      !JSON.parse(cartFromLocalStoragge).key
+    ) {
+      return null
+    } else {
+      return JSON.parse(cartFromLocalStoragge)
     }
   }
 
   useEffect(() => {
-    //TODO add cart to user session
-    const userCart = localStorage.getItem('local_cart')
+    const cartFromLocalStorage = checkForLocalCart(expireIn)
 
-    if (
-      !userCart ||
-      (userCart && new Date().getTime() - JSON.parse(userCart).timestamp > expireIn) ||
-      !JSON.parse(userCart).key
-    ) {
-      createCart()
+    if (isUpdating) return
+    if (session) {
+      if (!cartFromLocalStorage || cartFromLocalStorage.items.length === 0) {
+        createUserCart(session.user.cart)
+      } else {
+        setCart(cartFromLocalStorage)
+      }
     } else {
-      setCart(JSON.parse(userCart))
+      if (!cartFromLocalStorage) {
+        createGuestCart()
+      } else {
+        setCart(cartFromLocalStorage)
+      }
     }
-  }, [])
+  }, [session])
 
   useEffect(() => {
-    //updating local cart everytime changes are made  to remote cart
-
     localStorage.setItem('local_cart', JSON.stringify(cart))
   }, [cart])
 

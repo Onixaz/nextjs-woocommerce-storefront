@@ -16,7 +16,7 @@ const CartPageContainer: NextPage<CartPageProps> = () => {
         {cart.items.length > 0 ? (
           <>
             <SectionTitle>Cart</SectionTitle>
-            <CartGrid items={cart.items} />
+            <CartGrid />
             <Link href="/checkout" passHref>
               <CartPageStyles.CheckoutBtn>Proceed to Checkout</CartPageStyles.CheckoutBtn>
             </Link>

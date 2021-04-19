@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import * as CartGridStyles from './styled'
 import SingleCartItem from '../../../components/Cart/CartItem'
 import { CartItem } from '../../../types'
+import { CartContext } from '../../../context/cart'
 
-interface CartGridProps {
-  items: CartItem[]
-}
+interface CartGridProps {}
 
-const CartGrid: React.FC<CartGridProps> = ({ items }) => {
+const CartGrid: React.FC<CartGridProps> = () => {
+  const [cart] = useContext(CartContext)
   return (
     <>
       <CartGridStyles.Wrapper>
         <CartGridStyles.FirstCol>
-          {items.map((item: CartItem) => {
+          {cart.items.map((item: CartItem) => {
             return (
               <CartGridStyles.DescriptionRow key={item.product_id?.toString()}>
                 <CartGridStyles.Description></CartGridStyles.Description>
@@ -26,7 +26,7 @@ const CartGrid: React.FC<CartGridProps> = ({ items }) => {
           })}
         </CartGridStyles.FirstCol>
         <CartGridStyles.SecondCol>
-          {items.map((item: CartItem) => {
+          {cart.items.map((item: CartItem) => {
             return <SingleCartItem key={item.product_id} item={item} />
           })}
         </CartGridStyles.SecondCol>

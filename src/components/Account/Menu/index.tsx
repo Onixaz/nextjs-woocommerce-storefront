@@ -1,14 +1,18 @@
 import React, { SetStateAction, Dispatch } from 'react'
 import { signOut } from 'next-auth/client'
 import * as AccountMenuStyles from './styled'
+import { useRouter } from 'next/router'
 
 interface AccountMenuProps {
   setView: Dispatch<SetStateAction<string>>
 }
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ setView }) => {
+  const router = useRouter()
+
   const handleLogout = (options: any) => async () => {
     await signOut(options)
+    router.push('login')
   }
   return (
     <AccountMenuStyles.Wrapper>

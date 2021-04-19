@@ -1,4 +1,4 @@
-import { Cart, Customer, Product } from '../types'
+import { Cart, CartItem, Customer, Product } from '../types'
 import jwt from 'jsonwebtoken'
 import { NextApiRequest } from 'next'
 import { getSession } from 'next-auth/client'
@@ -69,6 +69,19 @@ export const initCart = async () => {
 
   return {
     items: [],
+    key: cartKey,
+    timestamp: new Date().getTime(),
+  }
+}
+
+export const getCart = async (cartKey: string) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/get-cart?cart_key=${cartKey}`,
+  )
+  const cart: CartItem[] = await res.json()
+
+  return {
+    items: Object.values(cart),
     key: cartKey,
     timestamp: new Date().getTime(),
   }

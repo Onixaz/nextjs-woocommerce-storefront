@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AuthForm from '../../components/AuthForm'
+import { useRouter } from 'next/router'
 import { BasicContainer } from '../../styles/utils'
 import * as RegisterPageStyles from './styled'
 

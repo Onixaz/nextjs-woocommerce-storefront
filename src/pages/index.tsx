@@ -60,14 +60,6 @@ export async function getStaticProps() {
   )
   const featured = await productsRes.json()
 
-  // const featured = products.filter((item: Product) => {
-  //   if (item.featured === true && item.status === 'publish' && item.type === 'simple') {
-  //     return item.featured
-  //   } else {
-  //     return null
-  //   }
-  // })
-
   return {
     props: { categories, featured },
   }

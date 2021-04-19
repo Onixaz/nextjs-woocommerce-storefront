@@ -1,9 +1,9 @@
 import * as AccountPageStyles from './styled'
 import { useSession } from 'next-auth/client'
 import React from 'react'
-import AuthForm from '../../components/AuthForm'
 import { BasicContainer } from '../../styles/utils'
 import AccountGrid from '../../components/Account/Grid'
+import { useRouter } from 'next/router'
 
 const AccountPageContainer: React.FC = () => {
   const [session]: any = useSession()
@@ -11,7 +11,11 @@ const AccountPageContainer: React.FC = () => {
   return (
     <BasicContainer>
       <AccountPageStyles.Wrapper>
-        {session ? <AccountGrid /> : <AuthForm isRegister={false} />}
+        {session ? (
+          <AccountGrid />
+        ) : (
+          <AccountPageStyles.Info>Please login or register first</AccountPageStyles.Info>
+        )}
       </AccountPageStyles.Wrapper>
     </BasicContainer>
   )
