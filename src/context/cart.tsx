@@ -52,7 +52,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     if (isUpdating) return
     if (session) {
-      if (!cartFromLocalStorage || cartFromLocalStorage.items.length === 0) {
+      if (!cartFromLocalStorage || cartFromLocalStorage.items.length >= 0) {
         createUserCart(session.user.cart)
       } else {
         setCart(cartFromLocalStorage)
