@@ -1,13 +1,15 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import * as CartGridStyles from './styled'
 import SingleCartItem from '../../../components/Cart/CartItem'
-import { CartItem } from '../../../types'
-import { CartContext } from '../../../context/cart'
+import { Cart, CartItem } from '../../../types'
+import { getSingleProduct } from '../../../utils/functions'
 
-interface CartGridProps {}
+interface CartGridProps {
+  cart: Cart
+  data: any
+}
 
-const CartGrid: React.FC<CartGridProps> = () => {
-  const [cart] = useContext(CartContext)
+const CartGrid: React.FC<CartGridProps> = ({ cart, data }) => {
   return (
     <>
       <CartGridStyles.Wrapper>
@@ -27,7 +29,10 @@ const CartGrid: React.FC<CartGridProps> = () => {
         </CartGridStyles.FirstCol>
         <CartGridStyles.SecondCol>
           {cart.items.map((item: CartItem) => {
-            return <SingleCartItem key={item.product_id} item={item} />
+            const product = getSingleProduct(item.product_id, data)
+            return (
+              <SingleCartItem key={item.product_id} item={item} price={parseFloat(product.price)} />
+            )
           })}
         </CartGridStyles.SecondCol>
       </CartGridStyles.Wrapper>

@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import NextAuth from 'next-auth'
 import jwt from 'jsonwebtoken'
 import Providers from 'next-auth/providers'
-import { poster } from '../../../utils/functions'
+import { fetcher, poster } from '../../../utils/functions'
 
 const options = {
   providers: [
@@ -28,12 +28,19 @@ const options = {
 
           if (authRes && authRes.token) {
             const userId: any = jwt.decode(authRes.token)
+            const userUrl = `/wp-json/wc/v3/customers/${userId!.data.user.id}`
             const cart = JSON.parse(cartString)
-            const cartReq = await poster(
-              `/wp-json/wc/v3/customers/${userId!.data.user.id}`,
-              { meta_data: cart.items.length === 0 ? null : [{ key: 'cart', value: cart.key }] },
-              'PUT',
-            )
+            let cartReq: any
+            if (cart.items.length > 0) {
+              cartReq = await poster(
+                userUrl,
+                { meta_data: [{ key: 'cart', value: cart.key }] },
+                'PUT',
+              )
+            } else {
+              cartReq = await fetcher(userUrl)
+            }
+
             const cartRes = await cartReq.json()
 
             const user = {

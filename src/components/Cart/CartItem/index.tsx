@@ -5,17 +5,16 @@ import { CartContext } from '../../../context/cart'
 import { CartItem } from '../../../types'
 import Link from 'next/link'
 import { Loader } from '../../../styles/utils'
-import useSWR from 'swr'
 
 interface CartItemProps {
   item: CartItem
+  price: number
 }
 
-const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
+const SingleCartItem: React.FC<CartItemProps> = ({ item, price }) => {
   const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
   const [isRemoving, setIsRemoving] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
-  const { data } = useSWR('/api/products/retrieve')
 
   const quantityRef = useRef<HTMLInputElement | null>(null)
 
@@ -36,7 +35,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
           },
         },
       )
-
+      if (res.status !== 200) throw Error('Problem with remote cart')
       const data = await res.json()
 
       setIsUpdating(false)
@@ -69,7 +68,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
           },
         },
       )
-
+      if (res.status !== 200) throw Error('Problem with remote cart')
       const data = await res.json()
 
       setIsUpdating(false)
@@ -84,13 +83,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
     }
   }
 
-  if (!data) {
-    return <Loader />
-  }
-
-  const { sale_price, regular_price } = getSingleProduct(item.product_id!, data)
-  const itemPrice = sale_price ? sale_price : regular_price
-  const itemTotal = itemPrice * item.quantity
+  const itemTotal = price * item.quantity
 
   return (
     <>
@@ -108,7 +101,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item }) => {
             <CartItemStyles.ProductLink>{item.product_name}</CartItemStyles.ProductLink>
           </Link>
         </CartItemStyles.CartEl>
-        <CartItemStyles.CartEl>${parseFloat(itemPrice).toFixed(2)}</CartItemStyles.CartEl>
+        <CartItemStyles.CartEl>${price.toFixed(2)}</CartItemStyles.CartEl>
         <CartItemStyles.CartEl>
           <CartItemStyles.QuantityForm>
             <CartItemStyles.InputField

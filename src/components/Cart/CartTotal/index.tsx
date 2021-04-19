@@ -18,14 +18,12 @@ const CartTotal: React.FC<CartTotalProps> = ({ adds }) => {
     return <Loader />
   }
 
-  const cartTotal =
-    cart.items.length > 0
-      ? cart.items.reduce((acc: number, curr: CartItem) => {
-          const { price } = getSingleProduct(curr.product_id, data)
+  const cartTotal = cart.items.reduce((acc: number, curr: CartItem) => {
+    const product = getSingleProduct(curr.product_id, data)
+    if (!product) return 0
 
-          return acc + curr.quantity * price
-        }, 0)
-      : 0
+    return acc + curr.quantity * product.price
+  }, 0)
 
   return (
     <CartTotalStyles.Total>
