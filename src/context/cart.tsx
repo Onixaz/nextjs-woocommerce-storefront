@@ -22,8 +22,15 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setIsUpdating(true)
     const req = await fetch('/api/customers/retrieve')
     const res = await req.json()
-    const newCart = await getCart(res.meta_data.find((x: any) => x.key === 'cart').value)
-    setCart(newCart!)
+    const cartKey = res.meta_data.find((x: { [key: string]: string }) => x.key === 'cart')
+    let newCart: Cart
+    if (cartKey) {
+      newCart = await getCart(cartKey.value)
+    } else {
+      newCart = await initCart()
+    }
+
+    setCart(newCart)
     setIsUpdating(false)
   }
 
@@ -35,29 +42,30 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   const checkForLocalCart = (expirity: number) => {
-    const cartFromLocalStoragge = localStorage.getItem('local_cart')
+    const cartFromLocalStorage = localStorage.getItem('local_cart')
     if (
-      !cartFromLocalStoragge ||
-      new Date().getTime() - JSON.parse(cartFromLocalStoragge).timestamp > expirity ||
-      !JSON.parse(cartFromLocalStoragge).key
+      !cartFromLocalStorage ||
+      new Date().getTime() - JSON.parse(cartFromLocalStorage).timestamp > expirity ||
+      !JSON.parse(cartFromLocalStorage).key ||
+      JSON.parse(cartFromLocalStorage).items.length === 0
     ) {
       return null
     } else {
-      return JSON.parse(cartFromLocalStoragge)
+      return JSON.parse(cartFromLocalStorage)
     }
   }
 
   useEffect(() => {
-    const cartFromLocalStorage = checkForLocalCart(expireIn)
+    const localCart = checkForLocalCart(expireIn)
 
     if (isUpdating) return
     if (session) {
       createUserCart()
     } else {
-      if (!cartFromLocalStorage) {
+      if (!localCart) {
         createGuestCart()
       } else {
-        setCart(cartFromLocalStorage)
+        setCart(localCart)
       }
     }
   }, [session])
