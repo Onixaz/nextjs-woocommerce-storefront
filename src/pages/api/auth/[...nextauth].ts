@@ -30,23 +30,13 @@ const options = {
             const userId: any = jwt.decode(authRes.token)
             const userUrl = `/wp-json/wc/v3/customers/${userId!.data.user.id}`
             const cart = JSON.parse(cartString)
-            let cartReq: any
             if (cart.items.length > 0) {
-              cartReq = await poster(
-                userUrl,
-                { meta_data: [{ key: 'cart', value: cart.key }] },
-                'PUT',
-              )
-            } else {
-              cartReq = await fetcher(userUrl)
+              await poster(userUrl, { meta_data: [{ key: 'cart', value: cart.key }] }, 'PUT')
             }
-
-            const cartRes = await cartReq.json()
 
             const user = {
               username: authRes.user_display_name,
               key: authRes.token,
-              cart: cartRes.meta_data.find((x: any) => x.key === 'cart').value,
             }
             return user
           } else {

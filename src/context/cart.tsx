@@ -18,9 +18,11 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const expireIn = 259200000 //3 days example
 
-  const createUserCart = async (cartKey: string) => {
+  const createUserCart = async () => {
     setIsUpdating(true)
-    const newCart = await getCart(cartKey)
+    const req = await fetch('/api/customers/retrieve')
+    const res = await req.json()
+    const newCart = await getCart(res.meta_data.find((x: any) => x.key === 'cart').value)
     setCart(newCart!)
     localStorage.setItem('local_cart', JSON.stringify(newCart))
     setIsUpdating(false)
@@ -52,7 +54,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     if (isUpdating) return
     if (session) {
-      createUserCart(session.user.cart)
+      createUserCart()
     } else {
       if (!cartFromLocalStorage) {
         createGuestCart()
