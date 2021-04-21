@@ -24,7 +24,6 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const res = await req.json()
     const newCart = await getCart(res.meta_data.find((x: any) => x.key === 'cart').value)
     setCart(newCart!)
-    localStorage.setItem('local_cart', JSON.stringify(newCart))
     setIsUpdating(false)
   }
 
@@ -32,7 +31,6 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setIsUpdating(true)
     const newCart = await initCart()
     setCart(newCart!)
-    localStorage.setItem('local_cart', JSON.stringify(newCart))
     setIsUpdating(false)
   }
 
