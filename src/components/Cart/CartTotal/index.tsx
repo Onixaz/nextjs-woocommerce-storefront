@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import useSWR from 'swr'
 import { CartContext } from '../../../context/cart'
 import { Loader } from '../../../styles/utils'
-import { Cart, CartItem } from '../../../types'
+import { CartItem } from '../../../types'
 import { getSingleProduct } from '../../../utils/functions'
 import * as CartTotalStyles from './styled'
 

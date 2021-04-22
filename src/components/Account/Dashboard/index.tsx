@@ -1,6 +1,5 @@
 import { useSession } from 'next-auth/client'
 import React from 'react'
-import useSWR from 'swr'
 
 const AccountDashboard: React.FC = () => {
   const [session]: any = useSession()

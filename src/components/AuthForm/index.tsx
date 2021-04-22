@@ -1,12 +1,11 @@
 import * as AuthFormStyles from './styled'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { signIn } from 'next-auth/client'
-import React, { SetStateAction, useContext, useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Loader, SectionTitle } from '../../styles/utils'
 import Link from 'next/link'
 import { CartContext } from '../../context/cart'
-import { Cart } from '../../types'
 
 interface AuthFormProps {
   isRegister: boolean

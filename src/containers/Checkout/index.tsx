@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import { useStripe, useElements } from '@stripe/react-stripe-js'
 import { useForm } from 'react-hook-form'
 import * as CheckoutPageStyles from './styled'
@@ -10,7 +10,6 @@ import { CartContext } from '../../context/cart'
 import { NextPage } from 'next'
 import { createOrder, initCart } from '../../utils/functions'
 import { Customer } from '../../types'
-import { useRouter } from 'next/router'
 
 interface CheckoutPageContainerProps {}
 
@@ -33,11 +32,12 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
       //TODO: Add more payment methods (Paypal e.g)
 
       if (chosenPaymentMethod === 'stripe') {
-        const cardElement = elements.getElement('card')
+        const card = elements.getElement('card')
+        if (!card) throw 'Stripe error'
 
         const stripeRes = await stripe.createPaymentMethod({
           type: 'card',
-          card: cardElement!,
+          card,
         })
 
         payment = stripeRes.paymentMethod?.id
@@ -45,10 +45,7 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
 
       // end of stripe block
 
-      if (!payment) {
-        setIsProcessing(false)
-        return
-      }
+      if (!payment) throw 'No valid payment method'
 
       const { message } = await createOrder(customer, payment, cart)
       console.log(message)

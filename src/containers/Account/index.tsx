@@ -3,7 +3,6 @@ import { useSession } from 'next-auth/client'
 import React from 'react'
 import { BasicContainer } from '../../styles/utils'
 import AccountGrid from '../../components/Account/Grid'
-import { useRouter } from 'next/router'
 
 const AccountPageContainer: React.FC = () => {
   const [session]: any = useSession()

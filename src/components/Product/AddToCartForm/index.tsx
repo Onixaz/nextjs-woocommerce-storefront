@@ -4,7 +4,6 @@ import { CartContext } from '../../../context/cart'
 import { Product } from '../../../types'
 import * as AddToCartFormStyles from './styled'
 import { updateCart } from '../../../utils/functions'
-import useSWR from 'swr'
 
 interface UpdateCartButtonProps {
   product: Product

@@ -1,8 +1,7 @@
 import * as OrderSummaryStyles from './styled'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Cart, CartItem } from '../../types'
 import useSWR from 'swr'
-import { CartContext } from '../../context/cart'
 import { Loader } from '../../styles/utils'
 import CartTotal from '../Cart/CartTotal'
 

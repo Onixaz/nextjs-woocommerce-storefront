@@ -1,6 +1,6 @@
 import { Product } from '../../types'
 import React from 'react'
-import { BasicGrid, BasicContainer, Loader } from '../../styles/utils'
+import { BasicGrid, BasicContainer } from '../../styles/utils'
 import * as ProductPageStyles from './styled'
 import AddToCartForm from '../../components/Product/AddToCartForm'
 import ProductPrice from '../../components/Product/ProductPrice'

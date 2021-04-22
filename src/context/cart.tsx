@@ -29,7 +29,6 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     } else {
       newCart = await initCart()
     }
-
     setCart(newCart)
     setIsUpdating(false)
   }
@@ -37,7 +36,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const createGuestCart = async () => {
     setIsUpdating(true)
     const newCart = await initCart()
-    setCart(newCart!)
+    setCart(newCart)
     setIsUpdating(false)
   }
 
@@ -56,16 +55,15 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   useEffect(() => {
-    const localCart = checkForLocalCart(expireIn)
-
     if (isUpdating) return
     if (session) {
       createUserCart()
     } else {
-      if (!localCart) {
-        createGuestCart()
-      } else {
+      const localCart = checkForLocalCart(expireIn)
+      if (localCart) {
         setCart(localCart)
+      } else {
+        createGuestCart()
       }
     }
   }, [session])

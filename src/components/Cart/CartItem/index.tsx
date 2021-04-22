@@ -1,6 +1,6 @@
 import * as CartItemStyles from './styled'
 import React, { useContext, useRef, useState } from 'react'
-import { getSingleProduct, initCart, updateCart } from '../../../utils/functions'
+import { initCart, updateCart } from '../../../utils/functions'
 import { CartContext } from '../../../context/cart'
 import { CartItem } from '../../../types'
 import Link from 'next/link'

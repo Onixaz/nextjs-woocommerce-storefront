@@ -17,7 +17,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Method not allowed' })
 
   const { customer, payment, cart }: OrderDetails = req.body
-  if (!customer || !payment! || !cart) return res.status(400).json({ message: 'Bad request' })
+  if (!customer || !payment || !cart) return res.status(400).json({ message: 'Bad request' })
 
   try {
     const line_items = cart.items

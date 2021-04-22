@@ -28,7 +28,7 @@ const options = {
 
           if (authRes && authRes.token) {
             const userId: any = jwt.decode(authRes.token)
-            const userUrl = `/wp-json/wc/v3/customers/${userId!.data.user.id}`
+            const userUrl = `/wp-json/wc/v3/customers/${userId.data.user.id}`
             const cart = JSON.parse(cartString)
             if (cart.items.length > 0) {
               await poster(userUrl, { meta_data: [{ key: 'cart', value: cart.key }] }, 'PUT')

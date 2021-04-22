@@ -15,10 +15,8 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ setView }) => {
 
   const handleLogout = async (options: any) => {
     const newCart = await initCart()
-
     setCart(newCart)
     await signOut(options)
-
     router.push('/login')
   }
   return (
