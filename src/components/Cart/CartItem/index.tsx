@@ -107,6 +107,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item, price }) => {
             <CartItemStyles.InputField
               type="number"
               defaultValue={item.quantity}
+              key={item.quantity}
               min="1"
               ref={quantityRef}
             ></CartItemStyles.InputField>
@@ -132,4 +133,4 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item, price }) => {
   )
 }
 
-export default React.memo(SingleCartItem)
+export default SingleCartItem
