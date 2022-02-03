@@ -29,13 +29,6 @@ The idea behind this repo was to showcase the power of [Next.js](https://nextjs.
 * Checkout system using [Stripe](https://stripe.com/) as a payment method example.
 
 
-## Demo
-
-
-
-Live demo: https://nextjs-woocommerce.netlify.app
-
-
 ## How to use
 
 Install required plugins on your Wordpress:
