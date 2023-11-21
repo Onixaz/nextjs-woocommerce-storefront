@@ -12,6 +12,8 @@ const CartPageContainer: NextPage<CartPageProps> = () => {
   const [cart] = useContext(CartContext)
   const { data } = useSWR('/api/products/retrieve')
 
+  console.log(data)
+
   if (!data) {
     return <Loader />
   }

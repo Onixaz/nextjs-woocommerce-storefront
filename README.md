@@ -1,5 +1,5 @@
 # Next.js WooCommerce Storefront Theme 
-Using Next.js, TypeScript and Styled-components.
+Using Next.js, TypeScript and styled-components.
 
 
 
@@ -34,13 +34,16 @@ The idea behind this repo was to showcase the power of [Next.js](https://nextjs.
 Install required plugins on your Wordpress:
 * [WooCommerce](https://wordpress.org/plugins/woocommerce/) (obviously)
 * [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
-* [Cocart Lite](https://wordpress.org/plugins/cart-rest-api-for-woocommerce)
 * [Password Reset with Code for WordPress REST API](https://wordpress.org/plugins/bdvs-password-reset/) (to be implemented)
+* [CoCart - Decoupling WooCommerce Made Easy](https://wordpress.org/plugins/cart-rest-api-for-woocommerce)
+* [CoCart – CORS Support](https://wordpress.org/plugins/cocart-cors/)
 
-Change Permalinks to **Post Name (Settings -> Permalinks).** Also make sure your **JWT Authentication for WP REST API** plugin is configured correctly. 
 
 
-You'll need to import some products. For testing you can use sample data from Woo https://docs.woocommerce.com/document/importing-woocommerce-sample-data/ just like I did.
+Make sure Permalinks are set to **Post Name (Settings -> Permalinks).** Also make sure your **JWT Authentication for WP REST API** plugin is configured correctly. 
+You will also need to add a shipping method to **Locations not covered by your other zones** for now.
+
+Lastly, you'll need to import some products. For testing you can use sample data from Woo https://docs.woocommerce.com/document/importing-woocommerce-sample-data/ just like I did.
 
 To test in-app payments you'll need to register a Stripe account for the publishable key and secret. (https://stripe.com/docs/keys) 
 
@@ -67,16 +70,6 @@ Notice that **NEXT_PUBLIC_WP_API_URL** and **NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY*
 
 Finally **npm run dev.**
 
-Note: In case you're not getting the **x-cocart-api key** when calling CoCart endpoint from a response header, allow cross origin headers using [https://github.com/co-cart/co-cart-tweaks](https://github.com/co-cart/co-cart-tweaks)
-
-
-
-
-## Deployment
-
-You can easily deploy on [Netlify](https://www.netlify.com) using [Next.js Build Plugin](https://github.com/netlify/netlify-plugin-nextjs). 
-
-Just make sure you set your env variables. For more details refer to [https://www.netlify.com/blog/2020/12/10/environment-variables-in-next.js-and-netlify/](https://www.netlify.com/blog/2020/12/10/environment-variables-in-next.js-and-netlify/).
 
 ##  Todo
 

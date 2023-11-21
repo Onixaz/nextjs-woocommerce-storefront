@@ -46,22 +46,18 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
       // end of stripe block
 
       if (!payment) throw 'No valid payment method'
-
       const { message } = await createOrder(customer, payment, cart)
-      console.log(message)
       const newCart = await initCart()
-      setCart(newCart)
-      setIsProcessing(false)
       if (message === 'Success') {
+        setCart(newCart)
         setServerMsg('Thank you for your order. Check your email for details!')
       } else {
         setServerMsg('Sorry something went wrong. Please try again later...')
       }
+      setIsProcessing(false)
     } catch (error) {
       console.log(error)
       setServerMsg('Sorry something went wrong. Please try again later...')
-      const newCart = await initCart()
-      setCart(newCart)
       setIsProcessing(false)
     }
   }

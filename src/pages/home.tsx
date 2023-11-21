@@ -8,12 +8,12 @@ import SingleProduct from '../components/Product/ProductCard'
 import { fetcher } from '../utils/functions'
 import PageTitle from '../components/PageTitle'
 
-interface IndexPageProps {
+interface HomePageProps {
   categories: Category[]
   featured: Product[]
 }
 
-const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
+const HomePage: NextPage<HomePageProps> = ({ categories, featured }) => {
   return (
     <>
       <PageTitle
@@ -45,13 +45,20 @@ const IndexPage: NextPage<IndexPageProps> = ({ categories, featured }) => {
   )
 }
 
-export default IndexPage
+export default HomePage
 
 export async function getStaticProps() {
   const categoriesRes = await fetcher(`/wp-json/wc/v3/products/categories`)
-  const unfilteredCategories = await categoriesRes.json()
+  const categoriesJson = await categoriesRes.json()
 
-  const categories = unfilteredCategories.filter((item: Product) => {
+  if (categoriesRes.status !== 200) {
+    console.error('Home page error on getStaticProps', categoriesJson)
+    return {
+      props: { categories: [], featured: [] },
+    }
+  }
+
+  const categories = categoriesJson.filter((item: Product) => {
     return item.name !== 'Uncategorized'
   })
 

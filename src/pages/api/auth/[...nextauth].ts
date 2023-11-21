@@ -19,17 +19,17 @@ const options = {
           type: 'password',
         },
       },
-      authorize: async (credentials) => {
+      authorize: async (userData) => {
         try {
           //get user from wp
-          const { username, password, cartString } = credentials
+          const { username, password, cartData } = userData
           const authReq = await poster('/wp-json/jwt-auth/v1/token', { username, password }, 'POST')
           const authRes = await authReq.json()
 
           if (authRes && authRes.token) {
             const userId: any = jwt.decode(authRes.token)
             const userUrl = `/wp-json/wc/v3/customers/${userId.data.user.id}`
-            const cart = JSON.parse(cartString)
+            const cart = JSON.parse(cartData)
             if (cart.items.length > 0) {
               await poster(userUrl, { meta_data: [{ key: 'cart', value: cart.key }] }, 'PUT')
             }
@@ -44,7 +44,7 @@ const options = {
             return null
           }
         } catch (error) {
-          console.log(error)
+          console.error(error)
           return null
         }
       },

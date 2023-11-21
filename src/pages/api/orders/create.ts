@@ -17,11 +17,12 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Method not allowed' })
 
   const { customer, payment, cart }: OrderDetails = req.body
-  if (!customer || !payment || !cart) return res.status(400).json({ message: 'Bad request' })
+  if (!customer || !customer.shipping || !payment || !cart)
+    return res.status(400).json({ message: 'Bad request' })
 
   try {
-    const line_items = cart.items
-    const { method_id, method_title, cost } = JSON.parse(customer.shipping!)
+    const line_items = { ...cart.items }
+    const { method_id, method_title, cost } = JSON.parse(customer.shipping)
 
     let user: any
     const session: any = await getSession({ req })
@@ -56,6 +57,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     const wooResponse = await poster(`/wp-json/wc/v3/orders`, wooBody, 'POST')
     const order = await wooResponse.json()
+
+    if (order.data && order.data.status === 400) {
+      console.error(order.data)
+      throw new Error(order.message)
+    }
 
     const amount = Math.round(parseFloat(order.total) * 100)
 

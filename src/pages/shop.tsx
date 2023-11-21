@@ -15,9 +15,16 @@ const ShopPage: NextPage<ShopPageProps> = ({ products }) => {
 export default ShopPage
 
 export async function getStaticProps() {
-  const res = await fetcher(`/wp-json/wc/v3/products?per_page=100&status=publish&type=simple`)
   //TODO: implement variable products
+  const res = await fetcher(`/wp-json/wc/v3/products?per_page=100&status=publish&type=simple`)
   const products = await res.json()
+
+  if (res.status !== 200) {
+    console.error('Shop page error on getStaticProps', products)
+    return {
+      props: { products: [] },
+    }
+  }
 
   return {
     props: { products },

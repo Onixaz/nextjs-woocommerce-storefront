@@ -15,6 +15,8 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ register, errors, cart }) =
   const { data } = useSWR('/api/shipping/retrieve')
   const [shippingCost, setShippingCost] = useState(0)
 
+  console.log(shippingCost)
+
   if (!data) {
     return <Loader />
   }

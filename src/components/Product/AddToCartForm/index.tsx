@@ -30,7 +30,7 @@ const AddToCartForm: React.FC<UpdateCartButtonProps> = ({ product }) => {
             quantity: quantity,
             return_cart: true,
             //adding image for cart page
-            cart_item_data: { image: item.images[0].src, slug: item.slug },
+            cart_item_data: { img: item.images[0].src, slug: item.slug },
           }),
           headers: {
             'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const AddToCartForm: React.FC<UpdateCartButtonProps> = ({ product }) => {
       setCart(() => updateCart(cart, data))
       setIsUpdating(false)
     } catch (error) {
-      console.log(error)
+      console.error(error)
       setIsUpdating(false)
     }
   }

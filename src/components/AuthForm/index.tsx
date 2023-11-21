@@ -70,7 +70,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
       }
     } catch (error) {
       setSubmiting(false)
-      console.log(error)
+      console.error(error)
     }
   }
   return (

@@ -94,7 +94,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item, price }) => {
           </CartItemStyles.RemoveFromCartBtn>
         </CartItemStyles.CartEl>
         <CartItemStyles.CartEl>
-          <CartItemStyles.Thumbnail src={item.image} alt={item.slug} />
+          <CartItemStyles.Thumbnail src={item.img} alt={item.slug} />
         </CartItemStyles.CartEl>
         <CartItemStyles.CartEl>
           <Link href={`/products/${item.slug}`}>

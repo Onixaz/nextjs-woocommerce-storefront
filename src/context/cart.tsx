@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useSession } from 'next-auth/client'
+import React, { useEffect, useState } from 'react'
 import { Cart } from '../types'
 import { getCart, initCart } from '../utils/functions'
-import { useSession } from 'next-auth/client'
 
 export const CartContext = React.createContext<any | null>(null)
 
