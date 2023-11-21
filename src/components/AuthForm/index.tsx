@@ -1,6 +1,6 @@
 import * as AuthFormStyles from './styled'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { signIn } from 'next-auth/client'
+import { signIn } from 'next-auth/react'
 import React, { useContext, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Loader, SectionTitle } from '../../styles/utils'
@@ -17,7 +17,7 @@ interface FormValues {
   email: string
   password: string
   passwordRepeat: string
-  cartString: string
+  cartData: string
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
@@ -34,18 +34,18 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       setSubmiting(true)
-      const cartString = JSON.stringify(cart)
-      data = { ...data, cartString }
+      const cartData = JSON.stringify(cart)
+      data = { ...data, cartData }
       if (isRegister) {
         const req = await fetch('/api/customers/create', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         })
-        const status = req.status
+
         const { message } = await req.json()
 
-        if (status === 200) {
+        if (req.status === 200) {
           await signIn('credentials', {
             redirect: false,
             ...data,

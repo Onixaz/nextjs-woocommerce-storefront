@@ -1,12 +1,12 @@
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import React from 'react'
 
 const AccountDashboard: React.FC = () => {
-  const [session]: any = useSession()
+  const { data: session }: any = useSession()
 
   return (
     <div>
-      <p>Welcome, {session.user.username}!</p>
+      <p>Welcome, {session?.user?.username}!</p>
       <br />
       <p>
         From your account dashboard you can view your recent orders and your wishlist, manage your

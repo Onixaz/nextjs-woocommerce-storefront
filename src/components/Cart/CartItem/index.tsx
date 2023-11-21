@@ -75,7 +75,7 @@ const SingleCartItem: React.FC<CartItemProps> = ({ item, price }) => {
       setIsAnimating(false)
       setCart(() => updateCart(cart, data))
     } catch (error) {
-      console.log(error)
+      console.error(error)
       const newCart = await initCart()
       setCart(newCart)
       setIsAnimating(false)

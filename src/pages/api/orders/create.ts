@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken'
-import { getSession } from 'next-auth/client'
+import { getSession } from 'next-auth/react'
 import Stripe from 'stripe'
 import { Cart, Customer } from '../../../types'
 import { poster } from '../../../utils/functions'

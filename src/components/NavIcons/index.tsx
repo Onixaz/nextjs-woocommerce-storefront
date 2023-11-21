@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { CartContext } from '../../context/cart'
 import CartTotal from '../Cart/CartTotal'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 
 interface NavigationIconsProps {
   scrollNav: boolean
@@ -14,7 +14,7 @@ interface NavigationIconsProps {
 const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }) => {
   const [cart] = useContext(CartContext)
   const router = useRouter()
-  const [session] = useSession()
+  const { data: session } = useSession()
 
   const totalQuantity = useMemo(() => {
     if (cart.items.length > 0) {

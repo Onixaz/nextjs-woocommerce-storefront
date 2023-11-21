@@ -1,12 +1,20 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import NextAuth from 'next-auth'
-import jwt from 'jsonwebtoken'
-import Providers from 'next-auth/providers'
-import { fetcher, poster } from '../../../utils/functions'
+//
 
-const options = {
-  providers: [
-    Providers.Credentials({
+import NextAuth from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
+import jwt from 'jsonwebtoken'
+import { poster } from '../../../utils/functions'
+import { AuthUserData } from '../../../types'
+
+interface userData {
+  username: string
+  key: string
+  id: string
+}
+
+export default async function auth(req: any, res: any) {
+  const providers = [
+    CredentialsProvider({
       name: 'Credentials',
 
       credentials: {
@@ -19,28 +27,36 @@ const options = {
           type: 'password',
         },
       },
-      authorize: async (userData) => {
+      async authorize(userData: AuthUserData | undefined) {
         try {
+          if (!userData) {
+            return null
+          }
           //get user from wp
           const { username, password, cartData } = userData
-          const authReq = await poster('/wp-json/jwt-auth/v1/token', { username, password }, 'POST')
-          const authRes = await authReq.json()
 
-          if (authRes && authRes.token) {
-            const userId: any = jwt.decode(authRes.token)
+          const authRes = await poster('/wp-json/jwt-auth/v1/token', { username, password }, 'POST')
+          const authJson = await authRes.json()
+
+          if (authJson && authJson.token) {
+            const userId: any = jwt.decode(authJson.token)
             const userUrl = `/wp-json/wc/v3/customers/${userId.data.user.id}`
-            const cart = JSON.parse(cartData)
-            if (cart.items.length > 0) {
-              await poster(userUrl, { meta_data: [{ key: 'cart', value: cart.key }] }, 'PUT')
+
+            if (cartData) {
+              const cart = JSON.parse(cartData)
+              if (cart.items.length > 0) {
+                await poster(userUrl, { meta_data: [{ key: 'cart', value: cart.key }] }, 'PUT')
+              }
             }
 
-            const user = {
-              username: authRes.user_display_name,
-              key: authRes.token,
+            const user: userData = {
+              username: authJson.user_display_name,
+              key: authJson.token,
+              id: userId.data.user.id,
             }
             return user
           } else {
-            console.log(authRes)
+            console.log(authJson)
             return null
           }
         } catch (error) {
@@ -49,27 +65,24 @@ const options = {
         }
       },
     }),
-  ],
+  ]
 
-  session: {
-    jwt: true,
-    maxAge: 60 * 60 * 24 * 7, //7 days (same as jwt from wp)
-  },
-  jwt: {
+  return await NextAuth(req, res, {
+    providers,
+    session: {
+      strategy: 'jwt',
+      maxAge: 60 * 60 * 24 * 7, //7 days (same as jwt from wp)
+    },
     secret: process.env.NEXTAUTH_SECRET_KEY,
-  },
-  //https://stackoverflow.com/questions/64576733/where-and-how-to-change-session-user-object-after-signing-in
-  callbacks: {
-    jwt: async (token: any, user: any) => {
-      user && (token.user = user)
-      return token
+    callbacks: {
+      async jwt({ token, user }: { token: any; user: any }) {
+        user && (token.user = user)
+        return token
+      },
+      async session({ session, token }: { session: any; token: any }) {
+        session.user = token.user
+        return session
+      },
     },
-    session: async (session: any, user: any) => {
-      session.user = user.user
-      return session
-    },
-  },
+  })
 }
-
-export default (req: NextApiRequest, res: NextApiResponse): Promise<void> =>
-  NextAuth(req, res, options)

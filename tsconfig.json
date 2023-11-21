@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "strict": true,
     "noImplicitAny": true,
-    "strictNullChecks":true,
+    "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -18,7 +18,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
   "exclude": [
     "node_modules"
@@ -26,8 +27,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "next.config.js",
-    "decs.d.ts"
-, "next-sitemap.config.js"
+    "**/*.tsx",
+    "next.config.js",
+    "decs.d.ts",
+    "next-sitemap.config.js"
   ]
 }

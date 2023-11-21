@@ -1,4 +1,4 @@
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import React, { useEffect, useState } from 'react'
 import { Cart } from '../types'
 import { getCart, initCart } from '../utils/functions'
@@ -10,7 +10,7 @@ interface CartProviderProps {}
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Cart>({ items: [], key: '', timestamp: 0 })
   const [isUpdating, setIsUpdating] = useState(false)
-  const [session]: any = useSession()
+  const { data: session }: any = useSession()
 
   //to change cart expiration date on server
   //https://github.com/co-cart/co-cart/search?q=cocart_cart_expiring+in%3Afile&type=Code
@@ -20,15 +20,13 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const createUserCart = async () => {
     setIsUpdating(true)
-    const req = await fetch('/api/customers/retrieve')
-    const res = await req.json()
-    const cartKey = res.meta_data.find((x: { [key: string]: string }) => x.key === 'cart')
-    let newCart: Cart
-    if (cartKey) {
-      newCart = await getCart(cartKey.value)
-    } else {
-      newCart = await initCart()
-    }
+    const customerRes = await fetch('/api/customers/retrieve')
+    const customerJson = await customerRes.json()
+
+    const cartKey = customerJson.meta_data.find((x: { [key: string]: string }) => x.key === 'cart')
+
+    console.log('the cartKey is', cartKey)
+    const newCart = cartKey ? await getCart(cartKey.value) : await initCart()
     setCart(newCart)
     setIsUpdating(false)
   }

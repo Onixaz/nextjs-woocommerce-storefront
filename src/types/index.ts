@@ -65,3 +65,9 @@ export interface Order {
   total: string
   date_created: string
 }
+
+export interface AuthUserData {
+  username: string
+  password: string
+  cartData?: string
+}

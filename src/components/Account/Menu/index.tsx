@@ -1,5 +1,5 @@
 import React, { SetStateAction, Dispatch, useContext } from 'react'
-import { signOut } from 'next-auth/client'
+import { signOut } from 'next-auth/react'
 import * as AccountMenuStyles from './styled'
 import { useRouter } from 'next/router'
 import { CartContext } from '../../../context/cart'

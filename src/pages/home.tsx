@@ -20,6 +20,7 @@ const HomePage: NextPage<HomePageProps> = ({ categories, featured }) => {
         title="Woo Storefront | Next.Js"
         description="Unofficial WooCommerce Storefront theme made with Next.Js and Styled-components"
       />
+      {/* TODO refactor hero */}
       <Hero />
 
       <BasicContainer id="Categories">

@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import { Product } from '../../types'
 import { fetcher } from '../../utils/functions'
-import { Params } from 'next/dist/next-server/server/router'
+import { GetStaticProps } from 'next'
 import ProductPageContainer from '../../containers/Product'
 
 interface ProductPageProps {
@@ -14,8 +14,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
 
 export default ProductPage
 
-export async function getStaticProps({ params: { slug } }: Params) {
-  const productsRes = await fetcher(`/wp-json/wc/v3/products?slug=${slug}`)
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const productsRes = await fetcher(`/wp-json/wc/v3/products?slug=${params?.slug}`)
 
   const found = await productsRes.json()
 
@@ -26,7 +26,7 @@ export async function getStaticProps({ params: { slug } }: Params) {
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const productsRes = await fetcher(`/wp-json/wc/v3/products?per_page=30`)
   const products = await productsRes.json()
 

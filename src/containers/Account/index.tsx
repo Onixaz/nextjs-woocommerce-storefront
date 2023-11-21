@@ -1,11 +1,11 @@
 import * as AccountPageStyles from './styled'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import React from 'react'
 import { BasicContainer } from '../../styles/utils'
 import AccountGrid from '../../components/Account/Grid'
 
 const AccountPageContainer: React.FC = () => {
-  const [session]: any = useSession()
+  const { data: session }: any = useSession()
 
   return (
     <BasicContainer>
